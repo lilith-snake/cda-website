@@ -161,6 +161,7 @@
     right: 0;
     bottom: 0;
     background: #080614;
+	    z-index: 9999;
     flex-direction: column;
     align-items: center;
     justify-content: center;
