@@ -352,8 +352,8 @@ button {
   height: 100vh;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.55;
-  filter: brightness(0.7) saturate(0.85);
+  opacity: 0.85;
+  filter: brightness(0.9) saturate(0.9);
   pointer-events: none;
 }
 
