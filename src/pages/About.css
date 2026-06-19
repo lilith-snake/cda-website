@@ -1,0 +1,581 @@
+/* ============================================
+   關於協會頁 — 深空星雲風格
+   ============================================ */
+
+.about-hero {
+  /* 透明 — 讓固定視頻背景透出 */
+  background: transparent;
+}
+
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-mission {
+  padding: 36px;
+}
+
+.about-mission h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.mission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mission-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.mission-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139, 125, 232, 0.12), rgba(108, 92, 231, 0.08));
+  border: 1px solid rgba(139, 125, 232, 0.2);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.mission-item h4 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.mission-item p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* --- 創始人 --- */
+.about-founder {
+  background: rgba(14, 12, 35, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(139, 125, 232, 0.06);
+  border-bottom: 1px solid rgba(139, 125, 232, 0.06);
+}
+
+/* --- 雙創始人網格 --- */
+.founders-dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.about-founder-card {
+  position: relative;
+  padding: 40px 32px;
+  text-align: center;
+  overflow: hidden;
+  background: rgba(14, 12, 35, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(139, 125, 232, 0.08);
+}
+
+.founder-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.founder-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(139, 125, 232, 0.12), rgba(108, 92, 231, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 18px rgba(139, 125, 232, 0.12);
+}
+
+.founder-avatar-lihui {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 18px rgba(201, 169, 110, 0.15);
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.1), rgba(184, 150, 62, 0.06));
+}
+
+.founder-avatar-poxiao {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 18px rgba(139, 125, 232, 0.15);
+}
+
+.founder-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary-dark);
+}
+
+.founder-title {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* 資質徽章 */
+.founder-creds {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.cred-badge {
+  font-size: 0.72rem;
+  color: var(--color-primary);
+  background: rgba(139, 125, 232, 0.1);
+  border: 1px solid rgba(139, 125, 232, 0.18);
+  padding: 3px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.03em;
+}
+
+.cred-badge.cred-pending {
+  color: var(--color-text-secondary);
+  background: rgba(139, 125, 232, 0.05);
+  border: 1px dashed rgba(139, 125, 232, 0.12);
+}
+
+.founder-card {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about-cta {
+  text-align: center;
+}
+
+.section-title-h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 28px;
+}
+
+.about-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* --- 信用卡片內容 --- */
+.credit-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.credit-icon {
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+.credit-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-primary-dark);
+}
+
+.credit-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.credit-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.credit-items li {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  padding-left: 16px;
+  position: relative;
+}
+
+.credit-items li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* --- 傳承表 --- */
+.lineage-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.lineage-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.2fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(139, 125, 232, 0.06);
+  align-items: center;
+}
+
+.lineage-row:last-child {
+  border-bottom: none;
+}
+
+.lineage-tradition h4 {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.lineage-path p {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.lineage-application span {
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  background: rgba(139, 125, 232, 0.08);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* --- 聲明 --- */
+.disclaimer-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+}
+
+.disclaimer-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.disclaimer-open-note {
+  font-family: var(--font-serif);
+  color: var(--color-primary) !important;
+  font-style: italic;
+  padding-top: 8px;
+  border-top: 1px solid rgba(139, 125, 232, 0.08);
+  margin-top: 16px;
+}
+
+/* --- 體系定位補充 --- */
+.mission-positioning {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.mission-open-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(139, 125, 232, 0.04);
+  border: 1px solid rgba(139, 125, 232, 0.08);
+  border-radius: var(--border-radius-sm);
+  padding: 14px 18px;
+  margin-top: 24px;
+}
+
+.mission-open-note .open-note-icon {
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mission-open-note p {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+/* --- 次要認證徽章 --- */
+.cred-badge-secondary {
+  color: var(--color-text-secondary) !important;
+  background: rgba(139, 125, 232, 0.05) !important;
+  border: 1px dashed rgba(139, 125, 232, 0.12) !important;
+  opacity: 0.7;
+}
+
+/* --- 背景與起源 --- */
+.origin-card {
+  padding: 40px 44px;
+}
+
+.origin-passage p {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.origin-lead {
+  font-family: var(--font-serif);
+  font-size: 1.05rem !important;
+  color: var(--color-primary-dark) !important;
+  line-height: 1.9 !important;
+}
+
+.origin-quote {
+  margin: 32px 0 8px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--color-primary);
+  background: rgba(139, 125, 232, 0.04);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* --- 理論論文 --- */
+.papers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.paper-card {
+  padding: 32px;
+  position: relative;
+}
+
+.paper-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.status-published {
+  background: rgba(108, 92, 231, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.status-draft {
+  background: rgba(201, 169, 110, 0.08);
+  color: var(--color-gold-dark);
+  border: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.status-planning {
+  background: rgba(139, 125, 232, 0.04);
+  color: var(--color-text-secondary);
+  border: 1px dashed rgba(139, 125, 232, 0.12);
+}
+
+.paper-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.paper-meta {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+  letter-spacing: 0.03em;
+}
+
+.paper-abstract {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.paper-link {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s;
+}
+
+.paper-link:hover {
+  border-bottom-color: var(--color-primary);
+}
+
+.paper-coming {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.paper-placeholder {
+  opacity: 0.65;
+  border: 1px dashed rgba(139, 125, 232, 0.1);
+}
+
+.papers-note {
+  margin-top: 32px;
+  padding: 20px 28px;
+  text-align: center;
+}
+
+.papers-note p {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* --- 研究團隊 --- */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.team-card {
+  padding: 36px 32px;
+  text-align: center;
+}
+
+.team-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(139, 125, 232, 0.12), rgba(108, 92, 231, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 16px;
+  border: 2px solid rgba(139, 125, 232, 0.18);
+}
+
+.team-avatar-soon {
+  border-style: dashed !important;
+  opacity: 0.5;
+}
+
+.team-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 0.82rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.team-focus {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.team-bio {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.team-placeholder {
+  opacity: 0.55;
+  border: 1px dashed rgba(139, 125, 232, 0.1);
+}
+
+.team-note {
+  margin-top: 32px;
+  padding: 20px 28px;
+  text-align: center;
+}
+
+.team-note p {
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .about-intro-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .founders-dual {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .lineage-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .papers-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .origin-card {
+    padding: 28px 24px;
+  }
+}
