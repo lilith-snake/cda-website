@@ -50,7 +50,7 @@ export default function Mysticism() {
             </div>
             <div className="mysticism-hero-illustration">
               <img
-                src="/images/mystic-tarot-illustration.png"
+                src={`${import.meta.env.BASE_URL}images/mystic-tarot-illustration.png`}
                 alt="神秘塔羅牌插畫 — 星界智慧的守護者"
                 className="mystic-tarot-img"
               />

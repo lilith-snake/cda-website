@@ -11,7 +11,7 @@ export default function Home() {
     <div className="page-home">
       {/* 固定視頻背景 */}
       <video className="page-video-bg" autoPlay muted loop playsInline>
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}videos/hero-bg.mp4`} type="video/mp4" />
       </video>
       <div className="page-video-overlay" />
 

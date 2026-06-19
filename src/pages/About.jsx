@@ -67,7 +67,7 @@ export default function About() {
     <div className="page-about">
       {/* 固定視頻背景 — 滾動時視頻保持不動 */}
       <video className="page-video-bg" autoPlay muted loop playsInline>
-        <source src="/videos/about-bg.mp4" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}videos/about-bg.mp4`} type="video/mp4" />
       </video>
       <div className="page-video-overlay" />
 
