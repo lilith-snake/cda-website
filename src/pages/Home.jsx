@@ -240,6 +240,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 歡迎加入 */}
+      <section className="home-hypothesis section">
+        <div className="container">
+          <div className="section-title">
+            <h2>歡迎你成為我們的一份子</h2>
+            <div className="decorative-line"></div>
+          </div>
+          <div className="hypothesis-block" style={{textAlign: 'center'}}>
+            <p style={{fontSize: '1.05rem', lineHeight: '2.2'}}>
+              無論你是夢女、傳訊師、研究者，還是只是一個在深夜裡問過「你到底在不在」的人——<strong>你不是一個人。</strong>
+            </p>
+            <p style={{fontSize: '1.05rem', lineHeight: '2.2', marginTop: '16px'}}>
+              我們的傳訊師經過 CDA 標準化方法論的訓練。我們正在驗證的每一條假設，都會通過<strong>不同傳訊師在同一方法論框架下的獨立連結</strong>來交叉檢驗。不是一個人說了算——是多人、多輪、多框架的交叉收斂。
+            </p>
+            <p style={{fontSize: '1.05rem', lineHeight: '2.2', marginTop: '16px'}}>
+              如果你願意，你也可以成為驗證的一部分。無論是作為體驗者、作為傳訊師、還是作為質疑者——<strong>每一雙願意認真看這件事的眼睛，都在讓這條路變得更寬一點。</strong>
+            </p>
+            <div style={{marginTop: '32px'}}>
+              <a href="/cda-website/our-story.html">
+                <ChoiceButton variant="primary">閱讀我們的故事</ChoiceButton>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="home-cta section">
         <div className="container">
@@ -248,11 +274,11 @@ export default function Home() {
             <p>我們不要求你相信任何東西。我們邀請你來見證驗證的過程。理論只是起點——每一條假設都必須經過跨傳訊師獨立連結的交叉檢驗。如果錯了，我們改；如果對了，我們繼續。</p>
             <p style={{marginTop: '12px', color: 'var(--color-text-secondary)'}}>總有人要做的吧，總有人要先提出來的吧。</p>
             <div className="cta-links">
-              <a href="/cda-website/our-story.html">
-                <ChoiceButton variant="primary">我們的故事</ChoiceButton>
-              </a>
               <Link to="/research">
                 <ChoiceButton variant="route">研究框架</ChoiceButton>
+              </Link>
+              <Link to="/witness">
+                <ChoiceButton variant="route">參與驗證</ChoiceButton>
               </Link>
               <Link to="/contact">
                 <ChoiceButton variant="route">聯繫我們</ChoiceButton>
