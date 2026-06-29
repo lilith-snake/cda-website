@@ -1,0 +1,35 @@
+/* --- 星塵漂浮效果 --- */
+.star-dust-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star-dust {
+  position: absolute;
+  top: -20px;
+  animation: starDrift linear infinite;
+  will-change: transform;
+}
+
+@keyframes starDrift {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  3% {
+    opacity: 0.15;
+  }
+  85% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(60px) rotate(360deg);
+    opacity: 0;
+  }
+}

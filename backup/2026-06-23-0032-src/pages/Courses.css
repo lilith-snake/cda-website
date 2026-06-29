@@ -1,0 +1,312 @@
+/* ============================================
+   課程頁 — 極簡學術風格
+   ============================================ */
+
+.courses-hero {
+  background: var(--color-bg);
+}
+
+.courses-intro {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* --- 雙路徑 --- */
+.courses-dual-path .path-card {
+  padding: 36px;
+}
+
+.courses-dual-path .path-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.path-target {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.courses-dual-path .path-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.courses-dual-path .path-card li {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.courses-dual-path .path-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* --- 四階段 --- */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.course-card {
+  text-align: center;
+  padding: 36px 24px;
+}
+
+.course-stage-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+  padding: 3px 14px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.course-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.course-duration {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 18px;
+}
+
+.course-modules {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course-modules li {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.course-modules li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.course-path-note {
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* --- FAQ --- */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  padding: 28px;
+}
+
+.faq-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* --- 傳訊師職業體系 --- */
+.courses-career {
+  background: var(--color-bg-alt);
+}
+
+.career-tiers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.career-tier {
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.tier-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 3px 14px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+.tier-beginner {
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+}
+
+.tier-mid {
+  color: #7B8B6F;
+  background: rgba(123, 139, 111, 0.06);
+  border: 1px solid rgba(123, 139, 111, 0.25);
+}
+
+.tier-advanced {
+  color: #8B6F7B;
+  background: rgba(139, 111, 123, 0.06);
+  border: 1px solid rgba(139, 111, 123, 0.25);
+}
+
+.tier-supervisor {
+  color: #6F7B8B;
+  background: rgba(111, 123, 139, 0.06);
+  border: 1px solid rgba(111, 123, 139, 0.25);
+}
+
+.career-tier h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.tier-desc {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  min-height: 2.4em;
+}
+
+.tier-benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.tier-benefits li {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.tier-benefits li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.career-note {
+  max-width: 700px;
+  margin: 32px auto 0;
+  padding: 20px 24px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.career-note p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* --- CTA --- */
+.cta-inner {
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.cta-inner h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cta-inner p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+/* --- 響應式 --- */
+@media (max-width: 1024px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .career-tiers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,376 @@
+/* ============================================
+   首頁 — 極簡學術風格
+   ============================================ */
+
+/* --- Hero --- */
+.home-hero {
+  padding: 100px 0 80px;
+  text-align: center;
+  background: var(--color-bg);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-weight: 900;
+  color: var(--color-text);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.hero-title {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.hero-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.hero-dialogue {
+  max-width: 520px;
+  width: 100%;
+  margin-bottom: 36px;
+}
+
+.hero-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.hero-link-item {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-smooth);
+  letter-spacing: 0.04em;
+}
+
+.hero-link-item:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* --- 信任條 --- */
+.home-trust {
+  background: var(--color-bg-alt);
+  padding: 28px 0;
+}
+
+.trust-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.trust-label {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+}
+
+.trust-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.trust-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-border);
+}
+
+/* --- 核心假說 --- */
+.home-hypothesis {
+  background: var(--color-bg);
+}
+
+.hypothesis-block {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 48px;
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--border-radius);
+  background: var(--color-accent-bg);
+}
+
+.hypothesis-block p {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--color-text);
+}
+
+.hypothesis-block strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* --- 三大支柱 --- */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.pillar-item {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 36px 28px;
+  transition: all var(--transition-smooth);
+}
+
+.pillar-item:hover {
+  border-color: var(--color-accent-border);
+}
+
+.pillar-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  opacity: 0.5;
+  margin-bottom: 12px;
+}
+
+.pillar-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.pillar-source {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.pillar-item p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* --- 雙路徑 --- */
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.path-card {
+  padding: 40px 36px;
+}
+
+.path-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--color-text);
+}
+
+.path-card p {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.path-link {
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 2px;
+  transition: all var(--transition-smooth);
+}
+
+.path-link:hover {
+  color: var(--color-accent-dark);
+  border-bottom-color: var(--color-accent-dark);
+}
+
+/* --- 學術譜系 --- */
+.lineage-track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.lineage-node {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 20px 16px;
+  text-align: center;
+  min-width: 130px;
+  flex: 1;
+}
+
+.lineage-era {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+
+.lineage-node strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.lineage-node p {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.lineage-current {
+  border-color: var(--color-accent-border);
+  background: var(--color-accent-bg);
+}
+
+.lineage-current strong {
+  color: var(--color-accent);
+}
+
+.lineage-arrow {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  align-self: center;
+  flex-shrink: 0;
+  padding-top: 14px;
+}
+
+/* --- CTA --- */
+.cta-block {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 56px 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-card);
+}
+
+.cta-block h2 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cta-block p {
+  color: var(--color-text-secondary);
+  margin-bottom: 28px;
+  font-size: 0.92rem;
+}
+
+.cta-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --- 響應式 --- */
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 64px 0 48px;
+  }
+
+  .hero-name {
+    font-size: 2.4rem;
+  }
+
+  .hero-links {
+    gap: 20px;
+  }
+
+  .trust-items {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .trust-divider {
+    width: 40px;
+    height: 1px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paths-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hypothesis-block {
+    padding: 28px 24px;
+  }
+
+  .hypothesis-block p {
+    font-size: 0.95rem;
+  }
+
+  .lineage-track {
+    flex-direction: column;
+  }
+
+  .lineage-arrow {
+    transform: rotate(90deg);
+    padding-top: 0;
+  }
+}

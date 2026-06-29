@@ -1,0 +1,53 @@
+/* 傳訊服務頁 — 極簡學術風格 */
+
+.comm-hero { background: var(--color-bg); }
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.channel-card {
+  text-align: center;
+  padding: 36px 28px;
+}
+
+.channel-icon {
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.channel-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.channel-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.channel-note {
+  text-align: center;
+  margin-top: 36px;
+  padding: 20px 28px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .channels-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}

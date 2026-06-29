@@ -1,0 +1,238 @@
+/* 研究論文頁 — 極簡學術風格 */
+
+.research-hero { background: var(--color-bg); }
+
+.paper-detail {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 44px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.paper-detail h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.paper-detail .paper-meta {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.paper-detail .paper-body {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.9;
+}
+
+.paper-detail .paper-body p {
+  margin-bottom: 16px;
+}
+
+.paper-detail .paper-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 28px 0 12px;
+  color: var(--color-text);
+}
+
+.paper-detail .paper-body ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.paper-detail .paper-body li {
+  margin-bottom: 8px;
+  color: var(--color-text-secondary);
+}
+
+.paper-form {
+  max-width: 480px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.paper-form h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.paper-form .form-group {
+  display: flex;
+  gap: 12px;
+}
+
+.paper-form input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.paper-form input:focus {
+  border-color: var(--color-accent-border);
+}
+
+.paper-form button {
+  padding: 10px 24px;
+  background: var(--color-text);
+  color: #fff;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.paper-form button:hover {
+  background: var(--color-accent);
+}
+
+.form-success {
+  padding: 16px;
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--border-radius);
+  font-size: 0.88rem;
+  color: var(--color-accent-dark);
+}
+
+/* --- 能量場感知阈限假說 --- */
+.paper-hypothesis {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+.paper-hypothesis h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.hypothesis-core {
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background: var(--color-accent-bg);
+  border-left: 2px solid var(--color-accent);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.hypothesis-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hypothesis-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.hypothesis-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 50%;
+  margin-top: 2px;
+}
+
+.hypothesis-item strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.hypothesis-item p {
+  font-size: 0.86rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 關係流程 */
+.hypothesis-relation {
+  padding: 20px 24px;
+  background: var(--color-bg-alt);
+  border-radius: var(--border-radius);
+}
+
+.hypothesis-relation h4 {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.relation-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-item {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  padding: 4px 10px;
+  background: var(--color-bg-card);
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+}
+
+.flow-item.accent {
+  color: var(--color-accent);
+  border-color: var(--color-accent-border);
+  background: var(--color-accent-bg);
+}
+
+.flow-arrow {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+}
+
+.footer-note {
+  max-width: 600px;
+  margin: 40px auto 0;
+  padding: 20px 28px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}

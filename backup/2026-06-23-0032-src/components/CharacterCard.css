@@ -1,0 +1,67 @@
+/* 角色卡片 — 極簡風格 */
+.char-card {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 32px 28px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.char-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--color-accent-dark);
+  border: 1px solid var(--color-accent-border);
+}
+
+.char-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.char-role {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.char-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.char-stat .stat-label {
+  font-size: 0.68rem;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.char-stat .stat-value {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.char-quote {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+}

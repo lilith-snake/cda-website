@@ -1,152 +1,55 @@
-/* ============================================
-   星界智慧頁 — 深空星雲風格
-   ============================================ */
+/* 星界智慧頁 — 極簡學術風格 */
 
-.mysticism-hero {
-  background: linear-gradient(180deg,
-    rgba(108, 92, 231, 0.06) 0%,
-    rgba(61, 53, 128, 0.03) 50%,
-    transparent 100%
-  );
-}
+.wisdom-hero { background: var(--color-bg); }
 
-/* --- Hero 雙欄佈局 --- */
-.mysticism-hero-grid {
+.services-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.mysticism-hero-text {
-  text-align: left;
+.service-card {
+  text-align: center;
+  padding: 24px;
 }
 
-.mysticism-hero-text h1 {
-  text-align: left;
+.service-icon {
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.service-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
   margin-bottom: 12px;
 }
 
-.mysticism-hero-text .subtitle {
-  margin: 0;
+.service-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
 }
 
-/* --- 塔羅插畫容器 --- */
-.mysticism-hero-illustration {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.service-note {
+  text-align: center;
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
 }
 
-.mystic-tarot-img {
-  width: 100%;
-  max-width: 340px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow:
-    0 0 60px rgba(139, 125, 232, 0.2),
-    0 0 120px rgba(108, 92, 231, 0.1),
-    0 8px 40px rgba(0, 0, 0, 0.5);
-  filter: brightness(0.95) contrast(1.05);
-  transition: all 0.8s ease;
-  animation: tarotFloat 6s ease-in-out infinite;
-}
-
-.mystic-tarot-img:hover {
-  filter: brightness(1.1) contrast(1.1);
-  box-shadow:
-    0 0 80px rgba(139, 125, 232, 0.3),
-    0 0 160px rgba(108, 92, 231, 0.18),
-    0 12px 48px rgba(0, 0, 0, 0.6);
-}
-
-/* --- 插畫背後的星雲光環 --- */
-.mysticism-hero-illustration::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 420px;
-  background: radial-gradient(ellipse,
-    rgba(108, 92, 231, 0.12) 0%,
-    rgba(139, 125, 232, 0.05) 30%,
-    transparent 65%
-  );
-  border-radius: 50%;
-  pointer-events: none;
-  animation: nebulaBreath 5s ease-in-out infinite;
-}
-
-@keyframes tarotFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.mysticism-intro {
-  max-width: 620px;
+.service-note p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
   margin: 0 auto;
 }
 
-.mysticism-services {
-  background: var(--color-bg-alt);
-}
-
-.svc-avatar {
-  font-size: 3rem;
-  text-align: center;
-  padding: 12px;
-}
-
-.cta-inner {
-  text-align: center;
-  padding: 48px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.cta-inner h2 {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  color: var(--color-primary-dark);
-}
-
-.cta-inner p {
-  color: var(--color-text-secondary);
-}
-
-/* --- 響應式 --- */
 @media (max-width: 768px) {
-  .mysticism-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    text-align: center;
-  }
-
-  .mysticism-hero-text {
-    text-align: center;
-  }
-
-  .mysticism-hero-text h1 {
-    text-align: center;
-  }
-
-  .mysticism-hero-text .subtitle {
-    margin: 0 auto;
-  }
-
-  .mystic-tarot-img {
-    max-width: 220px;
-  }
-
-  .mysticism-hero-illustration::before {
-    width: 200px;
-    height: 300px;
-  }
+  .services-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
 }

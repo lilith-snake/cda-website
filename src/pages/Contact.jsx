@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import SparkleEffect from '../components/SparkleEffect'
 import DialogueBox from '../components/DialogueBox'
 import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
@@ -17,7 +16,6 @@ export default function Contact() {
   return (
     <div className="page-contact">
       <section className="page-hero contact-hero">
-        <SparkleEffect count={20} />
         <div className="container">
           <h1>聯繫我們</h1>
           <p className="subtitle">—— 聯繫我們 ——</p>
@@ -29,7 +27,6 @@ export default function Contact() {
           <div className="contact-grid">
             {/* 聯絡表單 */}
             <div className="contact-form-wrapper glass-card">
-              <SparkleEffect count={12} color="rgba(232, 160, 191, 0.3)" />
 
               {!submitted ? (
                 <>
@@ -79,7 +76,7 @@ export default function Contact() {
                 </>
               ) : (
                 <div className="submit-success">
-                  <div className="success-icon">&#9825;</div>
+                  <div className="success-icon"></div>
                   <h2>訊息已發送！</h2>
                   <DialogueBox speaker="CDA" variant="dream">
                     你的訊息已成功送達。
@@ -112,7 +109,7 @@ export default function Contact() {
                 <h3>聯繫方式</h3>
                 <div className="info-row">
                   <span className="info-label">電郵</span>
-                  <span>contact@cda-hk.xyz</span>
+                  <span>391839176@qq.com</span>
                 </div>
                 <div className="info-row">
                   <span className="info-label">小紅書</span>

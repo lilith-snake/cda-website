@@ -1,0 +1,166 @@
+/* 傳訊師名錄頁 — 極簡學術風格 */
+
+.dream-hero { background: var(--color-bg); }
+
+.search-bar {
+  max-width: 400px;
+  margin: 0 auto 40px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-smooth);
+}
+
+.search-bar input:focus {
+  border-color: var(--color-accent-border);
+}
+
+.communicator-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.communicator-card {
+  padding: 32px;
+  position: relative;
+}
+
+.communicator-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.communicator-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  border: 1px solid var(--color-accent-border);
+}
+
+.communicator-id {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.communicator-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.communicator-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.specialty-tag {
+  font-size: 0.72rem;
+  color: var(--color-accent-dark);
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+  padding: 2px 10px;
+  border-radius: 2px;
+}
+
+.communicator-training {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.communicator-training span {
+  display: block;
+  line-height: 1.6;
+}
+
+.communicator-comment {
+  background: var(--color-bg-alt);
+  border-left: 2px solid var(--color-accent);
+  padding: 14px 16px;
+  margin: 14px 0;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+
+.communicator-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.availability-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.availability-badge.available {
+  color: var(--color-accent-dark);
+}
+
+.availability-badge.unavailable {
+  color: var(--color-text-light);
+}
+
+.testimonials {
+  margin-top: 48px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.testimonial-card {
+  padding: 28px;
+}
+
+.testimonial-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.testimonial-card .author {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  font-style: normal;
+}
+
+.empty-result {
+  text-align: center;
+  padding: 48px;
+  color: var(--color-text-light);
+}
+
+@media (max-width: 768px) {
+  .communicator-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}

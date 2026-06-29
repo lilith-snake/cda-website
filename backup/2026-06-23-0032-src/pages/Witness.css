@@ -1,0 +1,141 @@
+/* 邀請見證頁 — 極簡學術風格 */
+
+.witness-hero { background: var(--color-bg); }
+
+.witness-intro {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.witness-intro .witness-core {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  line-height: 1.9;
+}
+
+.witness-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.witness-tier {
+  padding: 36px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.witness-tier h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.tier-role {
+  font-size: 0.82rem;
+  color: var(--color-accent-dark);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.witness-tier p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.tier-link {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 2px;
+  transition: all var(--transition-smooth);
+  margin-top: auto;
+}
+
+.tier-link:hover {
+  color: var(--color-accent-dark);
+  border-bottom-color: var(--color-accent-dark);
+}
+
+.witness-form-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.witness-form-card h2 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.witness-form .form-group {
+  margin-bottom: 20px;
+}
+
+.witness-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.witness-form input,
+.witness-form select,
+.witness-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  outline: none;
+  transition: border-color var(--transition-smooth);
+}
+
+.witness-form input:focus,
+.witness-form select:focus,
+.witness-form textarea:focus {
+  border-color: var(--color-accent-border);
+}
+
+.witness-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.witness-form .submit-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: var(--color-text);
+  color: #fff;
+  border-radius: var(--border-radius);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.witness-form .submit-btn:hover {
+  background: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .witness-tiers { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 36px; }
+}

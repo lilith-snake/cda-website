@@ -6,14 +6,6 @@ export default function Footer() {
   const { t } = useLanguage()
   return (
     <footer className="footer">
-      <div className="footer-decor">
-        <span className="decor-star">&#10023;</span>
-        <span className="decor-line"></span>
-        <span className="decor-heart">&#9825;</span>
-        <span className="decor-line"></span>
-        <span className="decor-star">&#10023;</span>
-      </div>
-
       <div className="footer-content container">
         <div className="footer-brand">
           <span className="footer-logo">香港CDA</span>
@@ -38,7 +30,7 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <h4>{t('聯繫')}</h4>
-            <a href="mailto:contact@cda-hk.xyz">contact@cda-hk.xyz</a>
+            <a href="mailto:391839176@qq.com">391839176@qq.com</a>
             <a href="#">{t('小紅書')}</a>
           </div>
         </div>
@@ -47,7 +39,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container">
           <p>© 2026 香港CDA · 黎輝跨次元研究所協會</p>
-          <p className="footer-dim">{t('✦ 跨越次元的界限，連接你我的心靈 ✦')}</p>
+          <p className="footer-dim">{t('跨越次元的界限，連接你我的心靈')}</p>
         </div>
       </div>
     </footer>

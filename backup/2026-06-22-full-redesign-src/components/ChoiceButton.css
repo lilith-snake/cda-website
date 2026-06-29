@@ -1,0 +1,112 @@
+/* --- 路線選項按鈕（深空發光風格） --- */
+.choice-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-family: var(--font-serif);
+  border-radius: 28px;
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  justify-content: center;
+}
+
+/* --- 主選項 --- */
+.choice-primary {
+  background: rgba(139, 125, 232, 0.12);
+  color: var(--color-primary-dark);
+  border: 1.5px solid rgba(139, 125, 232, 0.25);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 8px rgba(139, 125, 232, 0.06);
+}
+
+.choice-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-deep));
+  color: white;
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 24px rgba(139, 125, 232, 0.35), 0 0 20px rgba(139, 125, 232, 0.15);
+}
+
+/* --- 路線選項 --- */
+.choice-route {
+  background: rgba(139, 125, 232, 0.1);
+  color: var(--color-primary-dark);
+  border: 1.5px solid rgba(139, 125, 232, 0.22);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 8px rgba(139, 125, 232, 0.04);
+  font-size: 1.1rem;
+  padding: 16px 32px;
+}
+
+.choice-route:hover {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-deep));
+  color: white;
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 28px rgba(139, 125, 232, 0.4), 0 0 24px rgba(139, 125, 232, 0.18);
+}
+
+/* --- 金色選項 --- */
+.choice-gold {
+  background: rgba(201, 169, 110, 0.1);
+  color: var(--color-gold);
+  border: 1.5px solid rgba(201, 169, 110, 0.25);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 8px rgba(201, 169, 110, 0.04);
+}
+
+.choice-gold:hover {
+  background: linear-gradient(135deg, var(--color-gold), #a08030);
+  color: white;
+  transform: translateY(-2px);
+  border-color: var(--color-gold);
+  box-shadow: 0 6px 24px rgba(201, 169, 110, 0.35), 0 0 20px rgba(201, 169, 110, 0.15);
+}
+
+/* --- 鎖定狀態 --- */
+.choice-btn.locked {
+  opacity: 0.25;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* --- 圖標 --- */
+.choice-icon-left, .choice-icon-right {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  transition: all var(--transition-smooth);
+  color: var(--color-primary-dark);
+}
+
+.choice-btn:hover .choice-icon-left {
+  transform: translateX(-3px);
+  opacity: 1;
+}
+
+.choice-btn:hover .choice-icon-right {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+.choice-sparkle {
+  position: absolute;
+  top: -4px;
+  right: 12px;
+  font-size: 0.8rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* --- 響應式 --- */
+@media (max-width: 480px) {
+  .choice-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    min-width: 160px;
+  }
+  .choice-route {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+}

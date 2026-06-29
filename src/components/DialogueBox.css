@@ -1,87 +1,36 @@
-/* --- 對話框（深空毛玻璃風格） --- */
+/* 對話框 — 極簡引用風格 */
 .dialogue-box {
   position: relative;
-  background: rgba(14, 12, 35, 0.72);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(139, 125, 232, 0.12);
-  border-radius: var(--border-radius);
-  padding: 24px 28px;
-  max-width: 600px;
-  box-shadow:
-    0 4px 28px rgba(0, 0, 0, 0.35),
-    0 0 16px rgba(139, 125, 232, 0.04);
+  padding: 24px 32px;
+  background: var(--color-bg-alt);
+  border-left: 2px solid var(--color-accent);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
-.dialogue-box::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 12px;
-  right: 12px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(139, 125, 232, 0.2), transparent);
+.dialogue-box.variant-mystic { border-left-color: var(--color-accent); }
+.dialogue-box.variant-dream { border-left-color: var(--color-accent-dark); }
+.dialogue-box.variant-gold { border-left-color: var(--color-accent); background: var(--color-accent-bg); }
+
+.dialogue-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .dialogue-speaker {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-deep));
-  color: white;
-  padding: 2px 14px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-bottom: 12px;
-  letter-spacing: 0.04em;
-  box-shadow: 0 2px 12px rgba(108, 92, 231, 0.25);
-}
-
-.dialogue-content {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--color-text);
-}
-
-.dialogue-quote {
-  color: var(--color-primary-dark);
-  font-size: 1.3rem;
+  display: block;
   font-family: var(--font-serif);
+  font-size: 0.8rem;
+  color: var(--color-accent-dark);
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .dialogue-text {
   font-family: var(--font-serif);
-}
-
-/* 繼續指示器 */
-.dialogue-indicator {
-  text-align: right;
-  color: var(--color-primary);
-  font-size: 0.7rem;
-  margin-top: 8px;
-  animation: float 1.5s ease-in-out infinite;
-}
-
-/* --- 變體 --- */
-.dialogue-mystic {
-  border-color: rgba(108, 92, 231, 0.18);
-  background: linear-gradient(135deg, rgba(80, 69, 176, 0.15), rgba(108, 92, 231, 0.1));
-}
-.dialogue-mystic .dialogue-speaker {
-  background: linear-gradient(135deg, #5045b0, #6c5ce7);
-}
-
-.dialogue-dream {
-  border-color: rgba(99, 102, 241, 0.18);
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(129, 140, 248, 0.08));
-}
-.dialogue-dream .dialogue-speaker {
-  background: linear-gradient(135deg, #6366f1, #818cf8);
-}
-
-.dialogue-gold {
-  border-color: rgba(201, 169, 110, 0.18);
-  background: linear-gradient(135deg, rgba(184, 150, 62, 0.1), rgba(201, 169, 110, 0.06));
-}
-.dialogue-gold .dialogue-speaker {
-  background: linear-gradient(135deg, #8d6e00, #b8963e);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.8;
 }
