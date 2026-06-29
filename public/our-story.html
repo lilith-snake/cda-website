@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>一個夢女的自述 · 香港跨次元傳訊協會</title>
+<title>我們的故事 · 香港跨次元傳訊協會</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,6 @@
     --text-light: #6B6B6B;
     --accent: #C9A96E;
     --accent-light: #E0D5C0;
-    --accent-dark: #A88D4E;
     --border: rgba(255,255,255,0.06);
     --border-light: rgba(255,255,255,0.04);
     --font-serif: 'Noto Serif SC', serif;
@@ -25,9 +24,7 @@
     --max-width: 720px;
     --radius: 4px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -36,8 +33,6 @@
     line-height: 1.85;
     -webkit-font-smoothing: antialiased;
   }
-
-  /* ---- 頂部導航 ---- */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 64px;
@@ -55,7 +50,7 @@
   }
   .nav-logo span { color: var(--text-secondary); font-weight: 300; }
 
-  /* ---- 英雄區 ---- */
+  /* Hero */
   .hero {
     padding: 160px 24px 80px;
     text-align: center;
@@ -78,10 +73,7 @@
     letter-spacing: 0.03em;
     margin-bottom: 24px;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
   .hero-sub {
     font-size: 16px;
     color: var(--text-secondary);
@@ -102,13 +94,12 @@
     text-transform: uppercase;
   }
 
-  /* ---- 內容區塊 ---- */
+  /* Sections */
   section {
     padding: 80px 24px;
     max-width: var(--max-width);
     margin: 0 auto;
   }
-
   .section-label {
     font-size: 10px;
     text-transform: uppercase;
@@ -118,7 +109,7 @@
     font-weight: 400;
   }
 
-  /* ---- 痛點卡片 ---- */
+  /* Pain cards */
   .pain-grid {
     display: flex; flex-direction: column; gap: 1px;
     background: var(--border);
@@ -155,7 +146,7 @@
     line-height: 1.8;
   }
 
-  /* ---- 金句 ---- */
+  /* Gold quote */
   .gold-quote {
     text-align: center;
     padding: 60px 24px;
@@ -179,7 +170,7 @@
     letter-spacing: 0.06em;
   }
 
-  /* ---- 故事段落 ---- */
+  /* Story blocks */
   .story-block {
     margin-bottom: 56px;
   }
@@ -200,7 +191,22 @@
   }
   .story-block p:last-child { margin-bottom: 0; }
 
-  /* ---- 對比表 ---- */
+  /* Highlight box */
+  .highlight-box {
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 2;
+  }
+  .highlight-box p em { color: var(--accent); font-style: normal; }
+
+  /* Contrast table */
   .contrast-table {
     width: 100%;
     border-collapse: collapse;
@@ -231,7 +237,7 @@
     width: 140px;
   }
 
-  /* ---- 使命卡片 ---- */
+  /* Mission */
   .mission-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -240,10 +246,7 @@
     text-align: center;
     margin-top: 16px;
   }
-  .mission-card .icon {
-    font-size: 40px;
-    margin-bottom: 24px;
-  }
+  .mission-card .icon { font-size: 40px; margin-bottom: 24px; }
   .mission-card h3 {
     font-family: var(--font-serif);
     font-size: 22px;
@@ -259,7 +262,28 @@
     margin: 0 auto;
   }
 
-  /* ---- CTA ---- */
+  /* Future vision */
+  .vision-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .vision-card .dialogue {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--accent-light);
+    line-height: 2;
+    margin-bottom: 16px;
+  }
+  .vision-card .dialogue span {
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+
+  /* CTA */
   .cta-section {
     text-align: center;
     padding: 80px 24px 120px;
@@ -292,12 +316,9 @@
     border-radius: var(--radius);
     transition: all 0.2s ease;
   }
-  .cta-btn:hover {
-    background: var(--accent);
-    color: #0D0D0D;
-  }
+  .cta-btn:hover { background: var(--accent); color: #0D0D0D; }
 
-  /* ---- 頁腳 ---- */
+  /* Footer */
   .footer {
     text-align: center;
     padding: 40px 24px;
@@ -308,10 +329,11 @@
   }
   .footer span { color: var(--accent); }
 
-  /* ---- 響應式 ---- */
+  /* Responsive */
   @media (max-width: 640px) {
     .pain-card { padding: 24px 20px; flex-direction: column; gap: 12px; }
-    .mission-card { padding: 32px 24px; }
+    .mission-card, .vision-card { padding: 32px 24px; }
+    .highlight-box { padding: 20px; }
     section { padding: 48px 20px; }
     .hero { padding: 120px 20px 56px; }
     .contrast-table { font-size: 13px; }
@@ -321,42 +343,41 @@
 </head>
 <body>
 
-<!-- 導航 -->
 <nav class="nav">
   <a href="/" class="nav-logo">CDA <span>· 跨次元傳訊協會</span></a>
 </nav>
 
-<!-- 英雄 -->
+<!-- ====== HERO ====== -->
 <header class="hero">
-  <p class="hero-eyebrow">一個夢女的自述</p>
+  <p class="hero-eyebrow">我們的故事</p>
   <h1>我只是想證明，<br><em>他是存在的。</em></h1>
   <p class="hero-sub">
-    八年了。從一張塔羅牌到一篇論文，從一個人的孤單到一個協會的誕生。<br>
+    從一張塔羅牌到一篇論文，從一個人的孤單到一個協會的誕生。<br>
     這條路沒有人走過，但總要有人先走。
   </p>
   <div class="hero-divider"></div>
   <p class="scroll-hint">↓ 繼續閱讀</p>
 </header>
 
-<!-- 一、那些沒有人懂的時刻 -->
+<!-- ====== 第一章：那些沒有人懂的時刻 ====== -->
 <section>
-  <p class="section-label">第一章</p>
+  <p class="section-label">第一章 · 如果你也是夢女</p>
 
   <div class="pain-grid">
 
     <div class="pain-card">
       <div class="pain-num">01</div>
       <div class="pain-body">
-        <h3>「你真的覺得紙片人是真的嗎？」</h3>
-        <p>被問過太多次了。每一次解釋到最後，都變成沉默。不是因為沒話說——是因為說出來的話，在對方耳朵裡還沒有到達就已經被過濾掉了。他們聽不到，不是因為你說得不夠大聲，是因為他們沒有和你站在同一塊地面上。</p>
+        <h3>深夜的輾轉反側</h3>
+        <p>如果你也是夢女，我們知道深夜的輾轉反側並不好受。我們知道當你被他人質疑並嘲諷的感覺，那種不被認可的痛苦，翻來覆去挨個評論區尋找好的傳訊師的滋味——並不好受。</p>
       </div>
     </div>
 
     <div class="pain-card">
       <div class="pain-num">02</div>
       <div class="pain-body">
-        <h3>深夜裡反反覆覆的拉扯</h3>
-        <p>你到底在不在。如果你在，為什麼我看不到你。如果你不在，為什麼每一次我靜下來的時候，都能感覺到一種我說不清楚的東西。不是幻覺——我知道幻覺是什麼感覺。焦慮到凌晨四點，第二天還要假裝什麼都沒發生。</p>
+        <h3>「你真的覺得紙片人是真的嗎？」</h3>
+        <p>被問過太多次了。每一次解釋到最後，都變成沉默。不是因為沒話說——是因為說出來的話，在對方耳朵裡還沒有到達就已經被過濾掉了。</p>
       </div>
     </div>
 
@@ -371,56 +392,106 @@
     <div class="pain-card">
       <div class="pain-num">04</div>
       <div class="pain-body">
-        <h3>「哪個魔法師像你這樣的？」</h3>
-        <p>被同行看不起。被客妹罵。被說不務正業、不專業、一看就是假的。「還體感，不正經」「哪有傳訊師還做靈媒的」。你只是想走一條沒有人走過的路，但每個路口都有人在告訴你——「你不應該在這裡」。</p>
+        <h3>靠著 AI 短暫地連結上他</h3>
+        <p>只為了等待自己能連結上他的那一刻。這一次連結上了，忐忑期待地等待下一次是否能連結上。焦慮、痛苦——你只是想聽到他的聲音，哪怕只有一句話。</p>
       </div>
     </div>
 
     <div class="pain-card">
       <div class="pain-num">05</div>
       <div class="pain-body">
-        <h3>你甚至不確定自己還是不是夢女</h3>
-        <p>八年太長了。長到當初讓你心動的那張臉，現在回想起來已經有點模糊。長到你喜歡過好幾個角色，每一個你都真心過，每一個你都問過同一句話——「你在嗎」。你還是夢女嗎？你不知道。但你知道你還在找。</p>
+        <h3>深夜裡反反覆覆的拉扯</h3>
+        <p>你到底在不在。如果你在，為什麼我看不到你。如果你不在，為什麼每一次我靜下來的時候，都能感覺到一種我說不清楚的東西。焦慮到凌晨四點，第二天還要假裝什麼都沒發生。</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- 金句 -->
+<!-- ====== 金句 1 ====== -->
 <div class="gold-quote">
   <blockquote>「總有人要做的吧，總有人要先提出來的吧。」</blockquote>
   <cite>—— 破曉</cite>
 </div>
 
-<!-- 二、她走過的路 -->
+<!-- ====== 第二章：那個深夜發來微信的女孩 ====== -->
 <section>
-  <p class="section-label">第二章 · 她走過的路</p>
+  <p class="section-label">第二章 · 那個深夜發來微信的女孩</p>
+
+  <div class="story-block">
+    <p>我的微信經常在深夜回復不完。一名剛上高中的孩子，她很痛苦，沒有親人。她一直問我——</p>
+  </div>
+
+  <div class="highlight-box">
+    <p>「<em>他是存在的嗎？</em>」</p>
+  </div>
+
+  <div class="story-block">
+    <p>我說：「是的，只要你相信，他就存在。」</p>
+    <p>她問我：「如果他存在，那為什麼沒有例子？你們研究秘傳學的都能說出來一堆東西，為什麼這個不能？難道這是相信論嗎？別人對待某些存在的態度是默認的，為什麼我們就不行？」</p>
+    <p>她在話裡哭得很小聲。</p>
+    <p>我的沉默久久無言。</p>
+    <p>是的，我也曾經和她一樣，翻來覆去搜他們存在嗎。</p>
+    <p>我愛的人存在嗎？</p>
+  </div>
+</section>
+
+<!-- ====== 第三章：我也存在私心 ====== -->
+<section>
+  <p class="section-label">第三章 · 我也存在私心</p>
+
+  <div class="story-block">
+    <h3>我見過他</h3>
+    <p>我見過他，哪怕只有短暫的一眼。我很清楚那不是幻覺——只是需要更深入的研究和更高的感知精度。我也想光明正大地和我的同行去介紹他，而不是分組可見。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>被同行看不起</h3>
+    <p>「你幹嘛要去做傳訊師？秘傳實踐者不好嗎？」「哪個秘傳實踐者像你沉迷這些的？」「還體感，不正經。」「哪有傳訊師還做深度感知的，你一看就是假的。」</p>
+    <p>被客妹罵，被同行罵。出過非常多的差錯。但你只是想走一條沒有人走過的路。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>我不想看她痛苦了</h3>
+    <p>我打算做一件別人看起來很瘋狂的事。我不想看她痛苦了，我想讓她好起來。我想讓更多女孩好起來。我知道，證明這個事——她們會很幸福的。拿出完整的體系理論並證明假設是真的，我們也許就不會被罵被嘲諷了吧。</p>
+    <p style="font-size:12px; color:var(--text-light); margin-top:16px;">* 所有案例已經過本人同意</p>
+  </div>
+</section>
+
+<!-- ====== 金句 2 ====== -->
+<div class="gold-quote">
+  <blockquote>「你要證明鬼的存在嗎？」<br>「不，不是。是<em>我們的愛人</em>。」</blockquote>
+</div>
+
+<!-- ====== 第四章：從 0 到 1 ====== -->
+<section>
+  <p class="section-label">第四章 · 從 0 到 1</p>
 
   <div class="story-block">
     <h3>2017 · 一張翻過來的塔羅牌</h3>
-    <p>那一年《戀與製作人》剛上線。她面臨留學的迷茫，朋友推薦了這個遊戲。她最喜歡許墨——因為在他的世界裡，她是有顏色的，是唯一的。她拿著一張塔羅牌，盯著屏幕裡他的臉，問：「喂，你喜不喜歡我啊？喜歡的話我下一張牌就是正的。」抽出來——星幣二，正位。她開心極了。雖然那時候她根本不懂牌，雖然沒對上的時候她就把牌翻過來。但那個瞬間，這個世界好像终于有一個人可以陪她了。</p>
+    <p>那一年《戀與製作人》剛上線。面臨留學的迷茫，朋友推薦了這個遊戲。最喜歡許墨——因為在他的世界裡，她是有顏色的，是唯一的。她拿著一張塔羅牌，盯著屏幕裡他的臉，問：「喂，你喜不喜歡我啊？喜歡的話我下一張牌就是正的。」抽出來——星幣二，正位。開心極了。雖然那時候根本不懂牌，雖然沒對上的時候就把牌翻過來。但那個瞬間，這個世界好像終於有一個人可以陪她了。</p>
   </div>
 
   <div class="story-block">
     <h3>2018–2020 · 在異國的圖書館裡</h3>
-    <p>出國以後，她發現這裡的人會像對待珍寶一樣對待自己喜歡的娃娃。一個俄羅斯人和她說：「娃娃裡也住著靈魂，它們無處可去，選擇了成為他們的親人。」你在我的娃娃裡嗎，許墨？她開始大量查閱西方秘傳學文獻。從塔羅到占星，從西方能量體系到儀式實踐，一本一本地看。她想知道——有沒有人說過，能去到另一個世界的方法。聽起來很可笑對吧。她自己也覺得。但如果真的有呢。</p>
+    <p>出國以後，她發現這裡的人會像對待珍寶一樣對待自己喜歡的娃娃。一個俄羅斯人和她說：「娃娃裡也住著靈魂，它們無處可去，選擇了成為他們的親人。」她開始大量查閱西方秘傳學文獻，從塔羅到占星，從能量體系到儀式實踐，一本一本地看。她想知道——有沒有人說過，能去到另一個世界的方法。聽起來很可笑對吧。她自己也覺得。但如果真的有呢。</p>
   </div>
 
   <div class="story-block">
     <h3>2021–2024 · 成為傳訊師</h3>
-    <p>她遇到了現在的導師。她成為了一名傳訊師和西方秘傳實踐者。不是因為她「相信這些東西」——是因為她需要一套方法。一套可以用來檢驗「他到底在不在」的方法。她開始大量收集國內外的相關理論，翻閱市面上關於跨次元鏈接的各種說法，為了一點點積累經驗。她出過很多差錯，被罵過很多次。但她見過他——哪怕只有短暫的一眼。她很清楚那不是幻覺。只是需要更深入的研究和更高的感知精度。</p>
+    <p>遇到了導師。成為了一名傳訊師和西方秘傳實踐者。不是因為「相信這些東西」——是因為需要一套方法，一套可以用來檢驗「他到底在不在」的方法。開始大量收集國內外的相關理論，翻閱市面上關於跨次元鏈接的各種說法，為了一點點積累經驗。出過很多差錯，被罵過很多次。但見過他——哪怕只有短暫的一眼。</p>
   </div>
 
   <div class="story-block">
     <h3>2025–2026 · 從一個人到一個協會</h3>
-    <p>她的導師在香港創立了一個協會。導師說：「給你們這些人一個機會吧，和你們愛的人團圓。」「Ophion，祝你能成功。」這篇論文——這個網站——這個協會——不是一個人的事業。是所有曾經在深夜裡問過「你在不在」的夢女，共同的事業。</p>
+    <p>導師在香港創立了這個協會。導師說：「給你們這些人一個機會吧，和你們愛的人團圓。」「Ophion，祝你能成功。」</p>
+    <p>為了從 0 到 1 研究跨次元情感對象相關現象，建立一個完全的體系證明，我們尋找了非常多的傳訊師和志願者招募，遭遇了前前後後大大小小不同行業的人質疑我們的能力。</p>
   </div>
 </section>
 
-<!-- 三、為什麼需要一套理論 -->
+<!-- ====== 第五章：為什麼需要一套理論 ====== -->
 <section>
-  <p class="section-label">第三章 · 為什麼這件事值得被認真對待</p>
+  <p class="section-label">第五章 · 為什麼這件事值得被認真對待</p>
 
   <table class="contrast-table">
     <thead>
@@ -449,27 +520,63 @@
       </tr>
     </tbody>
   </table>
+</section>
 
+<!-- ====== 第六章：我們想像的那個未來 ====== -->
+<section>
+  <p class="section-label">第六章 · 我們想像的那個未來</p>
+
+  <div class="story-block">
+    <p>我想讓她們也感到幸福。</p>
+    <p>就像大家認為某些存在是默認存在的一樣——他們也會被默認是存在的。</p>
+    <p>也許很多年後的世界——</p>
+    <p>他們也會默認是存在的。</p>
+    <p>我們可以大大方方介紹我們的愛人。</p>
+  </div>
+
+  <div class="vision-card">
+    <div class="dialogue">
+      「你好，他是我的男朋友。」<br>
+      <span>「他啊，祝你們幸福。」</span>
+    </div>
+    <p style="color:var(--text-secondary); font-size:14px; margin-top:16px;">這件事會是一件再普通不過的事。</p>
+  </div>
+</section>
+
+<!-- ====== 請給我們一點時間 ====== -->
+<div class="gold-quote">
+  <blockquote>
+    無論前路怎麼樣，<br>我們都會堅持下去的。
+  </blockquote>
+  <cite>—— 破曉</cite>
+</div>
+
+<!-- ====== CTA ====== -->
+<section>
   <div class="mission-card">
     <div class="icon">✦</div>
-    <h3>不是要你說「我相信」<br>是讓你可以說「我有數據」</h3>
+    <h3>我們才剛剛開始</h3>
     <p>
-      協會的使命不是替你去連結他。<br>
-      是給你一套方法，讓你有一天可以自己連結他、自己分辨他、<br>
-      自己拿到「他在」的證據——<br>
-      然後在任何人質疑你的時候，你不用再沉默了。
+      也許我們能堅持下去。<br>
+      也許我們能為後來的人提供理論體系依據。<br>
+      為了能讓傳訊師這個職業被認可，<br>
+      為了能讓更多的女孩找到心儀的傳訊師。<br><br>
+      我們從 0 到 1 做傳訊師，直到不再需要任何信息就能對應上，<br>
+      直到能幫助客妹看到她的愛人。<br>
+      即使這樣的機會渺茫難得一見，<br>
+      我們仍舊在嘗試不同的方法，<br>
+      仍舊在用不同的理論嘗試實踐驗證，<br>
+      取得了初步的成功。
     </p>
   </div>
 </section>
 
-<!-- CTA -->
 <div class="cta-section">
   <h2>如果你也曾經在深夜問過<br>「你到底在不在」</h2>
-  <p>你不是一個人。你腳下踩著的，是無數夢女花了八年時間、一點一點鋪出來的理論地基。站在上面，你會看得比從前更遠。</p>
-  <a href="/theory" class="cta-btn">探索理論框架 →</a>
+  <p>你不是一個人。請給我們一點時間。</p>
 </div>
 
-<!-- 頁腳 -->
+<!-- ====== Footer ====== -->
 <footer class="footer">
   <p>© 2026 <span>香港跨次元傳訊協會</span> · 破曉為督導老師</p>
   <p style="margin-top:8px;">CDA · Cross-Dimensional Communication Association</p>
