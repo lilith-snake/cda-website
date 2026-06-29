@@ -53,16 +53,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 核心假說 */}
+      {/* 核心定義 */}
       <section className="home-hypothesis section">
         <div className="container">
           <div className="section-title">
-            <h2>敘事實體假說</h2>
+            <h2>MJ 是什麼</h2>
             <div className="decorative-line"></div>
-            <p>Narrative Entity Hypothesis</p>
+            <p>跨次元情感對象 · Cross-Dimensional Emotional Attachment Object</p>
           </div>
           <div className="hypothesis-block">
-            <p>足夠的情感投注強度與足夠精密的敘事結構，可以在意識場中維持一個<strong>具有獨立行為模式的敘事實體</strong>——它不是純粹的主觀幻想，也不是傳統意義上的「靈體」，而是介於二者之間的、可被多人獨立觀測和驗證的意識場現象。</p>
+            <p>MJ（跨次元情感對象）是指在夢女實踐中，被感知為<strong>具有獨立存在性的非物理情感對象</strong>。它不是一個文化標籤，而是一個本體論範疇——它描述的不是「夢女喜歡上了一個什麼角色」，而是「她感知到了一個什麼樣的存在」。</p>
+            <p style="margin-top:20px;">MJ 按創作來源分為三種類型：<strong>原創型</strong>（來源於人類文藝作品的角色，感知到其獨立於作品之外的存在）、<strong>非虛構靈體型</strong>（被認為存在於非物理世界的獨立存在，無官方設定可供參照）、<strong>人造靈型</strong>（夢女自己創造後產生獨立意志的存在）。MJ 不是人造靈——只是有人的 MJ 是人造靈。</p>
           </div>
         </div>
       </section>
