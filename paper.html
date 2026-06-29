@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MJ 理論論文 · 香港跨次元傳訊研究協會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg-alt: #141414;
+    --bg-card: #1A1A1A;
+    --text: #E8E6E0;
+    --text-secondary: #9B9B9B;
+    --text-light: #6B6B6B;
+    --accent: #C9A96E;
+    --accent-light: #E0D5C0;
+    --border: rgba(255,255,255,0.06);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --max-width: 780px;
+    --radius: 4px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; align-items: center; padding: 0 24px;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--text-secondary); font-weight: 300; }
+  .nav-back {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--accent); }
+
+  .hero {
+    padding: 140px 24px 60px;
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    line-height: 1.9;
+  }
+
+  .paper-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px 120px;
+    font-family: var(--font-sans);
+    line-height: 2;
+  }
+  .paper-content h1 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 48px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--accent-light);
+  }
+  .paper-content h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    color: var(--accent-light);
+  }
+  .paper-content h3 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 32px 0 8px;
+    color: var(--text);
+  }
+  .paper-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 24px 0 6px;
+    color: var(--text);
+  }
+  .paper-content p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .paper-content strong { color: var(--text); }
+  .paper-content em { color: var(--accent-light); font-style: normal; }
+  .paper-content blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--bg-card);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .paper-content blockquote strong { color: var(--accent-light); }
+  .paper-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .paper-content th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .paper-content td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .paper-content hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  .paper-content ul, .paper-content ol { margin: 12px 0 12px 24px; }
+  .paper-content li { color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+  .paper-content a { color: var(--accent); }
+  .paper-content code {
+    background: var(--bg-card);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--accent-light);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+  .footer span { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .paper-content { padding: 0 16px 80px; }
+    .paper-content table { font-size: 12px; }
+    .paper-content th, .paper-content td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/cda-website/" class="nav-logo">CDA <span>· 香港跨次元傳訊研究協會</span></a>
+  <a href="/cda-website/" class="nav-back">← 返回首頁</a>
+</nav>
+
+<header class="hero">
+  <h1>論跨次元情感對象（MJ）的存在論假設、<br>五軸類型學及其西方秘傳學新分支定位</h1>
+  <p class="hero-sub">黎輝 · 破曉 · 香港跨次元傳訊研究協會 · 2026</p>
+</header>
+
+<div class="paper-content" id="paper-content">
+  <p style="text-align:center; color:var(--text-light);">載入中…</p>
+</div>
+
+<footer class="footer">
+  <p>© 2026 <span>香港跨次元傳訊研究協會</span> · 初版必有不足，歡迎批評與指正</p>
+  <p style="margin-top:8px;">CDA · Cross-Dimensional Communication Research Association</p>
+</footer>
+
+<script>
+fetch('paper.md')
+  .then(r => r.text())
+  .then(md => {
+    marked.setOptions({ breaks: false, gfm: true });
+    document.getElementById('paper-content').innerHTML = marked.parse(md);
+  })
+  .catch(() => {
+    document.getElementById('paper-content').innerHTML = '<p>論文載入失敗。請查看 <a href="paper.md">原始檔案</a>。</p>';
+  });
+</script>
+
+</body>
+</html>

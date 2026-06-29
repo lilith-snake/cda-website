@@ -15,6 +15,7 @@ const navItems = [
 const staticLinks = [
   { href: '/cda-website/our-story.html', label: '我們的故事' },
   { href: '/cda-website/zishu.html', label: '破曉自述' },
+  { href: '/cda-website/paper.html', label: '研究論文' },
 ]
 
 export default function Navbar() {
