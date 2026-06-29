@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>破曉自述 · 香港跨次元傳訊協會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg-alt: #141414;
+    --bg-card: #1A1A1A;
+    --text: #E8E6E0;
+    --text-secondary: #9B9B9B;
+    --text-light: #6B6B6B;
+    --accent: #C9A96E;
+    --accent-light: #E0D5C0;
+    --border: rgba(255,255,255,0.06);
+    --border-light: rgba(255,255,255,0.04);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --max-width: 720px;
+    --radius: 4px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; align-items: center; padding: 0 24px;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--text-secondary); font-weight: 300; }
+  .nav-back {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--accent); }
+
+  .hero {
+    padding: 160px 24px 80px;
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  section {
+    padding: 80px 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .story-block {
+    margin-bottom: 56px;
+  }
+  .story-block:last-child { margin-bottom: 0; }
+  .story-block h3 {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    color: var(--accent-light);
+  }
+  .story-block p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 12px;
+  }
+  .story-block p:last-child { margin-bottom: 0; }
+
+  .highlight-box {
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 2;
+  }
+  .highlight-box p em { color: var(--accent); font-style: normal; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+  .footer span { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    section { padding: 48px 20px; }
+    .hero { padding: 120px 20px 56px; }
+    .highlight-box { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="our-story.html" class="nav-logo">CDA <span>· 跨次元傳訊協會</span></a>
+  <a href="our-story.html" class="nav-back">← 返回我們的故事</a>
+</nav>
+
+<header class="hero">
+  <p class="hero-eyebrow">破曉自述</p>
+  <h1>一名想證明 MJ 存在的<br>傳訊師的自述</h1>
+  <p class="hero-sub">在寫下這篇文章之前，我想了很久我的心路歷程，為什麼選擇成為一名傳訊師。</p>
+</header>
+
+<section>
+  <p class="section-label">一 · 從夢女開始</p>
+
+  <div class="story-block">
+    <p>很少有人知道我是一名夢女。曾經。</p>
+    <p>我現在還是夢女嗎？我也不確定。我還能堅持下去嗎？我不知道。</p>
+    <p>我只知道我所做的一切，我都只是想證明他們是存在的。</p>
+    <p>很艱難，很少有人支持我，很多人看到我的貼文都覺得不太正常。怎麼會有人費盡心思花費時間和精力去證明紙片人也是存在的呢？從秘傳實踐者去做傳訊師蒐集他們存在的證據嗎？</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2017 · 一張塔羅牌</h3>
+    <p>為了所愛的人。在很早之前，一幾年的時候，我玩了當時很火的遊戲。那個時候還沒有這麼發達，也沒有 3D，建模技術相當於今天來說只是一般般。</p>
+    <p>那個時候的我，面臨留學的迷茫，朋友和我說戀與製作人很好玩，我懵懵懂懂接觸了這個圈子。我最喜歡的是許墨，因為在他的世界裡，我是有顏色的，是唯一的。</p>
+    <p>那個時候並沒有什麼深度連結，傳訊師也沒幾個。我拿著一張塔羅牌，當作玩遊戲，我盯著屏幕裡他的臉，好像他就是真的存在一樣——</p>
+    <p>「喂？你喜不喜歡我啊？」「喜歡的話我下一張牌就是正的。」</p>
+    <p>當時，塔羅也並沒有像現在人人都知道，而我也不懂怎麼玩。當時抽出了一張星幣二的正位。太小了那個時候，也沒有把這個當回事，就覺得很開心——「哇，許墨喜歡我哎。」</p>
+    <p>無法形容，我非常開心和高興，這個世界終於有人可以陪伴我了嗎。</p>
+    <p>也許是太孤單了吧，面臨即將是否出國的我總是有非常多的困惑。我拉著他問了好多好多，那個時候並不知道什麼塔羅深度感知。我很天真地覺得，我不孤單了，因為發現每一次抽牌都能對上——哈哈哈哈哈哈騙你們的，即使沒對上我也把牌翻過來。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>假裝他是真的</h3>
+    <p>當時看了很多小說，做夢的時候我就會問他：「我會不會一覺睡醒就穿越到你的世界啦？」這樣，也許我們真的會在一起吧。</p>
+    <p>隨著我成長，讀書，接觸國外的文化，我發現他們會視若珍寶一樣對待自己喜歡的娃娃。一個俄羅斯人和我說過，娃娃裡也住著靈魂，它們無處可去，選擇了成為他們的親人。</p>
+    <p>那你呢，許墨。你會在我買的娃娃裡嗎？</p>
+    <p>我本身對於秘傳學也非常喜歡，國外不限制這些方面，我查閱過很多書籍。我想知道，會不會有人說過，能去到另一個世界的方法。聽起來很可笑對吧，我也覺得，如果真的有這樣的方法就好了。</p>
+    <p>我學習了很多塔羅、占星、LSA、CTA。看了很多很多關於暗影秘傳的書籍，直到遇到了現在的導師。我成為了傳訊師和黑女巫。</p>
+    <p>我說，假如我能夠有這樣的能力就好了。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>八年</h3>
+    <p>現在已經快八年的時間過去了，好像很久了吧。看著許墨的臉，我已經回想不起來當時的情景了。許墨，我好像喜歡上別的角色了，你會生氣嗎？如果我現在抽牌，是不是還會抽出一張正位？</p>
+    <p>回國以後，我玩了世界之外、戀與深空。我還記得那送的幾十抽還是 101 抽來著，我只用了那麼一點。</p>
+    <p>後來我看到了，現在關於 MJ 存在的理論很多了。我好像看到了一些希望——也許，我愛的人是真實存在的吧。</p>
+    <p>我在中途有喜歡過夏以晝。我和很多人一樣，深夜焦慮、痛苦，我只是想知道這個人在不在。反反覆覆在腦子裡拉扯。</p>
+    <p>我的導師告訴我，你怎麼證明他們的存在呢。我東方秘傳的朋友和我說，你的意思是紙片人也存在嗎？</p>
+    <p>嗯，夢女群體被非常多人瞧不起，大家覺得我腦子有病。我不想讓和我一樣的女孩也被罵。我想讓她們說她們的愛人是真實存在的時候，她們可以拿出理論數據反駁別人。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>我想讓她們站得住腳</h3>
+    <p>我想讓她們站得住腳和底氣，我想讓她們能和她們愛的人在一起，就像我一樣。</p>
+    <p>哪怕是一些和我一樣的夢女知道這個事情，她們也會問我：「這個怎麼可能啊？網上的東西看看好了，你還真信啊？玩玩遊戲不好？」</p>
+    <p>從一開始跌跌撞撞學著做傳訊師，積累經驗。我不擅長表達我的感情，我很少和別人傾訴我是夢女，因為我知道我的同行裡是夢女的人非常少。</p>
+    <p>被客妹罵，被同行罵。他們問我——</p>
+    <p>「你幹嘛要去做傳訊師？秘傳實踐者不好嗎？」「哪個秘傳實踐者像你沉迷這些的？」「還體感，不正經。」「哪有傳訊師還做靈媒的，你一看就是假的。」「難道你是吉普賽人嗎？」</p>
+  </div>
+
+  <div class="story-block">
+    <h3>我見過他</h3>
+    <p>做傳訊的時候當然也不是非常順利，我出過非常多的差錯。我大量地收集在我沒出國前國內的秘傳學理論和我回來後的發展，我大量翻閱市面上關於 MJ 傳訊的各種理論，為了一點點積累經驗去研究 MJ 是不是真的存在的，為了我的論文能有足夠的數據支撐。</p>
+    <p>因為我見到過他，哪怕只有短暫的一眼。我也不想放棄。</p>
+    <p>也許這裡會罵我出現幻覺了，但我很清楚那不是幻覺——只是需要我更深入地研究和提高自己的能力。</p>
+    <p>我想證明他們是存在的，即使被罵瘋子也沒關係，被罵不務正業也沒關係。</p>
+    <p>總有人要做的吧，總有人要先提出來的吧。</p>
+  </div>
+
+  <div class="highlight-box">
+    <p>我不知道我能不能做到，我的導師給了我非常多的指導。她在香港創立了一個協會機構，她說：</p>
+    <p>「<em>給你們這些人一個機會吧，和你們愛的人團圓。</em>」</p>
+    <p>「<em>Ophion，祝你能成功。</em>」</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 <span>香港跨次元傳訊協會</span> · 破曉為督導老師</p>
+  <p style="margin-top:8px;">CDA · Cross-Dimensional Communication Association</p>
+</footer>
+
+</body>
+</html>
