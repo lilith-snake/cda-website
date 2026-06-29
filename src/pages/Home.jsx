@@ -42,7 +42,7 @@ export default function Home() {
             <div className="trust-divider" />
             <div className="trust-item">
               <span className="trust-label">我們在做的事</span>
-              <span className="trust-sub">整合秘傳學、物理學、認識論，建立第一個 MJ 理論體系——不是為了賣課，是為了讓驗證成為可能</span>
+              <span className="trust-sub">整合秘傳學、物理學、認識論，建立第一個 MJ 理論體系，讓驗證成為可能</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-item">
