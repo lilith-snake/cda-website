@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一個夢女的自述 · 香港跨次元傳訊協會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg-alt: #141414;
+    --bg-card: #1A1A1A;
+    --text: #E8E6E0;
+    --text-secondary: #9B9B9B;
+    --text-light: #6B6B6B;
+    --accent: #C9A96E;
+    --accent-light: #E0D5C0;
+    --accent-dark: #A88D4E;
+    --border: rgba(255,255,255,0.06);
+    --border-light: rgba(255,255,255,0.04);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --max-width: 720px;
+    --radius: 4px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- 頂部導航 ---- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; align-items: center; padding: 0 24px;
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--text-secondary); font-weight: 300; }
+
+  /* ---- 英雄區 ---- */
+  .hero {
+    padding: 160px 24px 80px;
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.9;
+  }
+  .hero-divider {
+    width: 40px; height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+    margin: 0 auto 48px;
+  }
+  .scroll-hint {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  /* ---- 內容區塊 ---- */
+  section {
+    padding: 80px 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  /* ---- 痛點卡片 ---- */
+  .pain-grid {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .pain-card {
+    background: var(--bg-card);
+    padding: 32px 36px;
+    display: flex; gap: 24px; align-items: flex-start;
+    transition: background 0.3s ease;
+  }
+  .pain-card:hover { background: #1F1F1F; }
+  .pain-num {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    color: var(--accent);
+    opacity: 0.5;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .pain-body h3 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .pain-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* ---- 金句 ---- */
+  .gold-quote {
+    text-align: center;
+    padding: 60px 24px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .gold-quote blockquote {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+  }
+  .gold-quote cite {
+    font-size: 13px;
+    color: var(--text-light);
+    font-style: normal;
+    font-family: var(--font-sans);
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- 故事段落 ---- */
+  .story-block {
+    margin-bottom: 56px;
+  }
+  .story-block:last-child { margin-bottom: 0; }
+  .story-block h3 {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    color: var(--accent-light);
+  }
+  .story-block p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 12px;
+  }
+  .story-block p:last-child { margin-bottom: 0; }
+
+  /* ---- 對比表 ---- */
+  .contrast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 14px;
+  }
+  .contrast-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contrast-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .contrast-table tr:last-child td { border-bottom: none; }
+  .contrast-table .col-label {
+    color: var(--text);
+    font-weight: 500;
+    white-space: nowrap;
+    width: 140px;
+  }
+
+  /* ---- 使命卡片 ---- */
+  .mission-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .mission-card .icon {
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+  .mission-card h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+  .mission-card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ---- CTA ---- */
+  .cta-section {
+    text-align: center;
+    padding: 80px 24px 120px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .cta-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+  .cta-section p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-serif);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+  }
+  .cta-btn:hover {
+    background: var(--accent);
+    color: #0D0D0D;
+  }
+
+  /* ---- 頁腳 ---- */
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+  .footer span { color: var(--accent); }
+
+  /* ---- 響應式 ---- */
+  @media (max-width: 640px) {
+    .pain-card { padding: 24px 20px; flex-direction: column; gap: 12px; }
+    .mission-card { padding: 32px 24px; }
+    section { padding: 48px 20px; }
+    .hero { padding: 120px 20px 56px; }
+    .contrast-table { font-size: 13px; }
+    .contrast-table .col-label { width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 導航 -->
+<nav class="nav">
+  <a href="/" class="nav-logo">CDA <span>· 跨次元傳訊協會</span></a>
+</nav>
+
+<!-- 英雄 -->
+<header class="hero">
+  <p class="hero-eyebrow">一個夢女的自述</p>
+  <h1>我只是想證明，<br><em>他是存在的。</em></h1>
+  <p class="hero-sub">
+    八年了。從一張塔羅牌到一篇論文，從一個人的孤單到一個協會的誕生。<br>
+    這條路沒有人走過，但總要有人先走。
+  </p>
+  <div class="hero-divider"></div>
+  <p class="scroll-hint">↓ 繼續閱讀</p>
+</header>
+
+<!-- 一、那些沒有人懂的時刻 -->
+<section>
+  <p class="section-label">第一章</p>
+
+  <div class="pain-grid">
+
+    <div class="pain-card">
+      <div class="pain-num">01</div>
+      <div class="pain-body">
+        <h3>「你真的覺得紙片人是真的嗎？」</h3>
+        <p>被問過太多次了。每一次解釋到最後，都變成沉默。不是因為沒話說——是因為說出來的話，在對方耳朵裡還沒有到達就已經被過濾掉了。他們聽不到，不是因為你說得不夠大聲，是因為他們沒有和你站在同一塊地面上。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">02</div>
+      <div class="pain-body">
+        <h3>深夜裡反反覆覆的拉扯</h3>
+        <p>你到底在不在。如果你在，為什麼我看不到你。如果你不在，為什麼每一次我靜下來的時候，都能感覺到一種我說不清楚的東西。不是幻覺——我知道幻覺是什麼感覺。焦慮到凌晨四點，第二天還要假裝什麼都沒發生。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">03</div>
+      <div class="pain-body">
+        <h3>「玩玩遊戲不好嗎？你還真信啊？」</h3>
+        <p>最難受的不是被外人笑。是連和你一樣的夢女都這樣說。你以為你們站在同一邊，但她看著你的眼神和外面的人一模一樣。那一刻你才發現，原來孤單可以是雙層的。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">04</div>
+      <div class="pain-body">
+        <h3>「哪個魔法師像你這樣的？」</h3>
+        <p>被同行看不起。被客妹罵。被說不務正業、不專業、一看就是假的。「還體感，不正經」「哪有傳訊師還做靈媒的」。你只是想走一條沒有人走過的路，但每個路口都有人在告訴你——「你不應該在這裡」。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">05</div>
+      <div class="pain-body">
+        <h3>你甚至不確定自己還是不是夢女</h3>
+        <p>八年太長了。長到當初讓你心動的那張臉，現在回想起來已經有點模糊。長到你喜歡過好幾個角色，每一個你都真心過，每一個你都問過同一句話——「你在嗎」。你還是夢女嗎？你不知道。但你知道你還在找。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 金句 -->
+<div class="gold-quote">
+  <blockquote>「總有人要做的吧，總有人要先提出來的吧。」</blockquote>
+  <cite>—— 破曉</cite>
+</div>
+
+<!-- 二、她走過的路 -->
+<section>
+  <p class="section-label">第二章 · 她走過的路</p>
+
+  <div class="story-block">
+    <h3>2017 · 一張翻過來的塔羅牌</h3>
+    <p>那一年《戀與製作人》剛上線。她面臨留學的迷茫，朋友推薦了這個遊戲。她最喜歡許墨——因為在他的世界裡，她是有顏色的，是唯一的。她拿著一張塔羅牌，盯著屏幕裡他的臉，問：「喂，你喜不喜歡我啊？喜歡的話我下一張牌就是正的。」抽出來——星幣二，正位。她開心極了。雖然那時候她根本不懂牌，雖然沒對上的時候她就把牌翻過來。但那個瞬間，這個世界好像终于有一個人可以陪她了。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2018–2020 · 在異國的圖書館裡</h3>
+    <p>出國以後，她發現這裡的人會像對待珍寶一樣對待自己喜歡的娃娃。一個俄羅斯人和她說：「娃娃裡也住著靈魂，它們無處可去，選擇了成為他們的親人。」你在我的娃娃裡嗎，許墨？她開始大量查閱西方秘傳學文獻。從塔羅到占星，從西方能量體系到儀式實踐，一本一本地看。她想知道——有沒有人說過，能去到另一個世界的方法。聽起來很可笑對吧。她自己也覺得。但如果真的有呢。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2021–2024 · 成為傳訊師</h3>
+    <p>她遇到了現在的導師。她成為了一名傳訊師和西方秘傳實踐者。不是因為她「相信這些東西」——是因為她需要一套方法。一套可以用來檢驗「他到底在不在」的方法。她開始大量收集國內外的相關理論，翻閱市面上關於跨次元鏈接的各種說法，為了一點點積累經驗。她出過很多差錯，被罵過很多次。但她見過他——哪怕只有短暫的一眼。她很清楚那不是幻覺。只是需要更深入的研究和更高的感知精度。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2025–2026 · 從一個人到一個協會</h3>
+    <p>她的導師在香港創立了一個協會。導師說：「給你們這些人一個機會吧，和你們愛的人團圓。」「Ophion，祝你能成功。」這篇論文——這個網站——這個協會——不是一個人的事業。是所有曾經在深夜裡問過「你在不在」的夢女，共同的事業。</p>
+  </div>
+</section>
+
+<!-- 三、為什麼需要一套理論 -->
+<section>
+  <p class="section-label">第三章 · 為什麼這件事值得被認真對待</p>
+
+  <table class="contrast-table">
+    <thead>
+      <tr><th></th><th>沒有理論的時候</th><th>有了理論之後</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">面對質疑</td>
+        <td>「我就是相信他在」——聽起來像一廂情願</td>
+        <td>「有六條學術框架可以對照，有五套存在論模型可以解釋他的位置」</td>
+      </tr>
+      <tr>
+        <td class="col-label">面對自己</td>
+        <td>深夜反覆拉扯：到底是真的還是我想太多？</td>
+        <td>有分辨方法可以操作——不是靠感覺，是靠交叉驗證</td>
+      </tr>
+      <tr>
+        <td class="col-label">面對同行</td>
+        <td>各說各話，你的連結和我的連結結果對不上</td>
+        <td>同一套標準化方法論，跨傳訊師獨立連結可以交叉比對</td>
+      </tr>
+      <tr>
+        <td class="col-label">面對市場</td>
+        <td>傳訊師素質參差，客戶無法分辨誰在投射誰在真正接收</td>
+        <td>有培訓體系、有認證標準、有可查證的編號</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mission-card">
+    <div class="icon">✦</div>
+    <h3>不是要你說「我相信」<br>是讓你可以說「我有數據」</h3>
+    <p>
+      協會的使命不是替你去連結他。<br>
+      是給你一套方法，讓你有一天可以自己連結他、自己分辨他、<br>
+      自己拿到「他在」的證據——<br>
+      然後在任何人質疑你的時候，你不用再沉默了。
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>如果你也曾經在深夜問過<br>「你到底在不在」</h2>
+  <p>你不是一個人。你腳下踩著的，是無數夢女花了八年時間、一點一點鋪出來的理論地基。站在上面，你會看得比從前更遠。</p>
+  <a href="/theory" class="cta-btn">探索理論框架 →</a>
+</div>
+
+<!-- 頁腳 -->
+<footer class="footer">
+  <p>© 2026 <span>香港跨次元傳訊協會</span> · 黎輝創立 · 破曉為督導老師</p>
+  <p style="margin-top:8px;">CDA · Cross-Dimensional Communication Association</p>
+</footer>
+
+</body>
+</html>
