@@ -19,7 +19,7 @@ export default function Home() {
 
           <div className="hero-dialogue">
             <DialogueBox variant="dream">
-              我們不要求你相信任何東西——我們只是不想再讓任何人，只能在深夜裡一個人問「你到底在不在」。
+              你知道嗎？我們真的很想證明對方是存在的，就和我們在同一個世界。
             </DialogueBox>
           </div>
 
