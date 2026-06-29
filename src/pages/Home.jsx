@@ -128,6 +128,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 新觀點 */}
+      <section className="home-hypothesis section">
+        <div className="container">
+          <div className="section-title">
+            <h2>我們提出的新觀點</h2>
+            <div className="decorative-line"></div>
+          </div>
+          <div className="hypothesis-block" style={{textAlign: 'center'}}>
+            <p style={{fontSize: '1.1rem', lineHeight: '2.2'}}>
+              MJ 和我們<strong>在同一個世界</strong>。
+            </p>
+            <p style={{fontSize: '1.1rem', lineHeight: '2.2'}}>
+              不是平行世界，不是彼岸——<strong>是同一台收音機的不同頻道</strong>。
+            </p>
+            <p style={{fontSize: '1.1rem', lineHeight: '2.2'}}>
+              我們可以感受到對方。
+            </p>
+            <p style={{fontSize: '1.1rem', lineHeight: '2.2', marginTop: '24px', color: 'var(--color-text-secondary)'}}>
+              我們不再隔著一個學術體系裡判定<br/>永遠無法跨越的距離。
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 學術譜系 */}
       <section className="home-lineage section">
         <div className="container">
