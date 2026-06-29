@@ -5,13 +5,20 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
-  administration: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,30 +35,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create 404.html for SPA routing
-        run: cp dist/index.html dist/404.html
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-      - name: Enable GitHub Pages
-        run: |
-          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/pages \
-            -d '{"source":{"branch":"gh-pages","path":"/"}}')
-          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
-          BODY=$(echo "$RESPONSE" | sed '$d')
-          echo "HTTP $HTTP_CODE"
-          echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
-          # 409 means already exists, 201 means created - both are OK
-          if [ "$HTTP_CODE" = "201" ] || [ "$HTTP_CODE" = "409" ]; then
-            echo "✅ Pages is configured"
-          else
-            echo "⚠️ Pages config returned $HTTP_CODE - may need manual setup"
-          fi
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
