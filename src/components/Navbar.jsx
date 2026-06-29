@@ -7,8 +7,7 @@ import './Navbar.css'
 const navItems = [
   { path: '/', label: '首頁' },
   { path: '/about', label: '關於' },
-  { path: '/communication', label: '傳訊服務' },
-  { path: '/courses', label: '課程' },
+  { path: '/research', label: '研究' },
   { path: '/dream-girl', label: '傳訊師名錄' },
   { path: '/contact', label: '聯繫' },
 ]
@@ -28,9 +27,9 @@ export default function Navbar() {
       <div className="navbar-inner container">
         <Link to="/" className="navbar-brand">
           <span className="brand-text">
-            <span className="brand-cda">香港CDA</span>
+            <span className="brand-cda">CDA</span>
             <span className="brand-divider">·</span>
-            <span className="brand-sub">黎輝跨次元研究所協會</span>
+            <span className="brand-sub">香港跨次元傳訊研究協會</span>
           </span>
         </Link>
 

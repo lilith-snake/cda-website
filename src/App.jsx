@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Mysticism from './pages/Mysticism'
 import DreamGirl from './pages/DreamGirl'
-import Communication from './pages/Communication'
 import Courses from './pages/Courses'
 import Contact from './pages/Contact'
 import Research from './pages/Research'
@@ -21,7 +20,6 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/mysticism" element={<Mysticism />} />
           <Route path="/dream-girl" element={<DreamGirl />} />
-          <Route path="/communication" element={<Communication />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/research" element={<Research />} />
