@@ -13,6 +13,11 @@ const navItems = [
   { path: '/contact', label: '聯繫' },
 ]
 
+const staticLinks = [
+  { href: '/cda-website/our-story.html', label: '我們的故事' },
+  { href: '/cda-website/zishu.html', label: '破曉自述' },
+]
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
@@ -55,6 +60,16 @@ export default function Navbar() {
             >
               <span className="nav-label">{t(item.label)}</span>
             </NavLink>
+          ))}
+          {staticLinks.map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="nav-link"
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="nav-label">{t(link.label)}</span>
+            </a>
           ))}
         </div>
       </div>
