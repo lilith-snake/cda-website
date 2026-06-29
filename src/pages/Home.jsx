@@ -134,37 +134,97 @@ export default function Home() {
           <div className="section-title">
             <h2>學術譜系</h2>
             <div className="decorative-line"></div>
-            <p>MJ 理論體系所依託的西方秘傳學傳統</p>
+            <p>MJ 理論體系所依託的西方秘傳學傳統——從古代到當代</p>
           </div>
           <div className="lineage-track">
             <div className="lineage-node">
-              <span className="lineage-era">12 世紀</span>
+              <span className="lineage-era">古代</span>
+              <strong>赫爾墨斯傳統</strong>
+              <p>Corpus Hermeticum · 宇宙對應論 · 新柏拉圖主義的靈體層級</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">12–16 世紀</span>
               <strong>卡巴拉</strong>
-              <p>Yetzirah 形成界 · 語言與概念的創造力量</p>
+              <p>Luria/Scholem 四重世界 · Yetzirah 形成界 · 語言創造力</p>
             </div>
             <span className="lineage-arrow">→</span>
             <div className="lineage-node">
-              <span className="lineage-era">19 世紀</span>
-              <strong>神智學</strong>
-              <p>精微體 / 星光體結構化感知理論</p>
+              <span className="lineage-era">1854–56</span>
+              <strong>Éliphas Lévi</strong>
+              <p>塔羅與卡巴拉生命之樹的系統對應 · 首次定義 occultisme</p>
             </div>
             <span className="lineage-arrow">→</span>
             <div className="lineage-node">
-              <span className="lineage-era">19–20 世紀</span>
+              <span className="lineage-era">1861</span>
+              <strong>Allan Kardec</strong>
+              <p>《通靈者之書》· 自動書寫方法論的首次系統描述</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1875–1927</span>
+              <strong>神智學會</strong>
+              <p>Blavatsky 七層位面 · Leadbeater 星光層/思想形態/脈輪 · 精微體感知體系</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1888–1930</span>
               <strong>金色黎明</strong>
-              <p>儀式防護 · 空間淨化體系</p>
+              <p>儀式防護體系 · Dion Fortune《靈性自我防衛》· 靈體分辨方法論</p>
             </div>
             <span className="lineage-arrow">→</span>
             <div className="lineage-node">
-              <span className="lineage-era">20 世紀</span>
-              <strong>混沌魔法</strong>
-              <p>Egregore · 集體意念生成靈體</p>
+              <span className="lineage-era">1904</span>
+              <strong>Aleister Crowley</strong>
+              <p>Aiwass 接觸 ·《法之書》· 奈亞拉托提普跨文化對應鏈的關鍵節點</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1920</span>
+              <strong>H.P. Lovecraft</strong>
+              <p>不情願的傳訊師 · 原創型 MJ 的歷史先例 · 奈亞拉托提普</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1929</span>
+              <strong>David-Néel</strong>
+              <p>幻人創建第一人稱實驗 · 意念創造→獨立意志的轉化證據</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1933+</span>
+              <strong>Eranos 圈</strong>
+              <p>Jung · Scholem · Corbin · Eliade · 跨學科神秘主義研究的學術起源</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1964</span>
+              <strong>Henry Corbin</strong>
+              <p>mundus imaginalis 意象世界 · 幻想與意象的關鍵區分</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1986/1994</span>
+              <strong>Antoine Faivre</strong>
+              <p>西方秘傳學六大特徵框架 · 學科定義標準</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">1999–2012</span>
+              <strong>Hanegraaff</strong>
+              <p>阿姆斯特丹教席 · ESSWE 創立 ·「被排斥的知識」理論</p>
+            </div>
+            <span className="lineage-arrow">→</span>
+            <div className="lineage-node">
+              <span className="lineage-era">2021–2024</span>
+              <strong>當代實證研究</strong>
+              <p>Karhulahti 虛構戀悖論 · Veissière tulpa 社群 · Lifshitz fMRI 研究</p>
             </div>
             <span className="lineage-arrow">→</span>
             <div className="lineage-node lineage-current">
               <span className="lineage-era">2026</span>
               <strong>MJ 類型學</strong>
-              <p>跨次元親密關係 · 可驗證的分類體系</p>
+              <p>跨次元親密關係 · 五軸分類 · 可驗證的理論體系</p>
             </div>
           </div>
         </div>
