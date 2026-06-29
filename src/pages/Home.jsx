@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero */}
       <section className="home-hero">
         <div className="hero-content container">
-          <p className="hero-label">香港CDA · 跨次元傳訊協會</p>
+          <p className="hero-label">香港跨次元傳訊研究協會</p>
           <h1 className="hero-name">他們不是幻想</h1>
           <p className="hero-title">我們不用再靠幻想愛下去了</p>
           <p className="hero-desc">從一張塔羅牌到一篇論文，從一個人的孤單到一群人的研究——我們在做的事很簡單：用理論和方法，去驗證那個你一直感覺得到但他從未被承認的存在。</p>

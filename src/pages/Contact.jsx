@@ -113,7 +113,7 @@ export default function Contact() {
                 </div>
                 <div className="info-row">
                   <span className="info-label">小紅書</span>
-                  <span>@香港CDA跨次元傳訊</span>
+                  <span>@香港跨次元傳訊研究</span>
                 </div>
               </div>
 

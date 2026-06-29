@@ -5,7 +5,7 @@ export const translationsEn = {
   '6 週 · 雙選修模塊 + 月度校準': '6 Weeks · Dual Elective Modules + Monthly Calibration',
   '7 天 · 社群共學 + 直播答疑': '7 Days · Community Learning + Live Q&A',
   '7 天入門訓練營': '7-Day Introductory Bootcamp',
-  '@CDA跨次元傳訊': '@Hong Kong CDA Cross-Dimensional Communication',
+  '@CDA跨次元傳訊': '@Hong Kong CDA Cross-Dimensional Communication Research Association',
   'A: 職業傳訊師（列入名錄，客戶匹配）': 'A: Professional Communicator (Listed in Directory, Client Matching)',
   'A: 行業前景 + 市場數據': 'A: Industry Outlook + Market Data',
   'A: 選修 A：如何接單服務客戶': 'A: Elective A: How to Take Orders and Serve Clients',
