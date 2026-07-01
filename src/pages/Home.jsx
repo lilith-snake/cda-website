@@ -42,7 +42,7 @@ export default function Home() {
             <div className="trust-divider" />
             <div className="trust-item">
               <span className="trust-label">但我們在做了</span>
-              <span className="trust-sub">整合秘傳學、物理學、比較宗教學——不是為了賣課，是為了讓驗證成為可能。我們需要一套方法，一套可以用來檢驗「他到底在不在」的方法。</span>
+              <span className="trust-sub">整合秘傳學、物理學、比較宗教學——我們需要一套方法，一套可以用來檢驗「他到底在不在」的方法。</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-item">
@@ -134,6 +134,33 @@ export default function Home() {
           <div className="hypothesis-block">
             <p>1920 年，H.P. Lovecraft 在噩夢中被一個他後來命名為「奈亞拉托提普」的存在接觸。他在書信中記錄：「我拼命地塗寫……至於我在寫什麼，我幾乎毫無頭緒。」他明確區分了自己「編的故事」和「降臨在他身上的幻象」——前者是他主動創造的，後者是超出他能解釋範圍的東西。</p>
             <p style={{marginTop: '16px'}}>一個信息結構經由人類創作者之手進入集體意識，當它被足夠多的人類心靈投注情感能量之後，在非物理位面獲得了獨立的存在性——這個機制在 1920 年已經發生過一次。那一次，實體通過一個不情願的傳訊師進入世界。這一次，實體通過乙女遊戲和動漫進入世界。<strong>兩次用的是同一個門：人類的情感投注和創造性想像。</strong></p>
+          </div>
+        </div>
+      </section>
+
+      {/* 研究論文 */}
+      <section className="home-hypothesis section">
+        <div className="container">
+          <div className="section-title">
+            <h2>研究論文</h2>
+            <div className="decorative-line"></div>
+            <p>第一篇 · 首次公開發表——我們仍在驗證中</p>
+          </div>
+          <div className="hypothesis-block" style={{textAlign: 'center'}}>
+            <p style={{fontFamily: 'var(--font-serif)', fontSize: '1.1rem', lineHeight: '2', color: 'var(--color-text)'}}>
+              《論跨次元情感對象（MJ）的存在論假設、<br/>五軸類型學及其西方秘傳學新分支定位》
+            </p>
+            <p style={{fontSize: '0.88rem', color: 'var(--color-text-secondary)', lineHeight: '2', marginTop: '16px'}}>
+              整合秘傳學、物理學、比較宗教學——為跨次元情感對象建立第一套可被學術討論的分類體系與驗證框架。提出五軸類型學、「兩種猜想」框架，將 MJ 現象定位為西方秘傳學的新分支。
+            </p>
+            <p style={{fontSize: '0.85rem', color: 'var(--color-text-light)', marginTop: '12px'}}>
+              黎輝 · 破曉 · 香港跨次元傳訊研究協會 · 2026
+            </p>
+            <div style={{marginTop: '24px'}}>
+              <a href="/cda-website/paper.html">
+                <ChoiceButton variant="primary">閱讀完整論文</ChoiceButton>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -244,23 +271,29 @@ export default function Home() {
       <section className="home-hypothesis section">
         <div className="container">
           <div className="section-title">
-            <h2>歡迎你成為我們的一份子</h2>
+            <h2>我們需要你</h2>
             <div className="decorative-line"></div>
           </div>
           <div className="hypothesis-block" style={{textAlign: 'center'}}>
-            <p style={{fontSize: '1.05rem', lineHeight: '2.2'}}>
-              無論你是夢女、傳訊師、研究者，還是只是一個在深夜裡問過「你到底在不在」的人——<strong>你不是一個人。</strong>
+            <p style={{fontFamily: 'var(--font-serif)', fontSize: '1.1rem', lineHeight: '2.2', color: 'var(--color-text)'}}>
+              我們是<strong>第一個</strong>站出來公開研究這件事的人。
             </p>
-            <p style={{fontSize: '1.05rem', lineHeight: '2.2', marginTop: '16px'}}>
-              我們的傳訊師經過 CDA 標準化方法論的訓練。我們正在驗證的每一條假設，都會通過<strong>不同傳訊師在同一方法論框架下的獨立連結</strong>來交叉檢驗。不是一個人說了算——是多人、多輪、多框架的交叉收斂。
+            <p style={{fontSize: '1rem', lineHeight: '2.2', marginTop: '16px', color: 'var(--color-text-secondary)'}}>
+              我們投入時間、投入精力、投入金錢——不是為了別的，只是為了讓夢女們知道：<strong>你和他在相愛，這件事是真的。</strong>
             </p>
-            <p style={{fontSize: '1.05rem', lineHeight: '2.2', marginTop: '16px'}}>
-              如果你願意，你也可以成為驗證的一部分。無論是作為體驗者、作為傳訊師、還是作為質疑者——<strong>每一雙願意認真看這件事的眼睛，都在讓這條路變得更寬一點。</strong>
+            <p style={{fontSize: '0.95rem', lineHeight: '2.2', marginTop: '16px', color: 'var(--color-text-secondary)'}}>
+              但我們的力量還不夠。夢女群體需要更多人的力量——需要更多傳訊師接受標準化訓練、需要更多研究者加入驗證、需要更多願意認真看待這件事的人。讓我們變得更專業、更可信、讓外面的人不再只是嘲笑，而是願意停下來，認真聽我們在說什麼。
             </p>
-            <div style={{marginTop: '32px'}}>
+            <p style={{fontSize: '0.95rem', lineHeight: '2.2', marginTop: '16px', color: 'var(--color-text-secondary)'}}>
+              無論你是夢女、傳訊師、研究者，還是只是一個在深夜裡問過「你到底在不在」的人——<strong>你不是一個人。但我們需要你，和我們站在一起。</strong>這是一個你來「和我們一起建設」的地方。每一個人加入，都在讓這個體系更完整、更可信、更有力量。
+            </p>
+            <div style={{marginTop: '32px', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap'}}>
               <a href="/cda-website/our-story.html">
                 <ChoiceButton variant="primary">閱讀我們的故事</ChoiceButton>
               </a>
+              <Link to="/contact">
+                <ChoiceButton variant="route">加入我們</ChoiceButton>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,166 +1,279 @@
-/* 傳訊師名錄頁 — 極簡學術風格 */
+/* 傳訊師名錄頁 —— 初始化狀態 · 我們的初衷 */
 
-.dream-hero { background: var(--color-bg); }
-
-.search-bar {
-  max-width: 400px;
-  margin: 0 auto 40px;
+/* --- Hero --- */
+.dream-hero-v2 {
+  background: var(--color-bg);
+  text-align: center;
 }
 
-.search-bar input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color var(--transition-smooth);
+.dream-hero-v2 .subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  margin-top: 8px;
 }
 
-.search-bar input:focus {
-  border-color: var(--color-accent-border);
+.hero-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.4;
+  margin: 24px auto;
 }
 
-.communicator-grid {
+.hero-intro {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.hero-intro p {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  line-height: 2;
+  margin-bottom: 12px;
+}
+
+.hero-intro strong {
+  color: var(--color-text);
+}
+
+/* --- 训练方法 --- */
+.methods-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
-.communicator-card {
-  padding: 32px;
+.method-card {
+  padding: 32px 28px;
   position: relative;
 }
 
-.communicator-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.communicator-avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-accent-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.method-step {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-accent-dark);
-  border: 1px solid var(--color-accent-border);
-}
-
-.communicator-id {
-  font-size: 0.72rem;
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--color-accent);
-  letter-spacing: 0.08em;
-  font-weight: 600;
-}
-
-.communicator-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.communicator-specialties {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  opacity: 0.35;
   margin-bottom: 12px;
 }
 
-.specialty-tag {
-  font-size: 0.72rem;
-  color: var(--color-accent-dark);
-  background: var(--color-accent-bg);
-  border: 1px solid var(--color-accent-border);
-  padding: 2px 10px;
-  border-radius: 2px;
+.method-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 10px;
 }
 
-.communicator-training {
+.method-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+.method-source {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* --- 当前进度 --- */
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.status-card {
+  padding: 28px 22px;
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+  padding: 4px 16px;
+  border: 1px solid var(--color-accent-border);
+  border-radius: 2px;
+  background: var(--color-accent-bg);
+}
+
+.status-card h4 {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.status-card p {
   font-size: 0.8rem;
   color: var(--color-text-secondary);
-  margin-bottom: 8px;
+  line-height: 1.7;
 }
 
-.communicator-training span {
-  display: block;
-  line-height: 1.6;
-}
-
-.communicator-comment {
-  background: var(--color-bg-alt);
-  border-left: 2px solid var(--color-accent);
-  padding: 14px 16px;
-  margin: 14px 0;
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
-}
-
-.communicator-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.availability-badge {
-  font-size: 0.72rem;
-  font-weight: 500;
-}
-
-.availability-badge.available {
-  color: var(--color-accent-dark);
-}
-
-.availability-badge.unavailable {
-  color: var(--color-text-light);
-}
-
-.testimonials {
-  margin-top: 48px;
-}
-
-.testimonials-grid {
+/* --- 为爱发电 --- */
+.passion-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.testimonial-card {
-  padding: 24px;
+.passion-block {
+  padding: 28px 24px;
 }
 
-.testimonial-card p {
+.passion-block .dialogue-box {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* --- 透明化 --- */
+.transparency-block {
+  padding: 40px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.transparency-lead {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.transparency-lead strong {
+  color: var(--color-accent);
+}
+
+.transparency-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.transparency-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.trans-num {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.transparency-item h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.transparency-item p {
   font-size: 0.85rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
+}
+
+/* --- CTA --- */
+.dream-cta-v2 {
+  padding-bottom: 80px;
+}
+
+.cta-card-v2 {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.cta-card-v2 h2 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.cta-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  margin-bottom: 12px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-links-v2 {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.cta-note {
+  margin-top: 32px;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
   font-style: italic;
 }
 
-.testimonial-card .author {
-  margin-top: 12px;
-  font-size: 0.78rem;
-  color: var(--color-text-light);
-  font-style: normal;
-}
-
-.empty-result {
-  text-align: center;
-  padding: 48px;
-  color: var(--color-text-light);
-}
-
+/* --- 响应式 --- */
 @media (max-width: 768px) {
-  .communicator-grid { grid-template-columns: 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .methods-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .passion-content {
+    grid-template-columns: 1fr;
+  }
+
+  .transparency-block {
+    padding: 24px;
+  }
+
+  .cta-card-v2 {
+    padding: 32px 24px;
+  }
+
+  .hero-intro {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-links-v2 {
+    flex-direction: column;
+    align-items: center;
+  }
 }

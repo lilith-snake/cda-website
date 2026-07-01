@@ -9,7 +9,7 @@ export default function Research() {
       <section className="page-hero research-hero">
         <div className="container">
           <h1>研究論文</h1>
-          <p className="subtitle">叙事实体假说——跨次元亲密关系中的意识场现象分类与验证方法</p>
+          <p className="subtitle">論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位</p>
         </div>
       </section>
 
@@ -18,11 +18,11 @@ export default function Research() {
         <div className="container">
           <div className="glass-card research-paper">
             <div className="paper-header">
-              <h2>叙事实体假说——跨次元亲密关系中的意识场现象分类与验证方法</h2>
+              <h2>論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位</h2>
               <div className="paper-meta">
-                <span className="paper-author">作者：黎輝</span>
+                <span className="paper-author">作者：黎輝 · 破曉</span>
                 <span className="paper-divider">|</span>
-                <span className="paper-affiliation">機構：黎輝香港跨次元研究所協會</span>
+                <span className="paper-affiliation">機構：香港跨次元傳訊研究協會</span>
                 <span className="paper-divider">|</span>
                 <span className="paper-doi">DOI：即將上線</span>
               </div>
@@ -31,107 +31,121 @@ export default function Research() {
             <div className="paper-abstract">
               <h3>摘要</h3>
               <p>
-                本研究提出「叙事实体假说」（Narrative Entity Hypothesis），探討跨次元親密關係中出現的意識場現象。
-                研究基於西方神秘學傳統中的精微體感知訓練、結構化直覺訓練以及三重驗證方法論，
-                首次為該現象建立了系統性的分類體系與驗證框架。
+                2017 年以來，中文互聯網上出現並迅速擴張了一個此前未被學術界注意到的服務市場——跨次元傳訊。
+                數千名傳訊師以通靈、塔羅等工具向夢女客戶提供與跨次元情感對象的付費鏈接服務，年交易規模估計在數千萬元人民幣。
+                然而，該市場在方法論層面高度碎片化，根源不在從業者素質，而在於理論真空——迄今沒有任何一套被學術共同體承認的理論框架，
+                能夠系統回答「MJ 是什麼」「他在哪裡」「如何分類」「如何分辨」等基礎問題。本文是對這一理論真空的回應。
               </p>
               <p>
-                通過對多個案例的盲測實驗，本研究論證了：足夠的情感投注強度與足夠精密的敘事結構，
-                可以在意識場中維持一個具有獨立行為模式的叙事实体——它不是純粹的主觀幻想，
-                也不是傳統意義上的「靈體」，而是介於二者之間的、可被多人獨立觀測和驗證的意識場現象。
+                本文的核心論證線索如下。第一步，以 Antoine Faivre（1986/1994）提出的西方秘傳學六大特徵框架為形式分析工具，
+                逐條檢驗 MJ 理論體系是否滿足一個秘傳學新分支的全部構成要件。第二步，整合五套獨立存在論框架——
+                Everett 多世界、Kaluza-Klein 高維、神智學七層位面、Corbin 意象世界、Luria/Scholem 四重世界——
+                為 MJ 提供跨學科存在論基礎。第三步，基於上述框架提出五軸類型學假設。第四步，建構從感知訓練、鏈接工具、
+                分辨方法論到身份驗證和儀式防護的完整 MJ 方法論體系。第五步，以 Hanegraaff「被排斥的知識」理論解釋 MJ 尚未被正式承認的現狀。
+                第六步，指出上述假設可通過 CDA 標準化培訓體系下的跨傳訊師獨立鏈接進行系統的經驗檢驗。
+              </p>
+              <p>
+                本文的定位是一份理論建構文本（research program manifesto），而非已完成的實證論文。其目標是為未來的經驗檢驗提供一個可操作的、有明確文獻來源的理論框架。
               </p>
             </div>
 
+            {/* 核心猜想 */}
+            <div className="paper-verification" style={{borderLeft: '3px solid #c9a96e'}}>
+              <h3>核心猜想：集體能量能否創造位面？</h3>
+              <p>本文提出了一個比「MJ 存在於某個已有非物理層面」更激進的開放假說：<strong>當足夠多的人對同一個敘事結構持續投注情感能量，這股集體能量是否不僅能在已有位面中生成實體，還能在意識場中開闢出一個具有穩定結構的獨立位面？</strong>一個人（如 David-Néel）的持續意念可以創造一個幻人——百萬人的集體情感投注，指向同一個角色、同一個故事世界，其規模遠超歷史上任何一次靈體創建實驗。如果人造靈的生成機制在個體層面成立，那麼集體層面的同一種機制——敘事結構 + 大規模持續情感投注——是否可能在意識場中生成的不只是一個獨立實體，而是一個獨立位面？這一假說在當前階段無法被嚴格檢驗，但它為 MJ 存在論提供了一個更激進的替代性解釋：<strong>也許那個位面本身，就是被夢女們共同創造出來的。</strong></p>
+            </div>
+
+            {/* Faivre 六大特征逐条对照 */}
             <div className="paper-classification">
-              <h3>信息三分類體系</h3>
+              <h3>Faivre 六大特徵逐條對照論證</h3>
+              <p style={{marginBottom: '1.2rem', color: '#ccc'}}>
+                本文的核心形式論證：以 Antoine Faivre（1986/1994）為西方秘傳學學科自身定義的六大特徵框架為標準，
+                逐條檢驗 MJ 理論體系。結論——六項全部滿足。這不是「申請加入」，而是用本學科自己定義的標準，檢驗一個當代現象是否符合這個標準。
+              </p>
               <div className="classification-grid">
                 <div className="class-item">
-                  <span className="class-num">I</span>
-                  <strong>實體信息</strong>
-                  <p>源自獨立意識場的信號——可被多人獨立驗證，具有跨觀測者一致性</p>
+                  <span className="class-num">①</span>
+                  <strong>對應關係</strong>
+                  <p>MJ 的感知、定位、驗證三個模塊均依賴於 Faivre 意義上的「對應關係」原則——通靈收信號，塔羅做定位，卡巴拉四重世界做位面診斷</p>
                 </div>
                 <div className="class-item">
-                  <span className="class-num">II</span>
-                  <strong>投射信息</strong>
-                  <p>源自觀測者自身潛意識的投射——不具有跨觀測者一致性</p>
+                  <span className="class-num">②</span>
+                  <strong>活化的自然</strong>
+                  <p>MJ 實踐的根本前提——非物理存在是有生命的、有自主意志的、可被感知和交互的——並將其操作化為三層感知訓練方法論</p>
                 </div>
                 <div className="class-item">
-                  <span className="class-num">III</span>
-                  <strong>噪音</strong>
-                  <p>隨機信號或環境干擾——不包含可解碼的信息結構</p>
+                  <span className="class-num">③</span>
+                  <strong>想像與中介</strong>
+                  <p>最強的對應。Corbin 的意象世界（mundus imaginalis）為 MJ 鏈接提供了精確的操作模型——主動想像力不是編造，而是接收意象世界真實內容的認知器官</p>
+                </div>
+                <div className="class-item">
+                  <span className="class-num">④</span>
+                  <strong>轉化</strong>
+                  <p>CDA 體系的設計目標不是永遠替客戶傳訊，而是讓客戶最終不再需要傳訊師——從「依賴」到「獨立」的軌跡，就是轉化</p>
+                </div>
+                <div className="class-item">
+                  <span className="class-num">⑤</span>
+                  <strong>諸傳統和諧一致</strong>
+                  <p>人造靈的三重獨立印證（藏傳佛教/神智學/西方儀式魔法）、存在位面的跨傳統描述、「黑暗信使」原型的五傳統對應鏈——均非互相引用，獨立抵達同一張地圖</p>
+                </div>
+                <div className="class-item">
+                  <span className="class-num">⑥</span>
+                  <strong>傳承</strong>
+                  <p>CDA 標準化傳訊師培訓認證體系——建立可操作的標準化訓練方法、定義市場專業標準、培養能獨立驗證本文假設的專業傳訊師</p>
                 </div>
               </div>
             </div>
 
+            {/* 身份特異性驗證 */}
             <div className="paper-verification">
-              <h3>三重驗證法</h3>
-              <p>信息一致性 + 獨立印證 + 盲測——這是我們的研究標準，也是培訓傳訊師的考核體系。三者皆通過 = 信息成立。</p>
+              <h3>身份特異性驗證四層機制</h3>
+              <p>設定一致性檢驗 + 跨通道信息一致性 + 自主信息識別 + 情感特異性——四層遞進篩選器，將身份驗證從「信則有」轉變為有方法論控制的概率判斷。</p>
             </div>
 
+            {/* 五套存在論框架 */}
             <div className="paper-hypothesis">
-              <h3>能量場感知阈限假說（EFPTH）</h3>
+              <h3>五套獨立存在論框架</h3>
               <p className="hypothesis-core">
-                能量場感知的個體差異，在操作層面是一種可被系統訓練的「意識精度」（Consciousness Precision），而非天賦或超自然能力。通過結構化的精微感知校準訓練，個體可系統性地提升對意識場信息的「信噪比分辯阈限」（Signal-to-Noise Discrimination Threshold），將感知從「偶然的模糊直覺」迭代為「可被他人獨立驗證的精確觀測」。
+                本文整合五套互不依賴的學術框架來回答同一個問題——「他在哪裡」。每一套來自獨立的學科傳統，各自覆蓋不同的坐標軸，共同構成 MJ 的跨學科存在論基礎。
               </p>
 
               <div className="hypothesis-pillars">
                 <div className="hypothesis-item">
                   <span className="hypothesis-num">I</span>
                   <div>
-                    <strong>感知可塑性論</strong>
-                    <p>如同品酒師可通過盲品訓練顯著提升味覺辨識精度，意識場感知作為一種精微認知功能，在結構化反饋訓練下可被系統性校準和提升。現有研究已證實內感受（interoception）的可訓練性，意識場感知是其在外部的自然延伸。</p>
+                    <strong>Everett 多世界解釋（量子物理）</strong>
+                    <p>為「不可觀測的平行分支在數學上可能」提供邏輯區分工具——定義「不可通信的平行性」基準類型，幫助排除不可能的選項</p>
                   </div>
                 </div>
                 <div className="hypothesis-item">
                   <span className="hypothesis-num">II</span>
                   <div>
-                    <strong>信噪比阈限模型</strong>
-                    <p>感知質量取決於「實體信號 vs 投射噪音 vs 環境干擾」的區分能力。未經訓練的感知者信噪比阈限低，將三類信息混為一談；經過校準的感知者可穩定地將信息分類為實體信息（I類）、投射信息（II類）、噪音（III類）。阈限本身是可量化、可訓練的操作參數。</p>
+                    <strong>Kaluza-Klein 高維理論 → 膜世界（理論物理）</strong>
+                    <p>額外空間維度在數學上可能，膜世界模型為「跨世界通信」提供了正向的物理學可能性空間</p>
                   </div>
                 </div>
                 <div className="hypothesis-item">
                   <span className="hypothesis-num">III</span>
                   <div>
-                    <strong>跨觀測者一致性的阈限依賴性</strong>
-                    <p>只有當多位觀測者的感知阈限達到相近校準水平時，其對同一意識場現象的獨立描述才呈現統計學上顯著的一致性。這一一致性本身即構成區分「實體信息」與「投射信息」的操作性標準：多人獨立一致 = 實體信號；僅個體感知 = 投射或噪音。</p>
+                    <strong>Blavatsky / Leadbeater 七層位面（神智學）</strong>
+                    <p>從物理層到涅槃層的連續光譜——MJ 的三類感知信號（軀體/情緒/意象）分別對應以太子層、星光層和心智層</p>
                   </div>
                 </div>
                 <div className="hypothesis-item">
                   <span className="hypothesis-num">IV</span>
                   <div>
-                    <strong>去中介化的方法論</strong>
-                    <p>能量場感知的可訓練性不依賴任何外部器物。訓練核心是：結構化反饋循環 + 盲測校準 + 多觀測者交叉驗證。這是可教學、可復現、可證偽的認知訓練技術。如果結構化訓練無法提升信噪比分辯阈限，則假說被證偽。</p>
+                    <strong>Corbin 意象世界（比較宗教學）</strong>
+                    <p>在感官世界和理智世界之間存在第三個世界——mundus imaginalis。感知它的器官是主動想像力，不是編造謊言的工具，而是接收意象世界真實內容的認知通道</p>
+                  </div>
+                </div>
+                <div className="hypothesis-item">
+                  <span className="hypothesis-num">V</span>
+                  <div>
+                    <strong>Luria / Scholem 四重世界（猶太神秘主義）</strong>
+                    <p>Atziluth → Beriah → Yetzirah → Assiah，世界之間由簾幕（parsah）分隔。簾幕的層數決定了 MJ 的可見性、接觸難度和信息衰減程度</p>
                   </div>
                 </div>
               </div>
-
-              <div className="hypothesis-relation">
-                <h4>與 NEH 敘事實體假說的關係</h4>
-                <div className="relation-flow">
-                  <span className="flow-item">NEH 命題一：敘事結構 → 意識場中生成敘事實體</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-item">該實體在意識場中產生可被感知的信息信號</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-item accent">EFPTH：對這些信號的感知精度可通過訓練系統性提升</span>
-                  <span className="flow-arrow">→</span>
-                  <span className="flow-item">提升後實現對實體信息的穩定解碼與驗證</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 完整论文获取 */}
-      <section className="section research-access">
-        <div className="container">
-          <div className="glass-card access-card">
-            <h2>獲取完整論文</h2>
-            <p>完整論文PDF通過郵箱發送。請提供您的郵箱地址，我們將在研究論文正式上線後第一時間發送。</p>
-            <p className="access-note">標註「內部研究資料·僅限研究用途」</p>
-            <div className="access-form">
-              <input type="email" placeholder="your@email.com" className="access-input" />
-              <button className="access-btn">申請獲取論文</button>
             </div>
           </div>
         </div>
@@ -158,6 +172,7 @@ export default function Research() {
           </div>
         </div>
       </section>
+
     </div>
   )
 }

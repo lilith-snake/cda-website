@@ -31,7 +31,7 @@ export default function Contact() {
               {!submitted ? (
                 <>
                   <h2>✦ 發送訊息給我們</h2>
-                  <p className="form-desc">選擇你想查詢的內容，我們會盡快回覆。</p>
+                  <p className="form-desc">如果你想加入我們，你也想成為探尋及實踐者的一名，請聯繫我們。</p>
 
                   <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -93,11 +93,11 @@ export default function Contact() {
                 <h3>協會資訊</h3>
                 <div className="info-row">
                   <span className="info-label">協會名稱</span>
-                  <span>黎輝跨次元研究所協會</span>
+                  <span>香港跨次元傳訊研究協會</span>
                 </div>
                 <div className="info-row">
                   <span className="info-label">英文名稱</span>
-                  <span>Cross-Dimensional Communication Association (香港CDA)</span>
+                  <span>Hong Kong Cross-Dimensional Communication Association (CDA)</span>
                 </div>
                 <div className="info-row">
                   <span className="info-label">註冊地</span>
@@ -109,10 +109,10 @@ export default function Contact() {
                 <h3>聯繫方式</h3>
                 <div className="info-row">
                   <span className="info-label">電郵</span>
-                  <span>391839176@qq.com</span>
+                  <span>lilith202606@163.com</span>
                 </div>
                 <div className="info-row">
-                  <span className="info-label">小紅書</span>
+                  <span className="info-label">抖音</span>
                   <span>@香港跨次元傳訊研究</span>
                 </div>
               </div>
@@ -128,8 +128,8 @@ export default function Contact() {
                   <span>需提前預約</span>
                 </div>
                 <div className="info-row">
-                  <span className="info-label">課程時間</span>
-                  <span>按課表安排</span>
+                  <span className="info-label">培訓體系時間</span>
+                  <span>按照個人情況選擇安排</span>
                 </div>
               </div>
             </div>

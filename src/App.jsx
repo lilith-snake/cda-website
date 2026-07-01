@@ -7,8 +7,10 @@ import Mysticism from './pages/Mysticism'
 import DreamGirl from './pages/DreamGirl'
 import Courses from './pages/Courses'
 import Contact from './pages/Contact'
+
 import Research from './pages/Research'
 import Witness from './pages/Witness'
+import Letter from './pages/Letter'
 
 export default function App() {
   return (
@@ -20,10 +22,12 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/mysticism" element={<Mysticism />} />
           <Route path="/dream-girl" element={<DreamGirl />} />
+          <Route path="/research" element={<Research />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/research" element={<Research />} />
+
           <Route path="/witness" element={<Witness />} />
+          <Route path="/letter" element={<Letter />} />
         </Routes>
       </main>
       <Footer />

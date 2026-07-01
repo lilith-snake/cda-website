@@ -332,6 +332,22 @@
   opacity: 0.5;
 }
 
+.team-avatar-mystery {
+  background: var(--color-bg);
+  border-color: var(--color-text-light);
+  opacity: 0.7;
+}
+
+.team-avatar-more {
+  border-style: dashed;
+  opacity: 0.35;
+}
+
+.team-avatar-mystery span,
+.team-avatar-more span {
+  color: var(--color-text-light);
+}
+
 .team-card h3 {
   font-family: var(--font-serif);
   font-size: 1.1rem;

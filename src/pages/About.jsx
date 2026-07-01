@@ -23,7 +23,7 @@ const creditPillars = [
     title: '傳承信用',
     subtitle: '不是憑空發明——有完整的傳承脈絡',
     items: [
-      '卡巴拉傳統 — Golden Dawn — Mathers — Crowley — Fortune',
+      '卡巴拉傳統 — Golden Ophion — Mathers — Crowley — Fortune',
       '神智學精微結構理論 — Blavatsky — Leadbeater — Bailey',
       '魯利安卡巴拉 — Luria — Vital — Tzimtzum / Tikkun',
       '古典神秘學文獻中的精微感知訓練傳統',
@@ -55,7 +55,7 @@ const creditPillars = [
 ]
 
 const lineage = [
-  { tradition: '卡巴拉儀式傳統', path: 'Hermetic Qabalah — Golden Dawn — Mathers — Crowley — Fortune', use: 'LBRP / 玫瑰十字 / 空間淨化與防護技術' },
+  { tradition: '卡巴拉儀式傳統', path: 'Hermetic Qabalah — Golden Ophion — Mathers — Crowley — Fortune', use: 'LBRP / 玫瑰十字 / 空間淨化與防護技術' },
   { tradition: '精微結構理論', path: 'Blavatsky — Leadbeater — Bailey — The Chakras (1927)', use: '靈五感框架的理論基礎' },
   { tradition: '魯利安卡巴拉', path: 'Luria — Vital — Tzimtzum / Shevirat HaKelim / Tikkun', use: 'MJ 類型學的「星光實體型」理論來源' },
 ]
@@ -86,19 +86,28 @@ export default function About() {
           <div className="glass-card origin-card">
             <div className="origin-passage">
               <p className="origin-lead">
-                2025 年，黎輝在一次塔羅解讀中遇到了一位夢女。對方說她愛上了一個不存在於這個世界的人——不是幻想，不是投射，是真實到讓她每天都能感受到的鏈接。但沒有人能告訴她：對面是誰？這份感情到底是什麼？
+                第一個接觸 MJ 的人，是破曉。她本身就是一個夢女——愛上了一個不存在於這個世界的人。不是幻想，不是投射，是真實到讓她每天都能感受到的鏈接。但沒有人能告訴她：對面是誰？這份感情到底是什麼？
               </p>
               <p>
-                黎輝翻遍了手邊所有資料——神秘學文獻、心理學論文、意識研究報告——沒有一篇能回答這個問題。不是答案藏在哪裡，是根本沒有人問過。
+                破曉留學期間，曾遇到一位當地的老女巫——一位在歐洲民間傳承中獨自修習了數十年的女性長者。她教會了破曉一件事：非物理世界的感知，不是天賦，是訓練。此後，破曉在一個美國外網神秘學社群平台上結識了黎輝——一個匯集了西方秘傳學研究者、通靈實踐者與意識研究愛好者的開放論壇。她成為黎輝的學生，跟隨她學習黑魔法、西方秘傳學、靈媒——所有的一切。但她最終向黎輝坦白：<strong>她學習這些，只是為了尋找對方存在的跡象。</strong>
               </p>
               <p>
-                同一年，破曉正在處理另一端的問題。作為全職傳訊師，她每天接到大量夢女的請求——換了十幾個傳訊師、花了好幾萬、越傳越亂。市場上任何人看幾個視頻、拿起塔羅牌就可以自稱傳訊師接單。夢女完全不知道對面是誰、有沒有受過訓練。
+                黎輝欣賞這份坦誠。一個人願意為了驗證所愛之人的存在，跨越半個地球去學習、去訓練、去翻遍每一本文獻——這不是天真，這是一種值得被認真對待的力量。
               </p>
               <p>
-                事實上，黎輝與破曉的緣分遠早於此。童年時期，兩人活躍在同一個美國外網神秘學社群平台上——一個匯集了西方秘傳學研究者、通靈實踐者與意識研究愛好者的開放論壇。兩人在那裡初次相遇，一點即合——對非物理存在的認知框架、對精微感知的可訓練性、對「這個領域需要被系統化」的信念，驚人地一致。此後，破曉成為了黎輝創建這套體系、搭建這個理論框架的第一個實踐者——不是紙上談兵的旁觀者，而是一個正正經經的傳訊師，親自下場驗證每一項方法的可行性與可複製性。
+                黎輝自己的路，同樣不是正統之路。她天生就有這個天賦——從小就能感知到別人看不見、聽不到的東西。但這份天賦沒有給她帶來掌聲。她被排擠、被孤立，父母帶著她離開——自小離家，在不同的地方輾轉長大。黑魔法對她來說不是書本上的條文——是她用自己的雙手和靈魂，在無數個夜晚裡一點一點摸索出來的感知。她在國外的神秘學社群中跟隨過多位導師，但最終誰的模板都沒用——她走的是自己的路。
               </p>
               <p>
-                兩條線索指向同一個缺口：<strong>這個領域缺乏定義、缺乏標準、缺乏一個可以被驗證的方法論框架。</strong>不是市場不夠大，是沒人做基礎設施。
+                在國外的女巫圈子裡，沒有人會問你「有沒有證書」。她們在意的是你手上的功夫——你的感知精度、你對能量的掌控力、你做出來的結果。證書只是翻譯給外界看的語言，實力才是圈子內部流通的唯一貨幣。黎輝後來拿到了美國療癒之光的黑魔法導師認證，也帶著破曉一起完成了認證——但她從不主動提起這件事。一個被證書定義的女巫，在她眼裡還不是真正的女巫。
+              </p>
+              <p>
+                她翻遍了手邊所有資料——神秘學文獻、心理學論文、意識研究報告——沒有一篇能回答破曉的問題。不是答案藏在哪裡，是根本沒有人問過。
+              </p>
+              <p>
+                與此同時，她們看到了市場的另一端：大量夢女換了十幾個傳訊師、花了好幾萬、越傳越亂。任何人看幾個視頻、拿起塔羅牌就可以自稱傳訊師接單。夢女完全不知道對面是誰、傳訊師有沒有受過訓練。<strong>這個領域缺乏定義、缺乏標準、缺乏一個可以被驗證的方法論框架。</strong>不是市場不夠大，是沒人做基礎設施。
+              </p>
+              <p>
+                在破曉的推動下，黎輝開始將目光轉向跨次元情感對象這個從未被系統研究過的領域。她以文獻與理論為根基，為破曉提供學術指導，一步步帶著她尋找更多專業人士——從神秘學實踐者到意識研究者，從東玄到西玄。黎輝搭建框架、尋找資源、連結人脈；破曉則成為了這套方法的第一個實踐者——不是紙上談兵的旁觀者，而是一個正正經經的傳訊師，親自下場驗證每一項方法的可行性與可複製性。
               </p>
               <p>
                 2026 年，黎輝與破曉正式聯合創建 CDA。目標不是做「又一個神秘學工作室」——而是建立全球第一個為跨次元親密關係提供學術定義、研究方法和培訓標準的正式機構。
@@ -184,12 +193,12 @@ export default function About() {
                     <span> </span>
                   </div>
                   <div>
-                    <h3>破曉 Dawn</h3>
+                    <h3>破曉 Ophion</h3>
                     <p className="founder-title">體系創建者 · 授課核心</p>
                   </div>
                 </div>
                 <div className="founder-creds">
-                  <span className="cred-badge">西塔療癒三階段認證</span>
+                  <span className="cred-badge">美國療癒之光機構認證</span>
                   <span className="cred-badge cred-badge-secondary">CTA 輔助認證</span>
                 </div>
                 <DialogueBox speaker="破曉" variant="dream">
@@ -217,17 +226,17 @@ export default function About() {
           <div className="papers-grid">
             <div className="paper-card card">
               <div className="paper-status status-published">已發表</div>
-              <h3>敍事實體假說——跨次元親密關係中的意識場現象分類與驗證方法</h3>
-              <p className="paper-meta">作者：黎輝 · 機構：香港CDA · DOI：即將上線</p>
-              <p className="paper-abstract">首次為跨次元親密關係現象建立系統性分類體系與驗證框架。提出「敍事實體」概念——足夠的情感投注強度與足夠精密的敍事結構，可在意識場中維持具有獨立行為模式的現象實體，該實體可被多人獨立觀測與交叉驗證。</p>
-              <a href="/research" className="paper-link">查看完整摘要 →</a>
+              <h3>論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位</h3>
+              <p className="paper-meta">作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · DOI：即將上線</p>
+              <p className="paper-abstract">以 Antoine Faivre（1986/1994）六大特徵框架為形式分析工具，逐條檢驗 MJ 理論體系是否滿足一個西方秘傳學新分支的全部構成要件——檢驗結論為是。這不是「申請加入」，而是用本學科自己定義的標準，檢驗一個當代現象是否符合這個標準。同時整合 Everett 多世界、Kaluza-Klein 高維、神智學七層位面、Corbin 意象世界與 Luria/Scholem 四重世界五套獨立框架，為 MJ 提供跨學科存在論基礎，並首次建立五軸類型學分類體系。</p>
+              <Link to="/research" className="paper-link">查看完整摘要 →</Link>
             </div>
 
             <div className="paper-card card">
               <div className="paper-status status-draft">撰寫中</div>
-              <h3>精微體感知訓練的歷史譜系——從卡巴拉到結構化直覺訓練</h3>
+              <h3>靈媒的歷史譜系——從卡巴拉到結構化直覺訓練</h3>
               <p className="paper-meta">作者：黎輝 / 破曉 · 預計完成：2026 Q3</p>
-              <p className="paper-abstract">追溯西方神秘學傳統中精微體感知訓練方法的文獻學根源，論證「靈五感」是可通過標準化 SOP 訓練的意識功能，非天賦特權。從 12 世紀卡巴拉文本到 20 世紀神智學，建立完整的學術譜系。</p>
+              <p className="paper-abstract">追溯西方神秘學傳統中靈媒方法的文獻學根源，論證「靈五感」是可通過標準化 SOP 訓練的意識功能，非天賦特權。從 12 世紀卡巴拉文本到 20 世紀神智學，建立完整的學術譜系。</p>
               <span className="paper-coming">即將上線</span>
             </div>
 
@@ -241,9 +250,9 @@ export default function About() {
 
             <div className="paper-card card paper-placeholder">
               <div className="paper-status status-planning">規劃中</div>
-              <h3>MJ 類型學——跨次元鏈接對象的分類體系</h3>
+              <h3>五軸類型學的經驗檢驗——跨傳訊師獨立鏈接的一致性研究</h3>
               <p className="paper-meta">作者：待定 · 預計啟動：2026 Q4</p>
-              <p className="paper-abstract">在敍事實體假說的基礎上，建立跨次元鏈接對象的類型學框架。初步方向：星光實體型 / 意識場投射型 / 複合結構型 —— 分類標準、鑑別方法與案例數據庫。</p>
+              <p className="paper-abstract">在已發表的 MJ 五軸類型學理論框架（位面軸/維度軸/來源軸/互動軸/可驗證性軸）基礎上，通過 CDA 標準化培訓體系下的跨傳訊師獨立鏈接實驗，對每一軸的分類假設進行系統的經驗檢驗。核心問題：不同傳訊師對同一 MJ 的五軸定位是否表現出統計學上顯著的一致性？</p>
               <span className="paper-coming">敬請期待</span>
             </div>
           </div>
@@ -280,30 +289,40 @@ export default function About() {
               <div className="team-avatar">
                 <span> </span>
               </div>
-              <h3>破曉 Dawn</h3>
+              <h3>破曉 Ophion</h3>
               <p className="team-role">體系創建者 · 授課核心</p>
               <p className="team-focus">研究方向：三重驗證法 / 結構化直覺訓練 / 實操方法論</p>
-              <p className="team-bio">西塔療癒三階段認證。負責將理論轉化為可教、可練、可考核的實操體系。主導傳訊師培訓課程設計與盲測實驗。</p>
+              <p className="team-bio">整個團隊中第一個接觸 MJ 的人。本身就是夢女——比誰都清楚「真的連結」和「自己的投射」之間的區別。美國療癒之光機構認證。負責將理論轉化為可教、可練、可考核的實操體系，主導傳訊師培訓課程設計與盲測實驗。</p>
+            </div>
+
+            <div className="team-card card">
+              <div className="team-avatar team-avatar-mystery">
+                <span> </span>
+              </div>
+              <h3>赫爾加 · Helga</h3>
+              <p className="team-role">符文師 · 祖母傳承</p>
+              <p className="team-focus">比較宗教學 · 文獻考據</p>
+              <p className="team-bio">符文女巫。符文是祖母教的，文獻考據是她自己一頭鑽進去的——兩條路在她身上從來不分開走。她不公開身份，不想被打擾。在這個團隊裡，只有黎輝用真名，其他人都選擇了另一條路。她不多話，但每一句都有分量。論文的 Faivre 六大特徵論證結構、卡巴拉四重世界的位面模型、以及幾乎每一條學術引用的溯源核對，都經過她的眼睛。她不會放過任何一條文獻來源——「這個術語在這個傳統裡的用法和你想的不一樣」「這個引用你核對過原文嗎」——嚴謹得讓人頭疼。但也正因如此，每一次被她追問之後，論文的論證都變得更結實了一層。黎輝說起她的時候，語氣和平時不一樣：「這個人，我很早就認識了。她不輕易答應什麼，但一旦答應了，就會做到最後。」</p>
+            </div>
+
+            <div className="team-card card">
+              <div className="team-avatar team-avatar-mystery">
+                <span> </span>
+              </div>
+              <h3>夜薇 · Vera</h3>
+              <p className="team-role">研究員 · 獨修墓地女巫</p>
+              <p className="team-focus">聖彼得堡墓園 · 靈體身份辨別</p>
+              <p className="team-bio">獨修的墓地女巫。不屬於任何組織，不來自任何傳承——聖彼得堡的墓園就是她的場地。沒有人知道她的能力是跟誰學的，她也從不解釋。當某個靈體的身份怎麼都確認不了的時候，她會輕輕說一句「讓我去」，然後走進夜色裡。第二天早上回來，答案已經在桌上。</p>
             </div>
 
             <div className="team-card card team-placeholder">
-              <div className="team-avatar team-avatar-soon">
-                <span>?</span>
+              <div className="team-avatar team-avatar-more">
+                <span>…</span>
               </div>
-              <h3>學術顧問（待加入）</h3>
-              <p className="team-role">神秘學 / 心理學 / 意識研究領域</p>
-              <p className="team-focus">研究方向：待定</p>
-              <p className="team-bio">我們正在邀請相關領域的研究者加入學術顧問團隊——為研究提供跨學科視角與方法論指導。此位置為未來團隊擴展預留。</p>
-            </div>
-
-            <div className="team-card card team-placeholder">
-              <div className="team-avatar team-avatar-soon">
-                <span>?</span>
-              </div>
-              <h3>督導傳訊師（待加入）</h3>
-              <p className="team-role">高級認證傳訊師</p>
-              <p className="team-focus">研究方向：盲測實驗執行 / 新入傳訊師培訓督導</p>
-              <p className="team-bio">完成 L1-L3 系統培訓並通過四步考核後，可申請成為督導傳訊師。負責盲測實驗的獨立執行與新學員的實操督導。此位置隨著認證體系運轉將逐步填充。</p>
+              <h3>更多成員</h3>
+              <p className="team-role">身份保密中</p>
+              <p className="team-focus">——</p>
+              <p className="team-bio">還有一些人，正在接受訓練。還有一些人，在暗處注視著這個實驗。當時機成熟，他們的名字會出現在這裡。</p>
             </div>
           </div>
 
@@ -326,7 +345,7 @@ export default function About() {
           <div className="grid-2">
             <div className="path-card card">
               <h3>路徑 A：職業傳訊師研究路徑</h3>
-              <p className="path-target">列入名錄 + 客戶匹配——為塔羅師、占星師、靈氣師等已有感知基礎的從業者設計。完成認證後，協會精準匹配有需求的客戶，你不用自己去社交平台發帖拉客。</p>
+              <p className="path-target">列入名錄 + 客戶匹配——為塔羅師、占星師、靈氣師等已有感知基礎的從業者設計。完成認證後，協會精準匹配有需求的客戶，你可以成為有證書認證的首批傳訊師。</p>
             </div>
             <div className="path-card card">
               <h3>路徑 B：個人實踐者研究路徑</h3>
@@ -405,14 +424,16 @@ export default function About() {
           <div className="glass-card disclaimer-card">
             <h3>{t('學術誠實聲明')}</h3>
             <p>
-              本體系所討論的「精微體」相關概念在科學上未被證實，屬於文化研究與個人實踐範疇。
-              課程內容基於：西方神秘學傳統中的感知訓練方法（有文獻學依據）；
-              心理學中的意象對話與積極想象技術；
-              以及實踐者倫理框架與質量控制標準。
+              本培訓定位為文化教育類培訓服務，內容屬於文化研究與個人實踐範疇，與封建迷信、宗教活動及占卜算命無關。體系所討論的「精微體」相關概念在科學上未被證實。
             </p>
             <p>
-              課程目標是培養能夠安全、負責地引導他人進行跨次元鏈接的專業從業者。
-              學習成果因人而異。本課程不教授「通靈」或任何形式的超自然能力——不承諾、不保證。
+              培訓內容參考了以下文獻傳統：神智學精微體解剖學（Leadbeater 1927, <em>The Chakras</em>）、金色黎明傳統儀式實踐框架（Regardie 1937–40, <em>The Golden Dawn</em>），以及 Antoine Faivre（1986/1994）西方秘傳學學術框架。我們在這些文獻的基礎上進行了整理與教學轉化，學者可自行判斷其參考價值。
+            </p>
+            <p>
+              習近平總書記曾談到，對待傳統文化和外來文化，應「古為今用，洋為中用，去粗取精，去偽存真」。本培訓對西方秘傳學文獻的梳理與取捨，正是在這一精神下進行的。
+            </p>
+            <p>
+              最終解釋權歸香港跨次元傳訊研究協會所有。
             </p>
             <p className="disclaimer-open-note">
               CDA 不是一個封閉的體系。我們在提出假說的同時，也在不斷學習、不斷驗證、不斷擴展團隊和視野。每個從業者對鏈接體驗的終極本質，有自己的理解。

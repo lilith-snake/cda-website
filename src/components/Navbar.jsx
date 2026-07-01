@@ -7,15 +7,14 @@ import './Navbar.css'
 const navItems = [
   { path: '/', label: '首頁' },
   { path: '/about', label: '關於' },
-  { path: '/research', label: '研究' },
-  { path: '/dream-girl', label: '傳訊師名錄' },
-  { path: '/contact', label: '聯繫' },
-]
-
-const staticLinks = [
   { href: '/cda-website/our-story.html', label: '我們的故事' },
   { href: '/cda-website/zishu.html', label: '破曉自述' },
+  { path: '/letter', label: '給夢女的話' },
+  { path: '/research', label: '研究' },
   { href: '/cda-website/paper.html', label: '研究論文' },
+  { path: '/courses', label: '培訓驗證' },
+  { path: '/dream-girl', label: '傳訊師名錄' },
+  { path: '/contact', label: '聯繫' },
 ]
 
 export default function Navbar() {
@@ -48,29 +47,30 @@ export default function Navbar() {
         </div>
 
         <div className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-          {navItems.map(item => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === '/'}
-              className={({ isActive }) =>
-                `nav-link ${isActive ? 'active' : ''}`
-              }
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className="nav-label">{t(item.label)}</span>
-            </NavLink>
-          ))}
-          {staticLinks.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className="nav-label">{t(link.label)}</span>
-            </a>
-          ))}
+          {navItems.map(item =>
+            item.path ? (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === '/'}
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="nav-label">{t(item.label)}</span>
+              </NavLink>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="nav-label">{t(item.label)}</span>
+              </a>
+            )
+          )}
         </div>
       </div>
     </nav>
