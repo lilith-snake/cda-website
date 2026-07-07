@@ -7,8 +7,8 @@ import './Navbar.css'
 const navItems = [
   { path: '/', label: '首頁' },
   { path: '/about', label: '關於' },
-  { href: '/our-story.html', label: '我們的故事' },
-  { href: '/zishu.html', label: '破曉自述' },
+  { href: '/cda-website/our-story.html', label: '我們的故事' },
+  { href: '/cda-website/zishu.html', label: '破曉自述' },
   { path: '/letter', label: '給夢女的話' },
   { path: '/research', label: '研究' },
   { href: 'https://lilith-snake.github.io/cda-website/paper.html', label: '研究論文' },
