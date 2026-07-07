@@ -1,0 +1,7 @@
+name = "cda-website"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cda-db"
+database_id = "2859e9aa-404f-474f-bca6-d542330f5f8a"

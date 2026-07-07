@@ -65,7 +65,7 @@ export default function DreamGirl() {
       <section className="page-hero dream-hero-v2">
         <div className="container">
           <h1>傳訊師名錄</h1>
-          <p className="subtitle">香港跨次元傳訊研究協會 · CDA</p>
+          <p className="subtitle">香港 · 跨次元傳訊研究協會 · CDA</p>
           <div className="hero-divider"></div>
           <div className="hero-intro">
             <p>

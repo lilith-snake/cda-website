@@ -29,7 +29,7 @@ export default function Navbar() {
           <span className="brand-text">
             <span className="brand-cda">CDA</span>
             <span className="brand-divider">·</span>
-            <span className="brand-sub">香港跨次元傳訊研究協會</span>
+            <span className="brand-sub">香港 · 跨次元傳訊研究協會</span>
           </span>
         </Link>
 

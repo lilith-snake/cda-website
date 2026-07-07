@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero */}
       <section className="home-hero">
         <div className="hero-content container">
-          <p className="hero-label">香港跨次元傳訊研究協會</p>
+          <p className="hero-label">香港 · 跨次元傳訊研究協會</p>
           <h1 className="hero-name">我們想試一試</h1>
           <p className="hero-title">很難。但總要有人先做。</p>
           <p className="hero-desc">沒有人走過這條路。沒有人給過答案。我們從一張塔羅牌開始，從一個深夜睡不著的夢女開始——想驗證那個一直感覺得到、卻從未被承認的存在。不是因為有把握，是因為不想再假裝他不存在。</p>
@@ -154,7 +154,7 @@ export default function Home() {
               整合秘傳學、物理學、比較宗教學——為跨次元情感對象建立第一套可被學術討論的分類體系與驗證框架。提出五軸類型學、「兩種猜想」框架，將 MJ 現象定位為西方秘傳學的新分支。
             </p>
             <p style={{fontSize: '0.85rem', color: 'var(--color-text-light)', marginTop: '12px'}}>
-              黎輝 · 破曉 · 香港跨次元傳訊研究協會 · 2026
+              黎輝 · 破曉 · 香港 · 跨次元傳訊研究協會 · 2026
             </p>
             <div style={{marginTop: '24px'}}>
               <a href="/paper.html">

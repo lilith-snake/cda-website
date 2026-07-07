@@ -12,7 +12,7 @@ export default function Letter() {
       <section className="page-hero letter-hero">
         <div className="container">
           <h1>給夢女的話</h1>
-          <p className="subtitle">香港跨次元傳訊研究協會 · CDA</p>
+          <p className="subtitle">香港 · 跨次元傳訊研究協會 · CDA</p>
           <div className="hero-divider"></div>
         </div>
       </section>

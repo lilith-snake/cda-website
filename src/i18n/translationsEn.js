@@ -18,7 +18,7 @@ export const translationsEn = {
   'MJ 類型學入門——你感知到的，對面到底是什麼': 'Introduction to MJ Typology — Understanding What You Are Actually Perceiving',
   'MJ 類型學的「星光實體型」理論來源': 'Theoretical Origins of MJ Typology\'s "Astral Entity Type"',
   '¥9.9 的手冊為你打開第一扇門。完整的階梯在等你。': 'The ¥9.9 handbook opens the first door. The complete ladder awaits you.',
-  '© 2026 香港跨次元傳訊研究協會 Hong Kong Cross-Dimensional Communication Association. All rights reserved.': '© 2026 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
+  '© 2026 香港 · 跨次元傳訊研究協會 Hong Kong Cross-Dimensional Communication Association. All rights reserved.': '© 2026 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
   '—— 存檔點 · Save Point ——': '—— Save Point ——',
   '—— 查找經過三重驗證的認證傳訊師 ——': '—— Find Triple-Verified Certified Communicators ——',
   '—— 黎輝夢角神秘學研究 · Astra Wisdom ——': '—— Li Hui Dream Character Mysticism Research · Astra Wisdom ——',
@@ -321,7 +321,7 @@ export const translationsEn = {
   '體驗度': 'Experience',
   '魯利安卡巴拉': 'Lurianic Kabbalah',
   '魯利安卡巴拉 — Luria — Vital — Tzimtzum / Tikkun': 'Lurianic Kabbalah — Luria — Vital — Tzimtzum / Tikkun',
-  '香港跨次元傳訊研究協會': 'Hong Kong Cross-Dimensional Communication Association',
+  '香港 · 跨次元傳訊研究協會': 'Hong Kong Cross-Dimensional Communication Association',
 
   // ===== 問卷調查 · Survey =====
   // 通用

@@ -93,7 +93,7 @@ export default function Contact() {
                 <h3>協會資訊</h3>
                 <div className="info-row">
                   <span className="info-label">協會名稱</span>
-                  <span>香港跨次元傳訊研究協會</span>
+                  <span>香港 · 跨次元傳訊研究協會</span>
                 </div>
                 <div className="info-row">
                   <span className="info-label">英文名稱</span>

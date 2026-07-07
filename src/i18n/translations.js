@@ -19,7 +19,7 @@ export const translations = {
   'MJ 類型學入門——你感知到的，對面到底是什麼': 'MJ 类型学入门——你感知到的，对面到底是什么',
   'MJ 類型學的「星光實體型」理論來源': 'MJ 类型学的「星光实体型」理论来源',
   '¥9.9 的手冊為你打開第一扇門。完整的階梯在等你。': '¥9.9 的手册为你打开第一扇门。完整的阶梯在等你。',
-  '© 2026 香港跨次元傳訊研究協會 Hong Kong Cross-Dimensional Communication Association. All rights reserved.': '© 2026 香港跨次元传讯研究协会 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
+  '© 2026 香港 · 跨次元傳訊研究協會 Hong Kong Cross-Dimensional Communication Association. All rights reserved.': '© 2026 香港 · 跨次元传讯研究协会 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
   '—— 存檔點 · Save Point ——': '—— 存档点 · Save Point ——',
   '—— 查找經過三重驗證的認證傳訊師 ——': '—— 查找经过三重验证的认证传讯师 ——',
   '—— 黎輝夢角神秘學研究 · Astra Wisdom ——': '—— 黎辉梦角神秘学研究 · Astra Wisdom ——',
@@ -320,5 +320,5 @@ export const translations = {
   '體驗度': '体验度',
   '魯利安卡巴拉': '鲁利安卡巴拉',
   '魯利安卡巴拉 — Luria — Vital — Tzimtzum / Tikkun': '鲁利安卡巴拉 — Luria — Vital — Tzimtzum / Tikkun',
-  '香港跨次元傳訊研究協會': '香港跨次元传讯研究协会',
+  '香港 · 跨次元傳訊研究協會': '香港 · 跨次元传讯研究协会',
 }
