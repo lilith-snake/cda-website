@@ -157,7 +157,6 @@ export default function Home() {
               黎輝 · 破曉 · 香港 · 跨次元傳訊研究協會 · 2026
             </p>
           </div>
-          </div>
         </div>
       </section>
 
