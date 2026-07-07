@@ -156,11 +156,7 @@ export default function Home() {
             <p style={{fontSize: '0.85rem', color: 'var(--color-text-light)', marginTop: '12px'}}>
               黎輝 · 破曉 · 香港 · 跨次元傳訊研究協會 · 2026
             </p>
-            <div style={{marginTop: '24px'}}>
-              <a href="/paper.html">
-                <ChoiceButton variant="primary">閱讀完整論文</ChoiceButton>
-              </a>
-            </div>
+          </div>
           </div>
         </div>
       </section>
