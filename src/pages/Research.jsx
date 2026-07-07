@@ -28,21 +28,6 @@ export default function Research() {
               </div>
             </div>
 
-            <div className="paper-download" style={{textAlign: 'center', marginBottom: '2rem'}}>
-              <a href="/CDA论文.docx" download style={{
-                display: 'inline-block', padding: '12px 32px',
-                background: 'linear-gradient(135deg, #C9A96E, #B8954E)',
-                color: '#fff', borderRadius: '6px', textDecoration: 'none',
-                fontWeight: '600', fontSize: '1rem', letterSpacing: '0.05em',
-                transition: 'all 0.3s ease'
-              }}>
-                📄 下載完整論文 (DOCX)
-              </a>
-              <p style={{marginTop: '0.5rem', color: '#9B9B9B', fontSize: '0.85rem'}}>
-                亦可在線閱讀下方 HTML 版本
-              </p>
-            </div>
-
             <div className="paper-abstract">
               <h3>摘要</h3>
               <p>
