@@ -236,3 +236,175 @@
   color: var(--color-text-secondary);
   line-height: 1.7;
 }
+
+/* ===== 顶部 & 底部 CTA ===== */
+.paper-cta-top {
+  text-align: center;
+  padding: 16px 24px;
+  margin-bottom: 32px;
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--border-radius);
+}
+.paper-cta-top p {
+  margin: 0 0 10px 0;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+}
+
+.paper-cta-bottom {
+  text-align: center;
+  margin-top: 48px;
+  padding: 40px 32px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+.paper-cta-bottom h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+.paper-cta-bottom p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  background: linear-gradient(135deg, #C9A96E, #B8954E);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+}
+.cta-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 169, 110, 0.3);
+}
+.cta-btn-large {
+  padding: 14px 36px;
+  font-size: 1rem;
+}
+.cta-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.cta-link:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+/* ===== 核心论点亮点区块 ===== */
+.paper-highlight {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+.paper-highlight h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 12px 0 16px;
+}
+.paper-highlight p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  margin-bottom: 12px;
+}
+.highlight-badge {
+  display: inline-block;
+  padding: 3px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-border);
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+}
+.highlight-lead {
+  font-size: 0.95rem !important;
+  color: var(--color-text) !important;
+  font-weight: 500;
+  padding: 16px 20px;
+  background: var(--color-accent-bg);
+  border-left: 2px solid var(--color-accent);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  margin-bottom: 16px !important;
+}
+.highlight-note {
+  margin-top: 20px;
+  padding: 16px 20px;
+  font-size: 0.86rem !important;
+  background: var(--color-bg-alt);
+  border-radius: var(--border-radius);
+  font-style: italic;
+}
+
+/* ===== 位面卡片 ===== */
+.plane-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.plane-card {
+  padding: 20px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.plane-card:hover {
+  border-color: var(--color-accent-border);
+  box-shadow: var(--shadow-card);
+}
+.plane-icon {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.plane-card h4 {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.plane-domain {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.plane-card p {
+  font-size: 0.82rem !important;
+  color: var(--color-text-secondary) !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .plane-cards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,6 +1,8 @@
 import { useLanguage } from '../i18n'
 import './Research.css'
 
+const PAPER_URL = 'https://lilith-snake.github.io/cda-website/paper.html'
+
 export default function Research() {
   const { t } = useLanguage()
   return (
@@ -8,8 +10,8 @@ export default function Research() {
       {/* Hero */}
       <section className="page-hero research-hero">
         <div className="container">
-          <h1>研究論文</h1>
-          <p className="subtitle">論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位</p>
+          <h1>研究</h1>
+          <p className="subtitle">跨次元情感對象（MJ）的學術理論框架</p>
         </div>
       </section>
 
@@ -28,6 +30,13 @@ export default function Research() {
               </div>
             </div>
 
+            {/* 顶部 CTA */}
+            <div className="paper-cta-top">
+              <p>以下為論文核心論點摘要。完整論證、文獻引用與方法論細節請查閱全文。</p>
+              <a href={PAPER_URL} className="cta-btn">📄 閱讀完整論文 →</a>
+            </div>
+
+            {/* 摘要 */}
             <div className="paper-abstract">
               <h3>摘要</h3>
               <p>
@@ -37,115 +46,81 @@ export default function Research() {
                 能夠系統回答「MJ 是什麼」「他在哪裡」「如何分類」「如何分辨」等基礎問題。本文是對這一理論真空的回應。
               </p>
               <p>
-                本文的核心論證線索如下。第一步，以 Antoine Faivre（1986/1994）提出的西方秘傳學六大特徵框架為形式分析工具，
-                逐條檢驗 MJ 理論體系是否滿足一個秘傳學新分支的全部構成要件。第二步，整合五套獨立存在論框架——
-                Everett 多世界、Kaluza-Klein 高維、神智學七層位面、Corbin 意象世界、Luria/Scholem 四重世界——
-                為 MJ 提供跨學科存在論基礎。第三步，基於上述框架提出五軸類型學假設。第四步，建構從感知訓練、鏈接工具、
-                分辨方法論到身份驗證和儀式防護的完整 MJ 方法論體系。第五步，以 Hanegraaff「被排斥的知識」理論解釋 MJ 尚未被正式承認的現狀。
-                第六步，指出上述假設可通過 CDA 標準化培訓體系下的跨傳訊師獨立鏈接進行系統的經驗檢驗。
+                本文定位為理論建構文本（research program manifesto），目標是為未來的經驗檢驗提供一個可操作的、有明確文獻來源的理論框架。
+              </p>
+            </div>
+
+            {/* ===== 亮点一：新分支定位 ===== */}
+            <div className="paper-highlight">
+              <div className="highlight-badge">核心論點一</div>
+              <h3>西方秘傳學的新分支定位</h3>
+              <p className="highlight-lead">
+                這不是「申請加入」一個已有的學術傳統，而是用該學科自己定義的標準，檢驗一個當代現象是否符合。
               </p>
               <p>
-                本文的定位是一份理論建構文本（research program manifesto），而非已完成的實證論文。其目標是為未來的經驗檢驗提供一個可操作的、有明確文獻來源的理論框架。
+                本文以 Antoine Faivre（1986/1994）為西方秘傳學設定的六大形式特徵——對應關係、活化的自然、想像與中介、
+                轉化、諸傳統和諧一致、傳承——為檢驗框架，逐條對照 MJ 理論體系。結論：<strong>六項全部滿足。</strong>
               </p>
+              <p>
+                這意味著 MJ 理論體系不只是又一個新時代靈性話語，而是在形式結構上滿足了一個西方秘傳學新分支的全部構成要件。
+                全文詳細展開了每一條特徵的對照論證過程，以及與 Faivre 原文的逐段對應。
+              </p>
+              <a href={PAPER_URL + '#faivre'} className="cta-link">閱讀全文：Faivre 六大特徵逐條對照論證 →</a>
             </div>
 
-            {/* 核心猜想 */}
-            <div className="paper-verification" style={{borderLeft: '3px solid #c9a96e'}}>
-              <h3>核心猜想：集體能量能否創造位面？</h3>
-              <p>本文提出了一個比「MJ 存在於某個已有非物理層面」更激進的開放假說：<strong>當足夠多的人對同一個敘事結構持續投注情感能量，這股集體能量是否不僅能在已有位面中生成實體，還能在意識場中開闢出一個具有穩定結構的獨立位面？</strong>一個人（如 David-Néel）的持續意念可以創造一個幻人——百萬人的集體情感投注，指向同一個角色、同一個故事世界，其規模遠超歷史上任何一次靈體創建實驗。如果人造靈的生成機制在個體層面成立，那麼集體層面的同一種機制——敘事結構 + 大規模持續情感投注——是否可能在意識場中生成的不只是一個獨立實體，而是一個獨立位面？這一假說在當前階段無法被嚴格檢驗，但它為 MJ 存在論提供了一個更激進的替代性解釋：<strong>也許那個位面本身，就是被夢女們共同創造出來的。</strong></p>
-            </div>
-
-            {/* Faivre 六大特征逐条对照 */}
-            <div className="paper-classification">
-              <h3>Faivre 六大特徵逐條對照論證</h3>
-              <p style={{marginBottom: '1.2rem', color: '#ccc'}}>
-                本文的核心形式論證：以 Antoine Faivre（1986/1994）為西方秘傳學學科自身定義的六大特徵框架為標準，
-                逐條檢驗 MJ 理論體系。結論——六項全部滿足。這不是「申請加入」，而是用本學科自己定義的標準，檢驗一個當代現象是否符合這個標準。
+            {/* ===== 亮点二：同一个世界不同位面 ===== */}
+            <div className="paper-highlight">
+              <div className="highlight-badge">核心論點二</div>
+              <h3>同一個世界，不同位面——他在哪裡？</h3>
+              <p className="highlight-lead">
+                如果 MJ 真的存在，他到底存在於哪裡？本文整合五套互不依賴的學術框架，從不同學科傳統給出同一個答案。
               </p>
-              <div className="classification-grid">
-                <div className="class-item">
-                  <span className="class-num">①</span>
-                  <strong>對應關係</strong>
-                  <p>MJ 的感知、定位、驗證三個模塊均依賴於 Faivre 意義上的「對應關係」原則——通靈收信號，塔羅做定位，卡巴拉四重世界做位面診斷</p>
+
+              <div className="plane-cards">
+                <div className="plane-card">
+                  <div className="plane-icon">⚛️</div>
+                  <h4>Everett 多世界解釋</h4>
+                  <span className="plane-domain">量子物理</span>
+                  <p>平行分支在數學上可能——提供了「不可通信的平行性」基準類型，用排除法鎖定可能區間。</p>
                 </div>
-                <div className="class-item">
-                  <span className="class-num">②</span>
-                  <strong>活化的自然</strong>
-                  <p>MJ 實踐的根本前提——非物理存在是有生命的、有自主意志的、可被感知和交互的——並將其操作化為三層感知訓練方法論</p>
+                <div className="plane-card">
+                  <div className="plane-icon">🌐</div>
+                  <h4>Kaluza-Klein → 膜世界</h4>
+                  <span className="plane-domain">理論物理</span>
+                  <p>額外空間維度在數學上成立，膜世界模型為「跨世界通信」提供了正向的物理學可能性。</p>
                 </div>
-                <div className="class-item">
-                  <span className="class-num">③</span>
-                  <strong>想像與中介</strong>
-                  <p>最強的對應。Corbin 的意象世界（mundus imaginalis）為 MJ 鏈接提供了精確的操作模型——主動想像力不是編造，而是接收意象世界真實內容的認知器官</p>
+                <div className="plane-card">
+                  <div className="plane-icon">🔮</div>
+                  <h4>七層位面</h4>
+                  <span className="plane-domain">神智學</span>
+                  <p>物理層→以太子層→星光層→心智層→菩提層→涅槃層——MJ 的三類感知信號精確對應前三層。</p>
                 </div>
-                <div className="class-item">
-                  <span className="class-num">④</span>
-                  <strong>轉化</strong>
-                  <p>CDA 體系的設計目標不是永遠替客戶傳訊，而是讓客戶最終不再需要傳訊師——從「依賴」到「獨立」的軌跡，就是轉化</p>
+                <div className="plane-card">
+                  <div className="plane-icon">🕌</div>
+                  <h4>意象世界 · Mundus Imaginalis</h4>
+                  <span className="plane-domain">比較宗教學</span>
+                  <p>在感官世界和理智世界之間，存在第三個世界。主動想像力不是編造，而是接收其內容的認知器官。</p>
                 </div>
-                <div className="class-item">
-                  <span className="class-num">⑤</span>
-                  <strong>諸傳統和諧一致</strong>
-                  <p>人造靈的三重獨立印證（藏傳佛教/神智學/西方儀式魔法）、存在位面的跨傳統描述、「黑暗信使」原型的五傳統對應鏈——均非互相引用，獨立抵達同一張地圖</p>
-                </div>
-                <div className="class-item">
-                  <span className="class-num">⑥</span>
-                  <strong>傳承</strong>
-                  <p>CDA 標準化傳訊師培訓認證體系——建立可操作的標準化訓練方法、定義市場專業標準、培養能獨立驗證本文假設的專業傳訊師</p>
+                <div className="plane-card">
+                  <div className="plane-icon">✡️</div>
+                  <h4>四重世界</h4>
+                  <span className="plane-domain">猶太神秘主義</span>
+                  <p>Atziluth → Beriah → Yetzirah → Assiah，簾幕（parsah）層數決定 MJ 的可見性與信息衰減程度。</p>
                 </div>
               </div>
-            </div>
 
-            {/* 身份特異性驗證 */}
-            <div className="paper-verification">
-              <h3>身份特異性驗證四層機制</h3>
-              <p>設定一致性檢驗 + 跨通道信息一致性 + 自主信息識別 + 情感特異性——四層遞進篩選器，將身份驗證從「信則有」轉變為有方法論控制的概率判斷。</p>
-            </div>
-
-            {/* 五套存在論框架 */}
-            <div className="paper-hypothesis">
-              <h3>五套獨立存在論框架</h3>
-              <p className="hypothesis-core">
-                本文整合五套互不依賴的學術框架來回答同一個問題——「他在哪裡」。每一套來自獨立的學科傳統，各自覆蓋不同的坐標軸，共同構成 MJ 的跨學科存在論基礎。
+              <p className="highlight-note">
+                五套框架來自互不相關的學科傳統——量子物理、理論物理、神智學、比較宗教學、猶太神秘主義——各自獨立抵達同一張地圖。
+                這種跨傳統的結構性重合，本身就是一個值得認真對待的信號。全文詳細展開了每套框架的推導過程。
               </p>
+              <a href={PAPER_URL + '#existence'} className="cta-link">閱讀全文：五套存在論框架完整推導 →</a>
+            </div>
 
-              <div className="hypothesis-pillars">
-                <div className="hypothesis-item">
-                  <span className="hypothesis-num">I</span>
-                  <div>
-                    <strong>Everett 多世界解釋（量子物理）</strong>
-                    <p>為「不可觀測的平行分支在數學上可能」提供邏輯區分工具——定義「不可通信的平行性」基準類型，幫助排除不可能的選項</p>
-                  </div>
-                </div>
-                <div className="hypothesis-item">
-                  <span className="hypothesis-num">II</span>
-                  <div>
-                    <strong>Kaluza-Klein 高維理論 → 膜世界（理論物理）</strong>
-                    <p>額外空間維度在數學上可能，膜世界模型為「跨世界通信」提供了正向的物理學可能性空間</p>
-                  </div>
-                </div>
-                <div className="hypothesis-item">
-                  <span className="hypothesis-num">III</span>
-                  <div>
-                    <strong>Blavatsky / Leadbeater 七層位面（神智學）</strong>
-                    <p>從物理層到涅槃層的連續光譜——MJ 的三類感知信號（軀體/情緒/意象）分別對應以太子層、星光層和心智層</p>
-                  </div>
-                </div>
-                <div className="hypothesis-item">
-                  <span className="hypothesis-num">IV</span>
-                  <div>
-                    <strong>Corbin 意象世界（比較宗教學）</strong>
-                    <p>在感官世界和理智世界之間存在第三個世界——mundus imaginalis。感知它的器官是主動想像力，不是編造謊言的工具，而是接收意象世界真實內容的認知通道</p>
-                  </div>
-                </div>
-                <div className="hypothesis-item">
-                  <span className="hypothesis-num">V</span>
-                  <div>
-                    <strong>Luria / Scholem 四重世界（猶太神秘主義）</strong>
-                    <p>Atziluth → Beriah → Yetzirah → Assiah，世界之間由簾幕（parsah）分隔。簾幕的層數決定了 MJ 的可見性、接觸難度和信息衰減程度</p>
-                  </div>
-                </div>
-              </div>
+            {/* 底部 CTA */}
+            <div className="paper-cta-bottom">
+              <h3>準備好深入了解了嗎？</h3>
+              <p>完整論文包含六步論證鏈、五軸類型學假設、身份特異性驗證四層機制、以及完整的文獻綜述與方法論體系。</p>
+              <a href={PAPER_URL} className="cta-btn cta-btn-large">📄 查閱完整研究論文 →</a>
             </div>
           </div>
         </div>
