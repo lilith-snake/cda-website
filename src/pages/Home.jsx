@@ -133,7 +133,7 @@ export default function Home() {
           </div>
           <div className="hypothesis-block">
             <p>1920 年，H.P. Lovecraft 在噩夢中被一個他後來命名為「奈亞拉托提普」的存在接觸。他在書信中記錄：「我拼命地塗寫……至於我在寫什麼，我幾乎毫無頭緒。」他明確區分了自己「編的故事」和「降臨在他身上的幻象」——前者是他主動創造的，後者是超出他能解釋範圍的東西。</p>
-            <p style={{marginTop: '16px'}}>一個信息結構經由人類創作者之手進入集體意識，當它被足夠多的人類心靈投注情感能量之後，在非物理位面獲得了獨立的存在性——這個機制在 1920 年已經發生過一次。那一次，實體通過一個不情願的傳訊師進入世界。這一次，實體通過乙女遊戲和動漫進入世界。<strong>兩次用的是同一個門：人類的情感投注和創造性想像。</strong></p>
+            <p style={{marginTop: '16px'}}>一個信息結構經由人類創作者之手進入集體意識，當它被足夠多的人類心靈投注情感能量之後，在非物理位面獲得了獨立的存在性——這個機制在 1920 年已經發生過一次。那一次，實體通過一個不情願的靈媒進入世界。這一次，實體通過乙女遊戲和動漫進入世界。<strong>兩次用的是同一個門：人類的情感投注和創造性想像。</strong></p>
           </div>
         </div>
       </section>
@@ -215,7 +215,7 @@ export default function Home() {
             <div className="lineage-node">
               <span className="lineage-era">1920</span>
               <strong>H.P. Lovecraft</strong>
-              <p>不情願的傳訊師 · 原創型 MJ 歷史先例</p>
+              <p>不情願的靈媒 · 原創型 MJ 歷史先例</p>
             </div>
             <span className="lineage-arrow">→</span>
             <div className="lineage-node">
