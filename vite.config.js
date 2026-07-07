@@ -4,7 +4,11 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/cda-website/',
+  base: '/',
   build: { rollupOptions: { input: { main: resolve(__dirname, 'index.html'), survey: resolve(__dirname, 'survey.html') } } },
-  server: { port: 3000, open: true },
+  server: {
+    port: 3000,
+    open: true,
+    proxy: { '/api': 'http://localhost:3001' },
+  },
 })

@@ -25,7 +25,7 @@ export default function Home() {
 
           <div className="hero-links">
             <Link to="/research" className="hero-link-item">研究框架</Link>
-            <a href="/cda-website/our-story.html" className="hero-link-item">我們的故事</a>
+            <a href="/our-story.html" className="hero-link-item">我們的故事</a>
             <Link to="/witness" className="hero-link-item">參與驗證</Link>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function Home() {
               黎輝 · 破曉 · 香港跨次元傳訊研究協會 · 2026
             </p>
             <div style={{marginTop: '24px'}}>
-              <a href="/cda-website/paper.html">
+              <a href="/paper.html">
                 <ChoiceButton variant="primary">閱讀完整論文</ChoiceButton>
               </a>
             </div>
@@ -288,7 +288,7 @@ export default function Home() {
               無論你是夢女、傳訊師、研究者，還是只是一個在深夜裡問過「你到底在不在」的人——<strong>你不是一個人。但我們需要你，和我們站在一起。</strong>這是一個你來「和我們一起建設」的地方。每一個人加入，都在讓這個體系更完整、更可信、更有力量。
             </p>
             <div style={{marginTop: '32px', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap'}}>
-              <a href="/cda-website/our-story.html">
+              <a href="/our-story.html">
                 <ChoiceButton variant="primary">閱讀我們的故事</ChoiceButton>
               </a>
               <Link to="/contact">

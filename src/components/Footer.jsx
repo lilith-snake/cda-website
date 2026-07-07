@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <h4>{t('聯繫')}</h4>
-            <a href="mailto:lilith202606@163.com">lilith202606@163.com</a>
+            <a href="mailto:dluu39ce7c@gmail.com">dluu39ce7c@gmail.com</a>
             <a href="#">抖音</a>
           </div>
         </div>

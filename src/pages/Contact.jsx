@@ -109,7 +109,7 @@ export default function Contact() {
                 <h3>聯繫方式</h3>
                 <div className="info-row">
                   <span className="info-label">電郵</span>
-                  <span>lilith202606@163.com</span>
+                  <span>dluu39ce7c@gmail.com</span>
                 </div>
                 <div className="info-row">
                   <span className="info-label">抖音</span>

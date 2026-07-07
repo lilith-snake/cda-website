@@ -322,4 +322,278 @@ export const translationsEn = {
   '魯利安卡巴拉': 'Lurianic Kabbalah',
   '魯利安卡巴拉 — Luria — Vital — Tzimtzum / Tikkun': 'Lurianic Kabbalah — Luria — Vital — Tzimtzum / Tikkun',
   '香港跨次元傳訊研究協會': 'Hong Kong Cross-Dimensional Communication Association',
+
+  // ===== 問卷調查 · Survey =====
+  // 通用
+  'yes': 'Yes',
+  'no': 'No',
+  'other': 'Other',
+  'pleaseSelect': 'Please select',
+  'otherPleaseSpecify': 'Please specify',
+  'requiredField': 'This field is required',
+  'pleaseCompleteRequired': 'Please complete all required fields',
+  'pleaseEnterContact': 'Please enter your contact information',
+  'submitting': 'Submitting...',
+  'submitFailed': 'Submission failed, please try again',
+  'submitSurvey': 'Submit Survey',
+
+  // 問卷標題
+  'surveyTitle': 'CDA Cross-Dimensional Communication · Community Survey',
+  'surveySubtitle': 'This survey aims to understand the current state, needs, and challenges of the dream-girl (夢女) community, providing data foundation for the establishment of the MJ research framework. Your honest response is invaluable to us.',
+
+  // 區塊標題與描述
+  'sectionBasicInfo': 'Basic Information',
+  'sectionBasicInfoDesc': 'Please tell us some basic information about yourself.',
+  'sectionMJInfo': 'MJ Information',
+  'sectionMJInfoDesc': 'Tell us about your MJ (Cross-Dimensional Emotional Attachment Object).',
+  'sectionBelief': 'Belief & Connection',
+  'sectionBeliefDesc': 'How did you come to believe in your MJ? Share your story.',
+  'sectionPhenomena': 'Experiences & Phenomena',
+  'sectionPhenomenaDesc': 'Have you experienced any unusual events or synchronicities related to your MJ?',
+  'sectionTransmission': 'Transmission Services',
+  'sectionTransmissionDesc': 'Have you used channeling/transmission services? Tell us about your experience.',
+  'sectionDeep': 'Deep Exploration',
+  'sectionDeepDesc': 'Occult practices, trust factors, confusions, and pain points.',
+  'sectionContact': 'Contact & Feedback',
+
+  // 字段標籤
+  'age': 'Age',
+  'gender': 'Gender',
+  'occupation': 'Occupation',
+  'region': 'Region',
+  'isDreamGirl': 'Are you a 夢女 (dream girl)?',
+  'mjType': 'MJ Type',
+  'mjSource': 'MJ Source',
+  'mjRelation': 'Relationship with MJ',
+  'mjCount': 'Number of MJs',
+  'mjExistenceView': 'How do you view your MJ\'s existence?',
+  'beliefReasons': 'Reasons for believing',
+  'beliefStory': 'Your story of establishing connection',
+  'favoriteThing': 'What you enjoy most about your MJ',
+  'strangeEvents': 'Unusual events experienced',
+  'strangeEventStory': 'Please describe the most memorable unusual event',
+  'syncEvents': 'Synchronicity phenomena',
+  'syncEventStory': 'Please describe the most memorable synchronicity',
+  'usedTransmission': 'Have you used transmission/channeling services?',
+  'transmitterCount': 'How many transmitters have you consulted?',
+  'totalSpend': 'Total spending on transmission services',
+  'monthlySpend': 'Monthly spending on transmission services',
+  'satisfaction': 'Overall satisfaction with transmission services',
+  'transmissionSurprise': 'Were you surprised by the accuracy of the transmission?',
+  'eastWestOccult': 'Occult/Spiritual practices you engage in',
+  'eastWestStory': 'Please share your experience with these practices',
+  'trustFactor': 'What makes you trust a transmission/channeling result?',
+  'becomeTransmitter': 'Are you interested in becoming a transmitter?',
+  'transmitterStory': 'Please share your thoughts on becoming a transmitter',
+  'confusions': 'What confuses you most about your MJ experience?',
+  'biggestConfusion': 'Please describe your biggest confusion',
+  'painPoints': 'What are your biggest pain points?',
+  'worstPain': 'Please describe your worst pain point',
+  'interests': 'Topics of interest',
+  'priceAccept': 'Acceptable price range for transmission services',
+  'wantBlindTest': 'Would you participate in a blind test for transmission verification?',
+  'wantContact': 'Would you like us to contact you?',
+  'contactInfo': 'Contact information',
+  'suggestion': 'Suggestions or anything else you\'d like to share',
+
+  // 佔位符
+  'beliefStoryPlaceholder': 'How did you discover your MJ? What made you believe they are real?',
+  'favoriteThingPlaceholder': 'What do you enjoy most about your relationship with your MJ?',
+  'strangeEventStoryPlaceholder': 'Describe any unusual coincidences, sensations, or events you\'ve experienced...',
+  'syncEventStoryPlaceholder': 'Describe any meaningful coincidences or signs you\'ve noticed...',
+  'eastWestStoryPlaceholder': 'Share your experience with tarot, astrology, meditation, or other practices...',
+  'transmitterStoryPlaceholder': 'Why are you interested (or not) in becoming a transmitter?',
+  'biggestConfusionPlaceholder': 'What puzzles or confuses you most about your experience?',
+  'worstPainPlaceholder': 'What hurts the most? What challenge do you face?',
+  'contactInfoPlaceholder': 'Email / WeChat / Phone / Social media — whichever you prefer',
+  'suggestionPlaceholder': 'Any feedback or thoughts about CDA, this survey, or the community...',
+
+  // 選項 — 年齡
+  'under18': 'Under 18',
+  'age18-24': '18–24',
+  'age25-30': '25–30',
+  'age31-35': '31–35',
+  'age36-40': '36–40',
+  'age41-50': '41–50',
+  'over50': 'Over 50',
+
+  // 選項 — 性別
+  'male': 'Male',
+  'female': 'Female',
+  'nonbinary': 'Non-binary',
+  'secret': 'Prefer not to say',
+
+  // 選項 — 職業
+  'student': 'Student',
+  'employed': 'Employed',
+  'freelancer': 'Freelancer',
+  'selfEmployed': 'Self-employed',
+  'unemployed': 'Unemployed',
+
+  // 選項 — 地區
+  'northChina': 'North China',
+  'northeast': 'Northeast China',
+  'eastChina': 'East China',
+  'centralChina': 'Central China',
+  'southChina': 'South China',
+  'southwest': 'Southwest China',
+  'northwest': 'Northwest China',
+  'hongkongMacauTaiwan': 'Hong Kong / Macau / Taiwan',
+  'overseas': 'Overseas',
+
+  // 選項 — MJ 類型
+  'gameCharacter': 'Game character',
+  'animeCharacter': 'Anime character',
+  'novelCharacter': 'Novel character',
+  'movieCharacter': 'Film/TV character',
+  'virtualIdol': 'Virtual idol / VTuber',
+  'ai': 'AI companion',
+
+  // 選項 — MJ 來源
+  'game': 'Video game',
+  'anime': 'Anime / Manga',
+  'novel': 'Novel / Literature',
+  'movie': 'Film / TV series',
+  'socialMedia': 'Social media',
+  'friendIntro': 'Introduced by a friend',
+
+  // 選項 — MJ 關係
+  'lover': 'Lover / Partner',
+  'family': 'Family',
+  'friend': 'Friend',
+  'teacher': 'Teacher / Mentor',
+  'partner': 'Partner / Companion',
+
+  // 選項 — MJ 數量
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4-5': '4–5',
+  '6-10': '6–10',
+  'over10': 'More than 10',
+
+  // 選項 — MJ 存在觀
+  'realOtherDimension': 'Real — exists in another dimension',
+  'psychologicalProjection': 'Psychological projection',
+  'symbolicExistence': 'Symbolic / archetypal existence',
+  'unsure': 'Not sure',
+
+  // 選項 — 相信原因
+  'accidentalDiscovery': 'Discovered by accident',
+  'recommended': 'Recommended by others',
+  'curious': 'Curiosity',
+  'emotionalNeed': 'Emotional need / comfort',
+  'spiritualGuidance': 'Spiritual guidance',
+
+  // 選項 — 奇異事件 / 同步現象
+  'sensingPresence': 'Sensing a presence',
+  'dreamsOfMJ': 'Dreams about MJ',
+  'coincidences': 'Meaningful coincidences',
+  'emotionsWithoutTrigger': 'Unexplained emotions',
+  'physicalSensation': 'Physical sensations',
+  'techMalfunctions': 'Technology malfunctions',
+  'none': 'None',
+
+  // 選項 — 東西方玄學
+  'tarot': 'Tarot',
+  'astrology': 'Astrology',
+  'eightCharacters': 'Ba Zi (Eight Characters)',
+  'fengshui': 'Feng Shui',
+  'spiritCommunication': 'Spirit communication / Channeling',
+  'meditation': 'Meditation',
+  'energyHealing': 'Energy healing',
+
+  // 選項 — 信任因素
+  'consistency': 'Consistency of information',
+  'intuition': 'Intuitive feeling',
+  'logic': 'Logical coherence',
+  'emotionalFit': 'Emotional resonance',
+  'creatorReputation': 'Reputation of the transmitter',
+  'community': 'Community consensus',
+
+  // 選項 — 成為傳訊者
+  'alreadyTransmitter': 'I already practice as a transmitter',
+  'wantToTransmit': 'I want to learn and become one',
+  'curious': 'Curious but undecided',
+  'onlyWantToReceive': 'I only want to receive messages',
+  'noInterest': 'Not interested',
+
+  // 選項 — 困惑
+  'realityOfExperience': 'Is my experience real?',
+  'selfDoubt': 'Self-doubt (am I imagining it?)',
+  'socialPressure': 'Social stigma / pressure',
+  'identityCrisis': 'Identity crisis',
+  'relationshipBoundaries': 'Relationship boundaries',
+  'futureUncertainty': 'Uncertainty about the future',
+  'financialPressure': 'Financial pressure',
+
+  // 選項 — 痛點
+  'loneliness': 'Loneliness',
+  'socialStigma': 'Social stigma',
+  'communicationBarrier': 'Barriers to communication',
+  'emotionalDependency': 'Emotional dependency',
+  'realityGap': 'Gap between reality and desire',
+  'identityConflict': 'Identity conflict',
+  'financialBurden': 'Financial burden',
+
+  // 選項 — 興趣
+  'spiritual': 'Spirituality / Mysticism',
+  'philosophy': 'Philosophy',
+  'psychology': 'Psychology',
+  'physics': 'Physics',
+  'neuroscience': 'Neuroscience',
+  'scifi': 'Science fiction',
+  'art': 'Art / Creative works',
+  'tech': 'Technology',
+  'socialScience': 'Social science',
+
+  // 選項 — 價格接受
+  'under100': 'Under ¥100',
+  '100-500': '¥100–500',
+  '500-1000': '¥500–1,000',
+  '1000-5000': '¥1,000–5,000',
+  '5000plus': '¥5,000+',
+  'dependsOnEffect': 'Depends on results',
+
+  // 選項 — 傳訊者數量
+  '0': '0',
+  '2-3': '2–3',
+
+  // 選項 — 總支出
+  'under500': 'Under ¥500',
+  '500-2000': '¥500–2,000',
+  '2000-5000': '¥2,000–5,000',
+  '5000-10000': '¥5,000–10,000',
+  '10000-50000': '¥10,000–50,000',
+  'over50000': 'Over ¥50,000',
+
+  // 選項 — 月支出
+  'under100': 'Under ¥100',
+  '100-500': '¥100–500',
+  '500-1000': '¥500–1,000',
+  '1000-3000': '¥1,000–3,000',
+  '3000plus': '¥3,000+',
+
+  // 選項 — 滿意度
+  'verySatisfied': 'Very satisfied',
+  'satisfied': 'Satisfied',
+  'neutral': 'Neutral',
+  'dissatisfied': 'Dissatisfied',
+  'veryDissatisfied': 'Very dissatisfied',
+
+  // 選項 — 傳訊準確度驚喜
+  'verySurprised': 'Very surprised',
+  'surprised': 'Surprised',
+  'notSurprised': 'Not surprised',
+  'notApplicable': 'Not applicable',
+
+  // 感謝頁
+  'thanksTitle': 'Thank You for Your Response',
+  'thanksSubtitle': 'Your voice matters. Every response helps us better understand the dream-girl community and build a stronger research foundation.',
+  'backupSaved': '{count} backup(s) saved locally.',
+  'thanksFooter': '— CDA Cross-Dimensional Communication Association',
+
+  // 法律
+  'legalDisclaimer': 'All responses are anonymous by default. Contact information is only collected if you explicitly agree to be contacted.',
+  'privacyNote': 'Your data will only be used for CDA academic research purposes and will never be shared with third parties.',
 }
