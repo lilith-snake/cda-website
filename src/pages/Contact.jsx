@@ -1,17 +1,8 @@
-import { useState } from 'react'
-import DialogueBox from '../components/DialogueBox'
-import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
 import './Contact.css'
 
 export default function Contact() {
   const { t } = useLanguage()
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
 
   return (
     <div className="page-contact">
@@ -25,66 +16,41 @@ export default function Contact() {
       <section className="section">
         <div className="container">
           <div className="contact-grid">
-            {/* 聯絡表單 */}
+            {/* 发送邮件指引 */}
             <div className="contact-form-wrapper glass-card">
+              <h2>✦ 發送訊息給我們</h2>
+              <p className="form-desc">如果你想加入我們，你也想成為探尋及實踐者的一名，請聯繫我們。</p>
 
-              {!submitted ? (
-                <>
-                  <h2>✦ 發送訊息給我們</h2>
-                  <p className="form-desc">如果你想加入我們，你也想成為探尋及實踐者的一名，請聯繫我們。</p>
+              <div className="email-highlight">
+                <span className="email-label">📧 請發送電郵至</span>
+                <a href="mailto:dluu39ce7c@gmail.com" className="email-link">dluu39ce7c@gmail.com</a>
+              </div>
 
-                  <form className="contact-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label>稱呼</label>
-                      <input type="text" placeholder="你的名字" required />
-                    </div>
+              <div className="inquiry-section">
+                <h3>查詢類型</h3>
+                <p className="section-note">請在郵件主旨註明你選擇的路線：</p>
+                <ul className="inquiry-list">
+                  <li>傳訊師名錄 — 認證查詢</li>
+                  <li>傳訊服務 — 預約</li>
+                  <li>課程 — 研究路徑咨詢</li>
+                  <li>星界智慧</li>
+                  <li>研究論文 — 申請獲取</li>
+                  <li>邀請見證 — 申請參與</li>
+                  <li>其他查詢</li>
+                </ul>
+              </div>
 
-                    <div className="form-group">
-                      <label>電郵</label>
-                      <input type="email" placeholder="your@email.com" required />
-                    </div>
+              <div className="email-guide">
+                <h3>郵件中請包含以下資訊</h3>
+                <ul className="guide-list">
+                  <li><strong>稱呼</strong> — 我們該如何稱呼你</li>
+                  <li><strong>聯絡電郵</strong> — 方便我們回覆</li>
+                  <li><strong>查詢類型</strong> — 從上方列表中選擇</li>
+                  <li><strong>需求描述</strong> — 請描述你的具體需求，越詳細越好</li>
+                </ul>
+              </div>
 
-                    <div className="form-group">
-                      <label>查詢類型</label>
-                      <select required>
-                        <option value="">—— 請選擇路線 ——</option>
-                        <option>傳訊師名錄 — 認證查詢</option>
-                        <option>傳訊服務 — 預約</option>
-                        <option>課程 — 研究路徑咨詢</option>
-                        <option>星界智慧</option>
-                        <option>研究論文 — 申請獲取</option>
-                        <option>邀請見證 — 申請參與</option>
-                        <option>其他查詢</option>
-                      </select>
-                    </div>
-
-                    <div className="form-group">
-                      <label>需求描述</label>
-                      <textarea
-                        placeholder="請描述你的具體需求……"
-                        rows={4}
-                        required
-                      />
-                    </div>
-
-                    <button type="submit" className="submit-btn">
-                      <ChoiceButton variant="route" className="submit-choice">
-                        發送訊息
-                      </ChoiceButton>
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <div className="submit-success">
-                  <div className="success-icon"></div>
-                  <h2>訊息已發送！</h2>
-                  <DialogueBox speaker="CDA" variant="dream">
-                    你的訊息已成功送達。
-                    <br />
-                    我們將在 1-2 個工作日內回覆你。
-                  </DialogueBox>
-                </div>
-              )}
+              <p className="reply-note">✦ 我們收到後將在 1-2 個工作日內回覆</p>
             </div>
 
             {/* 聯繫信息 */}
