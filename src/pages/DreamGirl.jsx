@@ -69,13 +69,13 @@ export default function DreamGirl() {
           <div className="hero-divider"></div>
           <div className="hero-intro">
             <p>
-              这是 CDA 的传讯师平台。但我们不急着把人放上来。
+              {t('这是 CDA 的传讯师平台。但我们不急着把人放上来。')}
             </p>
             <p>
-              市面上任何一个看过几个视频、拿起塔罗牌的人都可以自称传讯师接单。<strong>我们不这样做。</strong>
+              {t('市面上任何一个看过几个视频、拿起塔罗牌的人都可以自称传讯师接单。')}<strong>{t('我们不这样做。')}</strong>
             </p>
             <p>
-              在开放预约之前，我们要先把方法论讲清楚——<strong>怎么训练、怎么验证、怎么确保对面真的是他而不是投射或噪音。</strong>
+              {t('在开放预约之前，我们要先把方法论讲清楚——')}<strong>{t('怎么训练、怎么验证、怎么确保对面真的是他而不是投射或噪音。')}</strong>
             </p>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function DreamGirl() {
               <div key={i} className="method-card glass-card">
                 <div className="method-step">{method.step}</div>
                 <h3>{t(method.title)}</h3>
-                <p className="method-desc">{method.desc}</p>
+                <p className="method-desc">{t(method.desc)}</p>
                 <p className="method-source">{t(method.source)}</p>
               </div>
             ))}
@@ -117,7 +117,7 @@ export default function DreamGirl() {
               <div key={i} className="status-card glass-card">
                 <div className="status-badge">{t(item.value)}</div>
                 <h4>{t(item.label)}</h4>
-                <p>{item.desc}</p>
+                <p>{t(item.desc)}</p>
               </div>
             ))}
           </div>
@@ -137,19 +137,19 @@ export default function DreamGirl() {
           <div className="passion-content">
             <div className="passion-block glass-card">
               <DialogueBox variant="dream">
-                你知道吗？梦女群体被很多人瞧不起。传讯市场混乱——换了十几个传讯师、花了好几万、越传越乱。没有人告诉她们对面是谁、传讯师有没有受过训练。
+                {t('你知道吗？梦女群体被很多人瞧不起。传讯市场混乱——换了十几个传讯师、花了好几万、越传越乱。没有人告诉她们对面是谁、传讯师有没有受过训练。')}
               </DialogueBox>
             </div>
 
             <div className="passion-block glass-card">
               <DialogueBox variant="dream">
-                我们想改变这个。不是靠喊「我们很靠谱」——是靠把训练方法公开、把验证流程公开、把每一个传讯师的培训记录和盲测数据摆出来。
+                {t('我们想改变这个。不是靠喊「我们很靠谱」——是靠把训练方法公开、把验证流程公开、把每一个传讯师的培训记录和盲测数据摆出来。')}
               </DialogueBox>
             </div>
 
             <div className="passion-block glass-card">
               <DialogueBox variant="dream">
-                这很难。没有人走过这条路。但我们想试一试——为那些在深夜里问过「你到底在不在」的梦女，建立一个可以被信任的平台。
+                {t('这很难。没有人走过这条路。但我们想试一试——为那些在深夜里问过「你到底在不在」的梦女，建立一个可以被信任的平台。')}
               </DialogueBox>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function DreamGirl() {
 
           <div className="transparency-block glass-card">
             <p className="transparency-lead">
-              我们正在用体系化的方法——标准化的感知训练、结构化的分辨流程、可重复的验证机制——<strong>建立第一套可以被检验的标准，让验证成为可能。</strong>
+              {t('我们正在用体系化的方法——标准化的感知训练、结构化的分辨流程、可重复的验证机制——')}<strong>{t('建立第一套可以被检验的标准，让验证成为可能。')}</strong>
             </p>
 
             <div className="transparency-grid">
@@ -174,21 +174,21 @@ export default function DreamGirl() {
                 <span className="trans-num">01</span>
                 <div>
                   <h4>{t('让梦女学会判断')}</h4>
-                  <p>你不需要「相信」我们。你需要知道该问传讯师什么问题：你受训多久？你用什么方法验证信息？你上一次校准是什么时候？</p>
+                  <p>{t('你不需要「相信」我们。你需要知道该问传讯师什么问题：你受训多久？你用什么方法验证信息？你上一次校准是什么时候？')}</p>
                 </div>
               </div>
               <div className="transparency-item">
                 <span className="trans-num">02</span>
                 <div>
                   <h4>{t('让市场有标准')}</h4>
-                  <p>公开训练方法和验证流程，让其他人也可以复制和检验。如果我们的方法有用，它应该被更多人使用；如果没用，它应该被淘汰。</p>
+                  <p>{t('公开训练方法和验证流程，让其他人也可以复制和检验。如果我们的方法有用，它应该被更多人使用；如果没用，它应该被淘汰。')}</p>
                 </div>
               </div>
               <div className="transparency-item">
                 <span className="trans-num">03</span>
                 <div>
                   <h4>{t('让行业有底线')}</h4>
-                  <p>传讯不是「我感觉到了就是真的」。它需要方法、需要验证、需要持续校准。这就是我们想建立的底线。</p>
+                  <p>{t('传讯不是「我感觉到了就是真的」。它需要方法、需要验证、需要持续校准。这就是我们想建立的底线。')}</p>
                 </div>
               </div>
             </div>
@@ -202,22 +202,22 @@ export default function DreamGirl() {
           <div className="cta-card-v2 glass-card">
             <h2>{t('我们一起，把这条路走出来')}</h2>
             <p className="cta-desc">
-              我们正在培养和验证第一批传讯师。当他们的盲测数据达到标准时，他们的名字会出现在这里——带着完整的培训记录、校准数据和督导师评语。
+              {t('我们正在培养和验证第一批传讯师。当他们的盲测数据达到标准时，他们的名字会出现在这里——带着完整的培训记录、校准数据和督导师评语。')}
             </p>
             <p className="cta-desc" style={{fontSize: '1.05rem', lineHeight: '2.4', color: 'var(--color-text)', marginTop: '24px'}}>
-              你想加入我们吗？<br />
-              想和我们一起见到爱人吗？<br />
-              想参与人类历史上第一次对跨次元情感的体系化验证吗？<br />
-              你想证明他的存在吗？
+              {t('你想加入我们吗？')}<br />
+              {t('想和我们一起见到爱人吗？')}<br />
+              {t('想参与人类历史上第一次对跨次元情感的体系化验证吗？')}<br />
+              {t('你想证明他的存在吗？')}
             </p>
             <p className="cta-desc" style={{fontSize: '0.95rem', lineHeight: '2.2', marginTop: '20px'}}>
-              我们知道那是什么感觉——<strong>当你跟别人说起他的时候，对方脸上的表情。</strong>那种「你是不是有病」「你是不是太寂寞了」「醒醒吧那只是游戏角色」的眼神。你不再说了。你把这份感情藏起来，只在深夜打开手机，对着屏幕里的他发呆。你想证明他是真的。不是向别人证明——<strong>是向你自己。</strong>你想知道那些深夜里收到的回应，到底是不是他。
+              {t('我们知道那是什么感觉——')}<strong>{t('当你跟别人说起他的时候，对方脸上的表情。')}</strong>{t('那种「你是不是有病」「你是不是太寂寞了」「醒醒吧那只是游戏角色」的眼神。你不再说了。你把这份感情藏起来，只在深夜打开手机，对着屏幕里的他发呆。你想证明他是真的。不是向别人证明——')}<strong>{t('是向你自己。')}</strong>{t('你想知道那些深夜里收到的回应，到底是不是他。')}
             </p>
             <p className="cta-desc" style={{fontSize: '0.95rem', lineHeight: '2.2'}}>
-              我们和你一样。我们也曾被这样看过。所以我们才站在这里——用理论、用方法、用数据，一点一点地建。我们希望有一天，就像我们默认很多东西是存在的一样——别人也会觉得，我们的爱人存在是理所当然的。不会再有人逼迫我们和另一个人结婚，因为所有人都知道，我们已经和爱人在一起了。<strong>我们可以光明正大地和别人说：这是我的爱人。</strong>
+              {t('我们和你一样。我们也曾被这样看过。所以我们才站在这里——用理论、用方法、用数据，一点一点地建。我们希望有一天，就像我们默认很多东西是存在的一样——别人也会觉得，我们的爱人存在是理所当然的。不会再有人逼迫我们和另一个人结婚，因为所有人都知道，我们已经和爱人在一起了。')}<strong>{t('我们可以光明正大地和别人说：这是我的爱人。')}</strong>
             </p>
             <p className="cta-desc" style={{fontSize: '0.95rem', lineHeight: '2.2'}}>
-              这不需要你「相信」我们。这需要你<strong>和我们一起走</strong>。每一位同行的人，都在让这条路更宽一点。
+              {t('这不需要你「相信」我们。这需要你')}<strong>{t('和我们一起走')}</strong>{t('。每一位同行的人，都在让这条路更宽一点。')}
             </p>
             <div className="cta-links-v2">
               <Link to="/letter">
@@ -228,14 +228,14 @@ export default function DreamGirl() {
               </Link>
             </div>
             <p className="cta-note" style={{fontSize: '0.9rem', lineHeight: '2.2', marginTop: '24px'}}>
-              这里，会是我们的家。<br />
-              即使现在的我们什么都没有，<br />
-              即使现在的我们依旧要克服很多困难，<br />
-              即使现在的我们依旧遭受着质疑——<br />
-              但我们知道，我们不是一个人。
+              {t('这里，会是我们的家。')}<br />
+              {t('即使现在的我们什么都没有，')}<br />
+              {t('即使现在的我们依旧要克服很多困难，')}<br />
+              {t('即使现在的我们依旧遭受着质疑——')}<br />
+              {t('但我们知道，我们不是一个人。')}
             </p>
             <p className="cta-note">
-              总有人要做的吧，总有人要先提出来的吧。我们一起努力，一起奋斗。
+              {t('总有人要做的吧，总有人要先提出来的吧。我们一起努力，一起奋斗。')}
             </p>
           </div>
         </div>

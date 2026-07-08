@@ -59,7 +59,7 @@ export default function Contact() {
                 <h3>{t('協會資訊')}</h3>
                 <div className="info-row">
                   <span className="info-label">{t('協會名稱')}</span>
-                  <span>香港 · 跨次元傳訊研究協會</span>
+                  <span>{t('香港 · 跨次元傳訊研究協會')}</span>
                 </div>
                 <div className="info-row">
                   <span className="info-label">{t('英文名稱')}</span>
@@ -79,7 +79,7 @@ export default function Contact() {
                 </div>
                 <div className="info-row">
                   <span className="info-label">{t('抖音')}</span>
-                  <span>@香港跨次元傳訊研究</span>
+                  <span>{t('@香港跨次元傳訊研究')}</span>
                 </div>
               </div>
 

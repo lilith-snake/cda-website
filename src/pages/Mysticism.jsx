@@ -58,9 +58,7 @@ export default function Mysticism() {
         <div className="container">
           <div className="mysticism-intro">
             <DialogueBox speaker={t('星界研究員')} variant="mystic">
-              星界智慧是協會的學術研究核心。我們將古典星象學、東西方神秘學傳統與現代意識研究相結合，
-              建立了一套完整的跨次元感知研究體系。這裡既是研究框架的展示，也是為每一位探索者提供
-              專業指引的地方——從星盤解讀到能量校準，從塔羅象徵解讀到星夢解析。
+              {t('星界智慧是協會的學術研究核心。我們將古典星象學、東西方神秘學傳統與現代意識研究相結合，建立了一套完整的跨次元感知研究體系。這裡既是研究框架的展示，也是為每一位探索者提供專業指引的地方——從星盤解讀到能量校準，從塔羅象徵解讀到星夢解析。')}
             </DialogueBox>
           </div>
         </div>
@@ -81,7 +79,7 @@ export default function Mysticism() {
               <div key={i} className="mystic-card card">
                 <div className="mystic-icon">{svc.icon}</div>
                 <h3>{t(svc.name)}</h3>
-                <p>{svc.desc}</p>
+                <p>{t(svc.desc)}</p>
               </div>
             ))}
           </div>

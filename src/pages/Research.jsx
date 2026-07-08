@@ -119,7 +119,7 @@ export default function Research() {
             {/* 底部 CTA */}
             <div className="paper-cta-bottom">
               <h3>{t('準備好深入了解了嗎？')}</h3>
-              <p>完整論文包含六步論證鏈、五軸類型學假設、身份特異性驗證四層機制、以及完整的文獻綜述與方法論體系。</p>
+              <p>{t('完整論文包含六步論證鏈、五軸類型學假設、身份特異性驗證四層機制、以及完整的文獻綜述與方法論體系。')}</p>
               <a href={PAPER_URL} className="cta-btn cta-btn-large">{t('查閱完整研究論文 →')}</a>
             </div>
           </div>

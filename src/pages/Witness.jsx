@@ -27,10 +27,9 @@ export default function Witness() {
         <div className="container">
           <div className="witness-core-msg">
             <DialogueBox speaker="CDA" variant="dream">
-              我們不是要你相信一篇論文——是邀請你來見證一場實驗。
+              {t('我們不是要你相信一篇論文——是邀請你來見證一場實驗。')}
               <br /><br />
-              這是一場組織化的實驗，目的是共同見證跨次元鏈接的系統性研究過程。
-              我們不要求你相信任何東西，我們邀請你來看著這件事是怎麼被驗證的。
+              {t('這是一場組織化的實驗，目的是共同見證跨次元鏈接的系統性研究過程。我們不要求你相信任何東西，我們邀請你來看著這件事是怎麼被驗證的。')}
             </DialogueBox>
           </div>
         </div>
@@ -51,8 +50,8 @@ export default function Witness() {
               <h3>{t('我是夢女 / 實踐者')}</h3>
               <p className="role-tagline">{t('作為實驗的「鏈接對象提供方」')}</p>
               <div className="role-description">
-                <p>你的跨次元鏈接對象將由多位受訓傳訊師在盲測條件下獨立描述。</p>
-                <p>你來比對結果——成為第一手見證者。</p>
+                <p>{t('你的跨次元鏈接對象將由多位受訓傳訊師在盲測條件下獨立描述。')}</p>
+                <p>{t('你來比對結果——成為第一手見證者。')}</p>
               </div>
             </div>
 
@@ -60,8 +59,8 @@ export default function Witness() {
               <h3>{t('我是傳訊師 / 神秘學從業者')}</h3>
               <p className="role-tagline">{t('參與CDA系統培訓後，進入實驗環節')}</p>
               <div className="role-description">
-                <p>在隔離條件下對同一對象進行獨立傳訊。</p>
-                <p>你的實操數據將納入研究——成為方法論的共同驗證者。</p>
+                <p>{t('在隔離條件下對同一對象進行獨立傳訊。')}</p>
+                <p>{t('你的實操數據將納入研究——成為方法論的共同驗證者。')}</p>
               </div>
             </div>
 
@@ -69,8 +68,8 @@ export default function Witness() {
               <h3>{t('我是行業觀察者 / 研究者')}</h3>
               <p className="role-tagline">{t('有興趣的神秘學、心理學、意識研究相關人士')}</p>
               <div className="role-description">
-                <p>獲取實驗過程記錄和研究數據。</p>
-                <p>從外部視角審視和討論實驗結果。</p>
+                <p>{t('獲取實驗過程記錄和研究數據。')}</p>
+                <p>{t('從外部視角審視和討論實驗結果。')}</p>
               </div>
             </div>
           </div>
