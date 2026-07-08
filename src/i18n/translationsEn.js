@@ -588,7 +588,7 @@ export const translationsEn = {
 
   // ===== Footer =====
   '香港 · 版權所有 © 2026 香港 · 跨次元傳訊研究協會': 'Hong Kong · Copyright © 2026 Hong Kong Cross-Dimensional Communication Association',
-  '© 2026 香港 · 跨次元傳訊研究協會 · 破曉為督導老師': '© 2026 Hong Kong Cross-Dimensional Communication Association · Dawn as Supervising Instructor',
+  '© 2026 香港 · 跨次元傳訊研究協會 · 主要創始人：黎輝、破曉': '© 2026 Hong Kong Cross-Dimensional Communication Association · Principal Founders: Li Hui, Dawn',
 
   // ===== About Dual Path =====
   '列入名錄 + 客戶匹配——為塔羅師、占星師、靈氣師等已有感知基礎的從業者設計。完成認證後，協會精準匹配有需求的客戶，你可以成為有證書認證的首批傳訊師。': 'Directory listing + client matching — designed for tarot readers, astrologers, reiki practitioners, and others with existing perceptual foundations. After certification, the Association precisely matches you with clients in need, and you can become one of the first certified communicators.',
