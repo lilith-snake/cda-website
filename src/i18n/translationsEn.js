@@ -541,7 +541,6 @@ export const translationsEn = {
   '提交申請': 'Submit Application',
   '申請已提交': 'Application Submitted',
   '感謝你的參與意願。我們將在審核後與你聯繫，說明後續步驟。': 'Thank you for your interest. We will contact you after review to explain the next steps.',
-}
 
   // ===== 問卷調查 · Survey =====
   // 通用
