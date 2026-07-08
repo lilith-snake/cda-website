@@ -14,7 +14,7 @@ function getInitialLang() {
   const nav = navigator.language || ''
   if (nav.startsWith('en')) return 'en'
   if (nav.startsWith('zh-Hans') || nav === 'zh-CN' || nav === 'zh-SG') return 'zh-Hans'
-  if (nav.startsWith('zh')) return 'zh-Hant'
+  if (nav.startsWith('zh')) return 'zh-Hans'
 
   // 3. 默认简体
   return 'zh-Hans'
