@@ -237,7 +237,7 @@ export default function About() {
               <h3>中國跨次元傳訊市場調研報告</h3>
               <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · 2026')}</p>
               <p className="paper-abstract">基於對中文主流社交平台的系統觀察以及數百例傳訊委託的實測數據，對中國跨次元傳訊市場的規模、定價結構、方法論碎片化狀態、定義混亂、分辨困境、防護缺失和鏈接誤識現象進行了系統記錄。本報告屬於現象學描述和實證歸納的性質，為 MJ 理論體系提供市場端的數據基礎。</p>
-              <a href="/market-report.md" className="paper-link" target="_blank">{t('查看完整報告 →')}</a>
+              <a href="/cda-website/market-report.md" className="paper-link" target="_blank">{t('查看完整報告 →')}</a>
             </div>
 
             <div className="paper-card card">
