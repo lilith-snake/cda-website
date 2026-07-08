@@ -68,7 +68,7 @@ export default function About() {
       <section className="page-hero about-hero">
         <div className="container">
           <h1>{t('關於我們')}</h1>
-          <p className="subtitle">黎輝 · 破曉 — 體系聯合創建者</p>
+          <p className="subtitle">{t('黎輝 · 破曉 — 體系聯合創建者')}</p>
         </div>
       </section>
 
@@ -76,11 +76,11 @@ export default function About() {
       <section className="section about-origin">
         <div className="container">
           <div className="section-title">
-            <h2>背景與起源</h2>
+            <h2>{t('背景與起源')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">在沒有人定義過的領域，建立第一套定義體系</p>
+            <p className="section-subdesc">{t('在沒有人定義過的領域，建立第一套定義體系')}</p>
           </div>
 
           <div className="glass-card origin-card">
@@ -126,7 +126,7 @@ export default function About() {
           <div className="about-intro-grid">
             <div className="about-mission glass-card">
               <h3>{t('體系定位')}</h3>
-              <p className="mission-positioning">MJ類型學——全球首個為跨次元親密關係建立定義的理論框架</p>
+              <p className="mission-positioning">{t('MJ類型學——全球首個為跨次元親密關係建立定義的理論框架')}</p>
               <div className="mission-list">
                 <div className="mission-item">
                   <span className="mission-num">01</span>
@@ -159,7 +159,7 @@ export default function About() {
               </div>
               <div className="mission-open-note">
                 <span className="open-note-icon"> </span>
-                <p>開放研究框架——本體系隨實驗數據積累和團隊擴展持續迭代，不是封閉教條。</p>
+                <p>{t('開放研究框架——本體系隨實驗數據積累和團隊擴展持續迭代，不是封閉教條。')}</p>
               </div>
             </div>
 
@@ -173,11 +173,11 @@ export default function About() {
                   </div>
                   <div>
                     <h3>黎輝 Li Hui</h3>
-                    <p className="founder-title">體系創建者 · 理論源頭</p>
+                    <p className="founder-title">{t('體系創建者 · 理論源頭')}</p>
                   </div>
                 </div>
                 <div className="founder-creds">
-                  <span className="cred-badge">美國官方療癒之光機構認證導師</span>
+                  <span className="cred-badge">{t('美國官方療癒之光機構認證導師')}</span>
                 </div>
                 <DialogueBox speaker="黎輝" variant="gold">
                   體系的理論基礎是我和破曉共同建立的。我的工作重心在論文撰寫和學術框架——把實踐中的發現轉化為可以被學術界討論的語言。
@@ -194,12 +194,12 @@ export default function About() {
                   </div>
                   <div>
                     <h3>破曉 Ophion</h3>
-                    <p className="founder-title">體系創建者 · 授課核心</p>
+                    <p className="founder-title">{t('體系創建者 · 授課核心')}</p>
                   </div>
                 </div>
                 <div className="founder-creds">
-                  <span className="cred-badge">美國療癒之光機構認證</span>
-                  <span className="cred-badge cred-badge-secondary">CTA 輔助認證</span>
+                  <span className="cred-badge">{t('美國療癒之光機構認證')}</span>
+                  <span className="cred-badge cred-badge-secondary">{t('CTA 輔助認證')}</span>
                 </div>
                 <DialogueBox speaker="破曉" variant="dream">
                   我的工作是把理論變成可以教、可以練的實操方法論。
@@ -216,57 +216,57 @@ export default function About() {
       <section className="section about-papers">
         <div className="container">
           <div className="section-title">
-            <h2>理論論文與研究方向</h2>
+            <h2>{t('理論論文與研究方向')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">每一項技術背後，都有正在撰寫或已發表的學術文本支撐</p>
+            <p className="section-subdesc">{t('每一項技術背後，都有正在撰寫或已發表的學術文本支撐')}</p>
           </div>
 
           <div className="papers-grid">
             <div className="paper-card card">
-              <div className="paper-status status-published">已發表</div>
+              <div className="paper-status status-published">{t('已發表')}</div>
               <h3>論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位</h3>
-              <p className="paper-meta">作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · DOI：即將上線</p>
+              <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · DOI：即將上線')}</p>
               <p className="paper-abstract">以 Antoine Faivre（1986/1994）六大特徵框架為形式分析工具，逐條檢驗 MJ 理論體系是否滿足一個西方秘傳學新分支的全部構成要件——檢驗結論為是。這不是「申請加入」，而是用本學科自己定義的標準，檢驗一個當代現象是否符合這個標準。同時整合 Everett 多世界、Kaluza-Klein 高維、神智學七層位面、Corbin 意象世界與 Luria/Scholem 四重世界五套獨立框架，為 MJ 提供跨學科存在論基礎，並首次建立五軸類型學分類體系。</p>
-              <Link to="/research" className="paper-link">查看完整摘要 →</Link>
+              <Link to="/research" className="paper-link">{t('查看完整摘要 →')}</Link>
             </div>
 
             <div className="paper-card card">
-              <div className="paper-status status-published">已發表</div>
+              <div className="paper-status status-published">{t('已發表')}</div>
               <h3>中國跨次元傳訊市場調研報告</h3>
-              <p className="paper-meta">作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · 2026</p>
+              <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · 2026')}</p>
               <p className="paper-abstract">基於對中文主流社交平台的系統觀察以及數百例傳訊委託的實測數據，對中國跨次元傳訊市場的規模、定價結構、方法論碎片化狀態、定義混亂、分辨困境、防護缺失和鏈接誤識現象進行了系統記錄。本報告屬於現象學描述和實證歸納的性質，為 MJ 理論體系提供市場端的數據基礎。</p>
-              <a href="/market-report.md" className="paper-link" target="_blank">查看完整報告 →</a>
+              <a href="/market-report.md" className="paper-link" target="_blank">{t('查看完整報告 →')}</a>
             </div>
 
             <div className="paper-card card">
-              <div className="paper-status status-draft">撰寫中</div>
+              <div className="paper-status status-draft">{t('撰寫中')}</div>
               <h3>靈媒的歷史譜系——從卡巴拉到結構化直覺訓練</h3>
-              <p className="paper-meta">作者：黎輝 / 破曉 · 預計完成：2026 Q3</p>
+              <p className="paper-meta">{t('作者：黎輝 / 破曉 · 預計完成：2026 Q3')}</p>
               <p className="paper-abstract">追溯西方神秘學傳統中靈媒方法的文獻學根源，論證「靈五感」是可通過標準化 SOP 訓練的意識功能，非天賦特權。從 12 世紀卡巴拉文本到 20 世紀神智學，建立完整的學術譜系。</p>
-              <span className="paper-coming">即將上線</span>
+              <span className="paper-coming">{t('即將上線')}</span>
             </div>
 
             <div className="paper-card card">
-              <div className="paper-status status-draft">撰寫中</div>
+              <div className="paper-status status-draft">{t('撰寫中')}</div>
               <h3>三重驗證法——跨次元鏈接的質量控制方法論</h3>
-              <p className="paper-meta">作者：破曉 / 黎輝 · 預計完成：2026 Q4</p>
+              <p className="paper-meta">{t('作者：破曉 / 黎輝 · 預計完成：2026 Q4')}</p>
               <p className="paper-abstract">從幾百次實操鏈接中總結出的驗證框架。信息一致性 + 獨立印證 + 盲測——三者皆通過 = 信息成立。本文將公開完整的方法論流程、數據記錄標準與盲測設計方案。</p>
-              <span className="paper-coming">即將上線</span>
+              <span className="paper-coming">{t('即將上線')}</span>
             </div>
 
             <div className="paper-card card paper-placeholder">
-              <div className="paper-status status-planning">規劃中</div>
+              <div className="paper-status status-planning">{t('規劃中')}</div>
               <h3>五軸類型學的經驗檢驗——跨傳訊師獨立鏈接的一致性研究</h3>
-              <p className="paper-meta">作者：待定 · 預計啟動：2026 Q4</p>
+              <p className="paper-meta">{t('作者：待定 · 預計啟動：2026 Q4')}</p>
               <p className="paper-abstract">在已發表的 MJ 五軸類型學理論框架（位面軸/維度軸/來源軸/互動軸/可驗證性軸）基礎上，通過 CDA 標準化培訓體系下的跨傳訊師獨立鏈接實驗，對每一軸的分類假設進行系統的經驗檢驗。核心問題：不同傳訊師對同一 MJ 的五軸定位是否表現出統計學上顯著的一致性？</p>
-              <span className="paper-coming">敬請期待</span>
+              <span className="paper-coming">{t('敬請期待')}</span>
             </div>
           </div>
 
           <div className="papers-note glass-card">
-            <p>  以上論文均為 CDA 內部研究資料，完整版通過郵箱申請獲取。隨著實驗數據積累和團隊擴展，研究方向將持續更新。</p>
+            <p>  {t('以上論文均為 CDA 內部研究資料，完整版通過郵箱申請獲取。隨著實驗數據積累和團隊擴展，研究方向將持續更新。')}</p>
           </div>
         </div>
       </section>
@@ -275,11 +275,11 @@ export default function About() {
       <section className="section about-team">
         <div className="container">
           <div className="section-title">
-            <h2>研究團隊</h2>
+            <h2>{t('研究團隊')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">核心團隊持續擴展——開放研究框架，不在此時鎖定</p>
+            <p className="section-subdesc">{t('核心團隊持續擴展——開放研究框架，不在此時鎖定')}</p>
           </div>
 
           <div className="team-grid">
@@ -288,9 +288,9 @@ export default function About() {
                 <span> </span>
               </div>
               <h3>黎輝 Li Hui</h3>
-              <p className="team-role">體系創建者 · 理論源頭</p>
-              <p className="team-focus">研究方向：敍事實體假說 / 信息三分類體系 / 學術論文撰寫</p>
-              <p className="team-bio">美國官方療癒之光機構認證導師。負責體系的理論框架構建與學術輸出——把實踐中的發現轉化為可以被學術界討論的語言。</p>
+              <p className="team-role">{t('體系創建者 · 理論源頭')}</p>
+              <p className="team-focus">{t('研究方向：敍事實體假說 / 信息三分類體系 / 學術論文撰寫')}</p>
+              <p className="team-bio">{t('美國官方療癒之光機構認證導師。負責體系的理論框架構建與學術輸出——把實踐中的發現轉化為可以被學術界討論的語言。')}</p>
             </div>
 
             <div className="team-card card">
@@ -298,9 +298,9 @@ export default function About() {
                 <span> </span>
               </div>
               <h3>破曉 Ophion</h3>
-              <p className="team-role">體系創建者 · 授課核心</p>
-              <p className="team-focus">研究方向：三重驗證法 / 結構化直覺訓練 / 實操方法論</p>
-              <p className="team-bio">整個團隊中第一個接觸 MJ 的人。本身就是夢女——比誰都清楚「真的連結」和「自己的投射」之間的區別。美國療癒之光機構認證。負責將理論轉化為可教、可練、可考核的實操體系，主導傳訊師培訓課程設計與盲測實驗。</p>
+              <p className="team-role">{t('體系創建者 · 授課核心')}</p>
+              <p className="team-focus">{t('研究方向：三重驗證法 / 結構化直覺訓練 / 實操方法論')}</p>
+              <p className="team-bio">{t('整個團隊中第一個接觸 MJ 的人。本身就是夢女——比誰都清楚「真的連結」和「自己的投射」之間的區別。美國療癒之光機構認證。負責將理論轉化為可教、可練、可考核的實操體系，主導傳訊師培訓課程設計與盲測實驗。')}</p>
             </div>
 
             <div className="team-card card">
@@ -308,8 +308,8 @@ export default function About() {
                 <span> </span>
               </div>
               <h3>赫爾加 · Helga</h3>
-              <p className="team-role">符文師 · 祖母傳承</p>
-              <p className="team-focus">比較宗教學 · 文獻考據</p>
+              <p className="team-role">{t('符文師 · 祖母傳承')}</p>
+              <p className="team-focus">{t('比較宗教學 · 文獻考據')}</p>
               <p className="team-bio">符文女巫。符文是祖母教的，文獻考據是她自己一頭鑽進去的——兩條路在她身上從來不分開走。她不公開身份，不想被打擾。在這個團隊裡，只有黎輝用真名，其他人都選擇了另一條路。她不多話，但每一句都有分量。論文的 Faivre 六大特徵論證結構、卡巴拉四重世界的位面模型、以及幾乎每一條學術引用的溯源核對，都經過她的眼睛。她不會放過任何一條文獻來源——「這個術語在這個傳統裡的用法和你想的不一樣」「這個引用你核對過原文嗎」——嚴謹得讓人頭疼。但也正因如此，每一次被她追問之後，論文的論證都變得更結實了一層。黎輝說起她的時候，語氣和平時不一樣：「這個人，我很早就認識了。她不輕易答應什麼，但一旦答應了，就會做到最後。」</p>
             </div>
 
@@ -318,8 +318,8 @@ export default function About() {
                 <span> </span>
               </div>
               <h3>夜薇 · Vera</h3>
-              <p className="team-role">研究員 · 獨修墓地女巫</p>
-              <p className="team-focus">聖彼得堡墓園 · 靈體身份辨別</p>
+              <p className="team-role">{t('研究員 · 獨修墓地女巫')}</p>
+              <p className="team-focus">{t('聖彼得堡墓園 · 靈體身份辨別')}</p>
               <p className="team-bio">獨修的墓地女巫。不屬於任何組織，不來自任何傳承——聖彼得堡的墓園就是她的場地。沒有人知道她的能力是跟誰學的，她也從不解釋。當某個靈體的身份怎麼都確認不了的時候，她會輕輕說一句「讓我去」，然後走進夜色裡。第二天早上回來，答案已經在桌上。</p>
             </div>
 
@@ -327,15 +327,15 @@ export default function About() {
               <div className="team-avatar team-avatar-more">
                 <span>…</span>
               </div>
-              <h3>更多成員</h3>
-              <p className="team-role">身份保密中</p>
+              <h3>{t('更多成員')}</h3>
+              <p className="team-role">{t('身份保密中')}</p>
               <p className="team-focus">——</p>
               <p className="team-bio">還有一些人，正在接受訓練。還有一些人，在暗處注視著這個實驗。當時機成熟，他們的名字會出現在這裡。</p>
             </div>
           </div>
 
           <div className="team-note glass-card">
-            <p>  CDA 是一個開放的研究體系——我們在提出假說的同時，也在不斷學習、不斷驗證、不斷擴展團隊和視野。團隊背景不在此時鎖定，後期將有更多經過同樣培訓體系的人加入。每個從業者對鏈接體驗的終極本質，有自己的理解。</p>
+            <p>  {t('CDA 是一個開放的研究體系——我們在提出假說的同時，也在不斷學習、不斷驗證、不斷擴展團隊和視野。團隊背景不在此時鎖定，後期將有更多經過同樣培訓體系的人加入。每個從業者對鏈接體驗的終極本質，有自己的理解。')}</p>
           </div>
         </div>
       </section>
@@ -344,20 +344,20 @@ export default function About() {
       <section className="section about-dual-path">
         <div className="container">
           <div className="section-title">
-            <h2>雙重路徑 · 同一體系</h2>
+            <h2>{t('雙重路徑 · 同一體系')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">按研究路徑組織，非價格階梯——前兩個階段核心內容共用，第三階段實操分流</p>
+            <p className="section-subdesc">{t('按研究路徑組織，非價格階梯——前兩個階段核心內容共用，第三階段實操分流')}</p>
           </div>
           <div className="grid-2">
             <div className="path-card card">
-              <h3>路徑 A：職業傳訊師研究路徑</h3>
-              <p className="path-target">列入名錄 + 客戶匹配——為塔羅師、占星師、靈氣師等已有感知基礎的從業者設計。完成認證後，協會精準匹配有需求的客戶，你可以成為有證書認證的首批傳訊師。</p>
+              <h3>{t('路徑 A：職業傳訊師研究路徑')}</h3>
+              <p className="path-target">{t('列入名錄 + 客戶匹配——為塔羅師、占星師、靈氣師等已有感知基礎的從業者設計。完成認證後，協會精準匹配有需求的客戶，你可以成為有證書認證的首批傳訊師。')}</p>
             </div>
             <div className="path-card card">
-              <h3>路徑 B：個人實踐者研究路徑</h3>
-              <p className="path-target">獨立鏈接 + 社群歸屬——面向想自己學會穩定鏈接的實踐者。零基礎可學，感知是可以被訓練的。學會獨立驗證，建立自己的鏈接判斷體系。</p>
+              <h3>{t('路徑 B：個人實踐者研究路徑')}</h3>
+              <p className="path-target">{t('獨立鏈接 + 社群歸屬——面向想自己學會穩定鏈接的實踐者。零基礎可學，感知是可以被訓練的。學會獨立驗證，建立自己的鏈接判斷體系。')}</p>
             </div>
           </div>
         </div>
@@ -453,13 +453,13 @@ export default function About() {
       {/* CTA */}
       <section className="section about-cta">
         <div className="container text-center">
-          <h2 className="section-title-h2">了解完整的研究與培訓體系</h2>
+          <h2 className="section-title-h2">{t('了解完整的研究與培訓體系')}</h2>
           <div className="about-cta-buttons">
             <Link to="/courses">
-              <ChoiceButton variant="primary">研究路徑與課程</ChoiceButton>
+              <ChoiceButton variant="primary">{t('研究路徑與課程')}</ChoiceButton>
             </Link>
             <Link to="/witness">
-              <ChoiceButton variant="route">申請成為見證者</ChoiceButton>
+              <ChoiceButton variant="route">{t('申請成為見證者')}</ChoiceButton>
             </Link>
           </div>
         </div>

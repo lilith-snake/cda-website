@@ -22,7 +22,7 @@ export default function Contact() {
               <p className="form-desc">{t('如果你想加入我們，你也想成為探尋及實踐者的一名，請聯繫我們。')}</p>
 
               <div className="email-highlight">
-                <span className="email-label">{t('📧 請發送電郵至')}</span>
+                <span className="email-label">{t('請發送電郵至')}</span>
                 <a href="mailto:dluu39ce7c@gmail.com" className="email-link">dluu39ce7c@gmail.com</a>
               </div>
 

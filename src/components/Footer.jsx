@@ -9,9 +9,9 @@ export default function Footer() {
       <div className="footer-content container">
         <div className="footer-brand">
           <span className="footer-logo">CDA</span>
-          <h3>香港 · 跨次元傳訊研究協會</h3>
+          <h3>{t('香港 · 跨次元傳訊研究協會')}</h3>
           <p>Hong Kong Cross-Dimensional Communication Association</p>
-          <p className="footer-hk">香港 · 版權所有 © 2026 香港 · 跨次元傳訊研究協會</p>
+          <p className="footer-hk">{t('香港 · 版權所有 © 2026 香港 · 跨次元傳訊研究協會')}</p>
         </div>
 
         <div className="footer-links">
@@ -38,7 +38,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>© 2026 香港 · 跨次元傳訊研究協會 · 破曉為督導老師</p>
+          <p>{t('© 2026 香港 · 跨次元傳訊研究協會 · 破曉為督導老師')}</p>
           <p className="footer-dim">CDA · Hong Kong Cross-Dimensional Communication Association</p>
         </div>
       </div>
