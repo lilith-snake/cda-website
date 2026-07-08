@@ -1,11 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
   <circle cx="60" cy="60" r="56" fill="#1A1A1A"/>
   <circle cx="60" cy="60" r="48" fill="none" stroke="#A88D4E" stroke-width="0.5" opacity="0.35"/>
-  <!-- 倒三角 -->
   <polygon points="18.4,36 101.6,36 60,108" fill="none" stroke="#C9A96E" stroke-width="0.7" opacity="0.55"/>
   <circle cx="60" cy="108" r="1.5" fill="#E8D5A3" opacity="0.9"/>
   <circle cx="18.4" cy="36" r="1.2" fill="#C9A96E" opacity="0.5"/>
   <circle cx="101.6" cy="36" r="1.2" fill="#C9A96E" opacity="0.5"/>
-  <!-- CDA 居中于三角重心 -->
-  <text x="60" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#C9A96E" letter-spacing="3">CDA</text>
+  <!-- CDA 刚好撑满三角宽度 -->
+  <text x="60" y="67" text-anchor="middle" font-family="Georgia, serif" font-size="21" font-weight="bold" fill="#C9A96E" letter-spacing="4">CDA</text>
 </svg>
