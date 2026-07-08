@@ -322,6 +322,15 @@ export const translationsEn = {
   '魯利安卡巴拉': 'Lurianic Kabbalah',
   '魯利安卡巴拉 — Luria — Vital — Tzimtzum / Tikkun': 'Lurianic Kabbalah — Luria — Vital — Tzimtzum / Tikkun',
   '香港 · 跨次元傳訊研究協會': 'Hong Kong Cross-Dimensional Communication Association',
+  '四柱信用': 'Four Pillars of Credibility',
+  '培訓驗證': 'Training & Certification',
+  '探索': 'Explore',
+  '星界智慧': 'Astral Wisdom',
+  '我們的故事': 'Our Story',
+  '破曉自述': 'About the Founder',
+  '給夢女的話': 'A Letter to Dream Girls',
+  '研究': 'Research',
+  '研究論文': 'Research Papers',
 
   // ===== 問卷調查 · Survey =====
   // 通用
