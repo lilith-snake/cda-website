@@ -38,7 +38,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>{t('© 2026 香港 · 跨次元傳訊研究協會 · 主要創始人：黎輝、破曉')}</p>
+          <p>{t('© 2026 香港 · 跨次元傳訊研究協會 · 創始人：黎輝、破曉 · 督導研究：符文師、墓地女巫')}</p>
           <p className="footer-dim">CDA · Hong Kong Cross-Dimensional Communication Association</p>
         </div>
       </div>
