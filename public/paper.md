@@ -415,7 +415,7 @@ Everett 在普林斯顿大学的博士论文《宇宙波函数理论》（*The T
 
 **(2) 量子不可克隆定理的约束。** Wootters & Zurek（1982）以及 Dieks（1982）独立证明的量子不可克隆定理（no-cloning theorem）表明：一个未知的量子态不能被完美复制。这一结果的一个直接推论是——如果两个 Everett 分支已经因退相干而分离，没有任何物理操作可以从一个分支中"提取"出另一个分支的量子态信息，因为那将等价于在不对原始态进行测量的情况下复制它。跨分支通信在逻辑上等价于"跨分支克隆量子信息"——而这被量子力学目前已知的基本定理所禁止。
 
-**(3) 量子擦除实验的反面教训。** Scully 等人（1982）的量子擦除实验（quantum eraser）和 Kim 等人（2000）的延迟选择量子擦除实验（delayed-choice quantum eraser）提供了退相干可逆性的实验证据——但这里有一个关键的限定条件：干涉条纹的恢复**只在实验者仍然能够访问环境自由度的情况下才可能**。一旦环境自由度扩散到宏观尺度（任何真实的宏观退相干事件都必然如此），"擦除"在操作上是不可行的——不是因为物理定律禁止它，而是因为恢复所需的实验控制超过了任何实际能力的极限。物质波干涉实验（Arndt 等, 1999; Hornberger 等, 2004）提供了具体的数字参考：C₆₀ 富勒烯分子的德布罗意波长约为 2.5 pm，即使单分子通过干涉仪，只要环境气体压力略微升高（增加散射退相干），干涉条纹就迅速消失。Marshall 等人（2003）进一步从理论层面论证了这一退相干机制对宏观尺度的含义——他们提出的镜面量子叠加方案显示，包含约 10²⁸ 个原子的宏观物体的退相干速度将快至任何实验手段都无法逆转的程度。换言之，"退相干不可逆"不是一个理论推测，而是一个被实验确认且被理论外推到宏观尺度的物理事实。
+**(3) 量子擦除实验的反面教训。** Scully 等人（1982）的量子擦除实验（quantum eraser）和 Kim 等人（2000）的延迟选择量子擦除实验（delayed-choice quantum eraser）提供了退相干可逆性的实验证据——但这里有一个关键的限定条件：干涉条纹的恢复**只在实验者仍然能够访问环境自由度的情况下才可能**。一旦环境自由度扩散到宏观尺度（任何真实的宏观退相干事件都必然如此），"擦除"在操作上是不可行的——不是因为物理定律禁止它，而是因为恢复所需的实验控制超过了任何实际能力的极限。物质波干涉实验（Arndt 等, 1999; Hornberger 等, 2004）提供了具体的数字参考：C₆₀ 富勒烯分子的德布罗意波长约为 2.5 pm，即使单分子通过干涉仪，只要环境气体压力略微升高（增加散射退相干），干涉条纹就迅速消失。Marshall 等人（2003）提出了具体的镜面量子叠加实验方案——使用约 5 纳克（~10¹⁴ 个原子）的可移动微镜，通过单光子辐射压力产生宏观叠加态，验证退相干机制在介观尺度的效应。Zurek（2003）进一步将退相干理论外推到日常宏观尺度：对于一个包含约 10²⁸ 个原子的人体尺度物体，退相干时间与热弛豫时间的比值约为 10⁻⁴⁰——退相干速度之快远超任何实验手段可逆转的范围。换言之，"退相干不可逆"不是一个理论推测，而是一个被实验确认且被理论外推到宏观尺度的物理事实。
 
 这三个论证共同指向同一个结论：**在目前已知的量子力学框架内，Everett 分支之间的通信是不可行的。** 也就是说，在目前已知标准的量子力学的现有结构里，没有已知的机制允许跨分支信息传递。
 
@@ -441,7 +441,7 @@ Everett 在普林斯顿大学的博士论文《宇宙波函数理论》（*The T
 
 **第三，这是工作假说，不是最终结论。** Everett 框架为本文的分析提供了讨论"边界情况"的工具，而非定论。物理学的未来进展——尤其是量子引力与全息原理的进一步融合——完全有可能打开目前框架下被认为不可能的通道。
 
-可查来源：Everett, " 'Relative State' Formulation of Quantum Mechanics," *Reviews of Modern Physics*, Vol. 29, No. 3, 1957, pp. 454–462. Zeh, H.D., "On the Interpretation of Measurement in Quantum Theory," *Foundations of Physics*, Vol. 1, 1970, pp. 69–76. Zurek, W.H., "Decoherence, Einselection, and the Quantum Origins of the Classical," *Reviews of Modern Physics*, Vol. 75, 2003, pp. 715–775. Wootters, W.K. & Zurek, W.H., "A Single Quantum Cannot Be Cloned," *Nature*, Vol. 299, 1982, pp. 802–803. Kim, Y.-H. et al., "A Delayed Choice Quantum Eraser," *Physical Review Letters*, Vol. 84, 2000, pp. 1–5.
+可查来源：Everett, " 'Relative State' Formulation of Quantum Mechanics," *Reviews of Modern Physics*, Vol. 29, No. 3, 1957, pp. 454–462. Zeh, H.D., "On the Interpretation of Measurement in Quantum Theory," *Foundations of Physics*, Vol. 1, 1970, pp. 69–76. Zurek, W.H., "Decoherence, Einselection, and the Quantum Origins of the Classical," *Reviews of Modern Physics*, Vol. 75, 2003, pp. 715–775. Wootters, W.K. & Zurek, W.H., "A Single Quantum Cannot Be Cloned," *Nature*, Vol. 299, 1982, pp. 802–803. Kim, Y.-H. et al., "A Delayed Choice Quantum Eraser," *Physical Review Letters*, Vol. 84, 2000, pp. 1–5. Arndt, M. et al., "Wave–Particle Duality of C₆₀ Molecules," *Nature*, Vol. 401, 1999, pp. 680–682. Hackermüller, L., Hornberger, K. et al., "Decoherence of Matter Waves by Thermal Emission of Radiation," *Nature*, Vol. 427, 2004, pp. 711–714. Marshall, W., Simon, C., Penrose, R., & Bouwmeester, D., "Towards Quantum Superpositions of a Mirror," *Physical Review Letters*, Vol. 91, 2003, 130401.
 
 ### 4.3 高维空间理论（物理学）
 
