@@ -5,5 +5,5 @@
   <circle cx="60" cy="108" r="1.5" fill="#E8D5A3" opacity="0.9"/>
   <circle cx="18.4" cy="36" r="1.2" fill="#C9A96E" opacity="0.5"/>
   <circle cx="101.6" cy="36" r="1.2" fill="#C9A96E" opacity="0.5"/>
-  <text x="60" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#C9A96E" letter-spacing="2">CDA</text>
+  <text x="60" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#C9A96E" letter-spacing="2">CDA</text>
 </svg>
