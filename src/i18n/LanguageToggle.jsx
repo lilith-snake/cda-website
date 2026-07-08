@@ -1,27 +1,28 @@
 import { useLanguage } from './LanguageContext'
 import './LanguageToggle.css'
 
-const titleMap = {
-  'zh-Hant': '繁 → 简 → EN',
-  'zh-Hans': '简 → EN → 繁',
-  'en': 'EN → 繁 → 简',
-}
-
 export default function LanguageToggle() {
-  const { lang, toggleLang } = useLanguage()
+  const { lang, switchLang } = useLanguage()
 
   return (
-    <button
-      className="lang-toggle"
-      onClick={toggleLang}
-      title={titleMap[lang]}
-      aria-label={titleMap[lang]}
-    >
-      <span className={lang === 'zh-Hant' ? 'lang-active' : ''}>繁</span>
+    <div className="lang-toggle" role="radiogroup" aria-label="语言切换">
+      <button
+        className={`lang-option ${lang === 'zh-Hant' ? 'lang-active' : ''}`}
+        onClick={() => switchLang('zh-Hant')}
+        aria-label="切换到繁体中文"
+      >繁</button>
       <span className="lang-divider">|</span>
-      <span className={lang === 'zh-Hans' ? 'lang-active' : ''}>简</span>
+      <button
+        className={`lang-option ${lang === 'zh-Hans' ? 'lang-active' : ''}`}
+        onClick={() => switchLang('zh-Hans')}
+        aria-label="切换到简体中文"
+      >简</button>
       <span className="lang-divider">|</span>
-      <span className={lang === 'en' ? 'lang-active' : ''}>EN</span>
-    </button>
+      <button
+        className={`lang-option ${lang === 'en' ? 'lang-active' : ''}`}
+        onClick={() => switchLang('en')}
+        aria-label="Switch to English"
+      >EN</button>
+    </div>
   )
 }

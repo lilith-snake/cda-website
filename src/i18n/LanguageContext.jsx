@@ -16,8 +16,8 @@ function getInitialLang() {
   if (nav.startsWith('zh-Hans') || nav === 'zh-CN' || nav === 'zh-SG') return 'zh-Hans'
   if (nav.startsWith('zh')) return 'zh-Hant'
 
-  // 3. 默认繁体
-  return 'zh-Hant'
+  // 3. 默认简体
+  return 'zh-Hans'
 }
 
 export function LanguageProvider({ children }) {
@@ -27,13 +27,11 @@ export function LanguageProvider({ children }) {
     localStorage.setItem('cda-lang', lang)
   }, [lang])
 
-  // 三态循环: zh-Hant → zh-Hans → en → zh-Hant
-  const toggleLang = useCallback(() => {
-    setLang(prev => {
-      if (prev === 'zh-Hant') return 'zh-Hans'
-      if (prev === 'zh-Hans') return 'en'
-      return 'zh-Hant'
-    })
+  // 直接切换到指定语言
+  const switchLang = useCallback((target) => {
+    if (target === 'zh-Hant' || target === 'zh-Hans' || target === 'en') {
+      setLang(target)
+    }
   }, [])
 
   // 直接设置语言
@@ -55,7 +53,7 @@ export function LanguageProvider({ children }) {
   )
 
   return (
-    <LanguageContext.Provider value={{ lang, toggleLang, setLang: setLangDirect, t }}>
+    <LanguageContext.Provider value={{ lang, switchLang, setLang: setLangDirect, t }}>
       {children}
     </LanguageContext.Provider>
   )
