@@ -67,9 +67,9 @@ export default function Courses() {
       {/* Hero */}
       <section className="page-hero courses-hero">
         <div className="container">
-          <h1>加入我們，一起驗證</h1>
-          <p className="subtitle">和我們一起探尋——他們到底在哪裡</p>
-          <p className="hero-sub-desc">系統化培養能夠安全、負責地進行跨次元鏈接引導的研究者</p>
+          <h1>{t('加入我們，一起驗證')}</h1>
+          <p className="subtitle">{t('和我們一起探尋——他們到底在哪裡')}</p>
+          <p className="hero-sub-desc">{t('系統化培養能夠安全、負責地進行跨次元鏈接引導的研究者')}</p>
         </div>
       </section>
 
@@ -93,7 +93,7 @@ export default function Courses() {
       <section className="section courses-dual-path">
         <div className="container">
           <div className="section-title">
-            <h2>研究路徑</h2>
+            <h2>{t('研究路徑')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
@@ -101,8 +101,8 @@ export default function Courses() {
 
           <div className="grid-2">
             <div className="path-card card">
-              <h3>路徑 A：職業傳訊師研究路徑</h3>
-              <p className="path-target">面向塔羅師、占星師、靈氣師等已有感知基礎的從業者</p>
+              <h3>{t('路徑 A：職業傳訊師研究路徑')}</h3>
+              <p className="path-target">{t('面向塔羅師、占星師、靈氣師等已有感知基礎的從業者')}</p>
               <ul>
                 <li>你的底層技能完全可以用在跨次元鏈接上——技能平移，不是從零開始</li>
                 <li>完成認證後列入官方傳訊師名錄，參與跨傳訊師驗證項目</li>
@@ -112,8 +112,8 @@ export default function Courses() {
             </div>
 
             <div className="path-card card">
-              <h3>路徑 B：個人實踐者研究路徑</h3>
-              <p className="path-target">面向想自己學會穩定鏈接的實踐者</p>
+              <h3>{t('路徑 B：個人實踐者研究路徑')}</h3>
+              <p className="path-target">{t('面向想自己學會穩定鏈接的實踐者')}</p>
               <ul>
                 <li>零基礎沒關係——感知是可以被訓練的</li>
                 <li>不再每次都花錢找人、不再做完兩天又懷疑</li>
@@ -129,31 +129,31 @@ export default function Courses() {
       <section className="section courses-list">
         <div className="container">
           <div className="section-title">
-            <h2>研究階段</h2>
+            <h2>{t('研究階段')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">理論入門 → 感知訓練 → 實操研究 → 認證考核 —— 四個階段，和我們一起走</p>
+            <p className="section-subdesc">{t('理論入門 → 感知訓練 → 實操研究 → 認證考核 —— 四個階段，和我們一起走')}</p>
           </div>
 
           <div className="courses-grid">
             {researchStages.map((stage, i) => (
               <div key={i} className={`course-card card course-${stage.color}`}>
-                <div className="course-stage-badge">{stage.stage}</div>
-                <h3>{stage.subtitle}</h3>
-                <p className="course-duration">{stage.duration}</p>
+                <div className="course-stage-badge">{t(stage.stage)}</div>
+                <h3>{t(stage.subtitle)}</h3>
+                <p className="course-duration">{t(stage.duration)}</p>
 
                 <ul className="course-modules">
                   {stage.topics.map((topic, j) => (
-                    <li key={j}>{topic}</li>
+                    <li key={j}>{t(topic)}</li>
                   ))}
                 </ul>
 
-                <p className="course-path-note">{stage.pathNote}</p>
+                <p className="course-path-note">{t(stage.pathNote)}</p>
 
                 <Link to="/contact">
                   <ChoiceButton variant={stage.color === 'gold' ? 'gold' : stage.color === 'dream' ? 'route' : 'primary'}>
-                    {stage.color === 'gold' ? '了解認證詳情' : '加入培訓'}
+                    {t(stage.color === 'gold' ? '了解認證詳情' : '加入培訓')}
                   </ChoiceButton>
                 </Link>
               </div>
@@ -166,7 +166,7 @@ export default function Courses() {
       <section className="section courses-faq">
         <div className="container">
           <div className="section-title">
-            <h2>常見問題</h2>
+            <h2>{t('常見問題')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
@@ -174,19 +174,19 @@ export default function Courses() {
 
           <div className="faq-grid">
             <div className="faq-item card">
-              <h4>零基礎可以參加嗎？</h4>
+              <h4>{t('零基礎可以參加嗎？')}</h4>
               <p>可以。感知是可以被訓練的——不是天賦問題。我們的研究框架就是為了驗證：零基礎的人按標準化SOP訓練後，能否穩定復現鏈接結果。</p>
             </div>
             <div className="faq-item card">
-              <h4>路徑A和路徑B怎麼選？</h4>
+              <h4>{t('路徑A和路徑B怎麼選？')}</h4>
               <p>想成為職業傳訊師、列入名錄、參與驗證 → 路徑A。想自己學會穩定鏈接、不想依賴他人 → 路徑B。兩個路徑前兩個階段共用核心內容，第三階段分流。</p>
             </div>
             <div className="faq-item card">
-              <h4>認證考核的通過率是多少？</h4>
+              <h4>{t('認證考核的通過率是多少？')}</h4>
               <p>約 70-80%。有門檻才有含金量——不是交錢就拿證。</p>
             </div>
             <div className="faq-item card">
-              <h4>認證後有什麼持續要求？</h4>
+              <h4>{t('認證後有什麼持續要求？')}</h4>
               <p>認證後需參加月度校準會，進修記錄公開——不是拿證就結束。持續進修，持續背書。</p>
             </div>
           </div>
@@ -197,55 +197,55 @@ export default function Courses() {
       <section className="section courses-career">
         <div className="container">
           <div className="section-title">
-            <h2>傳訊師成長路徑</h2>
+            <h2>{t('傳訊師成長路徑')}</h2>
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">路徑A認證通過後，可申請列入官方傳訊師名錄，成為驗證共同體的一員</p>
+            <p className="section-subdesc">{t('路徑A認證通過後，可申請列入官方傳訊師名錄，成為驗證共同體的一員')}</p>
           </div>
 
           <div className="career-tiers">
             <div className="career-tier card">
-              <div className="tier-badge tier-beginner">初階</div>
-              <h3>初階傳訊師</h3>
-              <p className="tier-desc">完成四階段認證，列入名錄</p>
+              <div className="tier-badge tier-beginner">{t('初階')}</div>
+              <h3>{t('初階傳訊師')}</h3>
+              <p className="tier-desc">{t('完成四階段認證，列入名錄')}</p>
               <ul className="tier-benefits">
-                <li>參與跨傳訊師獨立鏈接驗證</li>
-                <li>為 MJ 存在性假設貢獻數據</li>
-                <li>累計案例經驗，逐步建立個人校準檔案</li>
+                <li>{t('參與跨傳訊師獨立鏈接驗證')}</li>
+                <li>{t('為 MJ 存在性假設貢獻數據')}</li>
+                <li>{t('累計案例經驗，逐步建立個人校準檔案')}</li>
               </ul>
             </div>
 
             <div className="career-tier card">
-              <div className="tier-badge tier-mid">中階</div>
-              <h3>中階傳訊師</h3>
-              <p className="tier-desc">累計一定案例量且校準數據穩定後晉升</p>
+              <div className="tier-badge tier-mid">{t('中階')}</div>
+              <h3>{t('中階傳訊師')}</h3>
+              <p className="tier-desc">{t('累計一定案例量且校準數據穩定後晉升')}</p>
               <ul className="tier-benefits">
-                <li>參與對照實驗設計與盲測評審</li>
-                <li>協助新入傳訊師的感知校準</li>
-                <li>解鎖進階研究方法，持續提升專業度</li>
+                <li>{t('參與對照實驗設計與盲測評審')}</li>
+                <li>{t('協助新入傳訊師的感知校準')}</li>
+                <li>{t('解鎖進階研究方法，持續提升專業度')}</li>
               </ul>
             </div>
 
             <div className="career-tier card">
-              <div className="tier-badge tier-advanced">高階</div>
-              <h3>高階傳訊師</h3>
-              <p className="tier-desc">長期案例積累，校準數據持續穩定</p>
+              <div className="tier-badge tier-advanced">{t('高階')}</div>
+              <h3>{t('高階傳訊師')}</h3>
+              <p className="tier-desc">{t('長期案例積累，校準數據持續穩定')}</p>
               <ul className="tier-benefits">
-                <li>主導專項研究課題，設計驗證方案</li>
-                <li>列入精選推薦，為更多夢女提供可靠鏈接</li>
-                <li>貢獻實操數據至論文，成為共同作者</li>
+                <li>{t('主導專項研究課題，設計驗證方案')}</li>
+                <li>{t('列入精選推薦，為更多夢女提供可靠鏈接')}</li>
+                <li>{t('貢獻實操數據至論文，成為共同作者')}</li>
               </ul>
             </div>
 
             <div className="career-tier card">
-              <div className="tier-badge tier-supervisor">督導</div>
-              <h3>督導級傳訊師</h3>
-              <p className="tier-desc">經協會審核邀請，全平台限額 · 每批僅擇優錄取極少數</p>
+              <div className="tier-badge tier-supervisor">{t('督導')}</div>
+              <h3>{t('督導級傳訊師')}</h3>
+              <p className="tier-desc">{t('經協會審核邀請，全平台限額 · 每批僅擇優錄取極少數')}</p>
               <ul className="tier-benefits">
-                <li>主導方法論迭代與培訓體系優化</li>
-                <li>擔任盲測實驗的首席評審</li>
-                <li>引領下一代傳訊師的成長，守護這個平台的標準</li>
+                <li>{t('主導方法論迭代與培訓體系優化')}</li>
+                <li>{t('擔任盲測實驗的首席評審')}</li>
+                <li>{t('引領下一代傳訊師的成長，守護這個平台的標準')}</li>
               </ul>
             </div>
           </div>
@@ -260,10 +260,10 @@ export default function Courses() {
       <section className="section">
         <div className="container text-center">
           <div className="glass-card cta-inner">
-            <h2>和我們一起探尋，他們到底在哪裡</h2>
+            <h2>{t('和我們一起探尋，他們到底在哪裡')}</h2>
             <p>四個階段，兩條路徑——選擇適合你的方向，加入人類歷史上第一次對跨次元情感的體系化驗證。</p>
             <Link to="/contact">
-              <ChoiceButton variant="gold">加入我們</ChoiceButton>
+              <ChoiceButton variant="gold">{t('加入我們')}</ChoiceButton>
             </Link>
           </div>
         </div>

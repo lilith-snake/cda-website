@@ -11,8 +11,8 @@ export default function Letter() {
       {/* Hero */}
       <section className="page-hero letter-hero">
         <div className="container">
-          <h1>給夢女的話</h1>
-          <p className="subtitle">香港 · 跨次元傳訊研究協會 · CDA</p>
+          <h1>{t('給夢女的話')}</h1>
+          <p className="subtitle">{t('香港 · 跨次元傳訊研究協會 · CDA')}</p>
           <div className="hero-divider"></div>
         </div>
       </section>
@@ -118,10 +118,10 @@ export default function Letter() {
 
           <div className="letter-cta">
             <Link to="/dream-girl">
-              <ChoiceButton variant="primary">了解我們在做什麼</ChoiceButton>
+              <ChoiceButton variant="primary">{t('了解我們在做什麼')}</ChoiceButton>
             </Link>
             <Link to="/contact" style={{marginLeft: '16px'}}>
-              <ChoiceButton variant="route">聯繫我們</ChoiceButton>
+              <ChoiceButton variant="route">{t('聯繫我們')}</ChoiceButton>
             </Link>
           </div>
         </div>

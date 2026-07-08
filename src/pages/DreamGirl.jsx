@@ -64,8 +64,8 @@ export default function DreamGirl() {
       {/* Hero —— 为爱发电 */}
       <section className="page-hero dream-hero-v2">
         <div className="container">
-          <h1>傳訊師名錄</h1>
-          <p className="subtitle">香港 · 跨次元傳訊研究協會 · CDA</p>
+          <h1>{t('傳訊師名錄')}</h1>
+          <p className="subtitle">{t('香港 · 跨次元傳訊研究協會 · CDA')}</p>
           <div className="hero-divider"></div>
           <div className="hero-intro">
             <p>
@@ -85,18 +85,18 @@ export default function DreamGirl() {
       <section className="section dream-methods">
         <div className="container">
           <div className="section-title">
-            <h2>我们如何训练传讯师</h2>
+            <h2>{t('我们如何训练传讯师')}</h2>
             <div className="decorative-line"></div>
-            <p className="section-subdesc">透明化训练方法——让市场变得可见，让梦女知道该问什么</p>
+            <p className="section-subdesc">{t('透明化训练方法——让市场变得可见，让梦女知道该问什么')}</p>
           </div>
 
           <div className="methods-grid">
             {trainingMethods.map((method, i) => (
               <div key={i} className="method-card glass-card">
                 <div className="method-step">{method.step}</div>
-                <h3>{method.title}</h3>
+                <h3>{t(method.title)}</h3>
                 <p className="method-desc">{method.desc}</p>
-                <p className="method-source">{method.source}</p>
+                <p className="method-source">{t(method.source)}</p>
               </div>
             ))}
           </div>
@@ -107,16 +107,16 @@ export default function DreamGirl() {
       <section className="section dream-status section-alt">
         <div className="container">
           <div className="section-title">
-            <h2>当前进度</h2>
+            <h2>{t('当前进度')}</h2>
             <div className="decorative-line"></div>
-            <p className="section-subdesc">我们正在做，但离「可以对外服务」还有一段路要走</p>
+            <p className="section-subdesc">{t('我们正在做，但离「可以对外服务」还有一段路要走')}</p>
           </div>
 
           <div className="status-grid">
             {milestones.map((item, i) => (
               <div key={i} className="status-card glass-card">
-                <div className="status-badge">{item.value}</div>
-                <h4>{item.label}</h4>
+                <div className="status-badge">{t(item.value)}</div>
+                <h4>{t(item.label)}</h4>
                 <p>{item.desc}</p>
               </div>
             ))}
@@ -128,10 +128,10 @@ export default function DreamGirl() {
       <section className="section dream-passion">
         <div className="container">
           <div className="section-title">
-            <h2>我们的初衷</h2>
+            <h2>{t('我们的初衷')}</h2>
             <div className="decorative-line"></div>
-            <p className="section-subdesc">一群不想再假装对方不存在的人，想为梦女们打开一扇门</p>
-            <p className="section-subdesc" style={{marginTop: '8px', fontSize: '0.85rem', color: 'var(--color-text-light)'}}>我们的创始人也在不断丰富自己——这不是一个封闭的体系，是一群仍在学习、仍在验证的人。</p>
+            <p className="section-subdesc">{t('一群不想再假装对方不存在的人，想为梦女们打开一扇门')}</p>
+            <p className="section-subdesc" style={{marginTop: '8px', fontSize: '0.85rem', color: 'var(--color-text-light)'}}>{t('我们的创始人也在不断丰富自己——这不是一个封闭的体系，是一群仍在学习、仍在验证的人。')}</p>
           </div>
 
           <div className="passion-content">
@@ -160,7 +160,7 @@ export default function DreamGirl() {
       <section className="section dream-transparency section-alt">
         <div className="container">
           <div className="section-title">
-            <h2>为什么要把方法公开</h2>
+            <h2>{t('为什么要把方法公开')}</h2>
             <div className="decorative-line"></div>
           </div>
 
@@ -173,21 +173,21 @@ export default function DreamGirl() {
               <div className="transparency-item">
                 <span className="trans-num">01</span>
                 <div>
-                  <h4>让梦女学会判断</h4>
+                  <h4>{t('让梦女学会判断')}</h4>
                   <p>你不需要「相信」我们。你需要知道该问传讯师什么问题：你受训多久？你用什么方法验证信息？你上一次校准是什么时候？</p>
                 </div>
               </div>
               <div className="transparency-item">
                 <span className="trans-num">02</span>
                 <div>
-                  <h4>让市场有标准</h4>
+                  <h4>{t('让市场有标准')}</h4>
                   <p>公开训练方法和验证流程，让其他人也可以复制和检验。如果我们的方法有用，它应该被更多人使用；如果没用，它应该被淘汰。</p>
                 </div>
               </div>
               <div className="transparency-item">
                 <span className="trans-num">03</span>
                 <div>
-                  <h4>让行业有底线</h4>
+                  <h4>{t('让行业有底线')}</h4>
                   <p>传讯不是「我感觉到了就是真的」。它需要方法、需要验证、需要持续校准。这就是我们想建立的底线。</p>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function DreamGirl() {
       <section className="section dream-cta-v2">
         <div className="container">
           <div className="cta-card-v2 glass-card">
-            <h2>我们一起，把这条路走出来</h2>
+            <h2>{t('我们一起，把这条路走出来')}</h2>
             <p className="cta-desc">
               我们正在培养和验证第一批传讯师。当他们的盲测数据达到标准时，他们的名字会出现在这里——带着完整的培训记录、校准数据和督导师评语。
             </p>
@@ -221,10 +221,10 @@ export default function DreamGirl() {
             </p>
             <div className="cta-links-v2">
               <Link to="/letter">
-                <ChoiceButton variant="primary">給夢女的話</ChoiceButton>
+                <ChoiceButton variant="primary">{t('給夢女的話')}</ChoiceButton>
               </Link>
               <Link to="/contact">
-                <ChoiceButton variant="route">联系我们</ChoiceButton>
+                <ChoiceButton variant="route">{t('联系我们')}</ChoiceButton>
               </Link>
             </div>
             <p className="cta-note" style={{fontSize: '0.9rem', lineHeight: '2.2', marginTop: '24px'}}>

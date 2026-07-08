@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import DialogueBox from '../components/DialogueBox'
 import ChoiceButton from '../components/ChoiceButton'
+import { useLanguage } from '../i18n'
 import './Mysticism.css'
 
 const wisdomServices = [
@@ -32,14 +33,15 @@ const wisdomServices = [
 ]
 
 export default function Mysticism() {
+  const { t } = useLanguage()
   return (
     <div className="page-mysticism">
       <section className="page-hero mysticism-hero">
         <div className="container">
           <div className="mysticism-hero-grid">
             <div className="mysticism-hero-text">
-              <h1>星界智慧</h1>
-              <p className="subtitle">—— 跨次元鏈接研究 · Astra Wisdom ——</p>
+              <h1>{t('星界智慧')}</h1>
+              <p className="subtitle">{t('—— 跨次元鏈接研究 · Astra Wisdom ——')}</p>
             </div>
             <div className="mysticism-hero-illustration">
               <img
@@ -55,7 +57,7 @@ export default function Mysticism() {
       <section className="section">
         <div className="container">
           <div className="mysticism-intro">
-            <DialogueBox speaker="星界研究員" variant="mystic">
+            <DialogueBox speaker={t('星界研究員')} variant="mystic">
               星界智慧是協會的學術研究核心。我們將古典星象學、東西方神秘學傳統與現代意識研究相結合，
               建立了一套完整的跨次元感知研究體系。這裡既是研究框架的展示，也是為每一位探索者提供
               專業指引的地方——從星盤解讀到能量校準，從塔羅象徵解讀到星夢解析。
@@ -67,18 +69,18 @@ export default function Mysticism() {
       <section className="section mysticism-services">
         <div className="container">
           <div className="section-title">
-            <h2>研究服務</h2>
+            <h2>{t('研究服務')}</h2>
             <div className="decorative-line">
               <span /><span className="star"></span><span />
             </div>
-            <p className="section-subdesc">每一項服務皆由經過系統培訓的認證傳訊師執行——有記錄、可追溯</p>
+            <p className="section-subdesc">{t('每一項服務皆由經過系統培訓的認證傳訊師執行——有記錄、可追溯')}</p>
           </div>
 
           <div className="grid-3">
             {wisdomServices.map((svc, i) => (
               <div key={i} className="mystic-card card">
                 <div className="mystic-icon">{svc.icon}</div>
-                <h3>{svc.name}</h3>
+                <h3>{t(svc.name)}</h3>
                 <p>{svc.desc}</p>
               </div>
             ))}
@@ -89,10 +91,10 @@ export default function Mysticism() {
       <section className="section">
         <div className="container text-center">
           <div className="glass-card cta-inner">
-            <h2>準備好探索星界的智慧了嗎？</h2>
-            <p>預約一次星界諮詢，了解我們的跨次元感知研究體系。</p>
+            <h2>{t('準備好探索星界的智慧了嗎？')}</h2>
+            <p>{t('預約一次星界諮詢，了解我們的跨次元感知研究體系。')}</p>
             <Link to="/contact">
-              <ChoiceButton variant="primary">預約諮詢</ChoiceButton>
+              <ChoiceButton variant="primary">{t('預約諮詢')}</ChoiceButton>
             </Link>
           </div>
         </div>

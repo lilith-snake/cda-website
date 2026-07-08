@@ -17,8 +17,8 @@ export default function Witness() {
       {/* Hero */}
       <section className="page-hero witness-hero">
         <div className="container">
-          <h1>邀請見證</h1>
-          <p className="subtitle">全球首個跨次元鏈接系統性研究實驗</p>
+          <h1>{t('邀請見證')}</h1>
+          <p className="subtitle">{t('全球首個跨次元鏈接系統性研究實驗')}</p>
         </div>
       </section>
 
@@ -40,7 +40,7 @@ export default function Witness() {
       <section className="section witness-roles">
         <div className="container">
           <div className="section-title">
-            <h2>你可以參與的方式</h2>
+            <h2>{t('你可以參與的方式')}</h2>
             <div className="decorative-line">
               <span /><span className="star"></span><span />
             </div>
@@ -48,8 +48,8 @@ export default function Witness() {
 
           <div className="witness-roles-grid">
             <div className="witness-role-card card">
-              <h3>我是夢女 / 實踐者</h3>
-              <p className="role-tagline">作為實驗的「鏈接對象提供方」</p>
+              <h3>{t('我是夢女 / 實踐者')}</h3>
+              <p className="role-tagline">{t('作為實驗的「鏈接對象提供方」')}</p>
               <div className="role-description">
                 <p>你的跨次元鏈接對象將由多位受訓傳訊師在盲測條件下獨立描述。</p>
                 <p>你來比對結果——成為第一手見證者。</p>
@@ -57,8 +57,8 @@ export default function Witness() {
             </div>
 
             <div className="witness-role-card card">
-              <h3>我是傳訊師 / 神秘學從業者</h3>
-              <p className="role-tagline">參與CDA系統培訓後，進入實驗環節</p>
+              <h3>{t('我是傳訊師 / 神秘學從業者')}</h3>
+              <p className="role-tagline">{t('參與CDA系統培訓後，進入實驗環節')}</p>
               <div className="role-description">
                 <p>在隔離條件下對同一對象進行獨立傳訊。</p>
                 <p>你的實操數據將納入研究——成為方法論的共同驗證者。</p>
@@ -66,8 +66,8 @@ export default function Witness() {
             </div>
 
             <div className="witness-role-card card">
-              <h3>我是行業觀察者 / 研究者</h3>
-              <p className="role-tagline">有興趣的神秘學、心理學、意識研究相關人士</p>
+              <h3>{t('我是行業觀察者 / 研究者')}</h3>
+              <p className="role-tagline">{t('有興趣的神秘學、心理學、意識研究相關人士')}</p>
               <div className="role-description">
                 <p>獲取實驗過程記錄和研究數據。</p>
                 <p>從外部視角審視和討論實驗結果。</p>
@@ -84,49 +84,49 @@ export default function Witness() {
 
             {!submitted ? (
               <>
-                <h2>申請參與實驗</h2>
-                <p className="form-desc">請填寫以下信息，我們將與你聯繫說明參與方式。此實驗不做任何承諾——只說明實驗流程和你可以參與的方式。</p>
+                <h2>{t('申請參與實驗')}</h2>
+                <p className="form-desc">{t('請填寫以下信息，我們將與你聯繫說明參與方式。此實驗不做任何承諾——只說明實驗流程和你可以參與的方式。')}</p>
 
                 <form className="witness-form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label>稱呼</label>
-                    <input type="text" placeholder="你的名字" required />
+                    <label>{t('稱呼')}</label>
+                    <input type="text" placeholder={t('你的名字')} required />
                   </div>
 
                   <div className="form-group">
-                    <label>電郵</label>
+                    <label>{t('電郵')}</label>
                     <input type="email" placeholder="your@email.com" required />
                   </div>
 
                   <div className="form-group">
-                    <label>參與角色</label>
+                    <label>{t('參與角色')}</label>
                     <select required>
-                      <option value="">—— 請選擇 ——</option>
-                      <option>我是夢女 / 實踐者（提供鏈接對象）</option>
-                      <option>我是傳訊師 / 神秘學從業者（參與培訓+盲測）</option>
-                      <option>我是行業觀察者 / 研究者（獲取實驗數據）</option>
+                      <option value="">{t('—— 請選擇 ——')}</option>
+                      <option>{t('我是夢女 / 實踐者（提供鏈接對象）')}</option>
+                      <option>{t('我是傳訊師 / 神秘學從業者（參與培訓+盲測）')}</option>
+                      <option>{t('我是行業觀察者 / 研究者（獲取實驗數據）')}</option>
                     </select>
                   </div>
 
                   <div className="form-group">
-                    <label>簡述你的參與意願</label>
+                    <label>{t('簡述你的參與意願')}</label>
                     <textarea
-                      placeholder="請簡要說明你為什麼想參與這個實驗……"
+                      placeholder={t('請簡要說明你為什麼想參與這個實驗……')}
                       rows={4}
                       required
                     />
                   </div>
 
                   <button type="submit" className="submit-btn">
-                    提交申請
+                    {t('提交申請')}
                   </button>
                 </form>
               </>
             ) : (
               <div className="submit-success">
                 <div className="success-icon"></div>
-                <h2>申請已提交</h2>
-                <p>感謝你的參與意願。我們將在審核後與你聯繫，說明後續步驟。</p>
+                <h2>{t('申請已提交')}</h2>
+                <p>{t('感謝你的參與意願。我們將在審核後與你聯繫，說明後續步驟。')}</p>
               </div>
             )}
           </div>
