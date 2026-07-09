@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Store the full URL and redirect to root for SPA routing
-    sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
-    location.replace('/cda-website/');
+    // Extract the path after /cda-website/ and redirect to SPA with it as a query param
+    var path = location.pathname.replace('/cda-website', '') || '/';
+    if (location.search) path += location.search;
+    if (location.hash) path += location.hash;
+    location.replace('/cda-website/?redirect=' + encodeURIComponent(path));
   </script>
 </head>
 <body>Redirecting...</body>

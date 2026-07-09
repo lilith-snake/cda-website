@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -14,6 +15,16 @@ import Letter from './pages/Letter'
 import Recruit from './pages/Recruit'
 
 export default function App() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const redirect = searchParams.get('redirect')
+    if (redirect) {
+      navigate(redirect, { replace: true })
+    }
+  }, [])
+
   return (
     <div className="app">
       <Navbar />
