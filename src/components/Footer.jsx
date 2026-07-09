@@ -21,6 +21,7 @@ export default function Footer() {
             <Link to="/about">{t('關於')}</Link>
             <Link to="/courses">{t('培訓驗證')}</Link>
             <Link to="/contact">{t('聯繫')}</Link>
+            <Link to="/recruit">{t('研究共建者招募')}</Link>
           </div>
           <div className="footer-col">
             <h4>{t('探索')}</h4>

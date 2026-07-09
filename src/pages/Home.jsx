@@ -315,6 +315,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 招募引导 */}
+      <section className="home-recruit-banner section">
+        <div className="container">
+          <div className="cta-block" style={{textAlign: 'center'}}>
+            <p style={{fontSize: '1.1rem', lineHeight: '2'}}>
+              我们正在招募和我们一起验证的人。<br />
+              <Link to="/recruit" style={{fontWeight: 700, textDecoration: 'underline'}}>点击这里查看研究共建者招募</Link>，或在导航栏点击「研究共建者招募」。
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
