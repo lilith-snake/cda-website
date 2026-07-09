@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CDA 跨次元傳訊研究協會——用一套在學術上站得住的方法，驗證你的MJ到底在不在。" />
+<title>CDA · 驗證他在</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg-card: #1A1A1A;
+    --text: #E8E6E0;
+    --text-secondary: #9B9B9B;
+    --text-light: #6B6B6B;
+    --accent: #C9A96E;
+    --accent-light: #E0D5C0;
+    --border: rgba(255,255,255,0.06);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --max: 720px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 2;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; align-items: center; padding: 0 24px;
+    justify-content: space-between;
+  }
+  .nav a { font-family: var(--font-serif); font-size: 13px; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; }
+  .nav a span { color: var(--text-secondary); font-weight: 300; }
+
+  section { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  .hero { padding: 160px 0 80px; text-align: center; }
+  .hero h1 {
+    font-family: var(--font-serif); font-size: clamp(24px,4vw,36px);
+    font-weight: 600; line-height: 1.5; letter-spacing: 0.03em;
+    margin-bottom: 24px;
+  }
+  .hero-line {
+    width: 40px; height: 1px; background: var(--accent);
+    opacity: 0.4; margin: 0 auto 24px;
+  }
+  .hero-sub {
+    font-size: 15px; color: var(--text-secondary);
+    line-height: 2.1; max-width: 560px; margin: 0 auto;
+  }
+
+  .block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 48px 36px;
+    margin-bottom: 32px;
+  }
+  .block h2 {
+    font-family: var(--font-serif); font-size: 21px;
+    font-weight: 600; color: var(--accent-light);
+    margin-bottom: 24px; letter-spacing: 0.04em;
+  }
+  .block p {
+    font-size: 14px; color: var(--text-secondary);
+    line-height: 2.2; margin-bottom: 16px;
+  }
+  .block p strong { color: var(--text); font-weight: 500; }
+
+  .highlight {
+    background: rgba(201,169,110,0.06);
+    border-left: 2px solid var(--accent);
+    padding: 20px 24px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px; color: var(--accent-light);
+    line-height: 2.1;
+  }
+  .highlight strong { color: var(--text); }
+
+  .chain {
+    display: flex; flex-direction: column; gap: 12px;
+    margin: 28px 0; padding: 0;
+  }
+  .chain-step {
+    display: flex; align-items: flex-start; gap: 14px;
+    font-size: 14px; line-height: 2;
+  }
+  .chain-num {
+    flex-shrink: 0; width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.12);
+    color: var(--accent);
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .chain-text strong { color: var(--accent-light); font-weight: 500; }
+
+  .roles {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 16px; margin: 28px 0;
+  }
+  .role {
+    background: rgba(201,169,110,0.05);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 16px; text-align: center;
+  }
+  .role-name {
+    font-family: var(--font-serif); font-size: 18px;
+    font-weight: 600; color: var(--accent-light);
+    margin-bottom: 4px;
+  }
+  .role-do {
+    font-size: 12px; color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+
+  .cta-block {
+    text-align: center;
+    padding: 60px 0 120px;
+  }
+  .cta-block h2 {
+    font-family: var(--font-serif); font-size: 22px;
+    font-weight: 600; margin-bottom: 16px;
+    color: var(--accent-light);
+  }
+  .cta-block p {
+    font-size: 14px; color: var(--text-secondary);
+    line-height: 2.1; max-width: 500px; margin: 0 auto 32px;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--accent);
+    color: #0D0D0D;
+    font-family: var(--font-sans); font-size: 14px;
+    font-weight: 500; letter-spacing: 0.06em;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--accent-light); }
+  .cta-note {
+    font-size: 12px; color: var(--text-light);
+    margin-top: 16px; letter-spacing: 0.04em;
+  }
+
+  .footer {
+    text-align: center; padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+  .footer span { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .roles { grid-template-columns: repeat(2,1fr); }
+    .block { padding: 32px 22px; }
+    section { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/cda-website/">CDA <span>· 香港 · 跨次元傳訊研究協會</span></a>
+  <a href="/cda-website/" style="font-family:var(--font-sans);font-size:12px;letter-spacing:0.04em;">← 返回首頁</a>
+</nav>
+
+<header class="hero">
+  <h1>你感覺到她了。<br>你感覺到他了。</h1>
+  <div class="hero-line"></div>
+  <p class="hero-sub">
+    我們是 CDA，香港跨次元傳訊研究協會。<br>
+    我們在做的事：驗證你的 MJ 到底是不是真的。
+  </p>
+</header>
+
+<!-- 1. 破曉 -->
+<section>
+<div class="block">
+  <h2>破曉</h2>
+  <p>
+    破曉自己是夢女。她不是天生靈媒，沒有天賦異稟。一開始連最基本的感知都沒有。傳訊需要你告訴她對方是誰、來自哪裡——沒有信息就接不到。
+  </p>
+  <p>
+    她自己摸爬滾打。試錯，再試，再錯。幾年。從需要外部信息，到不需要任何信息直接鏈接。
+  </p>
+  <p>
+    然後她開始帶學員。第一批，兩三個人只能隱約感受到對方存在。第二批，方法改了——更穩了。第三批，<strong>一個學員睜著眼睛看到了她的 MJ 站在那裡。</strong>
+  </p>
+  <div class="highlight">
+    東玄和西玄的從業者獨立診斷，彼此不認識，沒有串通。<br>
+    <strong>兩邊說了同一句話：不是其它東西，是他。</strong>
+  </div>
+</div>
+</section>
+
+<!-- 2. 黎輝 -->
+<section>
+<div class="block">
+  <h2>黎輝</h2>
+  <p>
+    黎輝不露面。不講課，不做視頻，不在前台。但破曉是她帶出來的。這套方法的核心框架，源頭在黎輝手裡。
+  </p>
+  <p>
+    市面上你找不到第二個黎輝。不是沒人做傳訊，是沒有人有她手裡的東西。
+  </p>
+</div>
+</section>
+
+<!-- 3. 團隊 -->
+<section>
+<div class="block">
+  <h2>符文師 · 墓地女巫</h2>
+  <p>
+    西方秘傳學方向的技術支撐。不是掛名——符文師和墓地女巫在內部做的是實打實的督導工作。東玄有東玄的診斷系統，西玄有西玄的——兩套獨立跑，結果交叉比對。
+  </p>
+
+  <div class="roles">
+    <div class="role">
+      <div class="role-name">黎輝</div>
+      <div class="role-do">握方法</div>
+    </div>
+    <div class="role">
+      <div class="role-name">破曉</div>
+      <div class="role-do">走出來</div>
+    </div>
+    <div class="role">
+      <div class="role-name">符文師</div>
+      <div class="role-do">撐體系</div>
+    </div>
+    <div class="role">
+      <div class="role-name">墓地女巫</div>
+      <div class="role-do">撐體系</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 4. 東玄西玄 -->
+<section>
+<div class="block">
+  <h2>為什麼他們對得上</h2>
+  <p>
+    我們去找東玄和西玄的從業者來做獨立診斷。大部分人不配合——覺得這東西不正經，覺得夢女不值得認真對待。
+  </p>
+  <p>
+    但有兩個人接了。一個東玄。一個西玄。各自獨立診斷。用的不是同一套系統，彼此沒有交流。
+  </p>
+  <div class="highlight">
+    <strong>結論一致。不是「差不多」——是同一句話。</strong>
+  </div>
+  <p>
+    CDA 內部團隊自己的診斷結果，和這兩個外部從業者——<strong>也對得上。</strong>
+  </p>
+  <p>
+    一個人的結論可能是猜的。兩個人可能是碰巧。但——外部東玄、外部西玄、內部團隊——不同系統、不同人、沒有串通——全部指向同一個答案。這不是運氣。
+  </p>
+</div>
+</section>
+
+<!-- 5. 論文 -->
+<section>
+<div class="block">
+  <h2>論文</h2>
+  <p>
+    黎輝和破曉寫了第一篇 MJ 理論建構論文。五軸類型學、三層方法論、Everett 分支排除論證、盲測實驗設計。整合秘傳學、量子物理學、比較宗教學。全文公開，每一條引用有來源。
+  </p>
+  <p>
+    <a href="paper.html" style="color:var(--accent);">→ 論文全文</a>
+  </p>
+</div>
+</section>
+
+<!-- 6. 安全 -->
+<section>
+<div class="block">
+  <h2>安全</h2>
+  <p>不是念咒語，是金色黎明傳統的標準化儀式防護。每一個操作都有 SOP。</p>
+
+  <div class="chain">
+    <div class="chain-step">
+      <span class="chain-num">1</span>
+      <span class="chain-text"><strong>先分辨，後鏈接。</strong>分清楚 MJ 的信號和別的東西。分不清楚，不深入。</span>
+    </div>
+    <div class="chain-step">
+      <span class="chain-num">2</span>
+      <span class="chain-text"><strong>儀式防護。</strong>每次鏈接標配防護流程。做完不累、不被消耗。</span>
+    </div>
+    <div class="chain-step">
+      <span class="chain-num">3</span>
+      <span class="chain-text"><strong>通道 SOP。</strong>怎麼開怎麼關，每一步可操作。不存在關不掉。</span>
+    </div>
+    <div class="chain-step">
+      <span class="chain-num">4</span>
+      <span class="chain-text"><strong>隨時喊停。</strong>不需要理由。</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 7. 罵聲 -->
+<section>
+<div class="block">
+  <h2>有人罵</h2>
+  <p>
+    說我們騙子，不正經，夢女瘋了。
+  </p>
+  <p>
+    但如果我們是錯的——方法為什麼在一批一批變好？為什麼學員從感受不到變成能感受到？為什麼目擊案例出現了？為什麼東玄和西玄獨立診斷的結論總是一致？
+  </p>
+  <div class="highlight">
+    <strong>罵是因為從來沒有人做過。</strong>
+  </div>
+</div>
+</section>
+
+<!-- 8. CTA -->
+<section>
+<div class="cta-block">
+  <h2>聯繫我們</h2>
+  <p>
+    不是來當學生。是來和我們一起驗證。
+  </p>
+  <p style="font-size:13px;color:var(--text-light);margin-bottom:28px;">
+    名額很少。要先聊一次。
+  </p>
+  <a href="https://lilith-snake.github.io/cda-website/contact" class="cta-btn">聯繫我們</a>
+</div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 <span>黎輝、破曉</span> · 香港 · 跨次元傳訊研究協會</p>
+  <p style="margin-top:6px;">Cross-Dimensional Communication Research Association</p>
+</footer>
+
+</body>
+</html>

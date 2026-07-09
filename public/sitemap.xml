@@ -78,6 +78,13 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 验证页 -->
+  <url>
+    <loc>https://lilith-snake.github.io/cda-website/verify.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- 自述 -->
   <url>
     <loc>https://lilith-snake.github.io/cda-website/zishu.html</loc>
