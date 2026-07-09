@@ -9,10 +9,13 @@ export default function Recruit() {
       {/* Hero */}
       <section className="page-hero recruit-hero">
         <div className="container">
-          <h1>你感觉到她了。<br />你感觉到他了。</h1>
+          <h1>全网第一个 MJ 研究<br />共建者招募</h1>
           <p className="subtitle">
             我们是 CDA，香港跨次元传讯研究协会。<br />
-            我们在做的事：验证你的 MJ 到底是不是真的。
+            第一篇 MJ 理论建构论文是我们写的。<br />
+            现在，我们要把论文里的方法，从纸面落到实践——<br />
+            验证它、迭代它、最终形成可认证的标准。<br />
+            你是第一批参与这件事的人。
           </p>
           <p className="women-only">仅面向女性</p>
         </div>
@@ -23,7 +26,7 @@ export default function Recruit() {
         <div className="container">
           <div className="glass-card recruit-card">
             <h2>黎辉</h2>
-            <p>美国疗愈之光机构黑魔法导师认证。为 CDA 提供理论方法支撑——把实践中的发现转化为可以被学术界讨论的语言。</p>
+            <p>美国疗愈之光（Light of Soul）认证黑魔法导师。为 CDA 提供理论方法支撑——把实践中的发现转化为可以被学术界讨论的语言。</p>
             <p>和破晓共同撰写论文，搭建学术框架。整合东玄、西玄、金色黎明、神智学等多套独立体系为统一方法论——这件事是团队一起做的，黎辉在其中的理论整合和框架设计上提供了核心支撑。</p>
             <p>破晓是她带出来的学生。从需要外部信息才能传讯，到不需要任何信息直接链接——黎辉在背后指导了整个方法的成型。学员训练路径的每一次迭代调整、质量把控、数据审核——她在。</p>
             <p>她不出现在前台。市面上你找不到第二个黎辉。不是没人做传讯，是没有人有她手里的东西——一套完整的、有文献溯源、有逻辑链条、有可操作步骤的方法论。</p>
@@ -36,7 +39,7 @@ export default function Recruit() {
         <div className="container">
           <div className="glass-card recruit-card">
             <h2>破晓 Ophion</h2>
-            <p>黑女巫。美国疗愈之光机构认证占星师及黑女巫。团队里第一个接触 MJ 的人——本身就是梦女。说服导师黎辉加入，组织了这个研究团队。</p>
+            <p>黑女巫。美国疗愈之光（Light of Soul）认证占星师及黑女巫——和黎辉的黑魔法导师认证来自同一家机构，两张证互补。团队里第一个接触 MJ 的人——本身就是梦女。说服导师黎辉加入，组织了这个研究团队。</p>
             <p>留学期间曾跟随一位在欧洲民间传承中独自修习了数十年的老女巫学习。后来在神秘学社群结识黎辉，成为她的学生，跟随她学习黑魔法、西方秘传学、灵媒。她向黎辉坦白：学这一切，只是为了寻找对方存在的迹象。</p>
             <p>在黎辉的指导下，MJ 这个全新领域的方法从无到有被搭建出来。她从需要外部信息才能传讯，到不需要任何信息直接链接。方法成型后，她开始带学员。第一批，两三个人能感受到对方。方法继续迭代。到第三批——<strong>一个学员睁著眼睛看到了她的 MJ 站在那里。</strong></p>
             <div className="recruit-highlight">
@@ -180,7 +183,8 @@ export default function Recruit() {
             <p>你的训练过程、你的链接数据、你的验证结果——全部进入研究记录。你是这个实验的数据点，也是这个实验的共建者。没有你，就没有数据。没有数据，就没有答案。</p>
             <p>你不需要相信任何东西。你只需要参与。如果方法在你身上跑通了——MJ 理论离被证明就近了一步。如果在哪里卡住了——方法就被修正了一次。哪种结果都有价值。</p>
             <p className="recruit-subtitle">为什么是 ¥9,800</p>
-            <p>不是一个人在教你。是一整个团队在你身上工作。</p>
+            <p>破晓、黎辉、符文师、墓地女巫——四个人围着你一个人的数据转。</p>
+            <p style={{marginTop: 16}}>全网第一个系统研究 MJ 的团队。不是第一个说自己是传讯师的——那种很多。是第一个把这件事写成论文、拉东玄和西玄做独立交叉验证、建立标准化训练体系的。这套方法论的具体操作流程，目前只存在于 CDA 手里。</p>
             <div className="recruit-chain">
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">1</span>
@@ -200,7 +204,40 @@ export default function Recruit() {
               </div>
             </div>
             <p style={{marginTop: 20}}>你去找外面的传讯师问一次，¥500-2,000。她告诉你一句话。下次你再找她，又是一次钱。你永远不知道是真的还是编的。</p>
-            <p>¥9,800，你得到的是：<strong>一个团队在你身上工作、一套完整的方法论、一个你自己永久拥有的能力、一个被多系统独立验证过的 MJ。</strong></p>
+            <p>¥9,800，你得到的是：</p>
+            <div className="recruit-chain">
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">1</span>
+                <span><strong>被多系统独立验证的 MJ 链接结果。</strong>东玄一次，西玄一次，内部团队交叉比对。三组数据摆在桌上，收敛还是发散，数据说了算。</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">2</span>
+                <span><strong>训练你自己链接的能力。</strong>CDA 方法论的设计方向，是让你最终不需要依赖别人来确认他在不在。能不能做到、做到什么程度，取决于训练的实际推进情况——这不是承诺，是我们在跑的实验方向。</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">3</span>
+                <span><strong>加入 CDA 的可能。</strong>假如你受训完成并通过考核加入 CDA，CDA 提供丰厚的底薪以及协会证书认证——将论文方法落到实践层面、可对外出具的专业资质。</span>
+              </div>
+            </div>
+            <p style={{marginTop: 20}}>不管你最终能否通过传讯师考核——只要你参与了，你就是 CDA 的研究共建者。每个人都会拿到：</p>
+            <div className="recruit-chain">
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">1</span>
+                <span><strong>CDA 研究共建者证书。</strong>证明你参与了第一批 MJ 研究共建计划。你的名字（或代号）和参与编号，记录在案。</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">2</span>
+                <span><strong>论文贡献收录。</strong>你的训练数据以匿名编号形式进入后续版论文的数据集。不管结果如何，你的数据点都在那里——这是你为这个领域留下的痕迹。</span>
+              </div>
+            </div>
+            <div className="recruit-highlight">
+              CDA 方法论的设计目标，对应 Faivre 六大特征中的两个核心要件：<strong>转化</strong> 与 <strong>传承</strong>。<br /><br />
+              <strong>转化：</strong>不是替你做一辈子传讯——CDA 的设计逻辑，是希望你最终自己拥有这个能力。这是论文第三章的论证方向。<br /><br />
+              <strong>传承：</strong>不管外面传讯市场多乱，CDA 内部每个参与训练的人都走同一套方法、同一套标准。这是为了确保——将来做交叉验证的时候，不同传讯师之间的结果可以互相比对、有意义。
+            </div>
+            <div className="recruit-highlight">
+              <strong>持续的国际学术记录——以及我们面对的困难。</strong>CDA 第一篇 MJ 理论建构论文已投稿至国际神秘学期刊。说实话：目前没有足够的实证数据，加上学术界对梦女群体缺乏基本认知——通过同行评审的难度很大。这不是方法有问题，是我们还没有足够的人跑过这套方法、留下可以被期刊采信的数据。评审人要看到的不只是理论框架，是实际案例、是交叉验证结果、是可重复的训练记录。这就是为什么我们需要共建者。一个人的数据是一份案例，一群人的数据就是可引用的证据。CDA 的长期方向，是持续向西方秘传学领域国际同行评审期刊投稿——Aries（Brill · ESSWE 旗舰期刊）、Correspondences、Nova Religio（UC Press）等。论文通过了，共建者的贡献跟着进入学术数据库；通不过，修改再投，数据还在。你的数据会在那里——在你能查到的期刊数据库里，在以后任何研究 MJ 现象的人都会引用的文献列表里。
+            </div>
             <p>我们在做研究，论文和网站上写出去的每一句话，得对它负责。目前还在初期阶段，选择先跟进 2 个人——对每一个共建者负责，也对后续的交叉验证和公开审查负责。</p>
             <p>这是第一批正式参与 CDA 研究的共建者。感谢你的信任和支持。感谢你在流言蜚语中选择了我们。</p>
             <p className="recruit-subtitle">申请问题</p>
