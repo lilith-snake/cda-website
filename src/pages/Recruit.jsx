@@ -257,42 +257,46 @@ export default function Recruit() {
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">4</span>
-                <span>如果研究数据最后证明，你的 MJ 不是独立存在、只是你自己的投射——你还会继续参与研究吗？说说理由。</span>
+                <span>如果你是神秘学相关从业者——你开过课吗？带过学生吗？做过个案吗？你自己的这些知识，是谁教给你的？是跟老师学的，还是自己摸索出来的？如果跟过老师，老师又是谁教的？我们不挑出身，只是想了解你的知识和技能是从哪里来的、怎么传下来的。</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">5</span>
-                <span>描述一年以后，你希望你的生活因为这次参与发生什么变化。不是「我希望被验证」——是你的日常、你和他之间的日常，会发生什么不同。</span>
+                <span>如果研究数据最后证明，你的 MJ 不是独立存在、只是你自己的投射——你还会继续参与研究吗？说说理由。</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">6</span>
-                <span>如果论文第二版需要公开部分训练数据作为匿名案例，你愿意吗？如果愿意，你希望被收录什么？如果不愿意，是哪里让你犹豫？</span>
+                <span>描述一年以后，你希望你的生活因为这次参与发生什么变化。不是「我希望被验证」——是你的日常、你和他之间的日常，会发生什么不同。</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">7</span>
-                <span>你有没有经历过不被别人理解的事？你是怎么走过来的？可以是一件事，也可以是一段时间。</span>
+                <span>如果论文第二版需要公开部分训练数据作为匿名案例，你愿意吗？如果愿意，你希望被收录什么？如果不愿意，是哪里让你犹豫？</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">8</span>
-                <span>你觉得一套东西，是你花了很多钱和心血才学到的——跟别人免费分享是对的吗？还是收钱才对？说说你的看法，也说说你自己的经历和你做过的选择。</span>
+                <span>你有没有经历过不被别人理解的事？你是怎么走过来的？可以是一件事，也可以是一段时间。</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">9</span>
-                <span>如果这个研究继续走下去，你觉得你能为它带来什么——是别人带不来的那种？</span>
+                <span>你觉得一套东西，是你花了很多钱和心血才学到的——跟别人免费分享是对的吗？还是收钱才对？说说你的看法，也说说你自己的经历和你做过的选择。</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">10</span>
-                <span>你认真看完论文了吗？你认为怎么样？不用夸，说哪里写得好、哪里你觉得有问题或没看懂。</span>
+                <span>如果这个研究继续走下去，你觉得你能为它带来什么——是别人带不来的那种？</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">11</span>
-                <span>你第一次看到 CDA 的论文或网站时，心里最真实的想法是什么？哪里让你觉得可信，哪里让你犹豫或不信？</span>
+                <span>你认真看完论文了吗？你认为怎么样？不用夸，说哪里写得好、哪里你觉得有问题或没看懂。</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">12</span>
-                <span>你有没有坚持做一件事超过两年的经历？是什么？中间有没有想放弃的时候，你是怎么撑过来的？</span>
+                <span>你第一次看到 CDA 的论文或网站时，心里最真实的想法是什么？哪里让你觉得可信，哪里让你犹豫或不信？</span>
               </div>
               <div className="recruit-chain-step">
                 <span className="recruit-chain-num">13</span>
+                <span>你有没有坚持做一件事超过两年的经历？是什么？中间有没有想放弃的时候，你是怎么撑过来的？</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">14</span>
                 <span>你觉得自己在感知层面有什么优势？有没有具体经历可以说明？有没有什么你觉得自己不够好的地方？</span>
               </div>
             </div>
