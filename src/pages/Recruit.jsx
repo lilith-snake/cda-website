@@ -313,6 +313,20 @@ export default function Recruit() {
         </div>
       </section>
 
+      {/* 不止一期 */}
+      <section className="section">
+        <div className="container">
+          <div className="glass-card recruit-card">
+            <h2>这次来不了，没关系</h2>
+            <p>我们不只做一期招募。这一次是第一批，下一批可能是下个月，也可能更晚——看第一批跑出来的数据和结果。</p>
+            <p>价格会有浮动。现在 ¥9,800，以后可能会调整——往上还是往下，取决于我们实际跑下来的人力成本、验证流程的优化程度。</p>
+            <p>如果你此刻想加入，但因为经济原因暂时没办法——不用灰心。这不是你最后一次看到我们。我们的每一轮训练结果、每一次交叉验证数据、每一版论文更新，都会公开。你可以先看着，等准备好了再来。</p>
+            <p>我们不会跑。CDA 是长期在做的事。</p>
+            <p style={{marginTop: 16}}><strong>我们永远与你同在。你的爱人永远与你同在。</strong></p>
+          </div>
+        </div>
+      </section>
+
       {/* 写在最后 */}
       <section className="section">
         <div className="container">
