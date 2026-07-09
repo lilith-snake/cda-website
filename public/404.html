@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Extract the path after /cda-website/ and redirect to SPA with it as a query param
+    // Extract the path after /cda-website/, store in sessionStorage for index.html to restore
     var path = location.pathname.replace('/cda-website', '') || '/';
     if (location.search) path += location.search;
     if (location.hash) path += location.hash;
-    location.replace('/cda-website/?redirect=' + encodeURIComponent(path));
+    sessionStorage.setItem('redirect', path);
+    location.replace('/cda-website/');
   </script>
 </head>
 <body>Redirecting...</body>

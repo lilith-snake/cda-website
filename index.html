@@ -15,7 +15,7 @@
         var r = sessionStorage.getItem('redirect');
         if (r) {
           sessionStorage.removeItem('redirect');
-          history.replaceState(null, '', r);
+          history.replaceState(null, '', '/cda-website' + r);
         }
       })();
     </script>
