@@ -78,6 +78,13 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- 研究共建者招募 -->
+  <url>
+    <loc>https://lilith-snake.github.io/cda-website/recruit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- 申请问卷 -->
   <url>
     <loc>https://lilith-snake.github.io/cda-website/apply.html</loc>
