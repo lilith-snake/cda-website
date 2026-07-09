@@ -175,7 +175,7 @@ export default function Recruit() {
               共建者有两组路径：<br /><br />
               <strong>路径 A</strong>（已有神秘学基础的从业者）→ 接受 CDA 训练 → 独立链接 → 出结果<br />
               <strong>路径 B</strong>（零基础梦女）→ 接受 CDA 训练 → 独立链接 → 出结果<br /><br />
-              另有对照组（未受训者）→ 同等条件链接 → 出结果<br /><br />
+              另有对照组（未受训的东玄西玄相关行业从业者）→ 同等条件链接 → 出结果<br /><br />
               三组结果比对。资讯隔离。公开记录。无论结果是否达标，实验报告公开发布。<br /><br />
               不管走哪条路径，你来参与就是共建者。你的数据进入论文，你的名字在证书上。<br /><br />
               每条路径的具体训练阶段、考核标准和验证流程，详见 <a href="/cda-website/courses" className="recruit-link">培训验证</a> 页面——两边是对应的。
@@ -310,7 +310,7 @@ export default function Recruit() {
             <div className="recruit-submit-box">
               <p><strong>提交方式</strong></p>
               <p>将以上问题的回答发送至：<br /><a href="mailto:dluu39ce7c@gmail.com" className="recruit-link">dluu39ce7c@gmail.com</a></p>
-              <p>我们会在收到后与你联系，约一次交谈。</p>
+              <p>我们研究团队会在所有回复后，联系和我们志同道合的人约一次交谈。</p>
               <p className="recruit-footnote">仅面向女性 · 名额有限 · 非先到先得</p>
             </div>
           </div>
