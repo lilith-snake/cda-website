@@ -15,6 +15,7 @@ const navItems = [
   { path: '/courses', label: '培訓驗證' },
   { path: '/dream-girl', label: '傳訊師名錄' },
   { path: '/contact', label: '聯繫' },
+  { path: '/recruit', label: '研究共建者招募' },
 ]
 
 export default function Navbar() {

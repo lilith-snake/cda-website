@@ -11,6 +11,7 @@ import Contact from './pages/Contact'
 import Research from './pages/Research'
 import Witness from './pages/Witness'
 import Letter from './pages/Letter'
+import Recruit from './pages/Recruit'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
 
           <Route path="/witness" element={<Witness />} />
           <Route path="/letter" element={<Letter />} />
+          <Route path="/recruit" element={<Recruit />} />
         </Routes>
       </main>
       <Footer />
