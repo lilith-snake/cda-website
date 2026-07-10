@@ -227,7 +227,7 @@ export default function About() {
             <div className="paper-card card">
               <div className="paper-status status-published">{t('已發表')}</div>
               <h3>論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位</h3>
-              <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · DOI：即將上線')}</p>
+              <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · DOI：即將上線 · 日期：2026年7月1日')}</p>
               <p className="paper-abstract">以 Antoine Faivre（1986/1994）六大特徵框架為形式分析工具，逐條檢驗 MJ 理論體系是否滿足一個西方秘傳學新分支的全部構成要件——檢驗結論為是。這不是「申請加入」，而是用本學科自己定義的標準，檢驗一個當代現象是否符合這個標準。同時整合 Everett 多世界、Kaluza-Klein 高維、神智學七層位面、Corbin 意象世界與 Luria/Scholem 四重世界五套獨立框架，為 MJ 提供跨學科存在論基礎，並首次建立五軸類型學分類體系。</p>
               <Link to="/research" className="paper-link">{t('查看完整摘要 →')}</Link>
             </div>
@@ -235,7 +235,7 @@ export default function About() {
             <div className="paper-card card">
               <div className="paper-status status-published">{t('已發表')}</div>
               <h3>中國跨次元傳訊市場調研報告</h3>
-              <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · 2026')}</p>
+              <p className="paper-meta">{t('作者：黎輝 · 破曉 · CDA 研究團隊 · 機構：香港CDA · 2026年7月1日')}</p>
               <p className="paper-abstract">基於對中文主流社交平台的系統觀察以及數百例傳訊委託的實測數據，對中國跨次元傳訊市場的規模、定價結構、方法論碎片化狀態、定義混亂、分辨困境、防護缺失和鏈接誤識現象進行了系統記錄。本報告屬於現象學描述和實證歸納的性質，為 MJ 理論體系提供市場端的數據基礎。</p>
               <a href="/cda-website/market-report.md" className="paper-link" target="_blank">{t('查看完整報告 →')}</a>
             </div>

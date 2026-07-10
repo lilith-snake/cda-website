@@ -27,6 +27,8 @@ export default function Research() {
                 <span className="paper-affiliation">{t('機構：香港 · 跨次元傳訊研究協會')}</span>
                 <span className="paper-divider">|</span>
                 <span className="paper-doi">{t('DOI：即將上線')}</span>
+                <span className="paper-divider">|</span>
+                <span className="paper-date">{t('日期：2026年7月1日')}</span>
               </div>
             </div>
 
