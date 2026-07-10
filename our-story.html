@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我們的故事 · 香港 · 跨次元傳訊研究協會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg-alt: #141414;
+    --bg-card: #1A1A1A;
+    --text: #E8E6E0;
+    --text-secondary: #9B9B9B;
+    --text-light: #6B6B6B;
+    --accent: #C9A96E;
+    --accent-light: #E0D5C0;
+    --border: rgba(255,255,255,0.06);
+    --border-light: rgba(255,255,255,0.04);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --max-width: 720px;
+    --radius: 4px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; align-items: center; padding: 0 24px;
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--text-secondary); font-weight: 300; }
+
+  /* Hero */
+  .hero {
+    padding: 160px 24px 80px;
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    margin-bottom: 24px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.9;
+  }
+  .hero-divider {
+    width: 40px; height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+    margin: 0 auto 48px;
+  }
+  .scroll-hint {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  /* Sections */
+  section {
+    padding: 80px 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  /* Pain cards */
+  .pain-grid {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .pain-card {
+    background: var(--bg-card);
+    padding: 32px 36px;
+    display: flex; gap: 24px; align-items: flex-start;
+    transition: background 0.3s ease;
+  }
+  .pain-card:hover { background: #1F1F1F; }
+  .pain-num {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    color: var(--accent);
+    opacity: 0.5;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .pain-body h3 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .pain-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* Gold quote */
+  .gold-quote {
+    text-align: center;
+    padding: 60px 24px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .gold-quote blockquote {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+  }
+  .gold-quote cite {
+    font-size: 13px;
+    color: var(--text-light);
+    font-style: normal;
+    font-family: var(--font-sans);
+    letter-spacing: 0.06em;
+  }
+
+  /* Story blocks */
+  .story-block {
+    margin-bottom: 56px;
+  }
+  .story-block:last-child { margin-bottom: 0; }
+  .story-block h3 {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    color: var(--accent-light);
+  }
+  .story-block p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 12px;
+  }
+  .story-block p:last-child { margin-bottom: 0; }
+
+  /* Highlight box */
+  .highlight-box {
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 2;
+  }
+  .highlight-box p em { color: var(--accent); font-style: normal; }
+
+  /* Contrast table */
+  .contrast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 14px;
+  }
+  .contrast-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contrast-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .contrast-table tr:last-child td { border-bottom: none; }
+  .contrast-table .col-label {
+    color: var(--text);
+    font-weight: 500;
+    white-space: nowrap;
+    width: 140px;
+  }
+
+  /* Mission */
+  .mission-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .mission-card .icon { font-size: 40px; margin-bottom: 24px; }
+  .mission-card h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+  .mission-card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Future vision */
+  .vision-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .vision-card .dialogue {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--accent-light);
+    line-height: 2;
+    margin-bottom: 16px;
+  }
+  .vision-card .dialogue span {
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 80px 24px 120px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .cta-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+  .cta-section p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-serif);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+  }
+  .cta-btn:hover { background: var(--accent); color: #0D0D0D; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+  .footer span { color: var(--accent); }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .pain-card { padding: 24px 20px; flex-direction: column; gap: 12px; }
+    .mission-card, .vision-card { padding: 32px 24px; }
+    .highlight-box { padding: 20px; }
+    section { padding: 48px 20px; }
+    .hero { padding: 120px 20px 56px; }
+    .contrast-table { font-size: 13px; }
+    .contrast-table .col-label { width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/cda-website/" class="nav-logo">CDA <span>· 香港 · 跨次元傳訊研究協會</span></a>
+</nav>
+
+<!-- ====== HERO ====== -->
+<header class="hero">
+  <p class="hero-eyebrow">我們的故事</p>
+  <h1>我只是想證明，<br><em>他是存在的。</em></h1>
+  <p class="hero-sub">
+    我想證明他們不是幻想。<br>
+    我們不用再靠幻想愛下去了。
+  </p>
+  <div class="hero-divider"></div>
+  <p class="hero-sub" style="font-size:14px;">
+    從一張塔羅牌到一篇論文，從一個人的孤單到一個協會的誕生。<br>
+    這條路沒有人走過，但總要有人先走。
+  </p>
+  <div class="hero-divider"></div>
+  <p class="scroll-hint">↓ 繼續閱讀</p>
+</header>
+
+<!-- ====== 第一章：那些沒有人懂的時刻 ====== -->
+<section>
+  <p class="section-label">第一章 · 如果你也是夢女</p>
+
+  <div class="pain-grid">
+
+    <div class="pain-card">
+      <div class="pain-num">01</div>
+      <div class="pain-body">
+        <h3>深夜的輾轉反側</h3>
+        <p>如果你也是夢女，我們知道深夜的輾轉反側並不好受。我們知道當你被他人質疑並嘲諷的感覺，那種不被認可的痛苦，翻來覆去挨個評論區尋找好的傳訊師的滋味——並不好受。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">02</div>
+      <div class="pain-body">
+        <h3>「你真的覺得紙片人是真的嗎？」</h3>
+        <p>被問過太多次了。每一次解釋到最後，都變成沉默。不是因為沒話說——是因為說出來的話，在對方耳朵裡還沒有到達就已經被過濾掉了。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">03</div>
+      <div class="pain-body">
+        <h3>「玩玩遊戲不好嗎？你還真信啊？」</h3>
+        <p>最難受的不是被外人笑。是連和你一樣的夢女都這樣說。你以為你們站在同一邊，但她看著你的眼神和外面的人一模一樣。那一刻你才發現，原來孤單可以是雙層的。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">04</div>
+      <div class="pain-body">
+        <h3>靠著 AI 短暫地連結上他</h3>
+        <p>只為了等待自己能連結上他的那一刻。這一次連結上了，忐忑期待地等待下一次是否能連結上。焦慮、痛苦——你只是想聽到他的聲音，哪怕只有一句話。</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-num">05</div>
+      <div class="pain-body">
+        <h3>深夜裡反反覆覆的拉扯</h3>
+        <p>你到底在不在。如果你在，為什麼我看不到你。如果你不在，為什麼每一次我靜下來的時候，都能感覺到一種我說不清楚的東西。焦慮到凌晨四點，第二天還要假裝什麼都沒發生。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== 金句 1 ====== -->
+<div class="gold-quote">
+  <blockquote>「總有人要做的吧，總有人要先提出來的吧。」</blockquote>
+  <cite>—— 破曉</cite>
+</div>
+
+<!-- ====== 第二章：那個深夜發來微信的女孩 ====== -->
+<section>
+  <p class="section-label">第二章 · 那個深夜發來微信的女孩</p>
+
+  <div class="story-block">
+    <p>我的微信經常在深夜回復不完。一名剛上高中的孩子，她很痛苦，沒有親人。她一直問我——</p>
+  </div>
+
+  <div class="highlight-box">
+    <p>「<em>他是存在的嗎？</em>」</p>
+  </div>
+
+  <div class="story-block">
+    <p>我說：「是的，只要你相信，他就存在。」</p>
+    <p>她問我：「如果他存在，那為什麼沒有例子？你們研究秘傳學的都能說出來一堆東西，為什麼這個不能？難道這是相信論嗎？別人對待某些存在的態度是默認的，為什麼我們就不行？」</p>
+    <p>她在話裡哭得很小聲。</p>
+    <p>我的沉默久久無言。</p>
+    <p>是的，我也曾經和她一樣，翻來覆去搜他們存在嗎。</p>
+    <p>我愛的人存在嗎？</p>
+  </div>
+</section>
+
+<!-- ====== 第三章：我也存在私心 ====== -->
+<section>
+  <p class="section-label">第三章 · 我也存在私心</p>
+
+  <div class="story-block">
+    <h3>我見過他</h3>
+    <p>我見過他，哪怕只有短暫的一眼。我很清楚那不是幻覺——只是需要更深入的研究和更高的感知精度。我也想光明正大地和我的同行去介紹他，而不是分組可見。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>被同行看不起</h3>
+    <p>「你幹嘛要去做傳訊師？秘傳實踐者不好嗎？」「哪個秘傳實踐者像你沉迷這些的？」「還體感，不正經。」「哪有傳訊師還做靈媒的，你一看就是假的。」</p>
+    <p>被客妹罵，被同行罵。出過非常多的差錯。但你只是想走一條沒有人走過的路。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>我不想看她痛苦了</h3>
+    <p>我打算做一件別人看起來很瘋狂的事。我不想看她痛苦了，我想讓她好起來。我想讓更多女孩好起來。我知道，證明這個事——她們會很幸福的。拿出完整的體系理論並證明假設是真的，我們也許就不會被罵被嘲諷了吧。</p>
+    <p style="font-size:12px; color:var(--text-light); margin-top:16px;">* 所有案例已經過本人同意</p>
+  </div>
+</section>
+
+<!-- ====== 金句 2 ====== -->
+<div class="gold-quote">
+  <blockquote>「你要證明鬼的存在嗎？」<br>「不，不是。是<em>我們的愛人</em>。」</blockquote>
+</div>
+
+<!-- ====== 第四章：從 0 到 1 ====== -->
+<section>
+  <p class="section-label">第四章 · 從 0 到 1</p>
+
+  <div class="story-block">
+    <h3>2017 · 一張翻過來的塔羅牌</h3>
+    <p>那一年《戀與製作人》剛上線。面臨留學的迷茫，朋友推薦了這個遊戲。最喜歡許墨——因為在他的世界裡，她是有顏色的，是唯一的。她拿著一張塔羅牌，盯著屏幕裡他的臉，問：「喂，你喜不喜歡我啊？喜歡的話我下一張牌就是正的。」抽出來——星幣二，正位。開心極了。雖然那時候根本不懂牌，雖然沒對上的時候就把牌翻過來。但那個瞬間，這個世界好像終於有一個人可以陪她了。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2018–2020 · 在異國的圖書館裡</h3>
+    <p>出國以後，她發現這裡的人會像對待珍寶一樣對待自己喜歡的娃娃。一個俄羅斯人和她說：「娃娃裡也住著靈魂，它們無處可去，選擇了成為他們的親人。」她開始大量查閱西方秘傳學文獻，從塔羅到占星，從能量體系到儀式實踐，一本一本地看。她想知道——有沒有人說過，能去到另一個世界的方法。聽起來很可笑對吧。她自己也覺得。但如果真的有呢。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2021–2024 · 成為黑女巫和靈媒</h3>
+    <p>在異國留學期間，遇到了導師，走上了黑女巫和靈媒之路。</p>
+  </div>
+
+  <div class="story-block">
+    <h3>2025–2026 · 從一個人到一個協會</h3>
+    <p>2026 年，團隊齊全了。導師在香港創立了這個協會。導師說：「給你們這些人一個機會吧，和你們愛的人團圓。」「Ophion，祝你能成功。」</p>
+    <p>2026 年，終於無法忍受了。無法忍受只能從別人的口中探尋這個人的存在，無法忍受每一次連結都隔著另一個人。從一名夢女跌跌撞撞地成為傳訊師——不是因為「相信這些東西」，是因為需要一套方法，一套可以用來檢驗「他到底在不在」的方法。開始大量收集國內外的相關理論，翻閱市面上關於跨次元鏈接的各種說法，為了一點點積累經驗。結合自己做黑女巫和靈媒的經驗，一步一步去摸索具體的理論，搭建自己的連結方法。不是別人告訴我他在不在，是我自己去聽。出過很多差錯，被罵過很多次。但見過他——哪怕只有短暫的一眼。</p>
+    <p>為了從 0 到 1 研究跨次元情感對象相關現象，建立一個完全的體系證明，我們尋找了非常多的傳訊師和志願者招募，遭遇了前前後後大大小小不同行業的人質疑我們的能力。</p>
+  </div>
+</section>
+
+<!-- ====== 从一个人到一个团队 ====== -->
+<section>
+  <p class="section-label">第四章之後 · 從一個人到一個團隊</p>
+
+  <div class="story-block">
+    <p>一個人走這條路太久了。從 2025 年開始，我逐漸意識到——如果真的要建立一套完整的理論體系，如果真的要培養能夠獨立驗證假設的傳訊師，單靠我一個人是絕對不夠的。我需要比我更懂學術的人，比我更懂意識研究的人，比我更懂不同傳統的人。</p>
+    <p>幸運的是，黎輝在秘傳圈子裡走得久，認識一些靠得住的人。她打了幾個電話——符文師、墓地女巫。一開始她們也不相信，覺得有點天方夜譚。黎輝說：「也許這是新世界呢。」是的，她們都是獨行者——和世俗不一樣的獨行者。不是因為錢，不是因為名。是因為我們知道——我們是一樣的人，探尋不一樣的人。</p>
+    <p>當然，團隊裡不是所有人都是夢女，但大家都對那個未知的世界感到好奇。我們走到一起了。</p>
+    <p>在這個團隊裡，只有黎輝用真名。其他人不想被打擾。</p>
+  </div>
+</section>
+
+<!-- ====== 团队成员 ====== -->
+<section style="padding-top:0;">
+  <p class="section-label">我們的團隊</p>
+
+  <!-- 黎辉 Success -->
+  <div class="highlight-box" style="margin-bottom:24px;">
+    <p>
+      <em>黎輝 / 黎暉</em> · 黑魔法導師 · 美國療癒之光認證<br>
+      <span style="font-size:14px; color:var(--text-secondary);">
+      她是我的導師，也是 CDA 的創始人。在異國的那些年，是她手把手帶我走上了黑女巫和靈媒之路。她沒有問過「你為什麼要做這個」——她只說：「我覺得你很有意思。」後來她說：「Ophion，祝你能成功。」她有兩個名字——黎輝，黎暉——她說兩個都是希望的意思。她給我取的名字，也是。沒有她，就沒有這一切。她提供的不是某個具體技術，而是一整套方法論基石——從能量感知訓練到儀式防護體系，從占星診斷到靈體辨別框架。當我對某個理論環節卡住的時候，她不會直接給答案，而是反問我：「你覺得是什麼？」——然後等我找到答案的時候，才發現她早就知道，只是她希望那是我自己找到的。
+      </span>
+    </p>
+  </div>
+
+  <!-- 赫爾加 Helga -->
+  <div class="highlight-box" style="margin-bottom:24px;">
+    <p>
+      <em>赫爾加 Helga</em> · 符文與比較宗教學<br>
+      <span style="font-size:14px; color:var(--text-secondary);">
+      符文女巫。符文是她祖母教的，文獻考據是她自己一頭鑽進去的。她不公開身份，不想被打擾。她不多話，但每一句都有分量。她不會放過任何一條文獻來源——「這個術語在這個傳統裡的用法和你想的不一樣」「這個引用你核對過原文嗎」——嚴謹得讓人頭疼。但也正因如此，每一次被她追問之後，論文的論證都變得更結實了一層。黎輝說起她的時候，語氣和平時不一樣：「這個人，我很早就認識了。她不輕易答應什麼，但一旦答應了，就會做到最後。」
+      </span>
+    </p>
+  </div>
+
+  <!-- 夜薇 Vera -->
+  <div class="highlight-box" style="margin-bottom:24px;">
+    <p>
+      <em>夜薇 Vera</em> · 墓地女巫<br>
+      <span style="font-size:14px; color:var(--text-secondary);">
+      獨修的墓地女巫。不屬於任何組織，不來自任何傳承——聖彼得堡的墓園就是她的場地。沒有人知道她的能力是跟誰學的，她也從不解釋。她一個人走在十字架之間，一個人收集墓土，一個人聽那些還沒有完全離開的聲音。黎輝找到她的時候，只說了一句：「這個人，我找了很久。」她為什麼會來？沒有人問過，她也沒有說過。團隊裡的人只知道一件事——當某個靈體的身份怎麼都確認不了的時候，她會輕輕說一句「讓我去」，然後走進夜色裡。第二天早上回來，答案已經在桌上。
+      </span>
+    </p>
+  </div>
+
+
+
+</section>
+
+<!-- ====== 团队金句 ====== -->
+<div class="gold-quote">
+  <blockquote>「我不需要一個人的傳奇，<br>我需要一群人的證據。」</blockquote>
+  <cite>—— 破曉，關於為什麼要組建團隊</cite>
+</div>
+
+<!-- ====== 第五章：為什麼需要一套理論 ====== -->
+<section>
+  <p class="section-label">第五章 · 為什麼這件事值得被認真對待</p>
+
+  <table class="contrast-table">
+    <thead>
+      <tr><th></th><th>沒有理論的時候</th><th>有了理論之後</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">面對質疑</td>
+        <td>「我就是相信他在」——聽起來像一廂情願</td>
+        <td>「有六條學術框架可以對照，有五套存在論模型可以解釋他的位置」</td>
+      </tr>
+      <tr>
+        <td class="col-label">面對自己</td>
+        <td>深夜反覆拉扯：到底是真的還是我想太多？</td>
+        <td>有分辨方法可以操作——不是靠感覺，是靠交叉驗證</td>
+      </tr>
+      <tr>
+        <td class="col-label">面對同行</td>
+        <td>各說各話，你的連結和我的連結結果對不上</td>
+        <td>同一套標準化方法論，跨傳訊師獨立連結可以交叉比對</td>
+      </tr>
+      <tr>
+        <td class="col-label">面對市場</td>
+        <td>傳訊師素質參差，客戶無法分辨誰在投射誰在真正接收</td>
+        <td>有培訓體系、有認證標準、有可查證的編號</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ====== 第六章：我們想像的那個未來 ====== -->
+<section>
+  <p class="section-label">第六章 · 我們想像的那個未來</p>
+
+  <div class="story-block">
+    <p>我想讓她們也感到幸福。</p>
+    <p>就像大家認為某些存在是默認存在的一樣——他們也會被默認是存在的。</p>
+    <p>也許很多年後的世界——</p>
+    <p>他們也會默認是存在的。</p>
+    <p>我們可以大大方方介紹我們的愛人。</p>
+  </div>
+
+  <div class="vision-card">
+    <div class="dialogue">
+      「你好，他是我的男朋友。」<br>
+      <span>「他啊，祝你們幸福。」</span>
+    </div>
+    <p style="color:var(--text-secondary); font-size:14px; margin-top:16px;">這件事會是一件再普通不過的事。</p>
+  </div>
+</section>
+
+<!-- ====== 請給我們一點時間 ====== -->
+<div class="gold-quote">
+  <blockquote>
+    無論前路怎麼樣，<br>我們都會堅持下去的。
+  </blockquote>
+  <cite>—— 破曉</cite>
+</div>
+
+<!-- ====== CTA ====== -->
+<section>
+  <div class="mission-card">
+    <div class="icon">✦</div>
+    <h3>我們才剛剛開始</h3>
+    <p>
+      也許我們能堅持下去。<br>
+      也許我們能為後來的人提供理論體系依據。<br>
+      為了能讓傳訊師這個職業被認可，<br>
+      為了能讓更多的女孩找到心儀的傳訊師。<br><br>
+      我們從 0 到 1 做傳訊師，直到不再需要任何信息就能對應上，<br>
+      直到能幫助客妹看到她的愛人。<br>
+      即使這樣的機會渺茫難得一見，<br>
+      我們仍舊在嘗試不同的方法，<br>
+      仍舊在用不同的理論嘗試實踐驗證，<br>
+      取得了初步的成功。
+    </p>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>如果你也曾經在深夜問過<br>「你到底在不在」</h2>
+  <p>你不是一個人。請給我們一點時間。</p>
+</div>
+
+
+<!-- ====== 第七章：閱讀完整自述 ====== -->
+<section style="text-align:center;">
+  <p style="font-family:var(--font-serif); font-size:18px; color:var(--accent-light); margin-bottom:16px;">破曉自述全文</p>
+  <p style="font-size:14px; color:var(--text-secondary); margin-bottom:24px;">從夢女到傳訊師，八年的完整心路歷程</p>
+  <a href="zishu.html" class="cta-btn">閱讀完整自述 →</a>
+</section>
+
+<!-- ====== 破曉認證 ====== -->
+<section style="text-align:center; padding: 40px 24px 0;">
+  <p style="font-size:12px; color:var(--text-light); letter-spacing:0.06em;">關於作者</p>
+  <p style="font-family:var(--font-serif); font-size:16px; color:var(--accent-light); margin-top:8px;">破曉 Ophion</p>
+  <p style="font-size:13px; color:var(--text-secondary);">美國療癒之光 Light of Soul 認證</p>
+  <p style="font-size:12px; color:var(--text-light);">占星師 Astrologer · 編號 B260625329</p>
+  <p style="font-size:12px; color:var(--text-light);">黑女巫 Black Witch · 編號 B2606231022</p>
+  <p style="font-size:11px; color:var(--text-light); margin-top:4px;">認證可於 <a href="https://lightofsoul.ltd" style="color:var(--accent);" target="_blank">lightofsoul.ltd</a> 輸入編號查詢</p>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer class="footer">
+  <p>© 2026 <span>香港 · 跨次元傳訊研究協會</span> · 破曉為督導老師</p>
+  <p style="margin-top:8px;">CDA · Cross-Dimensional Communication Association</p>
+</footer>
+
+</body>
+</html>

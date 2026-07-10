@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDA 研究共建者招募</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0D0D0D;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .poster {
+    width: 750px; height: 1334px;
+    background: linear-gradient(180deg, #0D0D0D 0%, #141414 30%, #1A1A1A 60%, #0D0D0D 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    align-items: center;
+  }
+  /* 背景纹理 */
+  .poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 15%, rgba(201,169,110,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 85%, rgba(201,169,110,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .border-frame {
+    position: absolute;
+    inset: 20px;
+    border: 0.5px solid rgba(201,169,110,0.18);
+    pointer-events: none;
+  }
+  .corner {
+    position: absolute; width: 40px; height: 40px;
+    border-color: rgba(201,169,110,0.35); border-style: solid;
+    pointer-events: none;
+  }
+  .corner-tl { top: 16px; left: 16px; border-width: 1px 0 0 1px; }
+  .corner-tr { top: 16px; right: 16px; border-width: 1px 1px 0 0; }
+  .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 1px 1px; }
+  .corner-br { bottom: 16px; right: 16px; border-width: 0 1px 1px 0; }
+
+  /* Header */
+  .header {
+    margin-top: 80px;
+    text-align: center;
+    z-index: 1;
+  }
+  .logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: #C9A96E;
+    margin-bottom: 48px;
+  }
+  .logo span { color: #9B9B9B; font-weight: 300; }
+
+  .title-block { margin-bottom: 36px; }
+  .title-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: #C9A96E;
+    border: 0.5px solid rgba(201,169,110,0.3);
+    padding: 6px 18px;
+    margin-bottom: 28px;
+  }
+  .title-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    color: #E8E6E0;
+  }
+  .title-main em {
+    font-style: normal;
+    color: #C9A96E;
+  }
+
+  /* 分隔线 */
+  .divider {
+    width: 40px; height: 0.5px;
+    background: rgba(201,169,110,0.4);
+    margin: 40px auto;
+  }
+
+  /* 核心：定金+尾款 */
+  .payment-model {
+    z-index: 1;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .model-row {
+    display: flex; gap: 1px;
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .model-card {
+    background: #1A1A1A;
+    padding: 40px 44px;
+    text-align: center;
+    flex: 1;
+  }
+  .model-icon {
+    font-size: 28px; margin-bottom: 16px;
+  }
+  .model-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #C9A96E;
+    margin-bottom: 12px;
+  }
+  .model-big {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #E8E6E0;
+    letter-spacing: 0.03em;
+  }
+  .model-sub {
+    font-size: 12px; color: #6B6B6B;
+    margin-top: 8px;
+  }
+  .model-plus {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; flex-shrink: 0;
+    color: rgba(201,169,110,0.5);
+    font-size: 20px;
+  }
+
+  /* 风险保障 */
+  .safety-section {
+    z-index: 1;
+    margin-top: 36px;
+    text-align: center;
+    padding: 0 60px;
+  }
+  .safety-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #6B6B6B;
+    margin-bottom: 24px;
+  }
+  .safety-grid {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .safety-item {
+    display: flex; align-items: center; gap: 16px;
+    background: #141414;
+    border: 0.5px solid rgba(255,255,255,0.05);
+    border-radius: 4px;
+    padding: 18px 24px;
+    text-align: left;
+  }
+  .safety-check {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.1);
+    border: 0.5px solid rgba(201,169,110,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: #C9A96E;
+    font-size: 13px;
+  }
+  .safety-text h4 {
+    font-size: 14px; font-weight: 500; color: #E8E6E0;
+    margin-bottom: 4px;
+  }
+  .safety-text p {
+    font-size: 12px; color: #6B6B6B; line-height: 1.6;
+  }
+
+  /* 核心承诺 */
+  .promise {
+    z-index: 1;
+    margin-top: 44px;
+    text-align: center;
+    padding: 0 60px;
+  }
+  .promise-box {
+    background: #1A1A1A;
+    border-left: 2px solid #C9A96E;
+    padding: 28px 32px;
+    text-align: left;
+    border-radius: 0 4px 4px 0;
+  }
+  .promise-box p {
+    font-size: 14px; color: #9B9B9B;
+    line-height: 2;
+  }
+  .promise-box p em {
+    color: #E0D5C0;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* CTA */
+  .cta-section {
+    z-index: 1;
+    margin-top: 52px;
+    text-align: center;
+  }
+  .cta-main {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #C9A96E;
+    color: #C9A96E;
+    padding: 16px 48px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .cta-sub {
+    font-size: 12px; color: #6B6B6B;
+    margin-top: 16px;
+  }
+
+  /* Footer */
+  .footer {
+    z-index: 1;
+    margin-top: auto;
+    padding-bottom: 56px;
+    text-align: center;
+  }
+  .footer-line {
+    font-size: 11px; color: rgba(201,169,110,0.5);
+    letter-spacing: 0.12em;
+  }
+  .footer-line span { color: #6B6B6B; }
+
+  /* 水印 */
+  .watermark {
+    position: absolute;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 180px;
+    color: rgba(201,169,110,0.015);
+    pointer-events: none;
+    white-space: nowrap;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="border-frame"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="watermark">CDA</div>
+
+  <!-- Header -->
+  <div class="header">
+    <p class="logo">CDA <span>· 香港 · 跨次元傳訊研究協會</span></p>
+    <div class="title-block">
+      <p class="title-tag">第一批 · 為期五日 · 不分先來後到</p>
+      <h1 class="title-main">
+        研究<em>共建者</em>招募
+      </h1>
+    </div>
+    <div class="divider"></div>
+    <p style="font-size:15px; color:#9B9B9B; max-width:480px; line-height:1.9; z-index:1; position:relative;">
+      不是在賣課程。<br>是一場實驗，你來做共建者。
+    </p>
+  </div>
+
+  <!-- 定金 + 尾款 -->
+  <div class="payment-model" style="width: 580px;">
+    <div class="model-row">
+      <div class="model-card">
+        <div class="model-icon">◇</div>
+        <p class="model-label">定金</p>
+        <p class="model-big">鎖定名額</p>
+        <p class="model-sub">招募截止前 · 先鎖先得</p>
+      </div>
+      <div class="model-card">
+        <div class="model-icon">◆</div>
+        <p class="model-label">尾款</p>
+        <p class="model-big">招募結束後</p>
+        <p class="model-sub">五日後截止 · 再付尾款</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 风险保障 -->
+  <div class="safety-section" style="width: 580px;">
+    <p class="safety-title">△ 風險保障 △</p>
+    <div class="safety-grid">
+      <div class="safety-item">
+        <div class="safety-check">✓</div>
+        <div class="safety-text">
+          <h4>不滿意，定金可退</h4>
+          <p>招募期間，任何理由均可申請退還定金</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <div class="safety-check">✓</div>
+        <div class="safety-text">
+          <h4>尾款只在截止後結算</h4>
+          <p>五天後你確認要來，再付尾款。不來不用付</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <div class="safety-check">✓</div>
+        <div class="safety-text">
+          <h4>不實行買斷制</h4>
+          <p>無論出價多高。我們不為金錢服務，為真誠的夢女服務</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 核心承诺 -->
+  <div class="promise" style="width: 580px;">
+    <div class="promise-box">
+      <p>
+        <em>真誠比有錢重要。</em>如果你很真誠卻沒有錢，並不因此被歧視——你依然可以發送申請到我們的郵箱。<br>
+        請關注我們，我們期待你有一天加入。
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <a href="https://lilith-snake.github.io/cda-website/recruit" class="cta-main">查看招募詳情 →</a>
+    <p class="cta-sub">第一批共建者 · 數量有限 · 為期五日</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p class="footer-line">CDA <span>· 香港 · 跨次元傳訊研究協會</span></p>
+    <p class="footer-line" style="margin-top:6px;">Cross-Dimensional Communication Association</p>
+  </div>
+</div>
+
+</body>
+</html>

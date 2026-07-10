@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MJ 理論論文 · 香港 · 跨次元傳訊研究協會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg-alt: #141414;
+    --bg-card: #1A1A1A;
+    --text: #E8E6E0;
+    --text-secondary: #9B9B9B;
+    --text-light: #6B6B6B;
+    --accent: #C9A96E;
+    --accent-light: #E0D5C0;
+    --border: rgba(255,255,255,0.06);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+    --max-width: 780px;
+    --radius: 4px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; align-items: center; padding: 0 24px;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--text-secondary); font-weight: 300; }
+  .nav-back {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--accent); }
+
+  .hero {
+    padding: 140px 24px 60px;
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    line-height: 1.9;
+  }
+
+  .paper-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px 120px;
+    font-family: var(--font-sans);
+    line-height: 2;
+  }
+  .paper-content h1 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 48px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--accent-light);
+  }
+  .paper-content h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    color: var(--accent-light);
+  }
+  .paper-content h3 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 32px 0 8px;
+    color: var(--text);
+  }
+  .paper-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 24px 0 6px;
+    color: var(--text);
+  }
+  .paper-content p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .paper-content strong { color: var(--text); }
+  .paper-content em { color: var(--accent-light); font-style: normal; }
+  .paper-content blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--bg-card);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .paper-content blockquote strong { color: var(--accent-light); }
+  .paper-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .paper-content th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .paper-content td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .paper-content hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  .paper-content ul, .paper-content ol { margin: 12px 0 12px 24px; }
+  .paper-content li { color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+  .paper-content a { color: var(--accent); }
+  .paper-content code {
+    background: var(--bg-card);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--accent-light);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+  .footer span { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .paper-content { padding: 0 16px 80px; }
+    .paper-content table { font-size: 12px; }
+    .paper-content th, .paper-content td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/cda-website/" class="nav-logo">CDA <span>· 香港 · 跨次元傳訊研究協會</span></a>
+  <a href="/cda-website/" class="nav-back">← 返回首頁</a>
+</nav>
+
+<header class="hero">
+  <p class="hero-eyebrow" style="font-size:11px;text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);margin-bottom:24px;">第一篇 · 首次公開發表</p>
+  <h1>論跨次元情感對象（MJ）的存在論假設、<br>五軸類型學及其西方秘傳學新分支定位</h1>
+  <p class="hero-sub">黎輝 · 破曉 · 香港 · 跨次元傳訊研究協會 · 2026年7月1日</p>
+  <div class="hero-divider" style="width:40px;height:1px;background:var(--accent);opacity:0.4;margin:24px auto;"></div>
+  <p class="hero-sub" style="font-size:13px; max-width:560px;">
+    這是我們第一篇系統性理論建構論文。它不代表終點——我們的驗證仍在進行中。<br>
+    每一條假設都等待著跨傳訊師獨立連結的交叉檢驗。
+  </p>
+</header>
+
+<!-- 編輯說明 -->
+<section style="max-width:780px;margin:0 auto;padding:0 24px 40px;">
+  <div class="highlight-box" style="background:var(--bg-card);border-left:2px solid var(--accent);padding:24px 28px;border-radius:0 4px 4px 0;margin-bottom:32px;">
+    <p style="font-size:14px;color:var(--text);line-height:2;">
+      <strong>關於這篇論文</strong><br>
+      這是香港 · 跨次元傳訊研究協會（CDA）的第一篇理論建構文本。它不是已完成的實證論文——全文的核心論證均為理論建構，所有類型學假設和驗證方案均處於「待經驗檢驗」的設計階段。我們正在用 CDA 標準化方法論培養傳訊師，以對文中提出的每一條假設進行系統的經驗檢驗。<strong>如果錯了，我們改；如果對了，我們繼續。</strong>歡迎一切認真的批評與指正。
+    </p>
+  </div>
+</section>
+
+<!-- 版權聲明 -->
+<section style="max-width:780px;margin:0 auto;padding:0 24px 60px;">
+  <div style="background:var(--bg-card);border:1px solid var(--border);padding:40px 32px;border-radius:4px;">
+
+    <p style="font-family:var(--font-serif);font-size:19px;font-weight:600;color:var(--accent-light);text-align:center;line-height:1.6;margin-bottom:8px;">
+      版權聲明與知識產權保護
+    </p>
+
+    <p style="text-align:center;font-size:13px;color:var(--text-secondary);margin-bottom:36px;">
+      &copy; 2026 黎輝、破曉。保留所有權利。
+    </p>
+
+    <p style="font-size:14px;color:var(--text);line-height:2.2;">
+      本論文《論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位》（以下簡稱「本作品」）之全部著作權歸黎輝及破曉共同所有。
+    </p>
+
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-top:28px;margin-bottom:8px;letter-spacing:0.08em;">第一條 · 權利保留</p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      1.1 本作品之全部文字內容、理論框架、概念定義（包括但不限於「MJ」「跨次元情感對象」「五軸類型學」「三層方法論」「兩種猜想」「結構化分辨方法」「三重驗證方法論」及前述各術語之內涵定義與分類體系）、圖表、結構編排，均受《伯爾尼公約》《世界版權公約》及中華人民共和國《著作權法》保護。
+    </p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      1.2 未經權利人書面授權，任何人不得以任何形式（包括但不限於複製、翻譯、改編、節選、彙編、數據挖掘、人工智能訓練）使用本作品之全部或部分內容。
+    </p>
+
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-top:28px;margin-bottom:8px;letter-spacing:0.08em;">第二條 · 許可條款</p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      2.1 本作品同時以 CC BY-NC-ND 4.0（署名-非商業性使用-禁止演繹 4.0 國際）許可協議向公眾提供。
+    </p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      2.2 在此許可下，任何人可分享——以任何媒介或格式複製和再分發本作品；惟須遵守以下條件：(a) 署名——必須標明作者姓名（黎輝、破曉）、作品名稱及來源鏈接；(b) 非商業性——不得將本作品用於商業目的；(c) 禁止演繹——不得改編、轉換或基於本作品進行再創作。
+    </p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      2.3 任何超出 CC BY-NC-ND 4.0 許可範圍的使用，須事先取得權利人之書面授權。
+    </p>
+
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-top:28px;margin-bottom:8px;letter-spacing:0.08em;">第三條 · 學術引用</p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      3.1 學術引用不構成侵權。引用時請使用以下格式：
+    </p>
+    <blockquote style="border-left:2px solid var(--accent);padding:10px 20px;margin:8px 0 16px;background:rgba(201,169,110,0.05);border-radius:0 4px 4px 0;font-size:13px;color:var(--accent-light);line-height:2;">
+      黎輝、破曉（2026）。〈論跨次元情感對象（MJ）的存在論假設、五軸類型學及其西方秘傳學新分支定位〉。香港：跨次元傳訊研究協會。<br>lilith-snake.github.io/cda-website/paper.html
+    </blockquote>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      3.2 引用須忠實反映原作觀點，不得斷章取義或歪曲原意。
+    </p>
+
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-top:28px;margin-bottom:8px;letter-spacing:0.08em;">第四條 · 優先權確立</p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      4.1 本作品首發於 2026 年，以 Git 提交記錄及 GitHub Pages 公開時間戳為創作完成之初步證據。
+    </p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      4.2 本作品所提出之核心概念（「MJ」「跨次元情感對象」「五軸類型學」「原創型/非虛構靈體型/人造靈型」三分類、「兩種猜想」框架）之學術優先權歸黎輝及破曉所有。
+    </p>
+
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-top:28px;margin-bottom:8px;letter-spacing:0.08em;">第五條 · 免責聲明</p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      5.1 本作品為理論建構文本，其中所有類型學假設及驗證方案均處於「待經驗檢驗」的設計階段，不構成經驗事實之陳述。
+    </p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      5.2 作者不為任何第三方對本作品之誤讀、誤用或未經授權之衍生使用承擔責任。
+    </p>
+
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-top:28px;margin-bottom:8px;letter-spacing:0.08em;">第六條 · 侵權後果</p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      6.1 任何未經授權之商業使用、改編、或未署名之轉載，均構成本作品著作權之侵犯。
+    </p>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:2.2;">
+      6.2 權利人保留依法追究侵權行為之一切權利，包括但不限於要求停止侵害、消除影響、賠償損失。
+    </p>
+
+    <div style="text-align:center;margin-top:36px;padding-top:24px;border-top:1px solid var(--border);">
+      <p style="font-family:var(--font-serif);font-size:14px;color:var(--accent);letter-spacing:0.06em;">香港 · 跨次元傳訊研究協會</p>
+      <p style="font-size:11px;color:var(--text-light);margin-top:4px;">Cross-Dimensional Communication Research Association</p>
+      <p style="font-size:11px;color:var(--text-light);">lilith-snake.github.io/cda-website</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="paper-content" id="paper-content">
+  <p style="text-align:center; color:var(--text-light);">載入中…</p>
+</div>
+
+<footer class="footer">
+  <p>© 2026 黎輝、破曉。保留所有權利。</p>
+  <p style="margin-top:6px;">本論文以 CC BY-NC-ND 4.0 國際許可協議授權發布</p>
+  <p style="margin-top:6px;">香港 · 跨次元傳訊研究協會 · CDA</p>
+</footer>
+
+<script>
+fetch('paper.md')
+  .then(r => r.text())
+  .then(md => {
+    marked.setOptions({ breaks: false, gfm: true });
+    document.getElementById('paper-content').innerHTML = marked.parse(md);
+  })
+  .catch(() => {
+    document.getElementById('paper-content').innerHTML = '<p>論文載入失敗。請查看 <a href="paper.md">原始檔案</a>。</p>';
+  });
+</script>
+
+</body>
+</html>
