@@ -1,7 +1,9 @@
 name = "cda-website"
 pages_build_output_dir = "dist"
+compatibility_date = "2026-08-16"
+compatibility_flags = ["nodejs_compat"]
 
 [[d1_databases]]
 binding = "DB"
 database_name = "cda-db"
-database_id = "2859e9aa-404f-474f-bca6-d542330f5f8a"
+database_id = "16220d9c-4815-4c7c-bcbe-f1cdf1332328"

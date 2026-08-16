@@ -1,4 +1,4 @@
-const CLOUDFLARE_API_URL = 'https://cda-website.pages.dev/api'
+const CLOUDFLARE_API_URL = 'https://cda-website-3t2.pages.dev/api'
 
 function getDefaultApiUrl() {
   if (typeof window === 'undefined') return '/api'
