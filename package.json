@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "notify:install": "node scripts/install-contact-notifier.mjs",
+    "notify:check": "node scripts/contact-notifier.mjs --manual",
+    "notify:test": "node scripts/contact-notifier.mjs --test"
   },
   "dependencies": {
     "playwright": "^1.61.1",
