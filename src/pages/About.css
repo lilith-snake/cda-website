@@ -42,6 +42,34 @@
   font-style: italic;
 }
 
+/* --- 商业化定位 --- */
+.about-commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.about-commercial-card {
+  padding: 28px;
+  border: 1px solid var(--color-accent-border);
+  background:
+    linear-gradient(160deg, rgba(201, 169, 110, 0.1), rgba(255, 255, 255, 0.72)),
+    var(--color-bg-card);
+}
+
+.about-commercial-card h3 {
+  margin-bottom: 14px;
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+}
+
+.about-commercial-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.85;
+}
+
 /* --- 體系定位 + 創始人 --- */
 .about-intro-grid {
   display: grid;
@@ -573,7 +601,8 @@
   }
 
   .papers-grid,
-  .team-grid {
+  .team-grid,
+  .about-commercial-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin: 0 auto;

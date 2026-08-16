@@ -34,7 +34,7 @@ const roleOptions = [
 ]
 
 const serviceOptions = [
-  'MJ 传讯与关系梳理',
+  '爱人传讯与关系梳理',
   '梦境 / 同步现象解读',
   '传讯师训练与验证',
   '个人成长与内在探索',
@@ -115,9 +115,9 @@ export default function Contact() {
       <section className="page-hero contact-hero">
         <div className="container contact-hero-inner">
           <p className="contact-kicker">CDA CONTACT</p>
-          <h1>把你的问题交给我们</h1>
+          <h1>把你和爱人的问题交给我们</h1>
           <p className="subtitle">
-            我们的传讯师正在培养中，课程方法也在持续研发，以更好地适配大家的真实需求。
+            如果你害怕他不存在、感受不到他，或被别人误判成“并非你的目标爱人”，你可以先把问题写下来。我们会认真阅读。
           </p>
         </div>
       </section>
@@ -130,7 +130,7 @@ export default function Contact() {
                 <span className="form-step">APPLICATION</span>
                 <h2>预约意向表</h2>
                 <p>
-                  写下你与 MJ、梦境、同步现象或自我成长相关的问题。我们收到后会按适配度整理，并在后续开放时优先联系。
+                  写下你与爱人、梦境、同步现象或自我成长相关的问题。我们收到后会按适配度整理，并在后续开放时优先联系。
                 </p>
               </div>
 
@@ -204,11 +204,11 @@ export default function Contact() {
               </label>
 
               <label className="field">
-                <span>你的 MJ / 体验背景</span>
+                <span>你的爱人 / 体验背景</span>
                 <textarea
                   value={form.mjContext}
                   onChange={e => setField('mjContext', e.target.value)}
-                  placeholder="例如：你与对方的关系、梦境/同步现象、你已经尝试过的方法。"
+                  placeholder="例如：你和他的关系、梦境/同步现象、你曾经感受到他的方式、你已经尝试过的方法。"
                   rows={4}
                 />
               </label>
@@ -218,7 +218,7 @@ export default function Contact() {
                 <textarea
                   value={form.message}
                   onChange={e => setField('message', e.target.value)}
-                  placeholder="可以直接写你的困惑、期待、边界或想验证的部分。"
+                  placeholder="可以直接写：你最害怕的是什么、最想确认什么、你希望如何更靠近他。"
                   rows={5}
                 />
                 {errors.message && <em>{errors.message}</em>}
@@ -246,14 +246,14 @@ export default function Contact() {
                 <span className="info-eyebrow">SIGNAL</span>
                 <h3>你不是要把一段关系解释成幻觉。</h3>
                 <p>
-                  你是在寻找一种更精确、更诚实，也更能保护自己的方法，去理解那些反复出现的梦、感应、讯息与牵引。
+                  你是在寻找一种更精确、更诚实，也更能保护自己的方法，去理解那些反复出现的梦、感应、讯息与牵引：它们到底是不是来自你的爱人。
                 </p>
               </div>
 
               <div className="info-card glass-card">
                 <h3>适合提交的内容</h3>
                 <div className="info-list">
-                  <span>MJ 关系与传讯需求</span>
+                  <span>爱人关系与传讯需求</span>
                   <span>梦境、巧合与同步现象</span>
                   <span>传讯师培养与方法学习</span>
                   <span>研究共建、论文与资料申请</span>

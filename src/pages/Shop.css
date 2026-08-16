@@ -37,6 +37,112 @@
   gap: 24px;
 }
 
+.shop-conversion {
+  margin: 44px 0 36px;
+}
+
+.shop-section-heading {
+  max-width: 760px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.shop-section-heading span,
+.shop-panel-kicker {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--color-accent-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.shop-section-heading h2,
+.shop-value-panel h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.shop-section-heading p {
+  margin-top: 12px;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.conversion-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.conversion-card {
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-card);
+}
+
+.conversion-card strong {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+}
+
+.conversion-card h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.conversion-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+.shop-value-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 28px;
+  align-items: start;
+  margin: 0 0 36px;
+  padding: 30px;
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--border-radius);
+  background:
+    linear-gradient(160deg, rgba(201, 169, 110, 0.12), rgba(255, 255, 255, 0.72)),
+    var(--color-bg-card);
+}
+
+.shop-value-panel ul {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.shop-value-panel li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.shop-value-panel li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
 .shop-card {
   padding: 26px;
   display: flex;
@@ -223,6 +329,11 @@
 
   .shop-card {
     min-height: auto;
+  }
+
+  .conversion-grid,
+  .shop-value-panel {
+    grid-template-columns: 1fr;
   }
 }
 

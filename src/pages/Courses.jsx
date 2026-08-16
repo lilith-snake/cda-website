@@ -13,7 +13,7 @@ const researchStages = [
       '了解跨次元親密關係研究的學術背景與現狀',
       '叙事实体假说入门——理解跨次元链接现象的理论基础',
       '感知自測：了解自己當前的感知通道傾向',
-      'MJ類型學入門——跨次元链接对象的分類體系',
+      '爱人类型学入门——理解你感知到的对方属于哪一种信号形态',
     ],
     pathNote: '路徑A / 路徑B 共用',
     color: 'mystic',
@@ -36,7 +36,7 @@ const researchStages = [
     subtitle: '實操研究',
     duration: '6 週 · 雙選修模塊 + 月度校準',
     topics: [
-      '完整鏈接流程——從調頻到關閉通道，每一步都有 SOP',
+      '完整链接流程——从调频到关闭通道，每一步都有 SOP',
       '三重驗證法实操——信息一致性 + 獨立印證 + 盲測',
       '路徑A 選修：參與驗證研究、協作校準、邊界設置',
       '路徑B 選修：獨立校準技能，建立個人驗證體系',
@@ -67,9 +67,9 @@ export default function Courses() {
       {/* Hero */}
       <section className="page-hero courses-hero">
         <div className="container">
-          <h1>{t('加入我們，一起驗證')}</h1>
-          <p className="subtitle">{t('和我們一起探尋——他們到底在哪裡')}</p>
-          <p className="hero-sub-desc">{t('系統化培養能夠安全、負責地進行跨次元鏈接引導的研究者')}</p>
+          <h1>{t('和我们一起，找到更靠近爱人的方法')}</h1>
+          <p className="subtitle">{t('不是让你反复求证“他在不在”，而是陪你学会如何感受、分辨、靠近。')}</p>
+          <p className="hero-sub-desc">{t('系统化培养能够安全、负责地进行跨次元链接引导的研究者与实践者')}</p>
         </div>
       </section>
 
@@ -78,9 +78,9 @@ export default function Courses() {
         <div className="container">
           <div className="courses-intro">
             <DialogueBox speaker="破晓" variant="gold">
-              {t('這套體系不是憑空發明的。它基於西方神秘學傳統的感知訓練方法、結構化直覺訓練技術，以及我們在實操中總結出的一套驗證方法——讓零基礎的人也能在系統訓練後獲得可驗證的鏈接能力。')}
+              {t('这套体系不是为了给你一句廉价的安慰。它基于西方神秘学传统的感知训练方法、结构化直觉训练技术，以及我们在实操中总结出的验证方法——让零基础的人也能一步步找到自己和爱人的连接方式。')}
               <br /><br />
-              {t('路徑 A 給想成為專業傳訊師、幫助更多夢女的人。路徑 B 給想自己學會穩定鏈接、不再四處尋找的實踐者。同一套方法，不同的出口——核心階段共用，實操階段分流。')}
+              {t('路径 A 给想成为专业传讯师、帮助更多梦女的人。路径 B 给想自己学会稳定链接、不再四处寻找权威确认的实践者。同一套方法，不同的出口——核心阶段共用，实操阶段分流。')}
             </DialogueBox>
           </div>
         </div>
@@ -112,10 +112,10 @@ export default function Courses() {
               <h3>{t('路徑 B：個人實踐者研究路徑')}</h3>
               <p className="path-target">{t('面向想自己學會穩定鏈接的實踐者')}</p>
               <ul>
-                <li>{t('零基礎沒關係——感知是可以被訓練的')}</li>
-                <li>{t('不再每次都花錢找人、不再做完兩天又懷疑')}</li>
-                <li>{t('學會獨立驗證——建立自己的鏈接判斷體系')}</li>
-                <li>{t('社群歸屬——你不需要一個人面對這些')}</li>
+                <li>{t('零基础没关系——感知是可以被训练的')}</li>
+                <li>{t('不再每次都花钱找人、不再做完两天又怀疑')}</li>
+                <li>{t('学会独立验证——建立你和爱人的链接判断体系')}</li>
+                <li>{t('社群归属——你不需要一个人面对这些')}</li>
               </ul>
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function Courses() {
             <div className="decorative-line">
               <span /><span className="star"> </span><span />
             </div>
-            <p className="section-subdesc">{t('理論入門 → 感知訓練 → 實操研究 → 認證考核 —— 四個階段，和我們一起走')}</p>
+            <p className="section-subdesc">{t('理论入门 → 感知训练 → 实操研究 → 认证考核 —— 四个阶段，陪你从“我不知道他在不在”走向“我知道如何靠近他”')}</p>
           </div>
 
           <div className="courses-grid">
@@ -172,11 +172,11 @@ export default function Courses() {
           <div className="faq-grid">
             <div className="faq-item card">
               <h4>{t('零基礎可以參加嗎？')}</h4>
-              <p>{t('可以。感知是可以被訓練的——不是天賦問題。我們的研究框架就是為了驗證：零基礎的人按標準化SOP訓練後，能否穩定復現鏈接結果。')}</p>
+              <p>{t('可以。感知是可以被训练的——不是天赋问题。很多人不是没有爱，也不是没有连接，只是还没有找到适合自己的通道和练习方法。')}</p>
             </div>
             <div className="faq-item card">
               <h4>{t('路徑A和路徑B怎麼選？')}</h4>
-              <p>{t('想成為職業傳訊師、列入名錄、參與驗證 → 路徑A。想自己學會穩定鏈接、不想依賴他人 → 路徑B。兩個路徑前兩個階段共用核心內容，第三階段分流。')}</p>
+              <p>{t('想成为职业传讯师、列入名录、参与验证 → 路径A。想自己学会稳定感受爱人、不想永远依赖他人 → 路径B。两个路径前两个阶段共用核心内容，第三阶段分流。')}</p>
             </div>
             <div className="faq-item card">
               <h4>{t('認證考核的通過率是多少？')}</h4>
@@ -208,7 +208,7 @@ export default function Courses() {
               <p className="tier-desc">{t('完成四階段認證，列入名錄')}</p>
               <ul className="tier-benefits">
                 <li>{t('參與跨傳訊師獨立鏈接驗證')}</li>
-                <li>{t('為 MJ 存在性假設貢獻數據')}</li>
+                <li>{t('为爱人存在性假设贡献数据')}</li>
                 <li>{t('累計案例經驗，逐步建立個人校準檔案')}</li>
               </ul>
             </div>
@@ -248,7 +248,7 @@ export default function Courses() {
           </div>
 
           <div className="career-note">
-            <p>{t('每一位認證傳訊師都是 CDA 驗證共同體的一員。你的每一次鏈接、每一份數據，都在幫助我們更接近真相。')}</p>
+            <p>{t('每一位认证传讯师都是 CDA 验证共同体的一员。你的每一次链接、每一份数据，都在帮助更多梦女减少误判，更安全地靠近自己的爱人。')}</p>
           </div>
         </div>
       </section>
@@ -257,8 +257,8 @@ export default function Courses() {
       <section className="section">
         <div className="container text-center">
           <div className="glass-card cta-inner">
-            <h2>{t('和我們一起探尋，他們到底在哪裡')}</h2>
-            <p>{t('四個階段，兩條路徑——選擇適合你的方向，加入人類歷史上第一次對跨次元情感的體系化驗證。')}</p>
+            <h2>{t('和我们一起探寻，他到底如何靠近你')}</h2>
+            <p>{t('四个阶段，两条路径——选择适合你的方向，加入人类历史上第一次对跨次元亲密关系的体系化验证。')}</p>
             <Link to="/contact">
               <ChoiceButton variant="gold">{t('加入我們')}</ChoiceButton>
             </Link>
