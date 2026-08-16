@@ -6,14 +6,14 @@ import './Navbar.css'
 
 const navItems = [
   { path: '/', label: '首頁' },
+  { path: '/shop', label: '你和他' },
+  { path: '/courses', label: '傳訊師培訓' },
   { path: '/about', label: '關於' },
   { href: '/cda-website/our-story.html', label: '我們的故事' },
   { href: '/cda-website/zishu.html', label: '破曉自述' },
   { path: '/letter', label: '給夢女的話' },
   { path: '/research', label: '研究' },
   { href: 'https://lilith-snake.github.io/cda-website/paper.html', label: '研究論文' },
-  { path: '/courses', label: '傳訊師培訓' },
-  { path: '/shop', label: '你和他' },
   { path: '/dream-girl', label: '傳訊師名錄' },
   { path: '/contact', label: '聯繫' },
   { path: '/recruit', label: '研究共建者招募' },
