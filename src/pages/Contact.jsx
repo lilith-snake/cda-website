@@ -117,7 +117,7 @@ export default function Contact() {
           <p className="contact-kicker">CDA CONTACT</p>
           <h1>把你和爱人的问题交给我们</h1>
           <p className="subtitle">
-            如果你害怕他不存在、感受不到他，或被别人误判成“并非你的目标爱人”，你可以先把问题写下来。我们会认真阅读。
+            如果你害怕他不存在、感受不到他，或被别人一句话否定那些只有你最熟悉的回应，你可以先把问题写下来。我们会认真阅读。
           </p>
         </div>
       </section>

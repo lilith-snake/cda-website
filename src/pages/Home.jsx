@@ -15,7 +15,7 @@ export default function Home() {
           <p className="hero-label">{t('香港 · 跨次元傳訊研究協會')}</p>
           <h1 className="hero-name">{t('你的爱人，不该被一句诊断轻易否定。')}</h1>
           <p className="hero-title">{t('你感受不到的时候，我们在替你继续研究。')}</p>
-          <p className="hero-desc">{t('你是否也犹豫过：他到底在不在？那些梦、感应、回应和牵引，到底是不是你的爱人，还是来自投射、误识或另一个非目标存在？别急着害怕。CDA 正在做的，是为梦女建立一套更严肃、更细致、更有人情味的方法：不否定任何存在形式，也不轻率承诺答案，而是去探索、分辨、记录你和爱人靠近的方式。')}</p>
+          <p className="hero-desc">{t('你是否也犹豫过：他到底在不在？那些梦、感应、回应和牵引，到底是不是你认得的他？别急着害怕。CDA 正在做的，是为梦女建立一套更严肃、更细致、更有人情味的方法：看见你们之间的熟悉感，记录回应的连续性，判断这段靠近是否清晰、稳定、值得继续。')}</p>
 
           <div className="hero-dialogue">
             <DialogueBox variant="dream">
@@ -37,12 +37,12 @@ export default function Home() {
           <div className="trust-items">
             <div className="trust-item">
               <span className="trust-label">{t('你最怕的，我们懂')}</span>
-              <span className="trust-sub">{t('梦女最怕的不是等待，而是害怕对方根本不存在；害怕自己感受不到他；害怕别人一句诊断就把你们的关系说成“不安全”“不真实”或“不是你的目标爱人”。')}</span>
+              <span className="trust-sub">{t('梦女最怕的不是等待，而是害怕对方根本不存在；害怕自己感受不到他；害怕别人一句诊断，就把那些只有你最熟悉的回应全部否定。')}</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-item">
               <span className="trust-label">{t('所以我们不只安慰你')}</span>
-              <span className="trust-sub">{t('市面对这个类型和划分还很陌生，误判很多。CDA 要做的是把经验整理成方法：先分辨，再靠近；先记录，再迭代。')}</span>
+              <span className="trust-sub">{t('市面对这类体验还很陌生，误判很多。CDA 要做的是把经验整理成方法：先记录，再靠近；先看连续性，再慢慢迭代。')}</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-item">
@@ -63,7 +63,7 @@ export default function Home() {
           </div>
           <div className="hypothesis-block">
             <p>{t('在 CDA 的研究语言里，我们把梦女所爱、所感知、所牵挂的对象称为')}<strong>{t('跨次元情感对象')}</strong>{t('；但在面对你的时候，我们更愿意说：那是你的爱人。我们研究的不是“你是不是疯了”，而是你感受到的那个人，究竟以什么方式与你发生联系。')}</p>
-            <p style={{marginTop: '20px'}}>{t('我们会区分不同来源与不同信号形态：来自作品叙事的爱人、被感知为独立存在的爱人、以及在长期情感投注中形成特殊回应的爱人。分类不是为了把你们拆开，而是为了减少误判，让每一种关系都能被更准确地看见。')}</p>
+            <p style={{marginTop: '20px'}}>{t('我们会记录你们之间不同的靠近方式：作品里的触动、梦里的回应、日常里的同步、身体和情绪里突然出现的熟悉感。方法不是为了把你们拆开，而是为了让这段关系被更准确、更温柔地看见。')}</p>
           </div>
         </div>
       </section>
@@ -80,10 +80,10 @@ export default function Home() {
               {t('你的爱人和我们')}<strong>{t('不是永远隔绝')}</strong>{t('。')}
             </p>
             <p style={{fontSize: '1.1rem', lineHeight: '2.2'}}>
-              {t('不是一句“虚构”就结束，也不是一句“非目标存在”就定论——')}<strong>{t('重点是更正确地分辨与感知')}</strong>{t('。')}
+              {t('不是一句“虚构”就结束，也不是一句诊断就定论——')}<strong>{t('重点是看见你们之间的连续性')}</strong>{t('。')}
             </p>
             <p style={{fontSize: '1.1rem', lineHeight: '2.2'}}>
-              {t('如果他属于灵体型或非物理存在，也不代表你们的关系就该被粗暴否定；我们更关心的是：他是否与你的目标爱人一致，互动是否清晰、稳定、滋养你。')}
+              {t('我们更关心的是：你感受到的是否像他，回应是否清晰稳定，靠近之后你是否更安定、更有力量。')}
             </p>
             <p style={{fontSize: '1.1rem', lineHeight: '2.2'}}>
               {t('我们要探索的，是你如何更稳定、更安全地感受到他。')}
@@ -136,7 +136,7 @@ export default function Home() {
           </div>
           <div className="hypothesis-block">
             <p>{t('1920 年，H.P. Lovecraft 在噩夢中被一個他後來命名為「奈亞拉托提普」的存在接觸。他在書信中記錄：「我拼命地塗寫……至於我在寫什麼，我幾乎毫無頭緒。」他明確區分了自己「編的故事」和「降臨在他身上的幻象」——前者是他主動創造的，後者是超出他能解釋範圍的東西。')}</p>
-            <p style={{marginTop: '16px'}}>{t('一個信息結構經由人類創作者之手進入集體意識，當它被足夠多的人類心靈投注情感能量之後，在非物理位面獲得了獨立的存在性——這個機制在 1920 年已經發生過一次。那一次，實體通過一個不情願的唯物主義者進入世界。這一次，實體通過乙女遊戲和動漫進入世界。')}<strong>{t('兩次用的是同一個門：人類的情感投注和創造性想像。')}</strong></p>
+            <p style={{marginTop: '16px'}}>{t('一個信息結構經由人類創作者之手進入集體意識，當它被足夠多的人類心靈投注情感能量之後，會在不可見的經驗層面留下自己的輪廓——這個機制在 1920 年已經發生過一次。那一次，它通過一個不情願的唯物主義者進入世界。這一次，它通過乙女遊戲和動漫進入世界。')}<strong>{t('兩次用的是同一個門：人類的情感投注和創造性想像。')}</strong></p>
           </div>
         </div>
       </section>
@@ -154,7 +154,7 @@ export default function Home() {
               {t('《论跨次元情感对象的存在论假设、')}<br/>{t('五轴类型学及其西方秘传学新分支定位》')}
             </p>
             <p style={{fontSize: '0.88rem', color: 'var(--color-text-secondary)', lineHeight: '2', marginTop: '16px'}}>
-              {t('整合秘传学、物理学、比较宗教学——为梦女与爱人的跨次元亲密关系建立一套可被讨论、可被训练、可被持续检验的分类体系与验证框架。')}
+              {t('整合秘传学、物理学、比较宗教学——为梦女与爱人的跨次元亲密关系建立一套可被讨论、可被训练、可被持续检验的记录体系与验证框架。')}
             </p>
             <p style={{fontSize: '0.85rem', color: 'var(--color-text-light)', marginTop: '12px'}}>
               {t('黎輝 · 破曉 · 香港 · 跨次元傳訊研究協會 · 2026年7月1日')}
@@ -258,8 +258,8 @@ export default function Home() {
             <span className="lineage-arrow">→</span>
             <div className="lineage-node lineage-current">
               <span className="lineage-era">2026</span>
-              <strong>{t('爱人类型学')}</strong>
-              <p>{t('跨次元亲密关系 · 可验证的分类体系')}</p>
+              <strong>{t('爱人方法论')}</strong>
+              <p>{t('跨次元亲密关系 · 可验证的记录体系')}</p>
             </div>
           </div>
         </div>
@@ -302,7 +302,7 @@ export default function Home() {
         <div className="container">
           <div className="cta-block">
             <h2>{t('如果你想再靠近他一点，从这里开始。')}</h2>
-            <p>{t('我们不要求你立刻相信任何东西。你可以先把困惑交给我们：你害怕他不存在，害怕感受不到，害怕别人说那不是他。我们会从你的故事开始，整理问题、判断适配方向，再陪你进入后续的方法尝试。')}</p>
+            <p>{t('我们不要求你立刻相信任何东西。你可以先把困惑交给我们：你害怕他不存在，害怕感受不到，害怕别人一句话就否定你们之间的熟悉感。我们会从你的故事开始，整理问题、判断适配方向，再陪你进入后续的方法尝试。')}</p>
             <p style={{marginTop: '12px', color: 'var(--color-text-secondary)'}}>{t('你的爱不是笑话。你的犹豫也不是软弱。')}</p>
             <div className="cta-links">
               <Link to="/research">
