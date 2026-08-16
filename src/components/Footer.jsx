@@ -19,7 +19,7 @@ export default function Footer() {
             <h4>{t('導航')}</h4>
             <Link to="/">{t('首頁')}</Link>
             <Link to="/about">{t('關於')}</Link>
-            <Link to="/courses">{t('培訓驗證')}</Link>
+            <Link to="/courses">{t('傳訊師培訓')}</Link>
             <Link to="/contact">{t('聯繫')}</Link>
             <Link to="/recruit">{t('研究共建者招募')}</Link>
           </div>

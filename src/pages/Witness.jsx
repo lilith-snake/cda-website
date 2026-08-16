@@ -18,7 +18,7 @@ export default function Witness() {
       <section className="page-hero witness-hero">
         <div className="container">
           <h1>{t('邀請見證')}</h1>
-          <p className="subtitle">{t('全球首個跨次元鏈接系統性研究實驗')}</p>
+          <p className="subtitle">{t('全球首家傳訊研究協會發起的跨次元鏈接系統性研究實驗')}</p>
         </div>
       </section>
 

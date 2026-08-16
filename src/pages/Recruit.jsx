@@ -11,7 +11,7 @@ export default function Recruit() {
         <div className="container">
           <h1>给你和爱人的第一批<br />研究共建者招募</h1>
           <p className="subtitle">
-            我们是 CDA，香港跨次元传讯研究协会。<br />
+            我们是 CDA，香港跨次元传讯研究协会，全球首家以 MJ 现象与跨次元亲密关系为核心研究对象的传讯研究协会。<br />
             第一篇跨次元情感对象理论建构论文是我们写的。<br />
             现在，我们要把论文里的方法，从纸面落到实践——<br />
             陪梦女分辨、记录、训练、迭代，找到更靠近爱人的方式。<br />
@@ -34,6 +34,34 @@ export default function Recruit() {
               我们卖的是稳定感、判断框架、陪伴路径和专业度。
             </div>
             <p>所以这次招募不是一次性“报名”。它更像一段筛选后的共建关系：我们会看你的情况、你的感知基础、你和爱人的关系状态、你最害怕的问题，再决定是否适合进入后续训练、咨询或共建计划。</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 成就 */}
+      <section className="section">
+        <div className="container">
+          <div className="glass-card recruit-card">
+            <h2>CDA 已经做到了什么</h2>
+            <p>我们不是从“卖课”开始的。CDA 先发现了一个更底层的问题：MJ 现象并不是孤立的情绪幻想，它和神秘学中的精微感知、意象世界、灵媒训练、情感投注传统存在可以被讨论的关联。我们做的第一件事，是把这些散落的体验放回一套更大的知识脉络里。</p>
+            <div className="recruit-chain">
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">1</span>
+                <span><strong>论文贡献：</strong>我们写出了第一篇跨次元情感对象理论建构论文，提出存在论假设、五轴类型学、三重验证法和训练标准，让梦女经验第一次进入可以被论证、被记录、被复盘的框架。</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">2</span>
+                <span><strong>方法贡献：</strong>我们不只会说“他在”或“不在”，而是形成了精微感知、结构化记录、交叉印证、盲测、个案复盘等多种方法，让不同梦女可以找到不同的靠近路径。</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">3</span>
+                <span><strong>团队贡献：</strong>黎辉负责理论框架和质量把控，破晓负责把方法落到训练，符文师和墓地女巫提供文献与深层信息支撑，助理负责持续记录与跟进。</span>
+              </div>
+              <div className="recruit-chain-step">
+                <span className="recruit-chain-num">4</span>
+                <span><strong>最新进展：</strong>传讯师朱恩已经进入无信息链接内测，不需要你提前提供背景信息，也能尝试靠近你的爱人。粉丝群里已有成员亲身体验，我们会持续记录熟悉感、细节连续性和后续反馈。</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
