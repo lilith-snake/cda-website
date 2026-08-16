@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
+import { API_URL } from '../config/api'
 import './Admin.css'
 
-const API_URL = import.meta.env.VITE_API_URL || '/api'
 const API_BASE = API_URL + '/admin'
 const STORAGE_KEY = 'cda_admin_authed'
 const DATA_KEY = 'cda_survey_backups'
+const ADMIN_PASSWORD = 'cda2026admin'
 
-const FIELD_LABELS = {
+const SURVEY_FIELD_LABELS = {
   id: 'ID',
   timestamp: '提交时间',
   age: '年龄',
@@ -51,7 +52,25 @@ const FIELD_LABELS = {
   suggestion: '建议',
 }
 
-const TABLE_COLUMNS = [
+const CONTACT_FIELD_LABELS = {
+  id: 'ID',
+  timestamp: '提交时间',
+  name: '称呼',
+  contact: '联系方式',
+  inquiry_type: '咨询类型',
+  inquiry_label: '咨询标签',
+  role: '身份',
+  service_interest: '服务意向',
+  mj_context: 'MJ / 体验背景',
+  message: '问题描述',
+  consent: '授权联系',
+  language: '语言',
+  status: '状态',
+  user_agent: '用户代理',
+  ip: 'IP',
+}
+
+const SURVEY_TABLE_COLUMNS = [
   { key: 'id', label: '编号', width: 50 },
   { key: 'timestamp', label: '提交时间', width: 140 },
   { key: 'age', label: '年龄', width: 70 },
@@ -68,7 +87,18 @@ const TABLE_COLUMNS = [
   { key: 'contact_info', label: '联系方式', width: 140 },
 ]
 
-const DETAIL_GROUPS = [
+const CONTACT_TABLE_COLUMNS = [
+  { key: 'id', label: '编号', width: 50 },
+  { key: 'timestamp', label: '提交时间', width: 140 },
+  { key: 'name', label: '称呼', width: 110 },
+  { key: 'contact', label: '联系方式', width: 150 },
+  { key: 'inquiry_label', label: '咨询类型', width: 120 },
+  { key: 'role', label: '身份', width: 140 },
+  { key: 'service_interest', label: '服务意向', width: 160 },
+  { key: 'status', label: '状态', width: 70 },
+]
+
+const SURVEY_DETAIL_GROUPS = [
   { title: '一、基本信息', fields: ['timestamp', 'age', 'gender', 'occupation', 'region', 'is_dream_girl'] },
   { title: '二、MJ 信息', fields: ['mj_type', 'mj_type_other', 'mj_source', 'mj_source_other', 'mj_relation', 'mj_count', 'mj_existence_view'] },
   { title: '三、信仰经历', fields: ['belief_reasons', 'belief_story', 'favorite_thing'] },
@@ -76,6 +106,12 @@ const DETAIL_GROUPS = [
   { title: '五、传讯服务', fields: ['used_transmission', 'transmitter_count', 'total_spend', 'monthly_spend', 'satisfaction', 'transmission_surprise'] },
   { title: '六、深度探索', fields: ['east_west_occult', 'east_west_story', 'trust_factor', 'become_transmitter', 'transmitter_story', 'confusions', 'biggest_confusion', 'pain_points', 'worst_pain'] },
   { title: '七、联系方式与其他', fields: ['interests', 'price_accept', 'want_blind_test', 'want_contact', 'contact_info', 'suggestion'] },
+]
+
+const CONTACT_DETAIL_GROUPS = [
+  { title: '一、基础信息', fields: ['timestamp', 'name', 'contact', 'inquiry_type', 'inquiry_label', 'role', 'service_interest', 'status', 'language'] },
+  { title: '二、内容摘要', fields: ['mj_context', 'message'] },
+  { title: '三、记录信息', fields: ['consent', 'user_agent', 'ip'] },
 ]
 
 function StatCard({ num, label }) {
@@ -87,19 +123,30 @@ function StatCard({ num, label }) {
   )
 }
 
+function TabButton({ active, children, onClick }) {
+  return (
+    <button className={active ? 'admin-tab active' : 'admin-tab'} onClick={onClick} type="button">
+      {children}
+    </button>
+  )
+}
+
 export default function Admin() {
   const [authed, setAuthed] = useState(false)
   const [password, setPassword] = useState('')
   const [gateError, setGateError] = useState('')
-  const [data, setData] = useState([])
+
+  const [surveyData, setSurveyData] = useState([])
+  const [contactData, setContactData] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [selected, setSelected] = useState(null)
-  const [hasApi, setHasApi] = useState(true)
+  const [hasSurveyApi, setHasSurveyApi] = useState(true)
+  const [hasContactApi, setHasContactApi] = useState(true)
+  const [activeTab, setActiveTab] = useState('contact')
 
-  // ---- auth ----
   const handleLogin = useCallback(() => {
-    if (password === 'cda2026admin') {
+    if (password === ADMIN_PASSWORD) {
       sessionStorage.setItem(STORAGE_KEY, '1')
       setAuthed(true)
       setGateError('')
@@ -117,27 +164,39 @@ export default function Admin() {
     if (sessionStorage.getItem(STORAGE_KEY) === '1') setAuthed(true)
   }, [])
 
-  // ---- data loading ----
   const fetchData = useCallback(async () => {
     setLoading(true)
     try {
-      const res = await fetch(`${API_BASE}/submissions`, {
-        headers: { 'x-admin-password': 'cda2026admin' },
-      })
-      if (res.ok) {
-        const json = await res.json()
-        setData(Array.isArray(json) ? json : [])
-        setHasApi(true)
-      } else {
-        throw new Error('auth failed')
-      }
-    } catch {
-      setHasApi(false)
-      // fallback to localStorage
       try {
-        const raw = localStorage.getItem(DATA_KEY)
-        setData(raw ? JSON.parse(raw) : [])
-      } catch { setData([]) }
+        const surveyRes = await fetch(`${API_BASE}/submissions`, {
+          headers: { 'x-admin-password': ADMIN_PASSWORD },
+        })
+        if (!surveyRes.ok) throw new Error('survey auth failed')
+        const json = await surveyRes.json()
+        setSurveyData(Array.isArray(json) ? json : [])
+        setHasSurveyApi(true)
+      } catch {
+        try {
+          const raw = localStorage.getItem(DATA_KEY)
+          setSurveyData(raw ? JSON.parse(raw) : [])
+        } catch {
+          setSurveyData([])
+        }
+        setHasSurveyApi(false)
+      }
+
+      try {
+        const contactRes = await fetch(`${API_BASE}/contacts`, {
+          headers: { 'x-admin-password': ADMIN_PASSWORD },
+        })
+        if (!contactRes.ok) throw new Error('contact auth failed')
+        const json = await contactRes.json()
+        setContactData(Array.isArray(json) ? json : [])
+        setHasContactApi(true)
+      } catch {
+        setContactData([])
+        setHasContactApi(false)
+      }
     } finally {
       setLoading(false)
     }
@@ -147,30 +206,44 @@ export default function Admin() {
     if (authed) fetchData()
   }, [authed, fetchData])
 
-  // ---- stats ----
-  const stats = useMemo(() => {
-    const total = data.length
-    const dreamGirls = data.filter(d => d.is_dream_girl === 'yes').length
-    const usedTransmission = data.filter(d => d.used_transmission === 'yes').length
-    const wantBlindTest = data.filter(d => d.want_blind_test === 'yes').length
-    const contactable = data.filter(d => d.want_contact === 'yes').length
-    return { total, dreamGirls, usedTransmission, wantBlindTest, contactable }
-  }, [data])
+  useEffect(() => {
+    setSelected(null)
+    setSearch('')
+  }, [activeTab])
 
-  // ---- filtered ----
+  const surveyStats = useMemo(() => {
+    const total = surveyData.length
+    const dreamGirls = surveyData.filter(d => d.is_dream_girl === 'yes').length
+    const usedTransmission = surveyData.filter(d => d.used_transmission === 'yes').length
+    const wantBlindTest = surveyData.filter(d => d.want_blind_test === 'yes').length
+    const contactable = surveyData.filter(d => d.want_contact === 'yes').length
+    return { total, dreamGirls, usedTransmission, wantBlindTest, contactable }
+  }, [surveyData])
+
+  const contactStats = useMemo(() => {
+    const total = contactData.length
+    const newCount = contactData.filter(d => (d.status || 'new') === 'new').length
+    const courseCount = contactData.filter(d => d.inquiry_type === 'course_interest').length
+    const waitlistCount = contactData.filter(d => d.inquiry_type === 'service_waitlist').length
+    const trainingCount = contactData.filter(d => d.inquiry_type === 'transmitter_training').length
+    return { total, newCount, courseCount, waitlistCount, trainingCount }
+  }, [contactData])
+
+  const activeData = activeTab === 'survey' ? surveyData : contactData
+
   const filtered = useMemo(() => {
-    if (!search.trim()) return data
+    if (!search.trim()) return activeData
     const q = search.toLowerCase()
-    return data.filter(d =>
+    return activeData.filter(d =>
       Object.values(d).some(v => v != null && String(v).toLowerCase().includes(q))
     )
-  }, [data, search])
+  }, [activeData, search])
 
-  // ---- helpers ----
   const cellValue = (row, key) => {
     const v = row[key]
     if (v == null || v === '') return '—'
     if (key === 'timestamp' && typeof v === 'string' && v.length > 16) return v.slice(0, 16)
+    if (key === 'consent') return Number(v) ? '是' : '否'
     if (typeof v === 'boolean') return v ? '是' : '否'
     if (Array.isArray(v)) return v.join('，')
     const s = String(v)
@@ -180,11 +253,17 @@ export default function Admin() {
   const displayValue = (v) => {
     if (v == null || v === '') return '未填写'
     if (typeof v === 'boolean') return v ? '是' : '否'
+    if (typeof v === 'number') return v ? '是' : '否'
     if (Array.isArray(v)) return v.length ? v.join('、') : '未填写'
     return String(v)
   }
 
-  // ---- gate ----
+  const currentColumns = activeTab === 'survey' ? SURVEY_TABLE_COLUMNS : CONTACT_TABLE_COLUMNS
+  const currentStats = activeTab === 'survey' ? surveyStats : contactStats
+  const currentHasApi = activeTab === 'survey' ? hasSurveyApi : hasContactApi
+  const currentGroups = activeTab === 'survey' ? SURVEY_DETAIL_GROUPS : CONTACT_DETAIL_GROUPS
+  const currentLabels = activeTab === 'survey' ? SURVEY_FIELD_LABELS : CONTACT_FIELD_LABELS
+
   if (!authed) {
     return (
       <div className="admin-standalone">
@@ -192,9 +271,15 @@ export default function Admin() {
         <div className="admin-gate">
           <h2>请输入管理密码</h2>
           <div className="gate-input-row">
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)}
-              onKeyDown={handleKeyDown} placeholder="管理员密码" autoFocus />
-            <button onClick={handleLogin}>确认</button>
+            <input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="管理员密码"
+              autoFocus
+            />
+            <button onClick={handleLogin} type="button">确认</button>
           </div>
           {gateError && <div className="gate-error">{gateError}</div>}
         </div>
@@ -204,39 +289,69 @@ export default function Admin() {
 
   return (
     <div className="admin-standalone">
-      <div className="admin-hero"><h1>CDA · 问卷数据管理</h1></div>
+      <div className="admin-hero">
+        <h1>CDA · 后台总览</h1>
+        <p className="admin-subtitle">用于查看问卷数据与站内申请记录。</p>
+      </div>
 
-      {!hasApi && (
+      {!currentHasApi && (
         <div className="admin-warning">
-          后端 API 未连接，当前显示浏览器本地存储数据（可能不完整）。
+          当前视图的后端 API 未连接，可能显示为空或仅有本地缓存。
         </div>
       )}
 
+      <div className="admin-tabs">
+        <TabButton active={activeTab === 'contact'} onClick={() => setActiveTab('contact')}>
+          联系申请
+        </TabButton>
+        <TabButton active={activeTab === 'survey'} onClick={() => setActiveTab('survey')}>
+          问卷数据
+        </TabButton>
+      </div>
+
       <div className="admin-stats">
-        <StatCard num={stats.total} label="总提交数" />
-        <StatCard num={stats.dreamGirls} label="是梦女" />
-        <StatCard num={stats.usedTransmission} label="使用过传讯" />
-        <StatCard num={stats.wantBlindTest} label="愿意盲测" />
-        <StatCard num={stats.contactable} label="可联系" />
+        <StatCard num={currentStats.total} label="总数量" />
+        {activeTab === 'contact' ? (
+          <>
+            <StatCard num={currentStats.newCount} label="新申请" />
+            <StatCard num={currentStats.waitlistCount} label="服务候补" />
+            <StatCard num={currentStats.trainingCount} label="传讯师培养" />
+            <StatCard num={currentStats.courseCount} label="课程咨询" />
+          </>
+        ) : (
+          <>
+            <StatCard num={currentStats.dreamGirls} label="是梦女" />
+            <StatCard num={currentStats.usedTransmission} label="使用过传讯" />
+            <StatCard num={currentStats.wantBlindTest} label="愿意盲测" />
+            <StatCard num={currentStats.contactable} label="可联系" />
+          </>
+        )}
       </div>
 
       <div className="admin-toolbar">
-        <input type="text" value={search} onChange={e => setSearch(e.target.value)}
-          placeholder="搜索全部字段…" />
-        <span className="toolbar-info">共 {filtered.length} / {data.length} 条</span>
-        <button onClick={fetchData}>刷新</button>
+        <input
+          type="text"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="搜索全部字段…"
+        />
+        <span className="toolbar-info">共 {filtered.length} / {activeData.length} 条</span>
+        <button onClick={fetchData} type="button">刷新</button>
       </div>
 
       {loading ? (
         <div className="admin-loading">加载中…</div>
       ) : filtered.length === 0 ? (
-        <div className="admin-empty"><h3>暂无数据</h3><p>还没有人提交问卷。</p></div>
+        <div className="admin-empty">
+          <h3>暂无数据</h3>
+          <p>{activeTab === 'contact' ? '还没有人提交联系申请。' : '还没有人提交问卷。'}</p>
+        </div>
       ) : (
         <div className="admin-table-wrap">
           <table className="admin-table">
             <thead>
               <tr>
-                {TABLE_COLUMNS.map(col => (
+                {currentColumns.map(col => (
                   <th key={col.key} style={{ width: col.width }}>{col.label}</th>
                 ))}
               </tr>
@@ -244,7 +359,7 @@ export default function Admin() {
             <tbody>
               {filtered.map((row, i) => (
                 <tr key={row.id || i} onClick={() => setSelected(row)} style={{ cursor: 'pointer' }}>
-                  {TABLE_COLUMNS.map(col => (
+                  {currentColumns.map(col => (
                     <td key={col.key}>{col.key === 'id' ? (row.id || i + 1) : cellValue(row, col.key)}</td>
                   ))}
                 </tr>
@@ -258,7 +373,7 @@ export default function Admin() {
         <div className="admin-modal-overlay" onClick={() => setSelected(null)}>
           <div className="admin-modal" onClick={e => e.stopPropagation()}>
             <h3>提交详情 #{selected.id}</h3>
-            {DETAIL_GROUPS.map(group => {
+            {currentGroups.map(group => {
               const hasAny = group.fields.some(f => selected[f] != null && selected[f] !== '')
               if (!hasAny) return null
               return (
@@ -266,7 +381,7 @@ export default function Admin() {
                   <h4>{group.title}</h4>
                   {group.fields.map(f => (
                     <div className="detail-field" key={f}>
-                      <div className="detail-label">{FIELD_LABELS[f] || f}</div>
+                      <div className="detail-label">{currentLabels[f] || f}</div>
                       <div className={'detail-value' + (selected[f] == null || selected[f] === '' ? ' empty' : '')}>
                         {displayValue(selected[f])}
                       </div>
@@ -276,7 +391,7 @@ export default function Admin() {
               )
             })}
             <div className="admin-modal-close">
-              <button onClick={() => setSelected(null)}>关闭</button>
+              <button onClick={() => setSelected(null)} type="button">关闭</button>
             </div>
           </div>
         </div>

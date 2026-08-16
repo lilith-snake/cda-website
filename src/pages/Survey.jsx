@@ -1,8 +1,8 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useLanguage } from '../i18n';
+import { API_URL } from '../config/api';
 import './Survey.css';
 
-const API_URL = import.meta.env.VITE_API_URL || '/api';
 const SURVEY_URL = API_URL + '/survey';
 
 const AGE_OPTIONS = ['under18', 'age18-24', 'age25-30', 'age31-35', 'age36-40', 'age41-50', 'over50'];
@@ -113,10 +113,10 @@ const zhHant = {
   'transmitterStoryPlaceholder': '為什麼你有興趣（或沒有興趣）成為傳訊師？',
   'biggestConfusionPlaceholder': '關於你的體驗，什麼最讓你困惑或不解？',
   'worstPainPlaceholder': '什麼最讓你痛苦？你面臨什麼樣的挑戰？',
-  'contactInfoPlaceholder': '電郵 / 微信 / 電話 / 社交媒體——你方便的聯絡方式',
+  'contactInfoPlaceholder': '微信 / 電話 / 社交媒體 / 其他可聯絡渠道——你方便的聯絡方式',
   'suggestionPlaceholder': '任何對 CDA、這份問卷或社群的建議與想法⋯⋯',
-  'deepTalkNote': '如果你願意和我們深度溝通，請將你的郵箱發送至我們的郵箱：',
-  'deepTalkEmail': 'dluu39ce7c@gmail.com',
+  'deepTalkNote': '如果你願意和我們深度溝通，請前往站內申請表：',
+  'deepTalkLink': '前往站內申請表',
 
   // 選項 — 年齡
   'under18': '18 歲以下',
@@ -385,10 +385,10 @@ const zhHans = {
   'transmitterStoryPlaceholder': '为什么你有兴趣（或没有兴趣）成为传讯师？',
   'biggestConfusionPlaceholder': '关于你的体验，什么最让你困惑或不解？',
   'worstPainPlaceholder': '什么最让你痛苦？你面临什么样的挑战？',
-  'contactInfoPlaceholder': '电邮 / 微信 / 电话 / 社交媒体——你方便的联络方式',
+  'contactInfoPlaceholder': '微信 / 电话 / 社交媒体 / 其他可联系渠道——你方便的联系方式',
   'suggestionPlaceholder': '任何对 CDA、这份问卷或社群的建议与想法……',
-  'deepTalkNote': '如果你愿意和我们深度沟通，请将你的邮箱发送至我们的邮箱：',
-  'deepTalkEmail': 'dluu39ce7c@gmail.com',
+  'deepTalkNote': '如果你愿意和我们深度沟通，请前往站内申请表：',
+  'deepTalkLink': '前往站内申请表',
   'under18': '18 岁以下',
   'age18-24': '18–24 岁',
   'age25-30': '25–30 岁',
@@ -996,7 +996,7 @@ export default function Survey() {
 
               <div className="field-group deep-talk-note">
                 <p className="deep-talk-text">{st('deepTalkNote')}</p>
-                <p className="deep-talk-email">{st('deepTalkEmail')}</p>
+                <a className="deep-talk-link" href="https://lilith-snake.github.io/cda-website/contact">{st('deepTalkLink')}</a>
               </div>
             </div>
           </fieldset>
@@ -1096,10 +1096,10 @@ const enLookup = {
   'transmitterStoryPlaceholder': 'Why are you interested (or not) in becoming a transmitter?',
   'biggestConfusionPlaceholder': 'What puzzles or confuses you most?',
   'worstPainPlaceholder': 'What hurts the most? What challenge do you face?',
-  'contactInfoPlaceholder': 'Email / WeChat / Phone / Social media',
+  'contactInfoPlaceholder': 'WeChat / Phone / Social media / other reachable channel',
   'suggestionPlaceholder': 'Any feedback or thoughts about CDA, this survey, or the community...',
-  'deepTalkNote': 'If you would like to have a deeper conversation with us, please send your email to:',
-  'deepTalkEmail': 'dluu39ce7c@gmail.com',
+  'deepTalkNote': 'If you would like to have a deeper conversation with us, please use the on-site application form:',
+  'deepTalkLink': 'Go to the on-site application form',
   'under18': 'Under 18',
   'age18-24': '18–24',
   'age25-30': '25–30',

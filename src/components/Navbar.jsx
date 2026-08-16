@@ -13,6 +13,7 @@ const navItems = [
   { path: '/research', label: '研究' },
   { href: 'https://lilith-snake.github.io/cda-website/paper.html', label: '研究論文' },
   { path: '/courses', label: '培訓驗證' },
+  { path: '/shop', label: '商品購買' },
   { path: '/dream-girl', label: '傳訊師名錄' },
   { path: '/contact', label: '聯繫' },
   { path: '/recruit', label: '研究共建者招募' },

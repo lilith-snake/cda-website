@@ -1,11 +1,12 @@
 // GET /api/admin/submissions — 全部提交记录
 export async function onRequest(context) {
+  if (context.request.method === 'OPTIONS') {
+    return corsJson({ ok: true }, 204)
+  }
+
   const pw = context.request.headers.get('x-admin-password') || ''
   if (pw !== 'cda2026admin') {
-    return new Response(JSON.stringify({ error: 'unauthorized' }), {
-      status: 401,
-      headers: { 'content-type': 'application/json' },
-    })
+    return corsJson({ error: 'unauthorized' }, 401)
   }
 
   try {
@@ -33,14 +34,21 @@ export async function onRequest(context) {
       interests: tryParse(r.interests),
     }))
 
-    return new Response(JSON.stringify(rows), {
-      headers: { 'content-type': 'application/json' },
-    })
+    return corsJson(rows)
   } catch (err) {
     console.error('Submissions error:', err)
-    return new Response(JSON.stringify({ error: 'server error' }), {
-      status: 500,
-      headers: { 'content-type': 'application/json' },
-    })
+    return corsJson({ error: 'server error' }, 500)
   }
+}
+
+function corsJson(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      'content-type': 'application/json',
+      'access-control-allow-origin': '*',
+      'access-control-allow-methods': 'GET, OPTIONS',
+      'access-control-allow-headers': 'content-type, x-admin-password',
+    },
+  })
 }

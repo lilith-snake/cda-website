@@ -93,8 +93,8 @@ export default function Witness() {
                   </div>
 
                   <div className="form-group">
-                    <label>{t('電郵')}</label>
-                    <input type="email" placeholder="your@email.com" required />
+                    <label>{t('聯絡方式')}</label>
+                    <input type="text" placeholder={t('你方便留下的聯絡方式')} required />
                   </div>
 
                   <div className="form-group">

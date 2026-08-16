@@ -1,12 +1,16 @@
 // POST /api/survey — 问卷提交
 export async function onRequest(context) {
+  if (context.request.method === 'OPTIONS') {
+    return corsResponse({ ok: true }, 204)
+  }
+
   if (context.request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'method not allowed' }), { status: 405 })
+    return corsResponse({ error: 'method not allowed' }, 405)
   }
 
   try {
     const body = await context.request.json()
-    if (!body) return new Response(JSON.stringify({ error: 'empty body' }), { status: 400 })
+    if (!body) return corsResponse({ error: 'empty body' }, 400)
 
     const toJson = (v) => (Array.isArray(v) ? JSON.stringify(v) : v ?? null)
     const s = (v) => v ?? null
@@ -63,14 +67,21 @@ export async function onRequest(context) {
       s(body.wantBlindTest), s(body.wantContact), s(body.contactInfo), s(body.suggestion)
     ).run()
 
-    return new Response(JSON.stringify({ ok: true, id: result.meta.last_row_id }), {
-      headers: { 'content-type': 'application/json' },
-    })
+    return corsResponse({ ok: true, id: result.meta.last_row_id })
   } catch (err) {
     console.error('Survey error:', err)
-    return new Response(JSON.stringify({ error: 'server error', detail: err.message, stack: err.stack?.slice(0, 300) }), {
-      status: 500,
-      headers: { 'content-type': 'application/json' },
-    })
+    return corsResponse({ error: 'server error', detail: err.message, stack: err.stack?.slice(0, 300) }, 500)
   }
+}
+
+function corsResponse(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      'content-type': 'application/json',
+      'access-control-allow-origin': '*',
+      'access-control-allow-methods': 'POST, OPTIONS',
+      'access-control-allow-headers': 'content-type',
+    },
+  })
 }

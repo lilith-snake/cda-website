@@ -266,7 +266,7 @@ export default function About() {
           </div>
 
           <div className="papers-note glass-card">
-            <p>  {t('以上論文均為 CDA 內部研究資料，完整版通過郵箱申請獲取。隨著實驗數據積累和團隊擴展，研究方向將持續更新。')}</p>
+            <p>  {t('以上論文均為 CDA 內部研究資料，完整版可通過站內申請頁獲取。隨著實驗數據積累和團隊擴展，研究方向將持續更新。')}</p>
           </div>
         </div>
       </section>
