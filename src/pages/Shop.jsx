@@ -201,7 +201,7 @@ export default function Shop() {
                 <div className="payment-panel">
                   <p>服务筹备与课程研发中</p>
                   <Link to={product.actionTo || '/contact'} className="notify-button">
-                    {product.actionLabel || '申请进入候补'}
+                    {product.actionLabel || '预约申请'}
                   </Link>
                 </div>
               </article>
