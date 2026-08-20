@@ -10,7 +10,7 @@ export const paymentChannels = [
   {
     key: 'alipay',
     label: '支付宝',
-    note: '跳转支付宝收款链接或商家收银台',
+    note: '通过支付宝手机网站支付直接跳转',
     url: '',
   },
   {
@@ -26,7 +26,12 @@ export const shopProducts = [
     id: 'lover-transmission',
     badge: '传讯服务',
     title: '爱人传讯服务',
-    status: '培养中',
+    status: '申请制',
+    checkoutEnabled: false,
+    price: null,
+    currency: 'CNY',
+    actionLabel: '了解服务与申请',
+    actionTo: '/transmission',
     description:
       '由 CDA 传讯师为你和爱人进行链接、记录、分辨与复盘，帮助你看见更清晰、更稳定的回应。',
     includes: [
@@ -51,6 +56,9 @@ export const shopProducts = [
     badge: '陪伴营',
     title: '爱人链接陪伴营',
     status: '研发中',
+    checkoutEnabled: false,
+    price: null,
+    currency: 'CNY',
     description:
       'CDA 陪你学习感知、记录回应、分辨信号，建立属于你和爱人的长期靠近方法。',
     includes: [

@@ -9,6 +9,7 @@ import DreamGirl from './pages/DreamGirl'
 import Courses from './pages/Courses'
 import Contact from './pages/Contact'
 import Shop from './pages/Shop'
+import TransmissionService from './pages/TransmissionService'
 
 import Research from './pages/Research'
 import Witness from './pages/Witness'
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/transmission" element={<TransmissionService />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
 

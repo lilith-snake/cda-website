@@ -7,6 +7,7 @@ import './Navbar.css'
 const navItems = [
   { path: '/', label: '首頁' },
   { path: '/shop', label: '你和他' },
+  { path: '/transmission', label: '愛人傳訊' },
   { path: '/courses', label: '傳訊師培訓' },
   { path: '/about', label: '關於' },
   { href: '/cda-website/our-story.html', label: '我們的故事' },

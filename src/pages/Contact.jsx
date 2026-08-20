@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../i18n'
 import { API_URL } from '../config/api'
 import './Contact.css'
@@ -41,9 +42,25 @@ const serviceOptions = [
   '暂不确定，想先咨询',
 ]
 
+function createInitialForm(searchParams) {
+  const inquiry = searchParams.get('inquiry')
+  const service = searchParams.get('service')
+  const validInquiry = inquiryTypes.some(item => item.value === inquiry)
+
+  return {
+    ...initialForm,
+    inquiryType: validInquiry ? inquiry : initialForm.inquiryType,
+    serviceInterest: service === 'lover-transmission'
+      ? '爱人传讯与关系梳理'
+      : initialForm.serviceInterest,
+  }
+}
+
 export default function Contact() {
   const { lang } = useLanguage()
-  const [form, setForm] = useState(initialForm)
+  const [searchParams] = useSearchParams()
+  const isTransmissionApplication = searchParams.get('service') === 'lover-transmission'
+  const [form, setForm] = useState(() => createInitialForm(searchParams))
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
   const [submitError, setSubmitError] = useState('')
@@ -133,6 +150,13 @@ export default function Contact() {
                   写下你与爱人、梦境、同步现象或自我成长相关的问题。我们收到后会按适配度整理，并在后续开放时优先联系。
                 </p>
               </div>
+
+              {isTransmissionApplication && (
+                <div className="contact-service-context" role="note">
+                  <strong>已选择：爱人传讯服务申请</strong>
+                  <span>本服务仅向年满十八周岁的成年人开放申请与提供。</span>
+                </div>
+              )}
 
               {status === 'success' && (
                 <div className="submit-success" role="status">
@@ -230,7 +254,11 @@ export default function Contact() {
                   checked={form.consent}
                   onChange={e => setField('consent', e.target.checked)}
                 />
-                <span>我确认以上信息可由 CDA 用于本次咨询沟通与后续联系。</span>
+                <span>
+                  {isTransmissionApplication
+                    ? '我确认已年满十八周岁，并同意 CDA 将以上信息用于本次申请沟通与后续联系。'
+                    : '我确认以上信息可由 CDA 用于本次咨询沟通与后续联系。'}
+                </span>
               </label>
               {errors.consent && <em className="consent-error">{errors.consent}</em>}
 
