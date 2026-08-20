@@ -21,7 +21,7 @@ const passwordPath = path.join(supportDir, 'admin-password.txt')
 const plistPath = path.join(launchAgentsDir, `${label}.plist`)
 const stdoutPath = path.join(logsDir, 'cda-contact-notifier.launchd.log')
 const stderrPath = path.join(logsDir, 'cda-contact-notifier.launchd.err.log')
-const adminUrl = 'https://lilith-snake.github.io/cda-website/admin'
+const siteUrl = 'https://lilith-snake.github.io/cda-website'
 
 async function main() {
   await mkdir(desktopDir, { recursive: true })
@@ -42,7 +42,7 @@ async function main() {
   console.log('')
   console.log('CDA申请通知已经安装完成。')
   console.log(`桌面入口：${desktopDir}`)
-  console.log(`后台地址：${adminUrl}`)
+  console.log(`官网地址：${siteUrl}`)
   console.log(`后台密码文件：${passwordPath}`)
   console.log('系统会每 20 秒检查一次新的联系申请。')
 }
@@ -50,7 +50,23 @@ async function main() {
 async function createDesktopCommands() {
   await createCommand('打开CDA后台.command', [
     '#!/bin/zsh',
-    `open "${adminUrl}"`,
+    `cd "${repoRoot}"`,
+    `"${nodePath}" "${path.join(repoRoot, 'scripts', 'open-local-admin.mjs')}"`,
+  ].join('\n'))
+
+  await createCommand('打开本机CDA后台.command', [
+    '#!/bin/zsh',
+    `cd "${repoRoot}"`,
+    `"${nodePath}" "${path.join(repoRoot, 'scripts', 'open-local-admin.mjs')}"`,
+  ].join('\n'))
+
+  await createCommand('复制后台密码.command', [
+    '#!/bin/zsh',
+    `pbcopy < "${passwordPath}"`,
+    'echo "后台密码已复制到剪贴板。"',
+    'echo ""',
+    'echo "按任意键关闭。"',
+    'read -k 1',
   ].join('\n'))
 
   await createCommand('立即检查新申请.command', [
