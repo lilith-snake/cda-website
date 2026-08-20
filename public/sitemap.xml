@@ -3,105 +3,105 @@
 
   <!-- 首页 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/</loc>
+    <loc>https://cda-website-3t2.pages.dev/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 关于 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/about</loc>
+    <loc>https://cda-website-3t2.pages.dev/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- 研究框架 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/research</loc>
+    <loc>https://cda-website-3t2.pages.dev/research</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- 课程 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/courses</loc>
+    <loc>https://cda-website-3t2.pages.dev/courses</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- 梦女传讯师 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/dream-girl</loc>
+    <loc>https://cda-website-3t2.pages.dev/dream-girl</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- 星界智慧 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/mysticism</loc>
+    <loc>https://cda-website-3t2.pages.dev/mysticism</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- 参与验证 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/witness</loc>
+    <loc>https://cda-website-3t2.pages.dev/witness</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- 联系我们 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/contact</loc>
+    <loc>https://cda-website-3t2.pages.dev/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- 公开信 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/letter</loc>
+    <loc>https://cda-website-3t2.pages.dev/letter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 我们故事 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/our-story.html</loc>
+    <loc>https://cda-website-3t2.pages.dev/our-story.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- 论文 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/paper.html</loc>
+    <loc>https://cda-website-3t2.pages.dev/paper.html</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 研究共建者招募 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/recruit</loc>
+    <loc>https://cda-website-3t2.pages.dev/recruit</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- 申请问卷 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/apply.html</loc>
+    <loc>https://cda-website-3t2.pages.dev/apply.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- 验证页 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/verify.html</loc>
+    <loc>https://cda-website-3t2.pages.dev/verify.html</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 自述 -->
   <url>
-    <loc>https://lilith-snake.github.io/cda-website/zishu.html</loc>
+    <loc>https://cda-website-3t2.pages.dev/zishu.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

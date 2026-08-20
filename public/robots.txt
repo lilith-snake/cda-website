@@ -1,5 +1,5 @@
 User-agent: *
-Allow: /cda-website/
-Disallow: /cda-website/assets/
+Allow: /
+Disallow: /assets/
 
-Sitemap: https://lilith-snake.github.io/cda-website/sitemap.xml
+Sitemap: https://cda-website-3t2.pages.dev/sitemap.xml

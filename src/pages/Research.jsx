@@ -1,7 +1,7 @@
 import { useLanguage } from '../i18n'
 import './Research.css'
 
-const PAPER_URL = 'https://lilith-snake.github.io/cda-website/paper.html'
+const PAPER_URL = '/paper.html'
 
 export default function Research() {
   const { t } = useLanguage()

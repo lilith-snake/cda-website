@@ -234,7 +234,7 @@ export default function Recruit() {
               另有对照组（未受训的东玄西玄相关行业从业者）→ 同等条件链接 → 出结果<br /><br />
               三组结果比对。资讯隔离。公开记录。无论结果是否达标，实验报告公开发布。<br /><br />
               不管走哪条路径，你来参与就是共建者。你的数据进入论文，你的名字在证书上。<br /><br />
-              每条路径的具体训练阶段、考核标准和验证流程，详见 <a href="/cda-website/courses" className="recruit-link">培训验证</a> 页面——两边是对应的。
+              每条路径的具体训练阶段、考核标准和验证流程，详见 <a href="/courses" className="recruit-link">培训验证</a> 页面——两边是对应的。
             </div>
             <p className="recruit-subtitle">你要做什么</p>
             <p>跟 CDA 一起训练。从感知校准到分辨训练到独立链接。团队里有神秘学领域专业的成员，也有擅长拆解传讯本质、懂得链接如何运作的人。每一步，理论和实操都跟得上。每一期的结果都会记录在下一版的论文里。每一个数据点都是这条路上的一步。</p>
@@ -365,7 +365,7 @@ export default function Recruit() {
             <p>提交申请 → 初步筛选 → 聊一次，确认彼此匹配 → 说明费用与周期 → 签署研究参与协议 → 开始训练或咨询</p>
             <div className="recruit-submit-box">
               <p><strong>提交方式</strong></p>
-              <p>请直接填写站内申请表：<br /><a href="/cda-website/contact" className="recruit-link">前往联系页面</a></p>
+              <p>请直接填写站内申请表：<br /><a href="/contact" className="recruit-link">前往联系页面</a></p>
               <p>我们研究团队会在所有回复后，联系和我们志同道合的人约一次交谈。</p>
               <p className="recruit-footnote">仅面向女性 · 名额有限 · 非先到先得</p>
             </div>
@@ -412,7 +412,7 @@ export default function Recruit() {
               一套方法、三组人、独立链接、盲测比对。<br />
               数据摆在桌上，是就是，不是就不是。
             </p>
-            <a href="/cda-website/contact" className="recruit-cta-btn">提交站内申请</a>
+            <a href="/contact" className="recruit-cta-btn">提交站内申请</a>
             <p className="recruit-cta-note">或 <a href="/contact" className="recruit-link">直接联系我们</a></p>
           </div>
         </div>
