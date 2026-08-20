@@ -9,7 +9,7 @@ export async function onRequest(context) {
   }
 
   try {
-    const body = await context.request.json()
+    const body = await parseRequestBody(context.request)
     if (!body) return json({ error: 'empty body' }, 400)
 
     const name = clean(body.name)
@@ -57,6 +57,15 @@ export async function onRequest(context) {
     console.error('Contact error:', err)
     return corsResponse({ error: 'server error' }, 500)
   }
+}
+
+async function parseRequestBody(request) {
+  const contentType = request.headers.get('content-type') || ''
+  if (contentType.includes('application/json')) return request.json()
+
+  const text = await request.text()
+  if (!text.trim()) return null
+  return JSON.parse(text)
 }
 
 function clean(value, max = 1000) {

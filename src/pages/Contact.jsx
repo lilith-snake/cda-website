@@ -102,15 +102,17 @@ export default function Contact() {
     setSubmitError('')
 
     try {
+      const payload = {
+        ...form,
+        inquiryLabel: selectedInquiry.label,
+        language: lang,
+        userAgent: navigator.userAgent,
+      }
+
       const response = await fetch(CONTACT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          inquiryLabel: selectedInquiry.label,
-          language: lang,
-          userAgent: navigator.userAgent,
-        }),
+        body: JSON.stringify(payload),
       })
 
       if (!response.ok) {
@@ -121,6 +123,27 @@ export default function Contact() {
       setStatus('success')
       setForm(createInitialForm(searchParams))
     } catch (err) {
+      if (err instanceof TypeError) {
+        try {
+          await fetch(CONTACT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify({
+              ...form,
+              inquiryLabel: selectedInquiry.label,
+              language: lang,
+              userAgent: navigator.userAgent,
+            }),
+          })
+          setStatus('success')
+          setForm(createInitialForm(searchParams))
+          return
+        } catch {
+          // Fall through to the visible error below.
+        }
+      }
+
       console.error('Contact submit failed:', err)
       setStatus('error')
       setSubmitError('暂时没有提交成功，请稍后再试。')
