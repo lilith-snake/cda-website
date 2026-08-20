@@ -119,7 +119,7 @@ export default function Contact() {
       }
 
       setStatus('success')
-      setForm(initialForm)
+      setForm(createInitialForm(searchParams))
     } catch (err) {
       console.error('Contact submit failed:', err)
       setStatus('error')

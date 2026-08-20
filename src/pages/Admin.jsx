@@ -131,6 +131,11 @@ function TabButton({ active, children, onClick }) {
   )
 }
 
+function isLoverTransmissionApplication(row) {
+  return row.inquiry_type === 'service_waitlist'
+    && row.service_interest === '爱人传讯与关系梳理'
+}
+
 export default function Admin() {
   const [authed, setAuthed] = useState(false)
   const [password, setPassword] = useState('')
@@ -225,8 +230,9 @@ export default function Admin() {
     const newCount = contactData.filter(d => (d.status || 'new') === 'new').length
     const courseCount = contactData.filter(d => d.inquiry_type === 'course_interest').length
     const waitlistCount = contactData.filter(d => d.inquiry_type === 'service_waitlist').length
+    const loverTransmissionCount = contactData.filter(isLoverTransmissionApplication).length
     const trainingCount = contactData.filter(d => d.inquiry_type === 'transmitter_training').length
-    return { total, newCount, courseCount, waitlistCount, trainingCount }
+    return { total, newCount, courseCount, waitlistCount, loverTransmissionCount, trainingCount }
   }, [contactData])
 
   const activeData = activeTab === 'survey' ? surveyData : contactData
@@ -244,6 +250,7 @@ export default function Admin() {
     if (v == null || v === '') return '—'
     if (key === 'timestamp' && typeof v === 'string' && v.length > 16) return v.slice(0, 16)
     if (key === 'consent') return Number(v) ? '是' : '否'
+    if (key === 'service_interest' && isLoverTransmissionApplication(row)) return '爱人传讯申请'
     if (typeof v === 'boolean') return v ? '是' : '否'
     if (Array.isArray(v)) return v.join('，')
     const s = String(v)
@@ -314,6 +321,7 @@ export default function Admin() {
         {activeTab === 'contact' ? (
           <>
             <StatCard num={currentStats.newCount} label="新申请" />
+            <StatCard num={currentStats.loverTransmissionCount} label="爱人传讯" />
             <StatCard num={currentStats.waitlistCount} label="服务候补" />
             <StatCard num={currentStats.trainingCount} label="传讯师培养" />
             <StatCard num={currentStats.courseCount} label="课程咨询" />
