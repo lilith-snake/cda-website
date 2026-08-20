@@ -149,6 +149,7 @@ export default function Admin() {
   const [hasSurveyApi, setHasSurveyApi] = useState(true)
   const [hasContactApi, setHasContactApi] = useState(true)
   const [activeTab, setActiveTab] = useState('contact')
+  const [lastUpdatedAt, setLastUpdatedAt] = useState(null)
 
   const handleLogin = useCallback(() => {
     if (password === ADMIN_PASSWORD) {
@@ -169,8 +170,9 @@ export default function Admin() {
     if (sessionStorage.getItem(STORAGE_KEY) === '1') setAuthed(true)
   }, [])
 
-  const fetchData = useCallback(async () => {
-    setLoading(true)
+  const fetchData = useCallback(async (options = {}) => {
+    const silent = options.silent === true
+    if (!silent) setLoading(true)
     try {
       try {
         const surveyRes = await fetch(`${API_BASE}/submissions`, {
@@ -203,12 +205,21 @@ export default function Admin() {
         setHasContactApi(false)
       }
     } finally {
-      setLoading(false)
+      setLastUpdatedAt(new Date())
+      if (!silent) setLoading(false)
     }
   }, [])
 
   useEffect(() => {
     if (authed) fetchData()
+  }, [authed, fetchData])
+
+  useEffect(() => {
+    if (!authed) return undefined
+    const timer = window.setInterval(() => {
+      if (document.visibilityState === 'visible') fetchData({ silent: true })
+    }, 30000)
+    return () => window.clearInterval(timer)
   }, [authed, fetchData])
 
   useEffect(() => {
@@ -343,7 +354,10 @@ export default function Admin() {
           onChange={e => setSearch(e.target.value)}
           placeholder="搜索全部字段…"
         />
-        <span className="toolbar-info">共 {filtered.length} / {activeData.length} 条</span>
+        <span className="toolbar-info">
+          共 {filtered.length} / {activeData.length} 条
+          {lastUpdatedAt ? ` · ${lastUpdatedAt.toLocaleTimeString()} 已刷新` : ''}
+        </span>
         <button onClick={fetchData} type="button">刷新</button>
       </div>
 

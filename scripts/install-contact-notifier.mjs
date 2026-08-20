@@ -40,7 +40,7 @@ async function main() {
   console.log('CDA申请通知已经安装完成。')
   console.log(`桌面入口：${desktopDir}`)
   console.log(`后台地址：${adminUrl}`)
-  console.log('系统会每 1 分钟检查一次新的联系申请。')
+  console.log('系统会每 20 秒检查一次新的联系申请。')
 }
 
 async function createDesktopCommands() {
@@ -109,7 +109,7 @@ async function installLaunchAgent() {
   <key>WorkingDirectory</key>
   <string>${escapeXml(repoRoot)}</string>
   <key>StartInterval</key>
-  <integer>60</integer>
+  <integer>20</integer>
   <key>RunAtLoad</key>
   <true/>
   <key>StandardOutPath</key>

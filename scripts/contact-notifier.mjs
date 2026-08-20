@@ -10,6 +10,8 @@ const execFileAsync = promisify(execFile)
 const API_URL = 'https://cda-website-3t2.pages.dev/api/admin/contacts'
 const ADMIN_URL = 'https://lilith-snake.github.io/cda-website/admin'
 const ADMIN_PASSWORD = 'cda2026admin'
+const FETCH_TIMEOUT_MS = 15000
+const FETCH_RETRIES = 3
 
 const SUPPORT_DIR = path.join(homedir(), 'Library', 'Application Support', 'CDA')
 const LOG_DIR = path.join(homedir(), 'Library', 'Logs')
@@ -83,23 +85,42 @@ async function main() {
 }
 
 async function fetchContacts() {
-  const response = await fetch(API_URL, {
-    headers: {
-      'x-admin-password': ADMIN_PASSWORD,
-      'user-agent': 'cda-contact-notifier/1.0',
-    },
-  })
+  let lastError
 
-  if (!response.ok) {
-    throw new Error(`API returned ${response.status}`)
+  for (let attempt = 1; attempt <= FETCH_RETRIES; attempt += 1) {
+    try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
+
+      const response = await fetch(`${API_URL}?t=${Date.now()}`, {
+        signal: controller.signal,
+        headers: {
+          'cache-control': 'no-cache',
+          'x-admin-password': ADMIN_PASSWORD,
+          'user-agent': 'cda-contact-notifier/1.1',
+        },
+      })
+
+      clearTimeout(timeout)
+
+      if (!response.ok) {
+        throw new Error(`API returned ${response.status}`)
+      }
+
+      const data = await response.json()
+      if (!Array.isArray(data)) {
+        throw new Error('API response is not a list')
+      }
+
+      return data
+    } catch (error) {
+      lastError = error
+      await log(`fetch attempt ${attempt}/${FETCH_RETRIES} failed: ${error.message}`)
+      if (attempt < FETCH_RETRIES) await sleep(1500 * attempt)
+    }
   }
 
-  const data = await response.json()
-  if (!Array.isArray(data)) {
-    throw new Error('API response is not a list')
-  }
-
-  return data
+  throw lastError
 }
 
 function getLatestId(rows) {
@@ -153,6 +174,11 @@ async function notify(title, subtitle, message) {
   ].join(' ')
 
   await execFileAsync('/usr/bin/osascript', ['-e', script])
+  await execFileAsync('/usr/bin/afplay', ['/System/Library/Sounds/Glass.aiff']).catch(() => {})
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 function escapeAppleScript(value) {
