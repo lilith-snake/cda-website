@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Extract the path and store it for index.html to restore on static hosts.
-    var path = location.pathname || '/';
+    // Extract the path after /cda-website/, store in sessionStorage for index.html to restore
+    var path = location.pathname.replace('/cda-website', '') || '/';
     if (location.search) path += location.search;
     if (location.hash) path += location.hash;
     sessionStorage.setItem('redirect', path);
-    location.replace('/');
+    location.replace('/cda-website/');
   </script>
 </head>
 <body>Redirecting...</body>

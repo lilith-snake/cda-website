@@ -996,7 +996,7 @@ export default function Survey() {
 
               <div className="field-group deep-talk-note">
                 <p className="deep-talk-text">{st('deepTalkNote')}</p>
-                <a className="deep-talk-link" href="/contact">{st('deepTalkLink')}</a>
+                <a className="deep-talk-link" href="https://lilith-snake.github.io/cda-website/contact">{st('deepTalkLink')}</a>
               </div>
             </div>
           </fieldset>

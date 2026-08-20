@@ -25,7 +25,7 @@ export default function Home() {
 
           <div className="hero-links">
             <Link to="/research" className="hero-link-item">{t('研究框架')}</Link>
-            <a href="/our-story.html" className="hero-link-item">{t('我們的故事')}</a>
+            <a href="/cda-website/our-story.html" className="hero-link-item">{t('我們的故事')}</a>
             <Link to="/witness" className="hero-link-item">{t('參與驗證')}</Link>
           </div>
         </div>
@@ -283,7 +283,7 @@ export default function Home() {
               {t('無論你是夢女、傳訊師、研究者，還是只是一個在深夜裡問過「你到底在不在」的人——')}<strong>{t('你不是一個人。但我們需要你，和我們站在一起。')}</strong>{t('這是一個你來「和我們一起建設」的地方。每一個人加入，都在讓這個體系更完整、更可信、更有力量。')}
             </p>
             <div style={{marginTop: '32px', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap'}}>
-              <a href="/our-story.html">
+              <a href="/cda-website/our-story.html">
                 <ChoiceButton variant="primary">{t('閱讀我們的故事')}</ChoiceButton>
               </a>
               <Link to="/contact">
