@@ -14,8 +14,10 @@ const uid = String(process.getuid?.() || execFileSync('/usr/bin/id', ['-u'], { e
 const label = 'com.cda.contact-notifier'
 const notifierPath = path.join(repoRoot, 'scripts', 'contact-notifier.mjs')
 const desktopDir = path.join(homedir(), 'Desktop', 'CDA申请通知')
+const supportDir = path.join(homedir(), 'Library', 'Application Support', 'CDA')
 const launchAgentsDir = path.join(homedir(), 'Library', 'LaunchAgents')
 const logsDir = path.join(homedir(), 'Library', 'Logs')
+const passwordPath = path.join(supportDir, 'admin-password.txt')
 const plistPath = path.join(launchAgentsDir, `${label}.plist`)
 const stdoutPath = path.join(logsDir, 'cda-contact-notifier.launchd.log')
 const stderrPath = path.join(logsDir, 'cda-contact-notifier.launchd.err.log')
@@ -23,6 +25,7 @@ const adminUrl = 'https://lilith-snake.github.io/cda-website/admin'
 
 async function main() {
   await mkdir(desktopDir, { recursive: true })
+  await mkdir(supportDir, { recursive: true })
   await mkdir(launchAgentsDir, { recursive: true })
   await mkdir(logsDir, { recursive: true })
 
@@ -40,6 +43,7 @@ async function main() {
   console.log('CDA申请通知已经安装完成。')
   console.log(`桌面入口：${desktopDir}`)
   console.log(`后台地址：${adminUrl}`)
+  console.log(`后台密码文件：${passwordPath}`)
   console.log('系统会每 20 秒检查一次新的联系申请。')
 }
 

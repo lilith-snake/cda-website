@@ -4,8 +4,8 @@ import './Admin.css'
 
 const API_BASE = API_URL + '/admin'
 const STORAGE_KEY = 'cda_admin_authed'
+const PASSWORD_KEY = 'cda_admin_password'
 const DATA_KEY = 'cda_survey_backups'
-const ADMIN_PASSWORD = 'cda2026admin'
 
 const SURVEY_FIELD_LABELS = {
   id: 'ID',
@@ -151,12 +151,30 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState('contact')
   const [lastUpdatedAt, setLastUpdatedAt] = useState(null)
 
-  const handleLogin = useCallback(() => {
-    if (password === ADMIN_PASSWORD) {
+  const getAdminPassword = useCallback(() => sessionStorage.getItem(PASSWORD_KEY) || '', [])
+
+  const handleLogin = useCallback(async () => {
+    const input = password.trim()
+    if (!input) {
+      setGateError('请输入管理密码')
+      return
+    }
+
+    try {
+      const contactRes = await fetch(`${API_BASE}/contacts`, {
+        headers: { 'x-admin-password': input },
+      })
+      if (!contactRes.ok) throw new Error('unauthorized')
+      const json = await contactRes.json()
+      setContactData(Array.isArray(json) ? json : [])
+      setHasContactApi(true)
       sessionStorage.setItem(STORAGE_KEY, '1')
+      sessionStorage.setItem(PASSWORD_KEY, input)
       setAuthed(true)
+      setPassword('')
       setGateError('')
-    } else {
+      setLastUpdatedAt(new Date())
+    } catch {
       setGateError('密码错误，请重试')
     }
   }, [password])
@@ -167,16 +185,25 @@ export default function Admin() {
   )
 
   useEffect(() => {
-    if (sessionStorage.getItem(STORAGE_KEY) === '1') setAuthed(true)
+    if (sessionStorage.getItem(STORAGE_KEY) === '1' && sessionStorage.getItem(PASSWORD_KEY)) {
+      setAuthed(true)
+    }
   }, [])
 
   const fetchData = useCallback(async (options = {}) => {
     const silent = options.silent === true
+    const adminPassword = getAdminPassword()
+    if (!adminPassword) {
+      sessionStorage.removeItem(STORAGE_KEY)
+      setAuthed(false)
+      return
+    }
+
     if (!silent) setLoading(true)
     try {
       try {
         const surveyRes = await fetch(`${API_BASE}/submissions`, {
-          headers: { 'x-admin-password': ADMIN_PASSWORD },
+          headers: { 'x-admin-password': adminPassword },
         })
         if (!surveyRes.ok) throw new Error('survey auth failed')
         const json = await surveyRes.json()
@@ -194,7 +221,7 @@ export default function Admin() {
 
       try {
         const contactRes = await fetch(`${API_BASE}/contacts`, {
-          headers: { 'x-admin-password': ADMIN_PASSWORD },
+          headers: { 'x-admin-password': adminPassword },
         })
         if (!contactRes.ok) throw new Error('contact auth failed')
         const json = await contactRes.json()
@@ -208,7 +235,7 @@ export default function Admin() {
       setLastUpdatedAt(new Date())
       if (!silent) setLoading(false)
     }
-  }, [])
+  }, [getAdminPassword])
 
   useEffect(() => {
     if (authed) fetchData()

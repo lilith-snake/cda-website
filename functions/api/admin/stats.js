@@ -2,7 +2,7 @@
 export async function onRequest(context) {
   const pw = context.request.headers.get('x-admin-password') || ''
   if (context.request.method === 'OPTIONS') return corsJson({ ok: true }, 204)
-  if (pw !== 'cda2026admin') return authError()
+  if (!isAuthorized(context, pw)) return authError()
 
   try {
     const total = await context.env.DB.prepare('SELECT COUNT(*) as count FROM submissions').first()
@@ -12,6 +12,11 @@ export async function onRequest(context) {
     console.error('Stats error:', err)
     return corsJson({ error: 'server error' }, 500)
   }
+}
+
+function isAuthorized(context, password) {
+  const expected = context.env.ADMIN_PASSWORD
+  return Boolean(expected) && password === expected
 }
 
 function authError() {

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
+import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -15,13 +15,10 @@ import Research from './pages/Research'
 import Witness from './pages/Witness'
 import Letter from './pages/Letter'
 import Recruit from './pages/Recruit'
-import Admin from './pages/Admin'
 
 export default function App() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const location = useLocation()
-  const isAdminPage = location.pathname === '/admin'
 
   useEffect(() => {
     const redirect = searchParams.get('redirect')
@@ -29,10 +26,6 @@ export default function App() {
       navigate(redirect, { replace: true })
     }
   }, [])
-
-  if (isAdminPage) {
-    return <Admin />
-  }
 
   return (
     <div className="app">
@@ -48,7 +41,6 @@ export default function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/transmission" element={<TransmissionService />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
 
           <Route path="/witness" element={<Witness />} />
           <Route path="/letter" element={<Letter />} />

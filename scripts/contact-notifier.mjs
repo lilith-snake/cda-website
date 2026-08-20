@@ -9,12 +9,12 @@ const execFileAsync = promisify(execFile)
 
 const API_URL = 'https://cda-website-3t2.pages.dev/api/admin/contacts'
 const ADMIN_URL = 'https://lilith-snake.github.io/cda-website/admin'
-const ADMIN_PASSWORD = 'cda2026admin'
 const FETCH_TIMEOUT_MS = 15000
 const FETCH_RETRIES = 3
 
 const SUPPORT_DIR = path.join(homedir(), 'Library', 'Application Support', 'CDA')
 const LOG_DIR = path.join(homedir(), 'Library', 'Logs')
+const PASSWORD_FILE = path.join(SUPPORT_DIR, 'admin-password.txt')
 const STATE_FILE = path.join(SUPPORT_DIR, 'contact-notifier-state.json')
 const LOG_FILE = path.join(LOG_DIR, 'cda-contact-notifier.log')
 
@@ -86,6 +86,7 @@ async function main() {
 
 async function fetchContacts() {
   let lastError
+  const adminPassword = await getAdminPassword()
 
   for (let attempt = 1; attempt <= FETCH_RETRIES; attempt += 1) {
     try {
@@ -96,7 +97,7 @@ async function fetchContacts() {
         signal: controller.signal,
         headers: {
           'cache-control': 'no-cache',
-          'x-admin-password': ADMIN_PASSWORD,
+          'x-admin-password': adminPassword,
           'user-agent': 'cda-contact-notifier/1.1',
         },
       })
@@ -121,6 +122,20 @@ async function fetchContacts() {
   }
 
   throw lastError
+}
+
+async function getAdminPassword() {
+  const fromEnv = process.env.CDA_ADMIN_PASSWORD?.trim()
+  if (fromEnv) return fromEnv
+
+  try {
+    const fromFile = (await readFile(PASSWORD_FILE, 'utf8')).trim()
+    if (fromFile) return fromFile
+  } catch {
+    // Fall through to the explicit error below.
+  }
+
+  throw new Error(`Missing admin password. Set CDA_ADMIN_PASSWORD or create ${PASSWORD_FILE}`)
 }
 
 function getLatestId(rows) {

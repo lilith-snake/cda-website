@@ -5,7 +5,7 @@ export async function onRequest(context) {
   }
 
   const pw = context.request.headers.get('x-admin-password') || ''
-  if (pw !== 'cda2026admin') {
+  if (!isAuthorized(context, pw)) {
     return corsJson({ error: 'unauthorized' }, 401)
   }
 
@@ -39,6 +39,11 @@ export async function onRequest(context) {
     console.error('Submissions error:', err)
     return corsJson({ error: 'server error' }, 500)
   }
+}
+
+function isAuthorized(context, password) {
+  const expected = context.env.ADMIN_PASSWORD
+  return Boolean(expected) && password === expected
 }
 
 function corsJson(data, status = 200) {
