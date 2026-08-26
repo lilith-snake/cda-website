@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CDA 网站申请通知</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0e0b18;
+        --panel: #1a1428;
+        --panel2: #211933;
+        --line: #3c3255;
+        --ink: #f7f1ff;
+        --muted: #b7acd0;
+        --gold: #d4b066;
+        --pink: #e76aae;
+        --lavender: #b8a0ff;
+        --teal: #30b7a6;
+        --red: #d64d5a;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif;
+      }
+      button, input, select, textarea { font: inherit; }
+      button, .ghost {
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel2);
+        color: var(--ink);
+        padding: 0 14px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      button:hover, .ghost:hover { border-color: var(--pink); }
+      .primary {
+        border: 0;
+        background: linear-gradient(135deg, #8f5cff, #e76aae 58%, #d4b066);
+        color: #fff;
+        font-weight: 800;
+      }
+      .hidden { display: none !important; }
+      .muted { color: var(--muted); }
+      h1, h2, h3, p { margin: 0; }
+
+      .login {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          linear-gradient(90deg, rgba(14,11,24,.96), rgba(14,11,24,.76)),
+          radial-gradient(circle at 72% 16%, rgba(184,160,255,.18), transparent 36%),
+          radial-gradient(circle at 82% 74%, rgba(231,106,174,.13), transparent 34%),
+          var(--bg);
+      }
+      .login-panel {
+        width: min(430px, 100%);
+        padding: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(26,20,40,.94);
+      }
+      .brand {
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--lavender);
+        font-size: 18px;
+        font-weight: 800;
+      }
+      .login h1 {
+        margin-top: 18px;
+        font-size: 42px;
+        line-height: 1.08;
+      }
+      .login p {
+        margin-top: 12px;
+        color: var(--muted);
+      }
+      .login form {
+        margin-top: 28px;
+        display: grid;
+        gap: 14px;
+      }
+      label {
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      input, select, textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #120e1d;
+        color: var(--ink);
+        padding: 10px 11px;
+        outline: none;
+      }
+      input:focus, select:focus, textarea:focus, button:focus-visible {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(212,176,102,.22);
+      }
+      .error { min-height: 18px; color: var(--red); font-size: 12px; }
+
+      .app {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 258px minmax(0, 1fr);
+      }
+      aside {
+        border-right: 1px solid var(--line);
+        background: #0b0912;
+        padding: 24px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .brand-row {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+      }
+      .brand-row h1 { font-size: 20px; }
+      .brand-row p { margin-top: 6px; color: var(--muted); font-size: 12px; }
+      nav { display: grid; gap: 8px; }
+      .nav-item { justify-content: flex-start; background: transparent; }
+      .nav-item.active { color: var(--gold); border-color: var(--gold); }
+      .role-box {
+        margin-top: auto;
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .role-box strong { color: var(--ink); }
+      main { padding: 24px; min-width: 0; }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+      .eyebrow {
+        margin-bottom: 7px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+      }
+      .topbar h2 { font-size: 28px; }
+      .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .stat, .list-panel, .detail-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+      .stat { padding: 14px; }
+      .stat span { color: var(--muted); font-size: 12px; }
+      .stat strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--gold);
+        font-size: 24px;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(360px, .85fr);
+        gap: 14px;
+        align-items: start;
+      }
+      .filters {
+        display: grid;
+        grid-template-columns: minmax(220px, 1fr) 150px;
+        gap: 10px;
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .list { max-height: calc(100vh - 260px); overflow: auto; }
+      .item {
+        padding: 15px;
+        border-bottom: 1px solid rgba(60,50,85,.72);
+        cursor: pointer;
+      }
+      .item:hover, .item.selected { background: rgba(184,160,255,.09); }
+      .item-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+      .item h3 { font-size: 16px; }
+      .item p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .chips {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .status-new { color: var(--pink); border-color: var(--pink); }
+      .status-contacted { color: var(--lavender); border-color: var(--lavender); }
+      .status-queued { color: var(--gold); border-color: var(--gold); }
+      .status-done { color: var(--teal); border-color: var(--teal); }
+      .status-hold { color: var(--red); border-color: var(--red); }
+      .detail-panel {
+        position: sticky;
+        top: 16px;
+        padding: 18px;
+        display: grid;
+        gap: 14px;
+      }
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 10px 12px;
+        font-size: 13px;
+      }
+      .detail-grid span { color: var(--muted); }
+      .detail-grid strong {
+        color: var(--ink);
+        font-weight: 500;
+        overflow-wrap: anywhere;
+      }
+      .message {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #120e1d;
+        padding: 12px;
+        color: var(--ink);
+        line-height: 1.65;
+        white-space: pre-wrap;
+      }
+      .empty {
+        padding: 48px 18px;
+        text-align: center;
+        color: var(--muted);
+      }
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        min-width: 220px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel2);
+        padding: 12px 14px;
+        color: var(--ink);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: .2s ease;
+      }
+      .toast.show { opacity: 1; transform: translateY(0); }
+      @media (max-width: 1100px) {
+        .app { grid-template-columns: 1fr; }
+        aside { border-right: 0; border-bottom: 1px solid var(--line); }
+        .board { grid-template-columns: 1fr; }
+        .detail-panel { position: static; }
+      }
+      @media (max-width: 760px) {
+        main { padding: 16px; }
+        .topbar { align-items: stretch; flex-direction: column; }
+        .stats, .filters { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <section id="login" class="login">
+      <div class="login-panel">
+        <div class="brand">CDA</div>
+        <h1>网站申请通知</h1>
+        <p>实时查看官网申请，并一键转入排单后台。</p>
+        <form id="loginForm">
+          <label>后台密码<input id="password" type="password" autocomplete="current-password" autofocus /></label>
+          <button class="primary" type="submit">进入通知后台</button>
+          <div id="loginError" class="error"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="app" class="app hidden">
+      <aside>
+        <div class="brand-row">
+          <div class="brand">CDA</div>
+          <div>
+            <h1>申请通知</h1>
+            <p>线上同步 · 官网申请</p>
+          </div>
+        </div>
+        <nav>
+          <button class="nav-item active" data-status="all">全部申请</button>
+          <button class="nav-item" data-status="new">新申请</button>
+          <button class="nav-item" data-status="contacted">已联系</button>
+          <button class="nav-item" data-status="queued">已转排单</button>
+          <button class="nav-item" data-status="done">已完成</button>
+          <button class="nav-item" data-status="hold">暂缓</button>
+        </nav>
+        <div class="role-box">
+          <span>当前权限</span>
+          <strong id="roleText">未登录</strong>
+          <span>页面每 20 秒自动同步；有新申请时会弹浏览器通知。</span>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Application Signal</p>
+            <h2>官网申请与预约通知</h2>
+          </div>
+          <div class="actions">
+            <button id="notifyBtn" class="ghost">开启通知</button>
+            <button id="refreshBtn" class="ghost">刷新</button>
+            <a class="ghost" href="order-admin.html" target="_blank" rel="noreferrer">打开排单后台</a>
+          </div>
+        </header>
+
+        <section class="stats">
+          <div class="stat"><span>全部申请</span><strong id="statTotal">0</strong></div>
+          <div class="stat"><span>新申请</span><strong id="statNew">0</strong></div>
+          <div class="stat"><span>爱人传讯</span><strong id="statTransmission">0</strong></div>
+          <div class="stat"><span>已转排单</span><strong id="statQueued">0</strong></div>
+          <div class="stat"><span>今日新增</span><strong id="statToday">0</strong></div>
+        </section>
+
+        <section class="board">
+          <div class="list-panel">
+            <div class="filters">
+              <input id="search" type="search" placeholder="搜索姓名、联系方式、服务、留言" />
+              <select id="typeFilter">
+                <option value="all">全部类型</option>
+                <option value="爱人传讯">爱人传讯</option>
+                <option value="梦女">梦女</option>
+                <option value="课程">课程</option>
+                <option value="合作">合作</option>
+              </select>
+            </div>
+            <div id="list" class="list"></div>
+            <div id="empty" class="empty hidden">暂无申请。</div>
+          </div>
+
+          <div class="detail-panel">
+            <div>
+              <p class="eyebrow">Application Detail</p>
+              <h3 id="detailTitle">选择一条申请</h3>
+            </div>
+            <div class="detail-grid">
+              <span>姓名</span><strong id="dName">-</strong>
+              <span>联系方式</span><strong id="dContact">-</strong>
+              <span>申请时间</span><strong id="dTime">-</strong>
+              <span>类型</span><strong id="dType">-</strong>
+              <span>服务</span><strong id="dService">-</strong>
+              <span>身份</span><strong id="dRole">-</strong>
+              <span>语境</span><strong id="dContext">-</strong>
+            </div>
+            <div>
+              <p class="eyebrow">Message</p>
+              <div id="dMessage" class="message">请选择左侧申请。</div>
+            </div>
+            <label>申请状态
+              <select id="statusSelect">
+                <option value="new">新申请</option>
+                <option value="contacted">已联系</option>
+                <option value="queued">已转排单</option>
+                <option value="done">已完成</option>
+                <option value="hold">暂缓</option>
+              </select>
+            </label>
+            <div class="actions">
+              <button id="saveStatusBtn" class="ghost">保存状态</button>
+              <button id="queueBtn" class="primary">转为排单</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <div id="toast" class="toast"></div>
+    <script>
+      const API_BASE = location.hostname.endsWith('github.io')
+        ? 'https://cda-website-3t2.pages.dev/api'
+        : '/api'
+      const statusLabels = { new: '新申请', contacted: '已联系', queued: '已转排单', done: '已完成', hold: '暂缓' }
+      const state = {
+        password: sessionStorage.getItem('cdaApplicationPassword') || '',
+        role: '',
+        applications: [],
+        selectedId: 0,
+        status: 'all',
+        seenLatest: Number(localStorage.getItem('cdaApplicationLatestId') || 0),
+      }
+      const $ = selector => document.querySelector(selector)
+
+      init()
+
+      function init() {
+        $('#loginForm').addEventListener('submit', login)
+        $('#refreshBtn').addEventListener('click', loadApplications)
+        $('#notifyBtn').addEventListener('click', requestNotify)
+        $('#search').addEventListener('input', render)
+        $('#typeFilter').addEventListener('change', render)
+        $('#saveStatusBtn').addEventListener('click', saveStatus)
+        $('#queueBtn').addEventListener('click', convertToOrder)
+        document.querySelectorAll('.nav-item').forEach(button => {
+          button.addEventListener('click', () => {
+            state.status = button.dataset.status
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'))
+            button.classList.add('active')
+            render()
+          })
+        })
+        if (state.password) showApp()
+      }
+
+      async function login(event) {
+        event.preventDefault()
+        state.password = $('#password').value
+        sessionStorage.setItem('cdaApplicationPassword', state.password)
+        await showApp()
+      }
+
+      async function showApp() {
+        try {
+          await loadApplications()
+          $('#login').classList.add('hidden')
+          $('#app').classList.remove('hidden')
+          setInterval(loadApplicationsQuietly, 20000)
+        } catch (error) {
+          sessionStorage.removeItem('cdaApplicationPassword')
+          $('#loginError').textContent = error.message
+        }
+      }
+
+      async function loadApplications() {
+        const data = await api('/admin/applications')
+        state.role = data.role || ''
+        state.applications = data.applications || []
+        $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
+        if (!state.selectedId && state.applications[0]) selectApplication(state.applications[0].id)
+        rememberLatest()
+        render()
+        toast('已同步申请')
+      }
+
+      async function loadApplicationsQuietly() {
+        try {
+          const before = state.seenLatest
+          const data = await api('/admin/applications')
+          state.role = data.role || state.role
+          state.applications = data.applications || []
+          const latest = Math.max(0, ...state.applications.map(item => Number(item.id || 0)))
+          render()
+          if (latest > before) {
+            const item = state.applications.find(row => Number(row.id) === latest)
+            browserNotify('CDA 新网站申请', `${item?.name || '新用户'} 提交了申请`)
+            toast('发现新申请')
+            rememberLatest()
+          }
+        } catch {}
+      }
+
+      function render() {
+        const list = $('#list')
+        list.innerHTML = ''
+        const apps = filtered()
+        $('#empty').classList.toggle('hidden', apps.length > 0)
+        apps.forEach(item => {
+          const row = document.createElement('article')
+          row.className = 'item'
+          row.classList.toggle('selected', item.id === state.selectedId)
+          row.innerHTML = `
+            <div class="item-head">
+              <h3>${esc(item.name || '未命名')}</h3>
+              <span class="chip status-${item.status || 'new'}">${statusLabels[item.status || 'new'] || item.status || '新申请'}</span>
+            </div>
+            <p>${esc(item.contact || '')}</p>
+            <p>${esc(shortText(item.message || item.mj_context || '', 96))}</p>
+            <div class="chips">
+              <span class="chip">${esc(item.service_interest || item.inquiry_label || '未分类')}</span>
+              <span class="chip">${esc(item.role || '未填身份')}</span>
+              <span class="chip">${esc(displayTime(item.timestamp))}</span>
+            </div>
+          `
+          row.addEventListener('click', () => selectApplication(item.id))
+          list.append(row)
+        })
+        renderStats()
+      }
+
+      function filtered() {
+        const q = $('#search').value.trim().toLowerCase()
+        const type = $('#typeFilter').value
+        return state.applications.filter(item => {
+          const status = item.status || 'new'
+          if (state.status !== 'all' && status !== state.status) return false
+          const haystack = [
+            item.name, item.contact, item.inquiry_type, item.inquiry_label, item.role,
+            item.service_interest, item.mj_context, item.message, item.language,
+          ].join(' ').toLowerCase()
+          if (type !== 'all' && !haystack.includes(type.toLowerCase())) return false
+          if (q && !haystack.includes(q)) return false
+          return true
+        })
+      }
+
+      function renderStats() {
+        const today = new Date().toISOString().slice(0, 10)
+        $('#statTotal').textContent = state.applications.length
+        $('#statNew').textContent = state.applications.filter(item => (item.status || 'new') === 'new').length
+        $('#statTransmission').textContent = state.applications.filter(item => String(item.service_interest || item.inquiry_label || '').includes('传讯')).length
+        $('#statQueued').textContent = state.applications.filter(item => item.status === 'queued').length
+        $('#statToday').textContent = state.applications.filter(item => String(item.timestamp || '').startsWith(today)).length
+      }
+
+      function selectApplication(id) {
+        const item = state.applications.find(row => row.id === id)
+        if (!item) return
+        state.selectedId = id
+        $('#detailTitle').textContent = `申请 #${item.id}`
+        $('#dName').textContent = item.name || '-'
+        $('#dContact').textContent = item.contact || '-'
+        $('#dTime').textContent = displayTime(item.timestamp) || '-'
+        $('#dType').textContent = item.inquiry_label || item.inquiry_type || '-'
+        $('#dService').textContent = item.service_interest || '-'
+        $('#dRole').textContent = item.role || '-'
+        $('#dContext').textContent = item.mj_context || '-'
+        $('#dMessage').textContent = item.message || '-'
+        $('#statusSelect').value = item.status || 'new'
+        render()
+      }
+
+      async function saveStatus() {
+        if (!state.selectedId) return toast('先选择一条申请')
+        const updated = await api('/admin/applications', {
+          method: 'PUT',
+          body: { id: state.selectedId, status: $('#statusSelect').value },
+        })
+        const index = state.applications.findIndex(item => item.id === updated.id)
+        if (index !== -1) state.applications[index] = updated
+        render()
+        selectApplication(updated.id)
+        toast('状态已保存')
+      }
+
+      async function convertToOrder() {
+        const item = state.applications.find(row => row.id === state.selectedId)
+        if (!item) return toast('先选择一条申请')
+        const service = item.service_interest || item.inquiry_label || '新人传讯'
+        await api('/admin/orders', {
+          method: 'POST',
+          body: {
+            client_name: item.name || `申请 #${item.id}`,
+            contact: item.contact || '',
+            channel: '官网申请',
+            source: item.inquiry_label || item.inquiry_type || '',
+            service_type: mapService(service),
+            status: 'new',
+            priority: service.includes('传讯') ? 'high' : 'normal',
+            payment_status: '未付款',
+            tags: [item.role, item.inquiry_label, item.service_interest].filter(Boolean),
+            deliverable: '',
+            notes: `由官网申请 #${item.id} 转入排单\\n\\nMJ 语境：${item.mj_context || ''}\\n\\n留言：${item.message || ''}`,
+          },
+        })
+        await api('/admin/applications', {
+          method: 'PUT',
+          body: { id: item.id, status: 'queued' },
+        })
+        await loadApplications()
+        toast('已转入排单后台')
+      }
+
+      async function requestNotify() {
+        if (!('Notification' in window)) return toast('当前浏览器不支持通知')
+        const result = await Notification.requestPermission()
+        toast(result === 'granted' ? '通知已开启' : '通知未开启')
+      }
+
+      function browserNotify(title, body) {
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification(title, { body })
+        }
+      }
+
+      async function api(path, options = {}) {
+        const response = await fetch(`${API_BASE}${path}`, {
+          method: options.method || 'GET',
+          headers: { 'content-type': 'application/json', 'x-admin-password': state.password },
+          body: options.body ? JSON.stringify(options.body) : undefined,
+        })
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || '请求失败')
+        return data
+      }
+
+      function rememberLatest() {
+        const latest = Math.max(0, ...state.applications.map(item => Number(item.id || 0)))
+        state.seenLatest = latest
+        localStorage.setItem('cdaApplicationLatestId', String(latest))
+      }
+      function mapService(value) {
+        if (value.includes('传讯')) return '新人传讯'
+        if (value.includes('互助')) return '梦女互助'
+        if (value.includes('课程') || value.includes('训练')) return '课程/训练营'
+        if (value.includes('会员')) return '会员/长期服务'
+        if (value.includes('诊断')) return '深度诊断'
+        return '其他'
+      }
+      function displayTime(value) { return value ? String(value).replace('T', ' ').slice(0, 16) : '' }
+      function shortText(value, max) {
+        const text = String(value || '').replace(/\\s+/g, ' ').trim()
+        return text.length > max ? `${text.slice(0, max)}...` : text
+      }
+      function toast(message) {
+        const el = $('#toast')
+        el.textContent = message
+        el.classList.add('show')
+        clearTimeout(toast.timer)
+        toast.timer = setTimeout(() => el.classList.remove('show'), 1800)
+      }
+      function esc(value) {
+        return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[ch])
+      }
+    </script>
+  </body>
+</html>

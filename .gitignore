@@ -3,6 +3,7 @@ dist/
 .DS_Store
 *.local
 *线上排单后台.txt
+*网站申请通知后台.txt
 chrome/
 poster-*.html
 poster-*.png
