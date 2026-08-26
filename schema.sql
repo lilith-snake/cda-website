@@ -66,3 +66,31 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
 CREATE INDEX IF NOT EXISTS idx_submissions_timestamp ON submissions(timestamp);
 CREATE INDEX IF NOT EXISTS idx_contact_submissions_timestamp ON contact_submissions(timestamp);
 CREATE INDEX IF NOT EXISTS idx_contact_submissions_status ON contact_submissions(status);
+
+CREATE TABLE IF NOT EXISTS service_orders (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  queue_no TEXT,
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now')),
+  client_name TEXT NOT NULL,
+  contact TEXT,
+  channel TEXT,
+  source TEXT,
+  service_type TEXT,
+  status TEXT DEFAULT 'new',
+  priority TEXT DEFAULT 'normal',
+  practitioner TEXT,
+  appointment_at TEXT,
+  deadline_at TEXT,
+  follow_up_at TEXT,
+  price REAL DEFAULT 0,
+  paid REAL DEFAULT 0,
+  payment_status TEXT,
+  tags TEXT,
+  deliverable TEXT,
+  notes TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_service_orders_status ON service_orders(status);
+CREATE INDEX IF NOT EXISTS idx_service_orders_created_at ON service_orders(created_at);
+CREATE INDEX IF NOT EXISTS idx_service_orders_appointment_at ON service_orders(appointment_at);

@@ -2,6 +2,7 @@ node_modules/
 dist/
 .DS_Store
 *.local
+*线上排单后台.txt
 chrome/
 poster-*.html
 poster-*.png

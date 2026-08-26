@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CDA 线上排单后台</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0e0b18;
+        --panel: #1a1428;
+        --panel2: #211933;
+        --line: #3c3255;
+        --ink: #f7f1ff;
+        --muted: #b7acd0;
+        --gold: #d4b066;
+        --pink: #e76aae;
+        --lavender: #b8a0ff;
+        --teal: #30b7a6;
+        --red: #d64d5a;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif;
+      }
+      button, input, select, textarea { font: inherit; }
+      button, .ghost {
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel2);
+        color: var(--ink);
+        padding: 0 14px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      button:hover, .ghost:hover { border-color: var(--pink); }
+      .primary, button[type="submit"] {
+        border: 0;
+        background: linear-gradient(135deg, #8f5cff, #e76aae 58%, #d4b066);
+        color: #fff;
+        font-weight: 800;
+      }
+      .hidden { display: none !important; }
+      .muted { color: var(--muted); }
+
+      .login {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          linear-gradient(90deg, rgba(14,11,24,.96), rgba(14,11,24,.78)),
+          radial-gradient(circle at 72% 18%, rgba(184,160,255,.18), transparent 36%),
+          radial-gradient(circle at 84% 72%, rgba(231,106,174,.13), transparent 32%),
+          var(--bg);
+      }
+      .login-panel {
+        width: min(430px, 100%);
+        padding: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(26,20,40,.94);
+      }
+      .brand {
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--lavender);
+        font-size: 18px;
+        font-weight: 800;
+      }
+      h1, h2, h3, p { margin: 0; }
+      .login h1 {
+        margin-top: 18px;
+        font-size: 42px;
+        line-height: 1.08;
+      }
+      .login p { margin-top: 12px; color: var(--muted); }
+      .login form { margin-top: 28px; display: grid; gap: 14px; }
+
+      label {
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      input, select, textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #120e1d;
+        color: var(--ink);
+        padding: 10px 11px;
+        outline: none;
+      }
+      textarea { resize: vertical; }
+      input:focus, select:focus, textarea:focus, button:focus-visible, .ghost:focus-visible {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(212,176,102,.22);
+      }
+
+      .app {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 258px minmax(0, 1fr);
+      }
+      aside {
+        border-right: 1px solid var(--line);
+        background: #0b0912;
+        padding: 24px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .brand-row {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+      }
+      .brand-row h1 { font-size: 20px; }
+      .brand-row p { margin-top: 6px; color: var(--muted); font-size: 12px; }
+      nav { display: grid; gap: 8px; }
+      .nav-item { justify-content: flex-start; background: transparent; }
+      .nav-item.active { color: var(--gold); border-color: var(--gold); }
+      .role-box {
+        margin-top: auto;
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        color: var(--muted);
+        font-size: 12px;
+        display: grid;
+        gap: 8px;
+      }
+      .role-box strong { color: var(--ink); }
+
+      main { padding: 24px; min-width: 0; }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+      .eyebrow {
+        margin-bottom: 7px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+      }
+      .topbar h2 { font-size: 28px; }
+      .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .stat, .queue, .editor {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+      .stat { padding: 14px; }
+      .stat span { color: var(--muted); font-size: 12px; }
+      .stat strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--gold);
+        font-size: 24px;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(360px, .75fr);
+        gap: 14px;
+        align-items: start;
+      }
+      .filters {
+        display: grid;
+        grid-template-columns: minmax(220px, 1fr) 170px 140px;
+        gap: 10px;
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .table-wrap {
+        max-height: calc(100vh - 258px);
+        overflow: auto;
+      }
+      table {
+        width: 100%;
+        min-width: 830px;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(60,50,85,.72);
+        text-align: left;
+        font-size: 13px;
+      }
+      th { color: var(--muted); font-size: 11px; }
+      tbody tr { cursor: pointer; }
+      tbody tr:hover, tbody tr.selected { background: rgba(184,160,255,.09); }
+      .chip {
+        display: inline-flex;
+        min-height: 24px;
+        align-items: center;
+        padding: 0 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .status-new, .priority-urgent { color: var(--pink); border-color: var(--pink); }
+      .status-paid, .status-done { color: var(--gold); border-color: var(--gold); }
+      .status-scheduled, .priority-high { color: var(--lavender); border-color: var(--lavender); }
+      .status-in_progress { color: var(--teal); border-color: var(--teal); }
+
+      .editor {
+        position: sticky;
+        top: 16px;
+        padding: 16px;
+        display: grid;
+        gap: 14px;
+      }
+      .editor-head, .form-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .danger {
+        color: var(--red);
+        border-color: rgba(214,77,90,.66);
+        background: rgba(214,77,90,.12);
+      }
+      .error { color: var(--red); min-height: 18px; font-size: 12px; }
+      .empty {
+        padding: 48px 18px;
+        text-align: center;
+        color: var(--muted);
+      }
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        min-width: 220px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel2);
+        padding: 12px 14px;
+        color: var(--ink);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: .2s ease;
+      }
+      .toast.show { opacity: 1; transform: translateY(0); }
+
+      @media (max-width: 1100px) {
+        .app { grid-template-columns: 1fr; }
+        aside { border-right: 0; border-bottom: 1px solid var(--line); }
+        .board { grid-template-columns: 1fr; }
+        .editor { position: static; }
+      }
+      @media (max-width: 760px) {
+        main { padding: 16px; }
+        .topbar, .editor-head, .form-actions { align-items: stretch; flex-direction: column; }
+        .stats, .filters, .form-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <section id="login" class="login">
+      <div class="login-panel">
+        <div class="brand">CDA</div>
+        <h1>线上排单后台</h1>
+        <p>你和助理共用同一份排单数据。</p>
+        <form id="loginForm">
+          <label>后台密码<input id="password" type="password" autocomplete="current-password" autofocus /></label>
+          <button type="submit" class="primary">进入后台</button>
+          <div id="loginError" class="error"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="app" class="app hidden">
+      <aside>
+        <div class="brand-row">
+          <div class="brand">CDA</div>
+          <div>
+            <h1>排单后台</h1>
+            <p>线上同步 · 私密管理</p>
+          </div>
+        </div>
+        <nav>
+          <button class="nav-item active" data-status="all">全部排单</button>
+          <button class="nav-item" data-status="new">新申请</button>
+          <button class="nav-item" data-status="paid">已付款</button>
+          <button class="nav-item" data-status="scheduled">已预约</button>
+          <button class="nav-item" data-status="done">已完成</button>
+        </nav>
+        <div class="role-box">
+          <span>当前权限</span>
+          <strong id="roleText">未登录</strong>
+          <span>助理账号可新增、编辑、导出 CSV；删除仅管理员可用。</span>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Shared Queue Console</p>
+            <h2>今日排单与服务交付</h2>
+          </div>
+          <div class="actions">
+            <button id="refreshBtn" class="ghost">刷新</button>
+            <button id="csvBtn" class="ghost">导出 CSV</button>
+            <button id="deleteBtn" class="danger hidden">删除选中</button>
+            <button id="newBtn" class="primary">新增排单</button>
+          </div>
+        </header>
+
+        <section class="stats">
+          <div class="stat"><span>总排单</span><strong id="statTotal">0</strong></div>
+          <div class="stat"><span>待联系</span><strong id="statNew">0</strong></div>
+          <div class="stat"><span>待交付</span><strong id="statActive">0</strong></div>
+          <div class="stat"><span>今日预约</span><strong id="statToday">0</strong></div>
+          <div class="stat"><span>已收款</span><strong id="statPaid">¥0</strong></div>
+        </section>
+
+        <section class="board">
+          <div class="queue">
+            <div class="filters">
+              <input id="search" type="search" placeholder="搜索客户、联系方式、标签、备注" />
+              <select id="serviceFilter"></select>
+              <select id="priorityFilter">
+                <option value="all">全部优先级</option>
+                <option value="urgent">紧急</option>
+                <option value="high">高</option>
+                <option value="normal">普通</option>
+                <option value="low">低</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>排单号</th>
+                    <th>客户</th>
+                    <th>服务</th>
+                    <th>状态</th>
+                    <th>预约</th>
+                    <th>负责人</th>
+                    <th>金额</th>
+                  </tr>
+                </thead>
+                <tbody id="orderRows"></tbody>
+              </table>
+              <div id="empty" class="empty hidden">暂无排单。点击“新增排单”开始记录。</div>
+            </div>
+          </div>
+
+          <form id="orderForm" class="editor">
+            <div class="editor-head">
+              <div>
+                <p class="eyebrow">Order Detail</p>
+                <h3 id="formTitle">新增排单</h3>
+              </div>
+            </div>
+            <div class="form-grid">
+              <label>客户昵称<input name="client_name" required /></label>
+              <label>联系方式<input name="contact" placeholder="微信 / 手机 / 邮箱" /></label>
+              <label>服务类型<select name="service_type" id="serviceType"></select></label>
+              <label>状态<select name="status" id="status"></select></label>
+              <label>优先级<select name="priority">
+                <option value="normal">普通</option>
+                <option value="high">高</option>
+                <option value="urgent">紧急</option>
+                <option value="low">低</option>
+              </select></label>
+              <label>负责人<input name="practitioner" placeholder="传讯师 / 助理" /></label>
+              <label>渠道<input name="channel" placeholder="官网 / 小红书 / 私域" /></label>
+              <label>来源<input name="source" placeholder="帖子标题 / 推荐人 / 广告" /></label>
+              <label>预约时间<input name="appointment_at" type="datetime-local" /></label>
+              <label>截止时间<input name="deadline_at" type="datetime-local" /></label>
+              <label>跟进时间<input name="follow_up_at" type="datetime-local" /></label>
+              <label>付款状态<input name="payment_status" placeholder="未付款 / 已付定金 / 已付全款" /></label>
+              <label>价格<input name="price" type="number" min="0" step="0.01" /></label>
+              <label>已付<input name="paid" type="number" min="0" step="0.01" /></label>
+            </div>
+            <label>标签<input name="tags" placeholder="梦女关系确认，MJ传讯，高意向" /></label>
+            <label>交付物<input name="deliverable" placeholder="语音、文字记录、复盘表、课程名" /></label>
+            <label>备注<textarea name="notes" rows="5" placeholder="需求、边界、进度、下一步动作"></textarea></label>
+            <div class="form-actions">
+              <button type="button" id="clearBtn" class="ghost">清空</button>
+              <button type="submit" class="primary">保存排单</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </section>
+
+    <div id="toast" class="toast"></div>
+    <script>
+      const API_BASE = location.hostname.endsWith('github.io')
+        ? 'https://cda-website-3t2.pages.dev/api'
+        : '/api'
+
+      const serviceTypes = ['新人传讯', '梦女互助', '记录陪跑', '深度诊断', '课程/训练营', '会员/长期服务', '其他']
+      const statuses = ['new', 'contacted', 'paid', 'scheduled', 'in_progress', 'done', 'hold', 'refund']
+      const statusLabels = { new: '新申请', contacted: '已联系', paid: '已付款', scheduled: '已预约', in_progress: '交付中', done: '已完成', hold: '暂缓', refund: '退款' }
+      const priorityLabels = { low: '低', normal: '普通', high: '高', urgent: '紧急' }
+      const state = {
+        password: sessionStorage.getItem('cdaOrderPassword') || '',
+        role: '',
+        orders: [],
+        selectedId: 0,
+        status: 'all',
+      }
+      const $ = selector => document.querySelector(selector)
+      const form = $('#orderForm')
+
+      init()
+
+      function init() {
+        fillSelect('#serviceType', serviceTypes)
+        fillSelect('#status', statuses, statusLabels)
+        fillSelect('#serviceFilter', ['all', ...serviceTypes], { all: '全部服务' })
+        $('#loginForm').addEventListener('submit', login)
+        $('#refreshBtn').addEventListener('click', loadOrders)
+        $('#newBtn').addEventListener('click', resetForm)
+        $('#clearBtn').addEventListener('click', resetForm)
+        $('#csvBtn').addEventListener('click', exportCsv)
+        $('#deleteBtn').addEventListener('click', deleteSelected)
+        $('#search').addEventListener('input', render)
+        $('#serviceFilter').addEventListener('change', render)
+        $('#priorityFilter').addEventListener('change', render)
+        form.addEventListener('submit', saveOrder)
+        document.querySelectorAll('.nav-item').forEach(button => {
+          button.addEventListener('click', () => {
+            state.status = button.dataset.status
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'))
+            button.classList.add('active')
+            render()
+          })
+        })
+        if (state.password) showApp()
+      }
+
+      async function login(event) {
+        event.preventDefault()
+        state.password = $('#password').value
+        sessionStorage.setItem('cdaOrderPassword', state.password)
+        await showApp()
+      }
+
+      async function showApp() {
+        try {
+          await loadOrders()
+          $('#login').classList.add('hidden')
+          $('#app').classList.remove('hidden')
+          resetForm()
+          setInterval(loadOrdersQuietly, 20000)
+        } catch (error) {
+          sessionStorage.removeItem('cdaOrderPassword')
+          $('#loginError').textContent = error.message
+        }
+      }
+
+      async function loadOrders() {
+        const data = await api('/admin/orders')
+        state.role = data.role || ''
+        state.orders = data.orders || []
+        $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
+        $('#deleteBtn').classList.toggle('hidden', state.role !== 'admin' || !state.selectedId)
+        render()
+        toast('已同步')
+      }
+
+      async function loadOrdersQuietly() {
+        try {
+          const first = state.orders[0]?.id
+          const data = await api('/admin/orders')
+          state.role = data.role || state.role
+          state.orders = data.orders || []
+          render()
+          if (first && state.orders[0]?.id && first !== state.orders[0].id) toast('发现新排单')
+        } catch {}
+      }
+
+      function render() {
+        const rows = $('#orderRows')
+        rows.innerHTML = ''
+        const orders = filteredOrders()
+        $('#empty').classList.toggle('hidden', orders.length > 0)
+        for (const order of orders) {
+          const tr = document.createElement('tr')
+          tr.classList.toggle('selected', order.id === state.selectedId)
+          tr.innerHTML = `
+            <td><strong>${esc(order.queue_no || '')}</strong><br><span class="muted">${esc(dateOnly(order.created_at))}</span></td>
+            <td>${esc(order.client_name || '未命名')}<br><span class="muted">${esc(order.contact || '')}</span></td>
+            <td>${esc(order.service_type || '')}<br><span class="chip priority-${order.priority}">${priorityLabels[order.priority] || order.priority}</span></td>
+            <td><span class="chip status-${order.status}">${statusLabels[order.status] || order.status}</span></td>
+            <td>${esc(displayDate(order.appointment_at) || '-')}</td>
+            <td>${esc(order.practitioner || '-')}</td>
+            <td>${money(order.paid)} / ${money(order.price)}</td>
+          `
+          tr.addEventListener('click', () => selectOrder(order.id))
+          rows.append(tr)
+        }
+        renderStats()
+      }
+
+      function filteredOrders() {
+        const query = $('#search').value.trim().toLowerCase()
+        const service = $('#serviceFilter').value
+        const priority = $('#priorityFilter').value
+        return state.orders.filter(order => {
+          if (state.status !== 'all' && order.status !== state.status) return false
+          if (service !== 'all' && order.service_type !== service) return false
+          if (priority !== 'all' && order.priority !== priority) return false
+          if (!query) return true
+          return [
+            order.queue_no, order.client_name, order.contact, order.channel, order.source,
+            order.service_type, order.status, order.priority, order.practitioner,
+            order.payment_status, order.deliverable, order.notes, ...(order.tags || []),
+          ].join(' ').toLowerCase().includes(query)
+        })
+      }
+
+      function renderStats() {
+        const today = new Date().toISOString().slice(0, 10)
+        $('#statTotal').textContent = state.orders.length
+        $('#statNew').textContent = state.orders.filter(order => order.status === 'new').length
+        $('#statActive').textContent = state.orders.filter(order => ['new', 'contacted', 'paid', 'scheduled', 'in_progress'].includes(order.status)).length
+        $('#statToday').textContent = state.orders.filter(order => String(order.appointment_at || '').startsWith(today)).length
+        $('#statPaid').textContent = money(state.orders.reduce((sum, order) => sum + Number(order.paid || 0), 0))
+      }
+
+      function selectOrder(id) {
+        const order = state.orders.find(item => item.id === id)
+        if (!order) return
+        state.selectedId = id
+        $('#formTitle').textContent = order.queue_no || '编辑排单'
+        $('#deleteBtn').classList.toggle('hidden', state.role !== 'admin')
+        for (const element of form.elements) {
+          if (!element.name) continue
+          element.value = element.name === 'tags' ? (order.tags || []).join('，') : (order[element.name] || '')
+        }
+        render()
+      }
+
+      function resetForm() {
+        state.selectedId = 0
+        form.reset()
+        form.elements.status.value = 'new'
+        form.elements.priority.value = 'normal'
+        form.elements.payment_status.value = '未付款'
+        $('#formTitle').textContent = '新增排单'
+        $('#deleteBtn').classList.add('hidden')
+        render()
+      }
+
+      async function saveOrder(event) {
+        event.preventDefault()
+        const body = Object.fromEntries(new FormData(form).entries())
+        body.id = state.selectedId
+        body.tags = String(body.tags || '').split(/[,\s，、/]+/).map(item => item.trim()).filter(Boolean)
+        const saved = await api('/admin/orders', { method: state.selectedId ? 'PUT' : 'POST', body })
+        state.selectedId = saved.id
+        await loadOrders()
+        selectOrder(saved.id)
+        toast('已保存并同步')
+      }
+
+      async function deleteSelected() {
+        if (!state.selectedId || state.role !== 'admin') return
+        if (!confirm('确定删除这条排单？')) return
+        await api(`/admin/orders?id=${state.selectedId}`, { method: 'DELETE' })
+        resetForm()
+        await loadOrders()
+        toast('已删除')
+      }
+
+      async function exportCsv() {
+        const response = await fetch(`${API_BASE}/admin/orders?format=csv`, {
+          headers: { 'x-admin-password': state.password },
+        })
+        if (!response.ok) return toast('导出失败')
+        const blob = await response.blob()
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = 'cda-service-orders.csv'
+        link.click()
+        URL.revokeObjectURL(url)
+      }
+
+      async function api(path, options = {}) {
+        const response = await fetch(`${API_BASE}${path}`, {
+          method: options.method || 'GET',
+          headers: { 'content-type': 'application/json', 'x-admin-password': state.password },
+          body: options.body ? JSON.stringify(options.body) : undefined,
+        })
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || '请求失败')
+        return data
+      }
+
+      function fillSelect(selector, values, labels = {}) {
+        const select = $(selector)
+        select.innerHTML = ''
+        values.forEach(value => {
+          const option = document.createElement('option')
+          option.value = value
+          option.textContent = labels[value] || value
+          select.append(option)
+        })
+      }
+
+      function toast(message) {
+        const el = $('#toast')
+        el.textContent = message
+        el.classList.add('show')
+        clearTimeout(toast.timer)
+        toast.timer = setTimeout(() => el.classList.remove('show'), 1800)
+      }
+
+      function displayDate(value) { return value ? String(value).replace('T', ' ') : '' }
+      function dateOnly(value) { return value ? String(value).slice(0, 10) : '' }
+      function money(value) {
+        const n = Number(value || 0)
+        return n ? `¥${n.toLocaleString('zh-CN', { maximumFractionDigits: 2 })}` : '¥0'
+      }
+      function esc(value) {
+        return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[ch])
+      }
+    </script>
+  </body>
+</html>
