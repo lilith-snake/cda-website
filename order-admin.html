@@ -161,7 +161,7 @@
 
       .stats {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 10px;
         margin-bottom: 14px;
       }
@@ -186,7 +186,7 @@
       }
       .filters {
         display: grid;
-        grid-template-columns: minmax(220px, 1fr) 170px 140px;
+        grid-template-columns: minmax(220px, 1fr) 170px 140px 150px;
         gap: 10px;
         padding: 14px;
         border-bottom: 1px solid var(--line);
@@ -197,7 +197,7 @@
       }
       table {
         width: 100%;
-        min-width: 830px;
+        min-width: 1180px;
         border-collapse: collapse;
       }
       th, td {
@@ -223,6 +223,13 @@
       .status-paid, .status-done { color: var(--gold); border-color: var(--gold); }
       .status-scheduled, .priority-high { color: var(--lavender); border-color: var(--lavender); }
       .status-in_progress { color: var(--teal); border-color: var(--teal); }
+      .info-已确认 { color: var(--teal); border-color: var(--teal); }
+      .info-未确认 { color: var(--pink); border-color: var(--pink); }
+      .info-待补充 { color: var(--gold); border-color: var(--gold); }
+      .info-无需 { color: var(--muted); border-color: var(--line); }
+      .intent-high { color: var(--gold); border-color: var(--gold); }
+      .intent-normal { color: var(--lavender); border-color: var(--lavender); }
+      .intent-low { color: var(--muted); border-color: var(--line); }
 
       .editor {
         position: sticky;
@@ -338,6 +345,7 @@
           <div class="stat"><span>待联系</span><strong id="statNew">0</strong></div>
           <div class="stat"><span>待交付</span><strong id="statActive">0</strong></div>
           <div class="stat"><span>今日预约</span><strong id="statToday">0</strong></div>
+          <div class="stat"><span>高意向</span><strong id="statHigh">0</strong></div>
           <div class="stat"><span>已收款</span><strong id="statPaid">¥0</strong></div>
         </section>
 
@@ -353,6 +361,12 @@
                 <option value="normal">普通</option>
                 <option value="low">低</option>
               </select>
+              <select id="intentFilter">
+                <option value="all">全部意向</option>
+                <option value="high">高意向</option>
+                <option value="normal">普通意向</option>
+                <option value="low">低意向</option>
+              </select>
             </div>
             <div class="table-wrap">
               <table>
@@ -361,8 +375,10 @@
                     <th>排单号</th>
                     <th>客户</th>
                     <th>服务</th>
-                    <th>状态</th>
-                    <th>预约</th>
+                    <th>对接信息</th>
+                    <th>排单时间</th>
+                    <th>付款</th>
+                    <th>意向</th>
                     <th>负责人</th>
                     <th>金额</th>
                   </tr>
@@ -394,7 +410,9 @@
               <label>负责人<input name="practitioner" placeholder="传讯师 / 助理" /></label>
               <label>渠道<input name="channel" placeholder="官网 / 小红书 / 私域" /></label>
               <label>来源<input name="source" placeholder="帖子标题 / 推荐人 / 广告" /></label>
-              <label>预约时间<input name="appointment_at" type="datetime-local" /></label>
+              <label>对接信息<select name="info_status" id="infoStatus"></select></label>
+              <label>意向等级<select name="intent_level" id="intentLevel"></select></label>
+              <label>排单时间<input name="appointment_at" type="datetime-local" /></label>
               <label>截止时间<input name="deadline_at" type="datetime-local" /></label>
               <label>跟进时间<input name="follow_up_at" type="datetime-local" /></label>
               <label>付款状态<input name="payment_status" placeholder="未付款 / 已付定金 / 已付全款" /></label>
@@ -423,12 +441,17 @@
       const statuses = ['new', 'contacted', 'paid', 'scheduled', 'in_progress', 'done', 'hold', 'refund']
       const statusLabels = { new: '新申请', contacted: '已联系', paid: '已付款', scheduled: '已预约', in_progress: '交付中', done: '已完成', hold: '暂缓', refund: '退款' }
       const priorityLabels = { low: '低', normal: '普通', high: '高', urgent: '紧急' }
+      const infoStatuses = ['未确认', '已确认', '待补充', '无需']
+      const intentLevels = ['low', 'normal', 'high']
+      const infoLabels = { '未确认': '未确认', '已确认': '已确认', '待补充': '待补充', '无需': '无需' }
+      const intentLabels = { low: '低', normal: '普通', high: '高' }
       const state = {
         password: sessionStorage.getItem('cdaOrderPassword') || '',
         role: '',
         orders: [],
         selectedId: 0,
         status: 'all',
+        intent: 'all',
       }
       const $ = selector => document.querySelector(selector)
       const form = $('#orderForm')
@@ -439,6 +462,9 @@
         fillSelect('#serviceType', serviceTypes)
         fillSelect('#status', statuses, statusLabels)
         fillSelect('#serviceFilter', ['all', ...serviceTypes], { all: '全部服务' })
+        fillSelect('#infoStatus', infoStatuses, infoLabels)
+        fillSelect('#intentLevel', intentLevels, intentLabels)
+        fillSelect('#intentFilter', ['all', ...intentLevels], { all: '全部意向', low: '低意向', normal: '普通意向', high: '高意向' })
         $('#loginForm').addEventListener('submit', login)
         $('#refreshBtn').addEventListener('click', loadOrders)
         $('#newBtn').addEventListener('click', resetForm)
@@ -448,6 +474,10 @@
         $('#search').addEventListener('input', render)
         $('#serviceFilter').addEventListener('change', render)
         $('#priorityFilter').addEventListener('change', render)
+        $('#intentFilter').addEventListener('change', () => {
+          state.intent = $('#intentFilter').value
+          render()
+        })
         form.addEventListener('submit', saveOrder)
         document.querySelectorAll('.nav-item').forEach(button => {
           button.addEventListener('click', () => {
@@ -483,7 +513,7 @@
       async function loadOrders() {
         const data = await api('/admin/orders')
         state.role = data.role || ''
-        state.orders = data.orders || []
+            state.orders = data.orders || []
         $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
         $('#deleteBtn').classList.toggle('hidden', state.role !== 'admin' || !state.selectedId)
         render()
@@ -512,9 +542,11 @@
           tr.innerHTML = `
             <td><strong>${esc(order.queue_no || '')}</strong><br><span class="muted">${esc(dateOnly(order.created_at))}</span></td>
             <td>${esc(order.client_name || '未命名')}<br><span class="muted">${esc(order.contact || '')}</span></td>
-            <td>${esc(order.service_type || '')}<br><span class="chip priority-${order.priority}">${priorityLabels[order.priority] || order.priority}</span></td>
-            <td><span class="chip status-${order.status}">${statusLabels[order.status] || order.status}</span></td>
+            <td>${esc(order.service_type || '')}<br><span class="chip priority-${order.priority}">${priorityLabels[order.priority] || order.priority}</span><span class="chip status-${order.status}" style="margin-left:6px">${statusLabels[order.status] || order.status}</span></td>
+            <td><span class="chip info-${esc(normalizeInfo(order.info_status))}">${esc(order.info_status || '未确认')}</span></td>
             <td>${esc(displayDate(order.appointment_at) || '-')}</td>
+            <td>${esc(order.payment_status || '未填写')}</td>
+            <td><span class="chip intent-${esc(normalizeIntent(order.intent_level))}">${intentLabels[normalizeIntent(order.intent_level)]}</span></td>
             <td>${esc(order.practitioner || '-')}</td>
             <td>${money(order.paid)} / ${money(order.price)}</td>
           `
@@ -528,16 +560,23 @@
         const query = $('#search').value.trim().toLowerCase()
         const service = $('#serviceFilter').value
         const priority = $('#priorityFilter').value
+        const intent = $('#intentFilter').value
+        const statusRank = { new: 0, contacted: 1, paid: 2, scheduled: 3, in_progress: 4, done: 5, hold: 6, refund: 7 }
         return state.orders.filter(order => {
           if (state.status !== 'all' && order.status !== state.status) return false
           if (service !== 'all' && order.service_type !== service) return false
           if (priority !== 'all' && order.priority !== priority) return false
+          if (intent !== 'all' && normalizeIntent(order.intent_level) !== intent) return false
           if (!query) return true
           return [
             order.queue_no, order.client_name, order.contact, order.channel, order.source,
             order.service_type, order.status, order.priority, order.practitioner,
-            order.payment_status, order.deliverable, order.notes, ...(order.tags || []),
+            order.payment_status, order.info_status, order.intent_level, order.deliverable, order.notes, ...(order.tags || []),
           ].join(' ').toLowerCase().includes(query)
+        }).sort((a, b) => {
+          const rankA = statusRank[a.status || 'new'] ?? 99
+          const rankB = statusRank[b.status || 'new'] ?? 99
+          return rankA - rankB || Number(b.id || 0) - Number(a.id || 0)
         })
       }
 
@@ -547,6 +586,7 @@
         $('#statNew').textContent = state.orders.filter(order => order.status === 'new').length
         $('#statActive').textContent = state.orders.filter(order => ['new', 'contacted', 'paid', 'scheduled', 'in_progress'].includes(order.status)).length
         $('#statToday').textContent = state.orders.filter(order => String(order.appointment_at || '').startsWith(today)).length
+        $('#statHigh').textContent = state.orders.filter(order => normalizeIntent(order.intent_level) === 'high').length
         $('#statPaid').textContent = money(state.orders.reduce((sum, order) => sum + Number(order.paid || 0), 0))
       }
 
@@ -568,6 +608,8 @@
         form.reset()
         form.elements.status.value = 'new'
         form.elements.priority.value = 'normal'
+        form.elements.info_status.value = '未确认'
+        form.elements.intent_level.value = 'normal'
         form.elements.payment_status.value = '未付款'
         $('#formTitle').textContent = '新增排单'
         $('#deleteBtn').classList.add('hidden')
@@ -581,6 +623,10 @@
         body.tags = String(body.tags || '').split(/[,\s，、/]+/).map(item => item.trim()).filter(Boolean)
         const saved = await api('/admin/orders', { method: state.selectedId ? 'PUT' : 'POST', body })
         state.selectedId = saved.id
+        if (['new', 'contacted'].includes(saved.status)) {
+          state.status = saved.status
+          document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === saved.status))
+        }
         await loadOrders()
         selectOrder(saved.id)
         toast('已保存并同步')
@@ -629,6 +675,14 @@
           option.textContent = labels[value] || value
           select.append(option)
         })
+      }
+
+      function normalizeIntent(value) {
+        return intentLevels.includes(value) ? value : 'normal'
+      }
+
+      function normalizeInfo(value) {
+        return infoStatuses.includes(value) ? value : '未确认'
       }
 
       function toast(message) {
