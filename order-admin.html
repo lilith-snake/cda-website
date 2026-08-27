@@ -49,6 +49,10 @@
         color: #fff;
         font-weight: 800;
       }
+      button:disabled {
+        cursor: not-allowed;
+        opacity: .55;
+      }
       .hidden { display: none !important; }
       .muted { color: var(--muted); }
 
@@ -335,7 +339,7 @@
           <div class="actions">
             <button id="refreshBtn" class="ghost">刷新</button>
             <button id="csvBtn" class="ghost">导出 CSV</button>
-            <button id="deleteBtn" class="danger hidden">删除选中</button>
+            <button id="deleteBtn" class="danger" disabled>选择排单后删除</button>
             <button id="newBtn" class="primary">新增排单</button>
           </div>
         </header>
@@ -513,10 +517,10 @@
       async function loadOrders() {
         const data = await api('/admin/orders')
         state.role = data.role || ''
-            state.orders = data.orders || []
+        state.orders = data.orders || []
         $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
-        $('#deleteBtn').classList.toggle('hidden', state.role !== 'admin' || !state.selectedId)
         render()
+        updateDeleteButton()
         toast('已同步')
       }
 
@@ -527,6 +531,7 @@
           state.role = data.role || state.role
           state.orders = data.orders || []
           render()
+          updateDeleteButton()
           if (first && state.orders[0]?.id && first !== state.orders[0].id) toast('发现新排单')
         } catch {}
       }
@@ -595,12 +600,12 @@
         if (!order) return
         state.selectedId = id
         $('#formTitle').textContent = order.queue_no || '编辑排单'
-        $('#deleteBtn').classList.toggle('hidden', state.role !== 'admin')
         for (const element of form.elements) {
           if (!element.name) continue
           element.value = element.name === 'tags' ? (order.tags || []).join('，') : (order[element.name] || '')
         }
         render()
+        updateDeleteButton()
       }
 
       function resetForm() {
@@ -612,8 +617,8 @@
         form.elements.intent_level.value = 'normal'
         form.elements.payment_status.value = '未付款'
         $('#formTitle').textContent = '新增排单'
-        $('#deleteBtn').classList.add('hidden')
         render()
+        updateDeleteButton()
       }
 
       async function saveOrder(event) {
@@ -633,12 +638,32 @@
       }
 
       async function deleteSelected() {
-        if (!state.selectedId || state.role !== 'admin') return
+        if (state.role !== 'admin') return toast('删除仅管理员可用')
+        if (!state.selectedId) return toast('先选择一条排单')
         if (!confirm('确定删除这条排单？')) return
         await api(`/admin/orders?id=${state.selectedId}`, { method: 'DELETE' })
         resetForm()
         await loadOrders()
         toast('已删除')
+      }
+
+      function updateDeleteButton() {
+        const button = $('#deleteBtn')
+        if (state.role !== 'admin') {
+          button.disabled = true
+          button.textContent = '删除仅管理员'
+          button.title = '助理账号不能删除排单'
+          return
+        }
+        if (!state.selectedId) {
+          button.disabled = true
+          button.textContent = '选择排单后删除'
+          button.title = '先点击左侧排单，再删除'
+          return
+        }
+        button.disabled = false
+        button.textContent = '删除选中'
+        button.title = '删除当前选中的排单'
       }
 
       async function exportCsv() {
