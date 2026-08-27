@@ -7,8 +7,9 @@ import { promisify } from 'node:util'
 
 const execFileAsync = promisify(execFile)
 
-const API_URL = 'https://cda-website-3t2.pages.dev/api/admin/contacts'
-const ADMIN_URL = 'https://lilith-snake.github.io/cda-website/admin'
+const API_BASE = 'https://cda-website-3t2.pages.dev/api/admin'
+const APPLICATION_ADMIN_URL = 'https://lilith-snake.github.io/cda-website/application-notify.html'
+const ORDER_ADMIN_URL = 'https://lilith-snake.github.io/cda-website/order-admin.html'
 const FETCH_TIMEOUT_MS = 15000
 const FETCH_RETRIES = 3
 
@@ -25,24 +26,34 @@ async function main() {
 
   if (args.has('--test')) {
     await notify(
-      'CDA申请通知测试',
+      'CDA实时审查通知测试',
       '通知已经可以弹出',
-      '以后有新的联系申请时，这里会提醒你。'
+      '新官网申请、新排单、排单修改都会在这里提醒。'
     )
     await log('test notification sent')
     return
   }
 
-  const rows = await fetchContacts()
-  const latestId = getLatestId(rows)
+  const [applications, orders] = await Promise.all([
+    fetchApplications(),
+    fetchOrders(),
+  ])
+  const latestApplicationId = getLatestId(applications)
+  const latestOrderId = getLatestId(orders)
+  const orderFingerprints = buildOrderFingerprints(orders)
 
   if (args.has('--status')) {
     const state = await readState()
     console.log(JSON.stringify({
-      lastSeenId: state.lastSeenId || 0,
-      latestId,
-      total: rows.length,
-      adminUrl: ADMIN_URL,
+      lastSeenApplicationId: state.lastSeenApplicationId || state.lastSeenId || 0,
+      lastSeenOrderId: state.lastSeenOrderId || 0,
+      latestApplicationId,
+      latestOrderId,
+      applicationsTotal: applications.length,
+      ordersTotal: orders.length,
+      trackedOrderFingerprints: Object.keys(state.orderFingerprints || {}).length,
+      applicationAdminUrl: APPLICATION_ADMIN_URL,
+      orderAdminUrl: ORDER_ADMIN_URL,
       stateFile: STATE_FILE,
       logFile: LOG_FILE,
     }, null, 2))
@@ -50,41 +61,88 @@ async function main() {
   }
 
   if (args.has('--init')) {
-    await writeState({ lastSeenId: latestId, updatedAt: new Date().toISOString() })
+    await writeState({
+      lastSeenApplicationId: latestApplicationId,
+      lastSeenOrderId: latestOrderId,
+      orderFingerprints,
+      updatedAt: new Date().toISOString(),
+    })
     await notify(
-      'CDA申请通知已开启',
-      '每 1 分钟自动检查一次',
-      latestId ? `当前已记录到第 ${latestId} 号申请。` : '当前还没有联系申请。'
+      'CDA实时通知已开启',
+      '每 20 秒自动检查一次',
+      `自动审查官网申请、新排单和排单修改。当前：${applications.length} 条申请，${orders.length} 条排单。`
     )
-    await log(`initialized at latest id ${latestId}`)
+    await log(`initialized at application ${latestApplicationId}, order ${latestOrderId}`)
     return
   }
 
   const state = await readState()
-  const lastSeenId = Number(state.lastSeenId || 0)
-  const newRows = rows
-    .filter(row => Number(row.id || 0) > lastSeenId)
+  const lastSeenApplicationId = Number(state.lastSeenApplicationId || state.lastSeenId || 0)
+  const lastSeenOrderId = Number(state.lastSeenOrderId || 0)
+  const previousOrderFingerprints = state.orderFingerprints || {}
+  const newApplications = applications
+    .filter(row => Number(row.id || 0) > lastSeenApplicationId)
+    .sort((a, b) => Number(a.id || 0) - Number(b.id || 0))
+  const newOrders = orders
+    .filter(row => Number(row.id || 0) > lastSeenOrderId)
+    .sort((a, b) => Number(a.id || 0) - Number(b.id || 0))
+  const modifiedOrders = orders
+    .filter(row => {
+      const id = String(row.id || '')
+      if (!id || Number(row.id || 0) > lastSeenOrderId) return false
+      return Boolean(previousOrderFingerprints[id]) && previousOrderFingerprints[id] !== orderFingerprints[id]
+    })
     .sort((a, b) => Number(a.id || 0) - Number(b.id || 0))
 
-  if (newRows.length > 0) {
-    await sendNewSubmissionNotification(newRows)
-    await writeState({ lastSeenId: latestId, updatedAt: new Date().toISOString() })
-    await log(`notified ${newRows.length} new submission(s), latest id ${latestId}`)
+  if (newApplications.length > 0) {
+    await sendNewApplicationNotification(newApplications)
+  }
+  if (newOrders.length > 0) {
+    await sendNewOrderNotification(newOrders)
+  }
+  if (modifiedOrders.length > 0) {
+    await sendModifiedOrderNotification(modifiedOrders)
+  }
+
+  if (newApplications.length > 0 || newOrders.length > 0 || modifiedOrders.length > 0) {
+    await writeState({
+      lastSeenApplicationId: latestApplicationId,
+      lastSeenOrderId: latestOrderId,
+      orderFingerprints,
+      updatedAt: new Date().toISOString(),
+    })
+    await log(`notified applications=${newApplications.length}, new orders=${newOrders.length}, modified orders=${modifiedOrders.length}`)
     return
   }
 
-  if (latestId > lastSeenId) {
-    await writeState({ lastSeenId: latestId, updatedAt: new Date().toISOString() })
+  if (latestApplicationId > lastSeenApplicationId || latestOrderId > lastSeenOrderId || !state.orderFingerprints) {
+    await writeState({
+      lastSeenApplicationId: latestApplicationId,
+      lastSeenOrderId: latestOrderId,
+      orderFingerprints,
+      updatedAt: new Date().toISOString(),
+    })
   }
 
   if (args.has('--manual')) {
-    await notify('CDA申请通知', '暂无新的联系申请', '后台检查完成。')
+    await notify('CDA实时通知', '暂无新的官网申请或排单', `当前共 ${applications.length} 条申请，${orders.length} 条排单。`)
   }
 
-  await log(`checked, no new submissions, latest id ${latestId}`)
+  await log(`checked, no new or modified items, latest application ${latestApplicationId}, order ${latestOrderId}`)
 }
 
-async function fetchContacts() {
+async function fetchApplications() {
+  const data = await fetchJson('/applications')
+  if (Array.isArray(data)) return data
+  return Array.isArray(data.applications) ? data.applications : []
+}
+
+async function fetchOrders() {
+  const data = await fetchJson('/orders')
+  return Array.isArray(data.orders) ? data.orders : []
+}
+
+async function fetchJson(pathname) {
   let lastError
   const adminPassword = await getAdminPassword()
 
@@ -93,26 +151,22 @@ async function fetchContacts() {
       const controller = new AbortController()
       const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
 
-      const response = await fetch(`${API_URL}?t=${Date.now()}`, {
+      const response = await fetch(`${API_BASE}${pathname}?t=${Date.now()}`, {
         signal: controller.signal,
         headers: {
           'cache-control': 'no-cache',
           'x-admin-password': adminPassword,
-          'user-agent': 'cda-contact-notifier/1.1',
+          'user-agent': 'cda-local-notifier/2.0',
         },
       })
 
       clearTimeout(timeout)
 
       if (!response.ok) {
-        throw new Error(`API returned ${response.status}`)
+        throw new Error(`${pathname} returned ${response.status}`)
       }
 
       const data = await response.json()
-      if (!Array.isArray(data)) {
-        throw new Error('API response is not a list')
-      }
-
       return data
     } catch (error) {
       lastError = error
@@ -142,10 +196,10 @@ function getLatestId(rows) {
   return rows.reduce((max, row) => Math.max(max, Number(row.id || 0)), 0)
 }
 
-async function sendNewSubmissionNotification(newRows) {
+async function sendNewApplicationNotification(newRows) {
   const latest = newRows.at(-1)
   const count = newRows.length
-  const title = count === 1 ? 'CDA收到新的联系申请' : `CDA收到 ${count} 份新的联系申请`
+  const title = count === 1 ? 'CDA收到新的官网申请' : `CDA收到 ${count} 份新的官网申请`
   const subtitle = latest?.inquiry_label || latest?.inquiry_type || '联系申请'
   const detail = compact([
     latest?.name && `称呼：${latest.name}`,
@@ -154,6 +208,73 @@ async function sendNewSubmissionNotification(newRows) {
   ]).join(' ｜ ')
 
   await notify(title, subtitle, detail || '请打开后台查看详情。')
+}
+
+async function sendNewOrderNotification(newRows) {
+  const latest = newRows.at(-1)
+  const count = newRows.length
+  const title = count === 1 ? 'CDA新增排单预约' : `CDA新增 ${count} 条排单预约`
+  const subtitle = latest?.queue_no || latest?.service_type || '排单后台'
+  const detail = compact([
+    latest?.client_name && `客户：${latest.client_name}`,
+    latest?.service_type && `服务：${latest.service_type}`,
+    latest?.appointment_at && `预约：${latest.appointment_at}`,
+  ]).join(' ｜ ')
+
+  await notify(title, subtitle, detail || '请打开排单后台查看详情。')
+}
+
+async function sendModifiedOrderNotification(modifiedRows) {
+  const latest = modifiedRows.at(-1)
+  const count = modifiedRows.length
+  const title = count === 1 ? 'CDA排单被修改' : `CDA有 ${count} 条排单被修改`
+  const subtitle = latest?.queue_no || latest?.client_name || '排单后台'
+  const detail = compact([
+    latest?.client_name && `客户：${latest.client_name}`,
+    latest?.status && `状态：${latest.status}`,
+    latest?.practitioner && `负责人：${latest.practitioner}`,
+    latest?.appointment_at && `预约：${latest.appointment_at}`,
+  ]).join(' ｜ ')
+
+  await notify(title, subtitle, detail || '请打开排单后台查看详情。')
+}
+
+function buildOrderFingerprints(orders) {
+  return Object.fromEntries(
+    orders
+      .filter(order => order.id)
+      .map(order => [String(order.id), orderFingerprint(order)])
+  )
+}
+
+function orderFingerprint(order) {
+  const fields = [
+    'queue_no',
+    'client_name',
+    'contact',
+    'channel',
+    'source',
+    'service_type',
+    'status',
+    'priority',
+    'practitioner',
+    'appointment_at',
+    'deadline_at',
+    'follow_up_at',
+    'price',
+    'paid',
+    'payment_status',
+    'tags',
+    'deliverable',
+    'notes',
+  ]
+  return JSON.stringify(fields.map(field => normalizeFingerprintValue(order[field])))
+}
+
+function normalizeFingerprintValue(value) {
+  if (Array.isArray(value)) return value.map(item => String(item ?? '').trim()).filter(Boolean)
+  if (value == null) return ''
+  return String(value).trim()
 }
 
 function compact(values) {

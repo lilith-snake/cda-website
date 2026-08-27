@@ -34,12 +34,13 @@ export async function onRequest(context) {
           queue_no, created_at, updated_at,
           client_name, contact, channel, source, service_type, status, priority,
           practitioner, appointment_at, deadline_at, follow_up_at,
+          info_status, intent_level,
           price, paid, payment_status, tags, deliverable, notes
         ) VALUES (
           ?, datetime('now'), datetime('now'),
           ?, ?, ?, ?, ?, ?, ?,
           ?, ?, ?, ?,
-          ?, ?, ?, ?, ?, ?
+          ?, ?, ?, ?, ?, ?, ?
         )
       `).bind(
         queueNo,
@@ -54,6 +55,8 @@ export async function onRequest(context) {
         order.appointment_at,
         order.deadline_at,
         order.follow_up_at,
+        order.info_status,
+        order.intent_level,
         order.price,
         order.paid,
         order.payment_status,
@@ -80,6 +83,7 @@ export async function onRequest(context) {
           client_name = ?, contact = ?, channel = ?, source = ?,
           service_type = ?, status = ?, priority = ?, practitioner = ?,
           appointment_at = ?, deadline_at = ?, follow_up_at = ?,
+          info_status = ?, intent_level = ?,
           price = ?, paid = ?, payment_status = ?, tags = ?,
           deliverable = ?, notes = ?
         WHERE id = ?
@@ -95,6 +99,8 @@ export async function onRequest(context) {
         order.appointment_at,
         order.deadline_at,
         order.follow_up_at,
+        order.info_status,
+        order.intent_level,
         order.price,
         order.paid,
         order.payment_status,
@@ -152,6 +158,8 @@ async function ensureOrdersTable(db) {
       appointment_at TEXT,
       deadline_at TEXT,
       follow_up_at TEXT,
+      info_status TEXT DEFAULT '未确认',
+      intent_level TEXT DEFAULT 'normal',
       price REAL DEFAULT 0,
       paid REAL DEFAULT 0,
       payment_status TEXT,
@@ -160,9 +168,24 @@ async function ensureOrdersTable(db) {
       notes TEXT
     )
   `).run()
+  await ensureOrderColumns(db)
   await db.prepare('CREATE INDEX IF NOT EXISTS idx_service_orders_status ON service_orders(status)').run()
   await db.prepare('CREATE INDEX IF NOT EXISTS idx_service_orders_created_at ON service_orders(created_at)').run()
   await db.prepare('CREATE INDEX IF NOT EXISTS idx_service_orders_appointment_at ON service_orders(appointment_at)').run()
+}
+
+async function ensureOrderColumns(db) {
+  const columns = await db.prepare('PRAGMA table_info(service_orders)').all()
+  const existing = new Set((columns.results || []).map(row => row.name))
+  const additions = [
+    ['info_status', "TEXT DEFAULT '未确认'"],
+    ['intent_level', "TEXT DEFAULT 'normal'"],
+  ]
+  for (const [name, definition] of additions) {
+    if (!existing.has(name)) {
+      await db.prepare(`ALTER TABLE service_orders ADD COLUMN ${name} ${definition}`).run()
+    }
+  }
 }
 
 async function listOrders(db) {
@@ -209,6 +232,8 @@ function cleanOrder(body = {}) {
     appointment_at: clean(body.appointment_at || body.appointmentAt, 80),
     deadline_at: clean(body.deadline_at || body.deadlineAt, 80),
     follow_up_at: clean(body.follow_up_at || body.followUpAt, 80),
+    info_status: normalizeChoice(body.info_status || body.infoStatus, ['未确认', '已确认', '待补充', '无需'], '未确认'),
+    intent_level: normalizeChoice(body.intent_level || body.intentLevel, ['low', 'normal', 'high'], 'normal'),
     price: Number(body.price || 0),
     paid: Number(body.paid || 0),
     payment_status: clean(body.payment_status || body.paymentStatus || '未付款', 80),
@@ -271,7 +296,7 @@ function csvResponse(csv) {
 }
 
 function toCsv(orders) {
-  const headers = ['排单号', '客户', '联系方式', '渠道', '来源', '服务', '状态', '优先级', '负责人', '预约', '截止', '跟进', '价格', '已付', '付款状态', '标签', '交付物', '备注', '创建时间', '更新时间']
+  const headers = ['排单号', '客户', '联系方式', '渠道', '来源', '服务', '状态', '优先级', '负责人', '排单时间', '截止', '跟进', '对接信息', '意向等级', '价格', '已付', '付款状态', '标签', '交付物', '备注', '创建时间', '更新时间']
   const rows = orders.map(order => [
     order.queue_no,
     order.client_name,
@@ -285,6 +310,8 @@ function toCsv(orders) {
     order.appointment_at,
     order.deadline_at,
     order.follow_up_at,
+    order.info_status,
+    order.intent_level,
     order.price,
     order.paid,
     order.payment_status,

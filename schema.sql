@@ -83,6 +83,8 @@ CREATE TABLE IF NOT EXISTS service_orders (
   appointment_at TEXT,
   deadline_at TEXT,
   follow_up_at TEXT,
+  info_status TEXT DEFAULT '未确认',
+  intent_level TEXT DEFAULT 'normal',
   price REAL DEFAULT 0,
   paid REAL DEFAULT 0,
   payment_status TEXT,
