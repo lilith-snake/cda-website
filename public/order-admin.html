@@ -561,6 +561,7 @@
         const service = $('#serviceFilter').value
         const priority = $('#priorityFilter').value
         const intent = $('#intentFilter').value
+        const statusRank = { new: 0, contacted: 1, paid: 2, scheduled: 3, in_progress: 4, done: 5, hold: 6, refund: 7 }
         return state.orders.filter(order => {
           if (state.status !== 'all' && order.status !== state.status) return false
           if (service !== 'all' && order.service_type !== service) return false
@@ -572,6 +573,10 @@
             order.service_type, order.status, order.priority, order.practitioner,
             order.payment_status, order.info_status, order.intent_level, order.deliverable, order.notes, ...(order.tags || []),
           ].join(' ').toLowerCase().includes(query)
+        }).sort((a, b) => {
+          const rankA = statusRank[a.status || 'new'] ?? 99
+          const rankB = statusRank[b.status || 'new'] ?? 99
+          return rankA - rankB || Number(b.id || 0) - Number(a.id || 0)
         })
       }
 
@@ -618,6 +623,10 @@
         body.tags = String(body.tags || '').split(/[,\s，、/]+/).map(item => item.trim()).filter(Boolean)
         const saved = await api('/admin/orders', { method: state.selectedId ? 'PUT' : 'POST', body })
         state.selectedId = saved.id
+        if (['new', 'contacted'].includes(saved.status)) {
+          state.status = saved.status
+          document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === saved.status))
+        }
         await loadOrders()
         selectOrder(saved.id)
         toast('已保存并同步')

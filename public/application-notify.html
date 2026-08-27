@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CDA 网站申请通知</title>
+    <title>CDA 申请对接表</title>
     <style>
       :root {
         color-scheme: dark;
-        --bg: #0e0b18;
-        --panel: #1a1428;
-        --panel2: #211933;
-        --line: #3c3255;
-        --ink: #f7f1ff;
-        --muted: #b7acd0;
-        --gold: #d4b066;
-        --pink: #e76aae;
-        --lavender: #b8a0ff;
-        --teal: #30b7a6;
-        --red: #d64d5a;
+        --bg: #11100f;
+        --panel: #1b1917;
+        --panel2: #24211e;
+        --line: #413b34;
+        --ink: #f5f0e7;
+        --muted: #b9b0a1;
+        --gold: #d2ad66;
+        --rose: #c77b74;
+        --plum: #b4a1c3;
+        --teal: #68b3a6;
+        --red: #d86b67;
       }
       * { box-sizing: border-box; }
       body {
@@ -41,13 +41,14 @@
         align-items: center;
         justify-content: center;
       }
-      button:hover, .ghost:hover { border-color: var(--pink); }
+      button:hover, .ghost:hover { border-color: var(--gold); }
       .primary {
-        border: 0;
-        background: linear-gradient(135deg, #8f5cff, #e76aae 58%, #d4b066);
-        color: #fff;
+        border-color: var(--gold);
+        background: var(--gold);
+        color: #17130e;
         font-weight: 800;
       }
+      button:disabled { cursor: not-allowed; opacity: .5; }
       .hidden { display: none !important; }
       .muted { color: var(--muted); }
       h1, h2, h3, p { margin: 0; }
@@ -57,22 +58,18 @@
         display: grid;
         place-items: center;
         padding: 24px;
-        background:
-          linear-gradient(90deg, rgba(14,11,24,.96), rgba(14,11,24,.76)),
-          radial-gradient(circle at 72% 16%, rgba(184,160,255,.18), transparent 36%),
-          radial-gradient(circle at 82% 74%, rgba(231,106,174,.13), transparent 34%),
-          var(--bg);
+        background: var(--bg);
       }
       .login-panel {
         width: min(430px, 100%);
         padding: 34px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(26,20,40,.94);
+        background: var(--panel);
       }
       .brand {
         font-family: Georgia, "Times New Roman", serif;
-        color: var(--lavender);
+        color: var(--gold);
         font-size: 18px;
         font-weight: 800;
       }
@@ -100,7 +97,7 @@
         width: 100%;
         border: 1px solid var(--line);
         border-radius: 6px;
-        background: #120e1d;
+        background: #141210;
         color: var(--ink);
         padding: 10px 11px;
         outline: none;
@@ -118,7 +115,7 @@
       }
       aside {
         border-right: 1px solid var(--line);
-        background: #0b0912;
+        background: #0d0c0b;
         padding: 24px 18px;
         display: flex;
         flex-direction: column;
@@ -133,7 +130,7 @@
       .brand-row p { margin-top: 6px; color: var(--muted); font-size: 12px; }
       nav { display: grid; gap: 8px; }
       .nav-item { justify-content: flex-start; background: transparent; }
-      .nav-item.active { color: var(--gold); border-color: var(--gold); }
+      .nav-item.active { color: var(--gold); border-color: var(--gold); background: rgba(210,173,102,.08); }
       .role-box {
         margin-top: auto;
         border-top: 1px solid var(--line);
@@ -168,7 +165,7 @@
         gap: 10px;
         margin-bottom: 14px;
       }
-      .stat, .list-panel, .detail-panel {
+      .stat, .table-panel, .detail-panel {
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
@@ -181,45 +178,57 @@
         color: var(--gold);
         font-size: 24px;
       }
-      .board {
-        display: grid;
-        grid-template-columns: minmax(0, 1.25fr) minmax(360px, .85fr);
-        gap: 14px;
-        align-items: start;
-      }
+      .board { min-width: 0; }
       .filters {
         display: grid;
-        grid-template-columns: minmax(220px, 1fr) 150px;
+        grid-template-columns: minmax(240px, 1fr) 220px;
         gap: 10px;
         padding: 14px;
         border-bottom: 1px solid var(--line);
       }
-      .list { max-height: calc(100vh - 260px); overflow: auto; }
-      .item {
-        padding: 15px;
-        border-bottom: 1px solid rgba(60,50,85,.72);
-        cursor: pointer;
-      }
-      .item:hover, .item.selected { background: rgba(184,160,255,.09); }
-      .item-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        align-items: center;
-      }
-      .item h3 { font-size: 16px; }
-      .item p {
-        margin-top: 8px;
-        color: var(--muted);
+      .table-wrap { max-height: calc(100vh - 262px); overflow: auto; }
+      table { width: 100%; min-width: 1180px; border-collapse: collapse; table-layout: fixed; }
+      th, td {
+        padding: 12px 13px;
+        border-bottom: 1px solid rgba(65,59,52,.76);
+        text-align: left;
+        vertical-align: top;
         font-size: 13px;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: #211e1a;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0;
+        white-space: nowrap;
+      }
+      tbody tr { cursor: pointer; }
+      tbody tr:hover, tbody tr.selected { background: rgba(210,173,102,.07); }
+      .col-id { width: 110px; }
+      .col-person { width: 160px; }
+      .col-type { width: 175px; }
+      .col-role { width: 150px; }
+      .col-context { width: 220px; }
+      .col-message { width: 265px; }
+      .col-status { width: 100px; }
+      .cell-primary { color: var(--ink); font-weight: 700; line-height: 1.45; }
+      .cell-secondary { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.45; overflow-wrap: anywhere; }
+      .cell-id-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+      .detail-link { min-height: 25px; padding: 0 7px; color: var(--gold); font-size: 11px; }
+      .text-preview {
+        display: -webkit-box;
+        overflow: hidden;
+        color: var(--muted);
         line-height: 1.55;
+        white-space: pre-wrap;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
       }
-      .chips {
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
+      .table-note { padding: 10px 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
       .chip {
         display: inline-flex;
         align-items: center;
@@ -230,22 +239,33 @@
         color: var(--muted);
         font-size: 12px;
       }
-      .status-new { color: var(--pink); border-color: var(--pink); }
-      .status-contacted { color: var(--lavender); border-color: var(--lavender); }
+      .status-new { color: var(--rose); border-color: var(--rose); }
+      .status-contacted { color: var(--plum); border-color: var(--plum); }
       .status-queued { color: var(--gold); border-color: var(--gold); }
       .status-done { color: var(--teal); border-color: var(--teal); }
       .status-hold { color: var(--red); border-color: var(--red); }
+      .row-status { min-width: 96px; padding: 7px 8px; font-size: 12px; }
       .detail-panel {
-        position: sticky;
-        top: 16px;
-        padding: 18px;
-        display: grid;
-        gap: 14px;
+        width: min(620px, calc(100vw - 32px));
+        max-height: min(88vh, 920px);
+        margin: auto;
+        padding: 0;
+        overflow: hidden;
+        color: var(--ink);
       }
+      .detail-panel::backdrop { background: rgba(8,7,6,.76); }
+      .detail-scroll { max-height: min(88vh, 920px); overflow: auto; padding: 22px; }
+      .detail-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+      .detail-close { width: 38px; min-width: 38px; padding: 0; font-size: 22px; line-height: 1; }
+      .detail-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+      .detail-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+      .detail-actions button { flex: 1; min-width: 138px; }
+      .detail-status { margin-top: 18px; }
+      .detail-status select { margin-top: 6px; }
       .detail-grid {
         display: grid;
-        grid-template-columns: 92px 1fr;
-        gap: 10px 12px;
+        grid-template-columns: 108px 1fr;
+        gap: 10px 14px;
         font-size: 13px;
       }
       .detail-grid span { color: var(--muted); }
@@ -257,7 +277,7 @@
       .message {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #120e1d;
+        background: #141210;
         padding: 12px;
         color: var(--ink);
         line-height: 1.65;
@@ -283,16 +303,36 @@
         transition: .2s ease;
       }
       .toast.show { opacity: 1; transform: translateY(0); }
+      @media (max-width: 1500px) {
+        .app { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); }
+        aside {
+          display: grid;
+          grid-template-columns: 200px minmax(0, 1fr) 220px;
+          align-items: center;
+          gap: 16px;
+          padding: 16px 24px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .nav-item { justify-content: center; }
+        .role-box { margin-top: 0; border-top: 0; border-left: 1px solid var(--line); padding: 0 0 0 16px; }
+        .table-wrap { max-height: none; }
+      }
       @media (max-width: 1100px) {
-        .app { grid-template-columns: 1fr; }
-        aside { border-right: 0; border-bottom: 1px solid var(--line); }
-        .board { grid-template-columns: 1fr; }
-        .detail-panel { position: static; }
+        aside { display: flex; align-items: stretch; padding: 20px 18px; }
+        .role-box { margin-top: auto; border-left: 0; border-top: 1px solid var(--line); padding: 16px 0 0; }
       }
       @media (max-width: 760px) {
         main { padding: 16px; }
         .topbar { align-items: stretch; flex-direction: column; }
-        .stats, .filters { grid-template-columns: 1fr; }
+        .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .stats .stat:last-child { grid-column: 1 / -1; }
+        .filters { grid-template-columns: 1fr; }
+        nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .detail-scroll { padding: 18px; }
+        .detail-grid { grid-template-columns: 1fr; gap: 4px; }
+        .detail-grid strong { margin-bottom: 8px; }
       }
     </style>
   </head>
@@ -300,11 +340,11 @@
     <section id="login" class="login">
       <div class="login-panel">
         <div class="brand">CDA</div>
-        <h1>网站申请通知</h1>
-        <p>实时查看官网申请，并一键转入排单后台。</p>
+        <h1>申请对接表</h1>
+        <p>查看官网申请，记录对接状态并转入排单。</p>
         <form id="loginForm">
           <label>后台密码<input id="password" type="password" autocomplete="current-password" autofocus /></label>
-          <button class="primary" type="submit">进入通知后台</button>
+          <button class="primary" type="submit">进入申请表</button>
           <div id="loginError" class="error"></div>
         </form>
       </div>
@@ -315,8 +355,8 @@
         <div class="brand-row">
           <div class="brand">CDA</div>
           <div>
-            <h1>申请通知</h1>
-            <p>线上同步 · 官网申请</p>
+            <h1>申请对接</h1>
+            <p>线上同步 · 助理协作</p>
           </div>
         </div>
         <nav>
@@ -337,12 +377,13 @@
       <main>
         <header class="topbar">
           <div>
-            <p class="eyebrow">Application Signal</p>
-            <h2>官网申请与预约通知</h2>
+            <p class="eyebrow">Application Desk</p>
+            <h2>官网申请对接表</h2>
           </div>
           <div class="actions">
             <button id="notifyBtn" class="ghost">开启通知</button>
             <button id="refreshBtn" class="ghost">刷新</button>
+            <button id="csvBtn" class="ghost">导出当前表格</button>
             <a class="ghost" href="order-admin.html" target="_blank" rel="noreferrer">打开排单后台</a>
           </div>
         </header>
@@ -356,53 +397,90 @@
         </section>
 
         <section class="board">
-          <div class="list-panel">
+          <div class="table-panel">
             <div class="filters">
               <input id="search" type="search" placeholder="搜索姓名、联系方式、服务、留言" />
-              <select id="typeFilter">
+              <select id="typeFilter" aria-label="筛选咨询类型">
                 <option value="all">全部类型</option>
-                <option value="爱人传讯">爱人传讯</option>
-                <option value="梦女">梦女</option>
-                <option value="课程">课程</option>
-                <option value="合作">合作</option>
+                <option value="lover_transmission">爱人传讯</option>
+                <option value="service_waitlist">传讯服务候补</option>
+                <option value="course_interest">课程方法内测</option>
+                <option value="transmitter_training">传讯师培养</option>
+                <option value="research_collaboration">研究共建者申请</option>
+                <option value="paper_access">论文与资料</option>
+                <option value="other">其他咨询</option>
               </select>
             </div>
-            <div id="list" class="list"></div>
-            <div id="empty" class="empty hidden">暂无申请。</div>
+            <div class="table-wrap">
+              <table aria-label="CDA 官网申请对接表">
+                <thead>
+                  <tr>
+                    <th class="col-id">编号 / 时间</th>
+                    <th class="col-person">申请人 / 联系方式</th>
+                    <th class="col-type">咨询类型 / 服务意向</th>
+                    <th class="col-role">身份</th>
+                    <th class="col-context">爱人 / 体验背景</th>
+                    <th class="col-message">具体问题（原话）</th>
+                    <th class="col-status">对接状态</th>
+                  </tr>
+                </thead>
+                <tbody id="applicationRows"></tbody>
+              </table>
+              <div id="empty" class="empty hidden">暂无申请。</div>
+            </div>
+            <div class="table-note">点击任意一行查看完整申请、更新状态或转入排单。</div>
           </div>
 
-          <div class="detail-panel">
-            <div>
-              <p class="eyebrow">Application Detail</p>
-              <h3 id="detailTitle">选择一条申请</h3>
+          <dialog id="detailPanel" class="detail-panel">
+            <div class="detail-scroll">
+              <div class="detail-head">
+                <div>
+                  <p class="eyebrow">Application Detail</p>
+                  <h3 id="detailTitle">申请详情</h3>
+                </div>
+                <button id="closeDetailBtn" class="detail-close ghost" type="button" title="关闭详情" aria-label="关闭详情">×</button>
+              </div>
+              <div class="detail-grid">
+                <span>称呼</span><strong id="dName">-</strong>
+                <span>联系方式</span><strong id="dContact">-</strong>
+                <span>申请时间</span><strong id="dTime">-</strong>
+                <span>咨询类型</span><strong id="dType">-</strong>
+                <span>服务意向</span><strong id="dService">-</strong>
+                <span>身份</span><strong id="dRole">-</strong>
+                <span>授权联系</span><strong id="dConsent">-</strong>
+                <span>语言</span><strong id="dLanguage">-</strong>
+              </div>
+              <div class="detail-section">
+                <p class="eyebrow">爱人 / 体验背景</p>
+                <div id="dContext" class="message">-</div>
+              </div>
+              <div class="detail-section">
+                <p class="eyebrow">具体问题（申请人原话）</p>
+                <div id="dMessage" class="message">-</div>
+              </div>
+              <details class="detail-section">
+                <summary class="muted">系统记录</summary>
+                <div class="detail-grid" style="margin-top: 14px">
+                  <span>IP</span><strong id="dIp">-</strong>
+                  <span>用户代理</span><strong id="dUserAgent">-</strong>
+                </div>
+              </details>
+              <label class="detail-status">对接状态
+                <select id="statusSelect">
+                  <option value="new">新申请</option>
+                  <option value="contacted">已联系</option>
+                  <option value="queued">已转排单</option>
+                  <option value="done">已完成</option>
+                  <option value="hold">暂缓</option>
+                </select>
+              </label>
+              <div class="detail-actions">
+                <button id="copyBtn" class="ghost" type="button">复制对接摘要</button>
+                <button id="saveStatusBtn" class="ghost" type="button">保存状态</button>
+                <button id="queueBtn" class="primary" type="button">转为排单</button>
+              </div>
             </div>
-            <div class="detail-grid">
-              <span>姓名</span><strong id="dName">-</strong>
-              <span>联系方式</span><strong id="dContact">-</strong>
-              <span>申请时间</span><strong id="dTime">-</strong>
-              <span>类型</span><strong id="dType">-</strong>
-              <span>服务</span><strong id="dService">-</strong>
-              <span>身份</span><strong id="dRole">-</strong>
-              <span>语境</span><strong id="dContext">-</strong>
-            </div>
-            <div>
-              <p class="eyebrow">Message</p>
-              <div id="dMessage" class="message">请选择左侧申请。</div>
-            </div>
-            <label>申请状态
-              <select id="statusSelect">
-                <option value="new">新申请</option>
-                <option value="contacted">已联系</option>
-                <option value="queued">已转排单</option>
-                <option value="done">已完成</option>
-                <option value="hold">暂缓</option>
-              </select>
-            </label>
-            <div class="actions">
-              <button id="saveStatusBtn" class="ghost">保存状态</button>
-              <button id="queueBtn" class="primary">转为排单</button>
-            </div>
-          </div>
+          </dialog>
         </section>
       </main>
     </section>
@@ -422,17 +500,40 @@
         seenLatest: Number(localStorage.getItem('cdaApplicationLatestId') || 0),
       }
       const $ = selector => document.querySelector(selector)
+      const applicationFields = [
+        ['编号', 'id'],
+        ['提交时间', 'timestamp'],
+        ['称呼', 'name'],
+        ['联系方式', 'contact'],
+        ['咨询类型', 'inquiry_label'],
+        ['咨询类型代码', 'inquiry_type'],
+        ['身份', 'role'],
+        ['服务意向', 'service_interest'],
+        ['爱人 / 体验背景', 'mj_context'],
+        ['具体问题', 'message'],
+        ['授权联系', 'consent'],
+        ['语言', 'language'],
+        ['对接状态', 'status'],
+        ['IP', 'ip'],
+        ['用户代理', 'user_agent'],
+      ]
 
       init()
 
       function init() {
         $('#loginForm').addEventListener('submit', login)
         $('#refreshBtn').addEventListener('click', loadApplications)
+        $('#csvBtn').addEventListener('click', exportCsv)
         $('#notifyBtn').addEventListener('click', requestNotify)
         $('#search').addEventListener('input', render)
         $('#typeFilter').addEventListener('change', render)
+        $('#closeDetailBtn').addEventListener('click', closeDetail)
+        $('#copyBtn').addEventListener('click', copyHandoff)
         $('#saveStatusBtn').addEventListener('click', saveStatus)
         $('#queueBtn').addEventListener('click', convertToOrder)
+        $('#detailPanel').addEventListener('click', event => {
+          if (event.target === $('#detailPanel')) closeDetail()
+        })
         document.querySelectorAll('.nav-item').forEach(button => {
           button.addEventListener('click', () => {
             state.status = button.dataset.status
@@ -468,7 +569,7 @@
         state.role = data.role || ''
         state.applications = data.applications || []
         $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
-        if (!state.selectedId && state.applications[0]) selectApplication(state.applications[0].id)
+        syncSelectedDetail()
         rememberLatest()
         render()
         toast('已同步申请')
@@ -480,6 +581,7 @@
           const data = await api('/admin/applications')
           state.role = data.role || state.role
           state.applications = data.applications || []
+          syncSelectedDetail()
           const latest = Math.max(0, ...state.applications.map(item => Number(item.id || 0)))
           render()
           if (latest > before) {
@@ -492,29 +594,35 @@
       }
 
       function render() {
-        const list = $('#list')
-        list.innerHTML = ''
+        const rows = $('#applicationRows')
+        rows.innerHTML = ''
         const apps = filtered()
         $('#empty').classList.toggle('hidden', apps.length > 0)
         apps.forEach(item => {
-          const row = document.createElement('article')
-          row.className = 'item'
-          row.classList.toggle('selected', item.id === state.selectedId)
+          const row = document.createElement('tr')
+          row.classList.toggle('selected', Number(item.id) === Number(state.selectedId))
           row.innerHTML = `
-            <div class="item-head">
-              <h3>${esc(item.name || '未命名')}</h3>
-              <span class="chip status-${item.status || 'new'}">${statusLabels[item.status || 'new'] || item.status || '新申请'}</span>
-            </div>
-            <p>${esc(item.contact || '')}</p>
-            <p>${esc(shortText(item.message || item.mj_context || '', 96))}</p>
-            <div class="chips">
-              <span class="chip">${esc(item.service_interest || item.inquiry_label || '未分类')}</span>
-              <span class="chip">${esc(item.role || '未填身份')}</span>
-              <span class="chip">${esc(displayTime(item.timestamp))}</span>
-            </div>
+            <td class="col-id"><div class="cell-id-head"><span class="cell-primary">#${esc(item.id || '')}</span><button class="detail-link ghost" type="button" aria-label="查看 ${esc(item.name || '该申请')} 的完整申请">详情</button></div><span class="cell-secondary">${esc(displayTime(item.timestamp) || '-')}</span></td>
+            <td class="col-person"><span class="cell-primary">${esc(item.name || '未命名')}</span><span class="cell-secondary">${esc(item.contact || '未填写')}</span></td>
+            <td class="col-type"><span class="cell-primary">${esc(item.inquiry_label || item.inquiry_type || '未分类')}</span><span class="cell-secondary">${esc(item.service_interest || '未填写')}</span></td>
+            <td class="col-role"><span class="text-preview">${esc(item.role || '未填写')}</span></td>
+            <td class="col-context"><span class="text-preview">${esc(item.mj_context || '未填写')}</span></td>
+            <td class="col-message"><span class="text-preview">${esc(item.message || '未填写')}</span></td>
+            <td class="col-status"><select class="row-status status-${esc(normalizeStatus(item.status))}" aria-label="修改 ${esc(item.name || '该申请')} 的对接状态">${statusOptions(item.status)}</select></td>
           `
+          const statusSelect = row.querySelector('.row-status')
+          const detailButton = row.querySelector('.detail-link')
+          detailButton.addEventListener('click', event => {
+            event.stopPropagation()
+            selectApplication(item.id)
+          })
+          statusSelect.addEventListener('click', event => event.stopPropagation())
+          statusSelect.addEventListener('change', async event => {
+            event.stopPropagation()
+            await updateStatus(item.id, event.target.value)
+          })
           row.addEventListener('click', () => selectApplication(item.id))
-          list.append(row)
+          rows.append(row)
         })
         renderStats()
       }
@@ -522,32 +630,44 @@
       function filtered() {
         const q = $('#search').value.trim().toLowerCase()
         const type = $('#typeFilter').value
+        const statusRank = { new: 0, contacted: 1, queued: 2, done: 3, hold: 4 }
         return state.applications.filter(item => {
           const status = item.status || 'new'
           if (state.status !== 'all' && status !== state.status) return false
+          if (type === 'lover_transmission' && item.service_interest !== '爱人传讯与关系梳理') return false
+          if (type !== 'all' && type !== 'lover_transmission' && item.inquiry_type !== type) return false
           const haystack = [
             item.name, item.contact, item.inquiry_type, item.inquiry_label, item.role,
             item.service_interest, item.mj_context, item.message, item.language,
           ].join(' ').toLowerCase()
-          if (type !== 'all' && !haystack.includes(type.toLowerCase())) return false
           if (q && !haystack.includes(q)) return false
           return true
+        }).sort((a, b) => {
+          const rankA = statusRank[a.status || 'new'] ?? 99
+          const rankB = statusRank[b.status || 'new'] ?? 99
+          return rankA - rankB || Number(b.id || 0) - Number(a.id || 0)
         })
       }
 
       function renderStats() {
-        const today = new Date().toISOString().slice(0, 10)
         $('#statTotal').textContent = state.applications.length
         $('#statNew').textContent = state.applications.filter(item => (item.status || 'new') === 'new').length
-        $('#statTransmission').textContent = state.applications.filter(item => String(item.service_interest || item.inquiry_label || '').includes('传讯')).length
+        $('#statTransmission').textContent = state.applications.filter(item => item.service_interest === '爱人传讯与关系梳理').length
         $('#statQueued').textContent = state.applications.filter(item => item.status === 'queued').length
-        $('#statToday').textContent = state.applications.filter(item => String(item.timestamp || '').startsWith(today)).length
+        $('#statToday').textContent = state.applications.filter(item => isToday(item.timestamp)).length
       }
 
       function selectApplication(id) {
         const item = state.applications.find(row => row.id === id)
         if (!item) return
         state.selectedId = id
+        fillDetail(item)
+        render()
+        const dialog = $('#detailPanel')
+        if (!dialog.open) dialog.showModal()
+      }
+
+      function fillDetail(item) {
         $('#detailTitle').textContent = `申请 #${item.id}`
         $('#dName').textContent = item.name || '-'
         $('#dContact').textContent = item.contact || '-'
@@ -555,28 +675,123 @@
         $('#dType').textContent = item.inquiry_label || item.inquiry_type || '-'
         $('#dService').textContent = item.service_interest || '-'
         $('#dRole').textContent = item.role || '-'
-        $('#dContext').textContent = item.mj_context || '-'
-        $('#dMessage').textContent = item.message || '-'
+        $('#dConsent').textContent = Number(item.consent) ? '已授权' : '未授权'
+        $('#dLanguage').textContent = item.language || '-'
+        $('#dContext').textContent = item.mj_context || '未填写'
+        $('#dMessage').textContent = item.message || '未填写'
+        $('#dIp').textContent = item.ip || '-'
+        $('#dUserAgent').textContent = item.user_agent || '-'
         $('#statusSelect').value = item.status || 'new'
-        render()
+        $('#queueBtn').disabled = item.status === 'queued'
+        $('#queueBtn').textContent = item.status === 'queued' ? '已转入排单' : '转为排单'
+      }
+
+      function closeDetail() {
+        const dialog = $('#detailPanel')
+        if (dialog.open) dialog.close()
+      }
+
+      function syncSelectedDetail() {
+        if (!state.selectedId) return
+        const item = state.applications.find(row => Number(row.id) === Number(state.selectedId))
+        if (!item) {
+          state.selectedId = 0
+          closeDetail()
+          return
+        }
+        if ($('#detailPanel').open) fillDetail(item)
       }
 
       async function saveStatus() {
         if (!state.selectedId) return toast('先选择一条申请')
-        const updated = await api('/admin/applications', {
-          method: 'PUT',
-          body: { id: state.selectedId, status: $('#statusSelect').value },
-        })
-        const index = state.applications.findIndex(item => item.id === updated.id)
-        if (index !== -1) state.applications[index] = updated
-        render()
-        selectApplication(updated.id)
-        toast('状态已保存')
+        const updated = await updateStatus(state.selectedId, $('#statusSelect').value, true)
+        if (['new', 'contacted'].includes(updated.status)) {
+          state.status = updated.status
+          document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === updated.status))
+          render()
+        }
+      }
+
+      async function updateStatus(id, status, keepDetail = false) {
+        try {
+          const updated = await api('/admin/applications', {
+            method: 'PUT',
+            body: { id, status },
+          })
+          const index = state.applications.findIndex(item => Number(item.id) === Number(updated.id))
+          if (index !== -1) state.applications[index] = updated
+          render()
+          if (keepDetail || Number(state.selectedId) === Number(updated.id)) fillDetail(updated)
+          toast('状态已保存')
+          return updated
+        } catch (error) {
+          render()
+          toast(error.message || '状态保存失败')
+          throw error
+        }
+      }
+
+      async function copyHandoff() {
+        const item = state.applications.find(row => Number(row.id) === Number(state.selectedId))
+        if (!item) return toast('先选择一条申请')
+        const summary = [
+          `CDA 申请对接 #${item.id}`,
+          `提交时间：${displayTime(item.timestamp) || '未填写'}`,
+          `称呼：${item.name || '未填写'}`,
+          `联系方式：${item.contact || '未填写'}`,
+          `咨询类型：${item.inquiry_label || item.inquiry_type || '未分类'}`,
+          `身份：${item.role || '未填写'}`,
+          `服务意向：${item.service_interest || '未填写'}`,
+          `爱人 / 体验背景：${item.mj_context || '未填写'}`,
+          `具体问题：${item.message || '未填写'}`,
+          `对接状态：${statusLabels[item.status || 'new'] || item.status || '新申请'}`,
+        ].join('\n')
+        try {
+          await navigator.clipboard.writeText(summary)
+        } catch {
+          const input = document.createElement('textarea')
+          input.value = summary
+          input.style.position = 'fixed'
+          input.style.opacity = '0'
+          document.body.append(input)
+          input.select()
+          document.execCommand('copy')
+          input.remove()
+        }
+        toast('对接摘要已复制')
+      }
+
+      function exportCsv() {
+        const rows = filtered()
+        if (!rows.length) return toast('当前没有可导出的申请')
+        const headers = applicationFields.map(([label]) => label)
+        const values = rows.map(item => applicationFields.map(([, key]) => {
+          if (key === 'timestamp') return displayTime(item[key])
+          if (key === 'inquiry_label') return item[key] || item.inquiry_type || ''
+          if (key === 'service_interest') return item[key] || ''
+          if (key === 'consent') return Number(item[key]) ? '是' : '否'
+          if (key === 'status') return statusLabels[item[key] || 'new'] || item[key] || '新申请'
+          return item[key] || ''
+        }))
+        const csv = '\uFEFF' + [headers, ...values].map(row => row.map(csvCell).join(',')).join('\n') + '\n'
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = `CDA申请对接表-${localDateKey(new Date())}.csv`
+        link.click()
+        URL.revokeObjectURL(url)
+        toast(`已导出 ${rows.length} 条申请`)
+      }
+
+      function csvCell(value) {
+        return `"${String(value ?? '').replaceAll('"', '""')}"`
       }
 
       async function convertToOrder() {
         const item = state.applications.find(row => row.id === state.selectedId)
         if (!item) return toast('先选择一条申请')
+        if (item.status === 'queued') return toast('这条申请已经转入排单')
         const service = item.service_interest || item.inquiry_label || '新人传讯'
         await api('/admin/orders', {
           method: 'POST',
@@ -591,7 +806,7 @@
             payment_status: '未付款',
             tags: [item.role, item.inquiry_label, item.service_interest].filter(Boolean),
             deliverable: '',
-            notes: `由官网申请 #${item.id} 转入排单\\n\\nMJ 语境：${item.mj_context || ''}\\n\\n留言：${item.message || ''}`,
+            notes: `由官网申请 #${item.id} 转入排单\n\n爱人 / 体验背景：${item.mj_context || ''}\n\n具体问题：${item.message || ''}`,
           },
         })
         await api('/admin/applications', {
@@ -638,10 +853,39 @@
         if (value.includes('诊断')) return '深度诊断'
         return '其他'
       }
-      function displayTime(value) { return value ? String(value).replace('T', ' ').slice(0, 16) : '' }
-      function shortText(value, max) {
-        const text = String(value || '').replace(/\\s+/g, ' ').trim()
-        return text.length > max ? `${text.slice(0, max)}...` : text
+      function normalizeStatus(value) {
+        return Object.hasOwn(statusLabels, value) ? value : 'new'
+      }
+      function statusOptions(value) {
+        const selected = normalizeStatus(value)
+        return Object.entries(statusLabels).map(([key, label]) =>
+          `<option value="${key}"${key === selected ? ' selected' : ''}>${label}</option>`
+        ).join('')
+      }
+      function parseTimestamp(value) {
+        if (!value) return null
+        const raw = String(value)
+        const normalized = raw.includes('T') ? raw : raw.replace(' ', 'T')
+        const date = new Date(/(?:Z|[+-]\d{2}:?\d{2})$/.test(normalized) ? normalized : `${normalized}Z`)
+        return Number.isNaN(date.getTime()) ? null : date
+      }
+      function displayTime(value) {
+        if (!value) return ''
+        const raw = String(value)
+        const date = parseTimestamp(raw)
+        if (!date) return raw.replace('T', ' ').slice(0, 16)
+        return date.toLocaleString('zh-CN', {
+          timeZone: 'Asia/Shanghai',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', hour12: false,
+        }).replaceAll('/', '-')
+      }
+      function localDateKey(value) {
+        return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai' }).format(value)
+      }
+      function isToday(value) {
+        const date = parseTimestamp(value)
+        return date ? localDateKey(date) === localDateKey(new Date()) : false
       }
       function toast(message) {
         const el = $('#toast')
