@@ -26,6 +26,7 @@ const dashboardPath = path.join(desktopDir, 'CDA后台中心.html')
 const siteUrl = 'https://lilith-snake.github.io/cda-website'
 const applicationUrl = `${siteUrl}/application-notify.html`
 const orderUrl = `${siteUrl}/order-admin.html`
+const orderAdminUrl = `${siteUrl}/order-admin.html?admin=1`
 
 async function main() {
   await mkdir(desktopDir, { recursive: true })
@@ -77,6 +78,16 @@ async function createDesktopCommands() {
   await createCommand('打开排单预约后台.command', [
     '#!/bin/zsh',
     `/usr/bin/open "${orderUrl}"`,
+  ].join('\n'))
+
+  await createCommand('打开管理员排单后台.command', [
+    '#!/bin/zsh',
+    `pbcopy < "${passwordPath}"`,
+    `/usr/bin/open "${orderAdminUrl}"`,
+    'echo "管理员密码已复制到剪贴板，已打开管理员排单后台。"',
+    'echo ""',
+    'echo "按任意键关闭。"',
+    'read -k 1',
   ].join('\n'))
 
   await createCommand('打开本机CDA后台.command', [
@@ -232,6 +243,10 @@ function dashboardHtml() {
         <a href="${orderUrl}">
           <strong>排单预约后台</strong>
           <span>查看和编辑预约排单、负责人、金额、交付进度。</span>
+        </a>
+        <a href="${orderAdminUrl}">
+          <strong>管理员排单后台</strong>
+          <span>管理员专用，可删除排单。</span>
         </a>
         <a href="file://${path.join(desktopDir, 'CDA本机后台.html')}">
           <strong>本机汇总后台</strong>

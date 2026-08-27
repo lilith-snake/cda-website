@@ -340,6 +340,7 @@
             <button id="refreshBtn" class="ghost">刷新</button>
             <button id="csvBtn" class="ghost">导出 CSV</button>
             <button id="deleteBtn" class="danger" disabled>选择排单后删除</button>
+            <button id="switchAdminBtn" class="ghost">切换管理员</button>
             <button id="newBtn" class="primary">新增排单</button>
           </div>
         </header>
@@ -440,6 +441,9 @@
       const API_BASE = location.hostname.endsWith('github.io')
         ? 'https://cda-website-3t2.pages.dev/api'
         : '/api'
+      const urlParams = new URLSearchParams(location.search)
+      const forceAdminLogin = urlParams.get('admin') === '1' || urlParams.get('role') === 'admin'
+      if (forceAdminLogin) sessionStorage.removeItem('cdaOrderPassword')
 
       const serviceTypes = ['新人传讯', '梦女互助', '记录陪跑', '深度诊断', '课程/训练营', '会员/长期服务', '其他']
       const statuses = ['new', 'contacted', 'paid', 'scheduled', 'in_progress', 'done', 'hold', 'refund']
@@ -450,7 +454,7 @@
       const infoLabels = { '未确认': '未确认', '已确认': '已确认', '待补充': '待补充', '无需': '无需' }
       const intentLabels = { low: '低', normal: '普通', high: '高' }
       const state = {
-        password: sessionStorage.getItem('cdaOrderPassword') || '',
+        password: forceAdminLogin ? '' : (sessionStorage.getItem('cdaOrderPassword') || ''),
         role: '',
         orders: [],
         selectedId: 0,
@@ -475,6 +479,7 @@
         $('#clearBtn').addEventListener('click', resetForm)
         $('#csvBtn').addEventListener('click', exportCsv)
         $('#deleteBtn').addEventListener('click', deleteSelected)
+        $('#switchAdminBtn').addEventListener('click', switchAdmin)
         $('#search').addEventListener('input', render)
         $('#serviceFilter').addEventListener('change', render)
         $('#priorityFilter').addEventListener('change', render)
@@ -491,6 +496,12 @@
             render()
           })
         })
+        if (forceAdminLogin) {
+          document.title = 'CDA 管理员排单后台'
+          document.querySelector('.login h1').textContent = '管理员排单后台'
+          document.querySelector('.login p').textContent = '请输入管理员密码，管理员可删除排单。'
+          document.querySelector('.topbar h2').textContent = '管理员排单与删除'
+        }
         if (state.password) showApp()
       }
 
@@ -664,6 +675,11 @@
         button.disabled = false
         button.textContent = '删除选中'
         button.title = '删除当前选中的排单'
+      }
+
+      function switchAdmin() {
+        sessionStorage.removeItem('cdaOrderPassword')
+        location.href = `${location.pathname}?admin=1`
       }
 
       async function exportCsv() {
