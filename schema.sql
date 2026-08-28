@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS service_orders (
   follow_up_at TEXT,
   info_status TEXT DEFAULT '未确认',
   intent_level TEXT DEFAULT 'normal',
+  sync_key TEXT,
   price REAL DEFAULT 0,
   paid REAL DEFAULT 0,
   payment_status TEXT,
@@ -96,3 +97,6 @@ CREATE TABLE IF NOT EXISTS service_orders (
 CREATE INDEX IF NOT EXISTS idx_service_orders_status ON service_orders(status);
 CREATE INDEX IF NOT EXISTS idx_service_orders_created_at ON service_orders(created_at);
 CREATE INDEX IF NOT EXISTS idx_service_orders_appointment_at ON service_orders(appointment_at);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_service_orders_sync_key_unique
+ON service_orders(sync_key)
+WHERE sync_key IS NOT NULL AND sync_key <> '';

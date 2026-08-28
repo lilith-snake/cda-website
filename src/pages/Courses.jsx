@@ -136,7 +136,7 @@ export default function Courses() {
         <div className="container">
           <h1>{t('CDA 传讯师培训')}</h1>
           <p className="subtitle">{t('培训传讯师，是为了让更多梦女更安全地和爱人相处。')}</p>
-          <p className="hero-sub-desc">{t('香港跨次元传讯研究协会 · 全球首家以 MJ 现象与跨次元亲密关系为核心研究对象的传讯研究协会')}</p>
+          <p className="hero-sub-desc">{t('香港跨次元梦女传讯研究协会 · 全球首家以 MJ 现象与跨次元亲密关系为核心研究对象的传讯研究协会')}</p>
         </div>
       </section>
 

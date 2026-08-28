@@ -25,7 +25,7 @@ const stderrPath = path.join(logsDir, 'cda-contact-notifier.launchd.err.log')
 const dashboardPath = path.join(desktopDir, 'CDA后台中心.html')
 const siteUrl = 'https://lilith-snake.github.io/cda-website'
 const applicationUrl = `${siteUrl}/application-notify.html`
-const orderUrl = `${siteUrl}/order-admin.html`
+const orderAssistantUrl = `${siteUrl}/order-assistant.html`
 const orderAdminUrl = `${siteUrl}/order-admin.html?admin=1`
 
 async function main() {
@@ -75,9 +75,14 @@ async function createDesktopCommands() {
     `/usr/bin/open "${applicationUrl}"`,
   ].join('\n'))
 
+  await createCommand('打开助理排单后台.command', [
+    '#!/bin/zsh',
+    `/usr/bin/open "${orderAssistantUrl}"`,
+  ].join('\n'))
+
   await createCommand('打开排单预约后台.command', [
     '#!/bin/zsh',
-    `/usr/bin/open "${orderUrl}"`,
+    `/usr/bin/open "${orderAssistantUrl}"`,
   ].join('\n'))
 
   await createCommand('打开管理员排单后台.command', [
@@ -234,15 +239,15 @@ function dashboardHtml() {
     <main>
       <div class="brand">CDA</div>
       <h1>后台中心</h1>
-      <p>本机入口已开启实时通知；每 20 秒审查新官网申请、新排单和已有排单修改。申请和排单数据在线同步，助理打开同一链接也能看到最新内容。</p>
+      <p>本机入口已开启实时通知；每 20 秒审查新官网申请、新排单和已有排单修改。申请和排单数据在线同步，助理和管理员分别打开各自入口也能看到最新内容。</p>
       <section class="grid">
         <a href="${applicationUrl}">
           <strong>网站申请后台</strong>
           <span>查看官网申请、更新对接状态、转入排单。</span>
         </a>
-        <a href="${orderUrl}">
-          <strong>排单预约后台</strong>
-          <span>查看和编辑预约排单、负责人、金额、交付进度。</span>
+        <a href="${orderAssistantUrl}">
+          <strong>助理排单后台</strong>
+          <span>助理可新增、编辑、确认交付。</span>
         </a>
         <a href="${orderAdminUrl}">
           <strong>管理员排单后台</strong>

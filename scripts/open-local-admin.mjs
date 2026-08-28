@@ -124,7 +124,8 @@ function renderHtml({ contacts, orders, surveys }) {
   <div class="meta">生成时间：${escapeHtml(new Date().toLocaleString())} · 数据从 Cloudflare D1 后台接口读取，文件仅保存在本机。</div>
   <div class="links">
     <a href="https://lilith-snake.github.io/cda-website/application-notify.html">打开实时网站申请后台</a>
-    <a href="https://lilith-snake.github.io/cda-website/order-admin.html">打开实时排单预约后台</a>
+    <a href="https://lilith-snake.github.io/cda-website/order-assistant.html">打开助理排单后台</a>
+    <a href="https://lilith-snake.github.io/cda-website/order-admin.html?admin=1">打开管理员排单后台</a>
   </div>
   <div class="stats">
     <div class="stat"><strong>${contacts.length}</strong>官网申请</div>

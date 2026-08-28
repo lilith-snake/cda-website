@@ -28,42 +28,55 @@ export async function onRequest(context) {
       if (!order.client_name) {
         return corsJson({ error: 'client name required' }, 400)
       }
-      const queueNo = await nextQueueNo(context.env.DB)
-      const result = await context.env.DB.prepare(`
-        INSERT INTO service_orders (
-          queue_no, created_at, updated_at,
-          client_name, contact, channel, source, service_type, status, priority,
-          practitioner, appointment_at, deadline_at, follow_up_at,
-          info_status, intent_level,
-          price, paid, payment_status, tags, deliverable, notes
-        ) VALUES (
-          ?, datetime('now'), datetime('now'),
-          ?, ?, ?, ?, ?, ?, ?,
-          ?, ?, ?, ?,
-          ?, ?, ?, ?, ?, ?, ?
-        )
-      `).bind(
-        queueNo,
-        order.client_name,
-        order.contact,
-        order.channel,
-        order.source,
-        order.service_type,
-        order.status,
-        order.priority,
-        order.practitioner,
-        order.appointment_at,
-        order.deadline_at,
-        order.follow_up_at,
-        order.info_status,
-        order.intent_level,
-        order.price,
-        order.paid,
-        order.payment_status,
-        order.tags,
-        order.deliverable,
-        order.notes,
-      ).run()
+      const existing = order.sync_key ? await getOrderBySyncKey(context.env.DB, order.sync_key) : null
+      if (existing) {
+        return corsJson(existing)
+      }
+      const queueNo = order.queue_no || await nextQueueNo(context.env.DB)
+      let result
+      try {
+        result = await context.env.DB.prepare(`
+          INSERT INTO service_orders (
+            queue_no, created_at, updated_at,
+            client_name, contact, channel, source, service_type, status, priority,
+            practitioner, appointment_at, deadline_at, follow_up_at,
+            info_status, intent_level, sync_key,
+            price, paid, payment_status, tags, deliverable, notes
+          ) VALUES (
+            ?, datetime('now'), datetime('now'),
+            ?, ?, ?, ?, ?, ?, ?,
+            ?, ?, ?, ?,
+            ?, ?, ?,
+            ?, ?, ?, ?, ?, ?
+          )
+        `).bind(
+          queueNo,
+          order.client_name,
+          order.contact,
+          order.channel,
+          order.source,
+          order.service_type,
+          order.status,
+          order.priority,
+          order.practitioner,
+          order.appointment_at,
+          order.deadline_at,
+          order.follow_up_at,
+          order.info_status,
+          order.intent_level,
+          order.sync_key,
+          order.price,
+          order.paid,
+          order.payment_status,
+          order.tags,
+          order.deliverable,
+          order.notes,
+        ).run()
+      } catch (error) {
+        const raced = order.sync_key ? await getOrderBySyncKey(context.env.DB, order.sync_key) : null
+        if (raced) return corsJson(raced)
+        throw error
+      }
 
       const created = await getOrder(context.env.DB, result.meta.last_row_id)
       return corsJson(created, 201)
@@ -77,38 +90,7 @@ export async function onRequest(context) {
       if (!exists) return corsJson({ error: 'order not found' }, 404)
 
       const order = cleanOrder(body)
-      await context.env.DB.prepare(`
-        UPDATE service_orders SET
-          updated_at = datetime('now'),
-          client_name = ?, contact = ?, channel = ?, source = ?,
-          service_type = ?, status = ?, priority = ?, practitioner = ?,
-          appointment_at = ?, deadline_at = ?, follow_up_at = ?,
-          info_status = ?, intent_level = ?,
-          price = ?, paid = ?, payment_status = ?, tags = ?,
-          deliverable = ?, notes = ?
-        WHERE id = ?
-      `).bind(
-        order.client_name,
-        order.contact,
-        order.channel,
-        order.source,
-        order.service_type,
-        order.status,
-        order.priority,
-        order.practitioner,
-        order.appointment_at,
-        order.deadline_at,
-        order.follow_up_at,
-        order.info_status,
-        order.intent_level,
-        order.price,
-        order.paid,
-        order.payment_status,
-        order.tags,
-        order.deliverable,
-        order.notes,
-        id,
-      ).run()
+      await updateOrder(context.env.DB, id, order)
 
       return corsJson(await getOrder(context.env.DB, id))
     }
@@ -119,8 +101,11 @@ export async function onRequest(context) {
       }
       const url = new URL(context.request.url)
       const id = Number(url.searchParams.get('id'))
-      if (!id) return corsJson({ error: 'id required' }, 400)
-      await context.env.DB.prepare('DELETE FROM service_orders WHERE id = ?').bind(id).run()
+      const syncKey = clean(url.searchParams.get('sync_key') || url.searchParams.get('syncKey'), 120)
+      if (!id && !syncKey) return corsJson({ error: 'id required' }, 400)
+      const target = id ? await getOrder(context.env.DB, id) : await getOrderBySyncKey(context.env.DB, syncKey)
+      if (!target) return corsJson({ error: 'order not found' }, 404)
+      await context.env.DB.prepare('DELETE FROM service_orders WHERE id = ?').bind(target.id).run()
       return corsJson({ ok: true })
     }
 
@@ -160,6 +145,7 @@ async function ensureOrdersTable(db) {
       follow_up_at TEXT,
       info_status TEXT DEFAULT '未确认',
       intent_level TEXT DEFAULT 'normal',
+      sync_key TEXT,
       price REAL DEFAULT 0,
       paid REAL DEFAULT 0,
       payment_status TEXT,
@@ -180,12 +166,18 @@ async function ensureOrderColumns(db) {
   const additions = [
     ['info_status', "TEXT DEFAULT '未确认'"],
     ['intent_level', "TEXT DEFAULT 'normal'"],
+    ['sync_key', 'TEXT'],
   ]
   for (const [name, definition] of additions) {
     if (!existing.has(name)) {
       await db.prepare(`ALTER TABLE service_orders ADD COLUMN ${name} ${definition}`).run()
     }
   }
+  await db.prepare(`
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_service_orders_sync_key_unique
+    ON service_orders(sync_key)
+    WHERE sync_key IS NOT NULL AND sync_key <> ''
+  `).run()
 }
 
 async function listOrders(db) {
@@ -196,6 +188,50 @@ async function listOrders(db) {
 async function getOrder(db, id) {
   const row = await db.prepare('SELECT * FROM service_orders WHERE id = ?').bind(id).first()
   return row ? parseOrder(row) : null
+}
+
+async function getOrderBySyncKey(db, syncKey) {
+  if (!syncKey) return null
+  const row = await db.prepare('SELECT * FROM service_orders WHERE sync_key = ?').bind(syncKey).first()
+  return row ? parseOrder(row) : null
+}
+
+async function updateOrder(db, id, order) {
+  await db.prepare(`
+    UPDATE service_orders SET
+      updated_at = datetime('now'),
+      queue_no = COALESCE(?, queue_no),
+      client_name = ?, contact = ?, channel = ?, source = ?,
+      service_type = ?, status = ?, priority = ?, practitioner = ?,
+      appointment_at = ?, deadline_at = ?, follow_up_at = ?,
+      info_status = ?, intent_level = ?, sync_key = COALESCE(?, sync_key),
+      price = ?, paid = ?, payment_status = ?, tags = ?,
+      deliverable = ?, notes = ?
+    WHERE id = ?
+  `).bind(
+    order.queue_no || null,
+    order.client_name,
+    order.contact,
+    order.channel,
+    order.source,
+    order.service_type,
+    order.status,
+    order.priority,
+    order.practitioner,
+    order.appointment_at,
+    order.deadline_at,
+    order.follow_up_at,
+    order.info_status,
+    order.intent_level,
+    order.sync_key || null,
+    order.price,
+    order.paid,
+    order.payment_status,
+    order.tags,
+    order.deliverable,
+    order.notes,
+    id,
+  ).run()
 }
 
 async function nextQueueNo(db) {
@@ -221,6 +257,7 @@ function parseOrder(row) {
 
 function cleanOrder(body = {}) {
   return {
+    queue_no: clean(body.queue_no || body.queueNo, 80),
     client_name: clean(body.client_name || body.clientName, 120),
     contact: clean(body.contact, 200),
     channel: clean(body.channel, 120),
@@ -234,6 +271,7 @@ function cleanOrder(body = {}) {
     follow_up_at: clean(body.follow_up_at || body.followUpAt, 80),
     info_status: normalizeChoice(body.info_status || body.infoStatus, ['未确认', '已确认', '待补充', '无需'], '未确认'),
     intent_level: normalizeChoice(body.intent_level || body.intentLevel, ['low', 'normal', 'high'], 'normal'),
+    sync_key: clean(body.sync_key || body.syncKey, 120),
     price: Number(body.price || 0),
     paid: Number(body.paid || 0),
     payment_status: clean(body.payment_status || body.paymentStatus || '未付款', 80),

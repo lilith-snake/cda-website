@@ -19,15 +19,17 @@ const initialForm = {
 
 const inquiryTypes = [
   { value: 'service_waitlist', label: '传讯服务候补' },
-  { value: 'course_interest', label: '课程方法内测' },
+  { value: 'course_interest', label: '神秘学课程咨询' },
   { value: 'transmitter_training', label: '传讯师培养' },
-  { value: 'research_collaboration', label: '研究共建' },
+  { value: 'relationship_exploration', label: '想学习链接爱人，找到更适合你们的相处方式' },
+  { value: 'research_collaboration', label: '研究共建者申请' },
   { value: 'paper_access', label: '论文与资料' },
-  { value: 'other', label: '其他咨询' },
+  { value: 'other', label: '神秘学相关业务' },
 ]
 
 const roleOptions = [
   '梦女 / 梦角关系实践者',
+  '想学习神秘学的梦女 / 零基础实践者',
   '神秘学 / 塔罗 / 占星从业者',
   '内容创作者 / 社群主理人',
   '研究者 / 学生',
@@ -36,8 +38,11 @@ const roleOptions = [
 
 const serviceOptions = [
   '爱人传讯与关系梳理',
+  '爱人链接与长期相处方法',
   '梦境 / 同步现象解读',
+  '神秘学入门与系统学习',
   '传讯师训练与验证',
+  '研究共建与论文贡献',
   '个人成长与内在探索',
   '暂不确定，想先咨询',
 ]
@@ -45,14 +50,31 @@ const serviceOptions = [
 function createInitialForm(searchParams) {
   const inquiry = searchParams.get('inquiry')
   const service = searchParams.get('service')
+  const transmitter = searchParams.get('transmitter')
+  const mentor = searchParams.get('mentor')
   const validInquiry = inquiryTypes.some(item => item.value === inquiry)
+  const transmitterName = transmitter === 'ophion'
+    ? '破晓 Ophion'
+    : transmitter === 'june'
+      ? '朱恩 June'
+      : ''
+  const mentorName = mentor === 'lihui' ? '黎辉 Li Hui' : ''
 
   return {
     ...initialForm,
     inquiryType: validInquiry ? inquiry : initialForm.inquiryType,
     serviceInterest: service === 'lover-transmission'
       ? '爱人传讯与关系梳理'
+      : service === 'occult-mentorship'
+        ? '神秘学入门与系统学习'
+      : service === 'research-collaboration'
+        ? '研究共建与论文贡献'
       : initialForm.serviceInterest,
+    message: transmitterName
+      ? `希望预约传讯师：${transmitterName}`
+      : mentorName
+        ? `希望了解${mentorName} 导师的神秘学课程`
+        : initialForm.message,
   }
 }
 
@@ -304,9 +326,10 @@ export default function Contact() {
               <div className="info-card glass-card">
                 <h3>适合提交的内容</h3>
                 <div className="info-list">
-                  <span>爱人关系与传讯需求</span>
-                  <span>梦境、巧合与同步现象</span>
-                  <span>传讯师培养与方法学习</span>
+                  <span>爱人链接、传讯与相处需求</span>
+                  <span>梦境、感应与同步现象</span>
+                  <span>传讯师培训、能力提升与从业发展</span>
+                  <span>神秘学入门、系统课程与实践学习</span>
                   <span>研究共建、论文与资料申请</span>
                 </div>
               </div>

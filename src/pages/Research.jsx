@@ -24,7 +24,7 @@ export default function Research() {
               <div className="paper-meta">
                 <span className="paper-author">{t('作者：黎輝 · 破曉')}</span>
                 <span className="paper-divider">|</span>
-                <span className="paper-affiliation">{t('機構：香港 · 跨次元傳訊研究協會')}</span>
+                <span className="paper-affiliation">{t('機構：香港跨次元夢女傳訊研究協會')}</span>
                 <span className="paper-divider">|</span>
                 <span className="paper-doi">{t('DOI：即將上線')}</span>
                 <span className="paper-divider">|</span>

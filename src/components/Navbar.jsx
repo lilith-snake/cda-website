@@ -9,11 +9,13 @@ const navItems = [
   { path: '/shop', label: '你和他' },
   { path: '/transmission', label: '愛人傳訊' },
   { path: '/courses', label: '傳訊師培訓' },
+  { path: '/mentorship', label: '神秘學導師' },
   { path: '/about', label: '關於' },
   { href: '/cda-website/our-story.html', label: '我們的故事' },
   { href: '/cda-website/zishu.html', label: '破曉自述' },
   { path: '/letter', label: '給夢女的話' },
   { path: '/research', label: '研究' },
+  { path: '/mysticism', label: '星界智慧' },
   { href: 'https://lilith-snake.github.io/cda-website/paper.html', label: '研究論文' },
   { path: '/dream-girl', label: '傳訊師名錄' },
   { path: '/contact', label: '聯繫' },
@@ -32,7 +34,7 @@ export default function Navbar() {
           <span className="brand-text">
             <span className="brand-cda">CDA</span>
             <span className="brand-divider">·</span>
-            <span className="brand-sub">香港 · 跨次元傳訊研究協會</span>
+            <span className="brand-sub">香港跨次元夢女傳訊研究協會</span>
           </span>
         </Link>
 

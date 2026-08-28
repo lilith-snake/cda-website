@@ -144,7 +144,44 @@
 }
 
 /* --- 響應式 --- */
-@media (max-width: 900px) {
+@media (min-width: 1181px) {
+  :root {
+    --nav-height: 108px;
+  }
+
+  .navbar-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 64px 44px;
+    column-gap: 16px;
+    row-gap: 0;
+  }
+
+  .navbar-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .navbar-actions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .navbar-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    border-top: 1px solid var(--color-border);
+    overflow: visible;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1180px) {
   .menu-toggle {
     display: flex;
   }
@@ -159,8 +196,12 @@
     z-index: 9999;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
+    padding: 24px 0 calc(24px + env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     transform: translateX(100%);
     transition: transform 0.35s ease;
     pointer-events: none;

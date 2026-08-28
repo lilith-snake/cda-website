@@ -224,7 +224,7 @@ const zhHant = {
   // 選項 — 成為傳訊者
   'alreadyTransmitter': '已經是傳訊師',
   'wantToTransmit': '想學習並成為傳訊師',
-  'curious': '好奇，還在考慮',
+  'curiousTransmitter': '好奇，還在考慮',
   'onlyWantToReceive': '只想接收訊息',
   'noInterest': '沒有興趣',
 
@@ -302,12 +302,12 @@ const zhHant = {
   'thanksContribution3': '夢女群體需要更多人的力量——需要更專業、更可信、讓外面的人不再只是嘲笑，而是願意停下來，認真聽我們在說什麼。',
   'thanksContribution4': '謝謝你，和我們站在一起。',
   'backupSaved': '已儲存 {count} 份本地備份。',
-  'thanksFooter': '— 香港 · 跨次元傳訊研究協會',
+  'thanksFooter': '— 香港跨次元夢女傳訊研究協會',
 
   // 版權與隱私
   'legalDisclaimer': '你提供的所有信息預設為匿名。我們只在你明確同意的情況下才會收集聯絡方式。',
   'privacyNote': '你的數據僅用於 CDA 學術研究目的，絕不會與第三方共享。',
-  'copyright': '© 2026 香港 · 跨次元傳訊研究協會 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
+  'copyright': '© 2026 香港跨次元夢女傳訊研究協會 Hong Kong Cross-Dimensional Yumejoshi Communication Research Association. All rights reserved.',
   'privacyFull': '隱私保護聲明：本問卷收集的所有數據僅用於 CDA 學術研究。未經你明確同意，我們不會收集你的個人身份信息，也不會將任何數據分享給第三方。數據儲存在 Cloudflare D1 資料庫中，使用行業標準加密傳輸。',
 };
 
@@ -463,7 +463,7 @@ const zhHans = {
   'community': '社群共识',
   'alreadyTransmitter': '已经是传讯师',
   'wantToTransmit': '想学习并成为传讯师',
-  'curious': '好奇，还在考虑',
+  'curiousTransmitter': '好奇，还在考虑',
   'onlyWantToReceive': '只想接收讯息',
   'noInterest': '没有兴趣',
   'realityOfExperience': '我的体验是否真实？',
@@ -520,10 +520,10 @@ const zhHans = {
   'thanksContribution3': '梦女群体需要更多人的力量——需要更专业、更可信、让外面的人不再只是嘲笑，而是愿意停下来，认真听我们在说什么。',
   'thanksContribution4': '谢谢你，和我们站在一起。',
   'backupSaved': '已保存 {count} 份本地备份。',
-  'thanksFooter': '— 香港 · 跨次元传讯研究协会',
+  'thanksFooter': '— 香港跨次元梦女传讯研究协会',
   'legalDisclaimer': '你提供的所有信息预设为匿名。我们只在你明确同意的情况下才会收集联络方式。',
   'privacyNote': '你的数据仅用于 CDA 学术研究目的，绝不会与第三方共享。',
-  'copyright': '© 2026 香港 · 跨次元传讯研究协会 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
+  'copyright': '© 2026 香港跨次元梦女传讯研究协会 Hong Kong Cross-Dimensional Yumejoshi Communication Research Association. All rights reserved.',
   'privacyFull': '隐私保护声明：本问卷收集的所有数据仅用于 CDA 学术研究。未经你明确同意，我们不会收集你的个人身份信息，也不会将任何数据分享给第三方。数据储存在 Cloudflare D1 数据库中，使用行业标准加密传输。',
 };
 
@@ -732,7 +732,15 @@ export default function Survey() {
         { label: st('eastWestOccult'), name: 'eastWestOccult', type: 'checkbox', options: EASTWEST_OCCULT_OPTIONS.map(o => ({ value: o, label: st(o) })) },
         { label: st('eastWestStory'), name: 'eastWestStory', type: 'textarea', placeholder: st('eastWestStoryPlaceholder') },
         { label: st('trustFactor'), name: 'trustFactor', type: 'radio', options: TRUST_FACTOR_OPTIONS.map(o => ({ value: o, label: st(o) })) },
-        { label: st('becomeTransmitter'), name: 'becomeTransmitter', type: 'checkbox', options: BECOME_TRANSMITTER_OPTIONS.map(o => ({ value: o, label: st(o) })) },
+        {
+          label: st('becomeTransmitter'),
+          name: 'becomeTransmitter',
+          type: 'checkbox',
+          options: BECOME_TRANSMITTER_OPTIONS.map(o => ({
+            value: o,
+            label: st(o === 'curious' ? 'curiousTransmitter' : o),
+          })),
+        },
         { label: st('transmitterStory'), name: 'transmitterStory', type: 'textarea', placeholder: st('transmitterStoryPlaceholder') },
         { label: st('confusions'), name: 'confusions', type: 'checkbox', options: CONFUSION_OPTIONS.map(o => ({ value: o, label: st(o) })) },
         { label: st('biggestConfusion'), name: 'biggestConfusion', type: 'textarea', placeholder: st('biggestConfusionPlaceholder') },
@@ -746,7 +754,7 @@ export default function Survey() {
     return (
       <div className="survey-page splash-screen">
         <div className="splash-content">
-          <p className="splash-brand">香港 · 跨次元傳訊研究協會</p>
+          <p className="splash-brand">香港跨次元夢女傳訊研究協會</p>
           <h1 className="splash-hero">我們想試一試</h1>
           <p className="splash-title">很難。但總要有人先做。</p>
           <div className="splash-line" />
@@ -784,7 +792,7 @@ export default function Survey() {
     <div className="survey-page">
       {/* 品牌頭部 */}
       <div className="survey-header">
-        <p className="survey-brand">香港 · 跨次元傳訊研究協會</p>
+        <p className="survey-brand">香港跨次元夢女傳訊研究協會</p>
         <h1 className="survey-title">{st('surveyTitle')}</h1>
         <span className="survey-title-decorator" />
         <p className="survey-subtitle">{st('surveySubtitle')}</p>
@@ -1179,7 +1187,7 @@ const enLookup = {
   'community': 'Community consensus',
   'alreadyTransmitter': 'I already practice as a transmitter',
   'wantToTransmit': 'I want to learn and become one',
-  'curious': 'Curious but undecided',
+  'curiousTransmitter': 'Curious but undecided',
   'onlyWantToReceive': 'I only want to receive messages',
   'noInterest': 'Not interested',
   'realityOfExperience': 'Is my experience real?',
@@ -1235,9 +1243,9 @@ const enLookup = {
   'thanksContribution3': 'The dream-girl community needs more voices — to become more professional, more credible, so that the world stops laughing and starts listening.',
   'thanksContribution4': 'Thank you for standing with us.',
   'backupSaved': '{count} backup(s) saved locally.',
-  'thanksFooter': '— Hong Kong Cross-Dimensional Communication Association',
+  'thanksFooter': '— Hong Kong Cross-Dimensional Yumejoshi Communication Research Association',
   'legalDisclaimer': 'All responses are anonymous by default.',
   'privacyNote': 'Your data will only be used for CDA academic research purposes.',
-  'copyright': '© 2026 Hong Kong Cross-Dimensional Communication Association. All rights reserved.',
+  'copyright': '© 2026 Hong Kong Cross-Dimensional Yumejoshi Communication Research Association. All rights reserved.',
   'privacyFull': 'Privacy Protection: All data collected through this survey is used solely for CDA academic research. We do not collect personally identifiable information without your explicit consent, nor do we share any data with third parties. Data is stored in Cloudflare D1 database with industry-standard encryption in transit.',
 };

@@ -29,6 +29,13 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 神秘学导师 -->
+  <url>
+    <loc>https://lilith-snake.github.io/cda-website/mentorship</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- 梦女传讯师 -->
   <url>
     <loc>https://lilith-snake.github.io/cda-website/dream-girl</loc>

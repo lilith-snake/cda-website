@@ -9,7 +9,8 @@ const execFileAsync = promisify(execFile)
 
 const API_BASE = 'https://cda-website-3t2.pages.dev/api/admin'
 const APPLICATION_ADMIN_URL = 'https://lilith-snake.github.io/cda-website/application-notify.html'
-const ORDER_ADMIN_URL = 'https://lilith-snake.github.io/cda-website/order-admin.html'
+const ORDER_ASSISTANT_URL = 'https://lilith-snake.github.io/cda-website/order-assistant.html'
+const ORDER_ADMIN_URL = 'https://lilith-snake.github.io/cda-website/order-admin.html?admin=1'
 const FETCH_TIMEOUT_MS = 15000
 const FETCH_RETRIES = 3
 
@@ -53,6 +54,7 @@ async function main() {
       ordersTotal: orders.length,
       trackedOrderFingerprints: Object.keys(state.orderFingerprints || {}).length,
       applicationAdminUrl: APPLICATION_ADMIN_URL,
+      orderAssistantUrl: ORDER_ASSISTANT_URL,
       orderAdminUrl: ORDER_ADMIN_URL,
       stateFile: STATE_FILE,
       logFile: LOG_FILE,

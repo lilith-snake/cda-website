@@ -1,0 +1,1610 @@
+.app:has(.page-mentorship) {
+  --color-bg: #08070a;
+  --color-bg-alt: #111015;
+  --color-bg-card: #151116;
+  --color-bg-dark: #050406;
+  --color-text: #eee5de;
+  --color-text-secondary: #b8acaa;
+  --color-text-light: #82787f;
+  --color-accent: #b9a06b;
+  --color-accent-light: #d8c79d;
+  --color-accent-dark: #9c824f;
+  --color-accent-bg: rgba(185, 160, 107, 0.08);
+  --color-accent-border: rgba(185, 160, 107, 0.34);
+  --color-border: rgba(238, 229, 222, 0.13);
+  --color-border-light: rgba(238, 229, 222, 0.075);
+  --shadow-card: 0 28px 80px rgba(0, 0, 0, 0.28);
+  background: #08070a;
+  color: #eee5de;
+  color-scheme: dark;
+}
+
+.app:has(.page-mentorship) .navbar {
+  border-bottom-color: rgba(185, 160, 107, 0.18);
+  background: rgba(7, 6, 8, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.app:has(.page-mentorship) .footer {
+  border-top-color: rgba(185, 160, 107, 0.14);
+  background: #050406;
+}
+
+.page-mentorship {
+  --mentor-black: #08070a;
+  --mentor-black-cherry: #190a10;
+  --mentor-wine: #501522;
+  --mentor-gold: #b9a06b;
+  --mentor-gold-light: #d8c79d;
+  --mentor-ivory: #eee5de;
+  --mentor-violet-gray: #928891;
+  --mentor-line: rgba(185, 160, 107, 0.22);
+  position: relative;
+  isolation: isolate;
+  min-height: 100%;
+  overflow: hidden;
+  background: var(--mentor-black);
+  color: var(--mentor-ivory);
+}
+
+.page-mentorship *,
+.page-mentorship *::before,
+.page-mentorship *::after {
+  letter-spacing: 0;
+}
+
+.page-mentorship h1,
+.page-mentorship h2,
+.page-mentorship h3,
+.page-mentorship h4 {
+  color: var(--mentor-ivory);
+}
+
+.page-mentorship > .section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(88px, 9vw, 128px) 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(185, 160, 107, 0.12);
+}
+
+.page-mentorship > .section::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: max(22px, calc((100vw - 1200px) / 2 + 4px));
+  width: 1px;
+  background: rgba(185, 160, 107, 0.1);
+  content: '';
+  pointer-events: none;
+}
+
+.page-mentorship > .section::after {
+  position: absolute;
+  top: clamp(88px, 9vw, 128px);
+  left: max(18px, calc((100vw - 1200px) / 2));
+  width: 9px;
+  height: 3px;
+  border: 1px solid rgba(185, 160, 107, 0.5);
+  background: currentColor;
+  color: #190a10;
+  content: '';
+  pointer-events: none;
+}
+
+.page-mentorship .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero */
+.page-mentorship .mentorship-hero {
+  position: relative;
+  display: flex;
+  min-height: min(860px, calc(100svh - var(--nav-height)));
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(185, 160, 107, 0.24);
+  background: #050406;
+  text-align: left;
+}
+
+.page-mentorship .mentorship-hero::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(5, 4, 6, 0.27);
+  content: '';
+  pointer-events: none;
+}
+
+.page-mentorship .mentorship-hero::after {
+  position: absolute;
+  z-index: 2;
+  inset: clamp(22px, 3vw, 42px);
+  border: 1px solid rgba(216, 199, 157, 0.2);
+  content: '';
+  pointer-events: none;
+}
+
+.mentorship-hero-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mentorship-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  animation: mentorship-celestial-drift 22s ease-in-out infinite alternate;
+  filter: saturate(0.88) contrast(1.02) brightness(0.92);
+  transform: scale(1.025);
+  will-change: transform;
+}
+
+.mentorship-hero-content {
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: clamp(90px, 12vh, 136px);
+  padding-bottom: 92px;
+}
+
+.mentorship-kicker,
+.mentorship-section-kicker {
+  display: block;
+  margin-bottom: 15px;
+  color: var(--mentor-gold-light);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.page-mentorship .mentorship-hero h1 {
+  max-width: 760px;
+  margin: 0 0 22px;
+  color: #f4eee8;
+  font-size: clamp(3.25rem, 5.2vw, 4.8rem);
+  font-weight: 600;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+.page-mentorship .mentorship-hero .subtitle {
+  max-width: 690px;
+  margin: 0;
+  color: rgba(244, 238, 232, 0.86);
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  line-height: 2;
+  text-align: left;
+}
+
+.mentorship-hero-copy {
+  max-width: 610px;
+  margin-top: 20px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(216, 199, 157, 0.58);
+  color: rgba(238, 229, 222, 0.68);
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.mentorship-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.mentorship-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 21px;
+  border: 1px solid rgba(216, 199, 157, 0.5);
+  border-radius: 3px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--transition-smooth), border-color var(--transition-smooth), color var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.mentorship-button.primary {
+  border-color: var(--mentor-gold);
+  background: var(--mentor-gold);
+  color: #110c0e;
+}
+
+.mentorship-button.primary:hover {
+  border-color: var(--mentor-gold-light);
+  background: var(--mentor-gold-light);
+  color: #110c0e;
+  transform: translateY(-2px);
+}
+
+.mentorship-button.secondary {
+  background: rgba(5, 4, 6, 0.46);
+  color: var(--mentor-ivory);
+}
+
+.mentorship-button.secondary:hover {
+  border-color: var(--mentor-gold-light);
+  color: var(--mentor-gold-light);
+}
+
+.mentorship-hero-index {
+  position: absolute;
+  right: 40px;
+  bottom: 46px;
+  left: 40px;
+  display: grid;
+  grid-template-columns: auto minmax(60px, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  color: rgba(238, 229, 222, 0.5);
+  font-size: 0.61rem;
+  font-weight: 600;
+}
+
+.mentorship-hero-index i {
+  height: 1px;
+  background: rgba(216, 199, 157, 0.28);
+}
+
+@keyframes mentorship-celestial-drift {
+  from {
+    transform: scale(1.025) translate3d(-0.25%, -0.15%, 0);
+  }
+  to {
+    transform: scale(1.075) translate3d(0.35%, 0.25%, 0);
+  }
+}
+
+/* Shared headings */
+.page-mentorship .section-title {
+  max-width: 760px;
+  margin: 0 auto clamp(46px, 6vw, 72px);
+  text-align: center;
+}
+
+.page-mentorship .section-title h2,
+.mentorship-curriculum-heading h2,
+.mentorship-academic-heading h2,
+.mentorship-worldview-lead h2,
+.mentorship-certificate h2,
+.mentorship-students h2 {
+  margin: 0;
+  color: var(--mentor-ivory);
+  font-size: clamp(2rem, 3.25vw, 3rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.page-mentorship .section-title .decorative-line {
+  width: 72px;
+  height: 1px;
+  margin: 22px auto 0;
+  background: var(--mentor-gold);
+}
+
+.page-mentorship .section-title .section-subdesc {
+  max-width: 650px;
+  margin: 20px auto 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+/* Identity */
+.mentorship-profile-band {
+  background: rgba(8, 7, 10, 0.98);
+}
+
+.mentorship-profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: clamp(58px, 8vw, 112px);
+  align-items: center;
+}
+
+.mentorship-profile-identity {
+  max-width: 650px;
+}
+
+.mentorship-monogram {
+  display: grid;
+  width: 74px;
+  aspect-ratio: 1;
+  margin-bottom: 34px;
+  place-items: center;
+  border: 1px solid var(--mentor-gold);
+  border-radius: 50%;
+  background: #190a10;
+  color: var(--mentor-gold-light);
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  box-shadow: 0 0 0 7px #08070a, 0 0 0 8px rgba(185, 160, 107, 0.26);
+}
+
+.mentorship-role {
+  margin-bottom: 8px;
+  color: var(--mentor-gold);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.mentorship-profile-identity h2 {
+  margin-bottom: 24px;
+  font-size: clamp(2.25rem, 4vw, 3.7rem);
+  font-weight: 600;
+}
+
+.mentorship-profile-identity h2 span {
+  display: block;
+  margin-top: 8px;
+  color: var(--mentor-violet-gray);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+.mentorship-profile-lead {
+  color: #bdb1ae;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 2.05;
+}
+
+.mentorship-facts,
+.certificate-record {
+  margin: 0;
+  border-top: 1px solid var(--mentor-line);
+}
+
+.mentorship-facts > div,
+.certificate-record > div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 22px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--mentor-line);
+}
+
+.mentorship-facts dt,
+.certificate-record dt {
+  color: var(--mentor-violet-gray);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.mentorship-facts dd,
+.certificate-record dd {
+  color: var(--mentor-ivory);
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+/* Expertise */
+.mentorship-expertise {
+  background: #190a10;
+}
+
+.mentorship-expertise-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 1040px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(185, 160, 107, 0.24);
+  border-left: 1px solid rgba(185, 160, 107, 0.24);
+}
+
+.mentorship-expertise-item {
+  display: grid;
+  min-height: 220px;
+  grid-template-columns: 50px minmax(0, 1fr);
+  gap: 24px;
+  padding: clamp(28px, 4vw, 46px);
+  border-right: 1px solid rgba(185, 160, 107, 0.24);
+  border-bottom: 1px solid rgba(185, 160, 107, 0.24);
+  background: rgba(8, 7, 10, 0.22);
+  transition: background var(--transition-smooth);
+}
+
+.mentorship-expertise-item:hover {
+  background: rgba(80, 21, 34, 0.21);
+}
+
+.mentorship-expertise-item > span {
+  color: var(--mentor-gold);
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+}
+
+.mentorship-expertise-item h3 {
+  margin-bottom: 12px;
+  font-size: 1.12rem;
+}
+
+.mentorship-expertise-item p {
+  color: #b5a8a6;
+  font-size: 0.84rem;
+  line-height: 1.85;
+}
+
+/* Curriculum and archive */
+.mentorship-curriculum {
+  background: rgba(8, 7, 10, 0.99);
+}
+
+.mentorship-curriculum-heading,
+.mentorship-academic-heading {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(54px, 8vw, 108px);
+  align-items: start;
+  margin-bottom: clamp(52px, 7vw, 86px);
+}
+
+.mentorship-curriculum-intro,
+.mentorship-academic-heading > p {
+  padding-top: 19px;
+  border-top: 1px solid var(--mentor-line);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.95;
+}
+
+.mentorship-curriculum-note {
+  margin-top: 16px;
+  color: var(--mentor-ivory);
+  font-weight: 500;
+}
+
+.mentorship-archive-feature {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  min-height: 490px;
+  margin: 0 0 70px;
+  overflow: hidden;
+  border: 1px solid rgba(185, 160, 107, 0.25);
+  background: #10090c;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+}
+
+.mentorship-archive-image {
+  position: relative;
+  min-height: 490px;
+  overflow: hidden;
+  background: #08070a;
+}
+
+.mentorship-archive-image::after {
+  position: absolute;
+  inset: 0;
+  background: rgba(80, 21, 34, 0.12);
+  content: '';
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.mentorship-archive-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 490px;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: sepia(0.34) saturate(0.66) contrast(1.06) brightness(0.78);
+  transition: filter 450ms ease, transform 700ms ease;
+}
+
+.mentorship-archive-feature:hover .mentorship-archive-image img {
+  filter: sepia(0.2) saturate(0.78) contrast(1.08) brightness(0.86);
+  transform: scale(1.018);
+}
+
+.mentorship-archive-feature figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(38px, 6vw, 74px);
+}
+
+.mentorship-archive-feature figcaption > span {
+  color: var(--mentor-gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.mentorship-archive-feature h3 {
+  margin: 18px 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600;
+}
+
+.mentorship-archive-feature p {
+  max-width: 560px;
+  color: #b6aaa7;
+  font-size: 0.88rem;
+  line-height: 1.95;
+}
+
+.mentorship-archive-feature a,
+.mentorship-academic-grid a,
+.certificate-link {
+  display: inline-block;
+  margin-top: 24px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--mentor-gold);
+  color: var(--mentor-gold-light);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.mentorship-course-thesis {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+  margin-bottom: 36px;
+  padding: 28px 34px;
+  border-top: 1px solid rgba(185, 160, 107, 0.4);
+  border-bottom: 1px solid rgba(185, 160, 107, 0.4);
+  background: #150b0f;
+}
+
+.mentorship-course-thesis > span,
+.mentorship-course-boundary > span {
+  color: var(--mentor-gold);
+  font-size: 0.67rem;
+  font-weight: 700;
+}
+
+.mentorship-course-thesis p {
+  color: var(--mentor-ivory);
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.36rem);
+  line-height: 1.7;
+}
+
+.mentorship-course-path {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--mentor-line);
+}
+
+.mentorship-course-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 184px minmax(0, 1fr) minmax(250px, 0.62fr);
+  gap: clamp(30px, 4vw, 58px);
+  min-height: 290px;
+  padding: 48px 20px 48px 0;
+  border-bottom: 1px solid var(--mentor-line);
+  transition: background var(--transition-smooth);
+}
+
+.mentorship-course-stage:hover {
+  background: rgba(185, 160, 107, 0.035);
+}
+
+.mentorship-stage-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35px;
+  width: 1px;
+  background: rgba(185, 160, 107, 0.22);
+}
+
+.mentorship-course-stage:first-child .mentorship-stage-line {
+  top: 48px;
+}
+
+.mentorship-course-stage:last-child .mentorship-stage-line {
+  bottom: calc(100% - 84px);
+}
+
+.mentorship-stage-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.mentorship-stage-number {
+  display: grid;
+  width: 72px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--mentor-gold);
+  border-radius: 50%;
+  background: #08070a;
+  color: var(--mentor-gold-light);
+  font-family: var(--font-serif);
+  font-size: 0.94rem;
+  box-shadow: 0 0 0 6px #08070a;
+}
+
+.mentorship-stage-marker > div {
+  min-width: 0;
+  padding-top: 12px;
+}
+
+.mentorship-stage-level,
+.mentorship-stage-english {
+  display: block;
+}
+
+.mentorship-stage-level {
+  color: var(--mentor-ivory);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.mentorship-stage-english {
+  margin-top: 6px;
+  color: var(--mentor-violet-gray);
+  font-size: 0.59rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.mentorship-course-stage.core .mentorship-stage-number {
+  border-color: #9a5361;
+  background: #230c13;
+  color: #eed7dc;
+}
+
+.mentorship-course-stage.advanced .mentorship-stage-number {
+  border-color: #c0a463;
+  background: #2a170d;
+  color: #f1dfac;
+}
+
+.mentorship-course-stage.signature .mentorship-stage-number {
+  border-color: #a19aa4;
+  background: #17141a;
+  color: #eee5de;
+}
+
+.mentorship-stage-content h3 {
+  margin: 0 0 14px;
+  font-size: clamp(1.25rem, 2vw, 1.62rem);
+  font-weight: 600;
+}
+
+.mentorship-stage-content > p {
+  color: #b5aaa8;
+  font-size: 0.86rem;
+  line-height: 1.92;
+}
+
+.mentorship-stage-content ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mentorship-stage-content li {
+  position: relative;
+  padding-left: 13px;
+  color: #d4c9c5;
+  font-size: 0.74rem;
+  line-height: 1.65;
+}
+
+.mentorship-stage-content li::before {
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border: 1px solid var(--mentor-gold);
+  content: '';
+}
+
+.mentorship-stage-content .mentorship-stage-note {
+  margin-top: 22px;
+  padding: 13px 16px;
+  border-left: 2px solid #873447;
+  background: rgba(80, 21, 34, 0.18);
+  color: #d6c6c3;
+  font-size: 0.74rem;
+}
+
+.mentorship-stage-meta {
+  margin: 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--mentor-line);
+}
+
+.mentorship-stage-meta > div + div {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid var(--mentor-line);
+}
+
+.mentorship-stage-meta dt {
+  margin-bottom: 8px;
+  color: var(--mentor-gold);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.mentorship-stage-meta dd {
+  color: #aca2a3;
+  font-size: 0.75rem;
+  line-height: 1.78;
+}
+
+.mentorship-course-boundary {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 34px;
+  margin-top: 44px;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(185, 160, 107, 0.34);
+}
+
+.mentorship-course-boundary p {
+  max-width: 890px;
+  color: #948b8d;
+  font-size: 0.73rem;
+  line-height: 1.8;
+}
+
+/* Academic atlas */
+.mentorship-academic-scope {
+  background: #111015;
+}
+
+.mentorship-academic-heading > p {
+  margin: 0;
+}
+
+.mentorship-academic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(146, 136, 145, 0.27);
+  border-left: 1px solid rgba(146, 136, 145, 0.27);
+}
+
+.mentorship-academic-grid article {
+  display: flex;
+  min-height: 320px;
+  flex-direction: column;
+  padding: clamp(26px, 3vw, 38px);
+  border-right: 1px solid rgba(146, 136, 145, 0.27);
+  border-bottom: 1px solid rgba(146, 136, 145, 0.27);
+  background: rgba(8, 7, 10, 0.16);
+  transition: background var(--transition-smooth);
+}
+
+.mentorship-academic-grid article:hover {
+  background: rgba(146, 136, 145, 0.08);
+}
+
+.mentorship-academic-grid article > span {
+  color: #aaa0ac;
+  font-size: 0.67rem;
+  font-weight: 700;
+}
+
+.mentorship-academic-grid h3 {
+  margin: 17px 0 12px;
+  font-size: 1.03rem;
+  line-height: 1.55;
+}
+
+.mentorship-academic-grid p {
+  color: #aaa1a5;
+  font-size: 0.78rem;
+  line-height: 1.83;
+}
+
+.mentorship-academic-grid a {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.mentorship-academic-disclaimer,
+.mentorship-technique-note {
+  max-width: 800px;
+  margin: 28px auto 0;
+  color: #817a81;
+  font-size: 0.69rem;
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* Witch worldview */
+.mentorship-worldview {
+  background: #190a10;
+}
+
+.mentorship-worldview-lead {
+  display: grid;
+  grid-template-columns: minmax(310px, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(54px, 8vw, 108px);
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.mentorship-worldview-lead > div:last-child {
+  padding-top: 18px;
+  border-top: 1px solid rgba(185, 160, 107, 0.28);
+}
+
+.mentorship-worldview-lead > div:last-child > p {
+  color: #b7aaa8;
+  font-family: var(--font-serif);
+  font-size: 0.96rem;
+  line-height: 2;
+}
+
+.mentorship-worldview blockquote {
+  margin: 28px 0 0;
+  padding: 22px 0 0 28px;
+  border-top: 1px solid rgba(185, 160, 107, 0.2);
+  border-left: 1px solid var(--mentor-gold);
+  color: #d8ccc8;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.95;
+}
+
+.mentorship-worldview-source {
+  max-width: 840px;
+  margin: 0 auto 42px;
+  color: #938787;
+  font-size: 0.72rem;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.mentorship-worldview-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(185, 160, 107, 0.2);
+  border-left: 1px solid rgba(185, 160, 107, 0.2);
+}
+
+.mentorship-worldview-principles article {
+  min-height: 210px;
+  padding: 30px;
+  border-right: 1px solid rgba(185, 160, 107, 0.2);
+  border-bottom: 1px solid rgba(185, 160, 107, 0.2);
+}
+
+.mentorship-worldview-principles article > span {
+  color: var(--mentor-gold);
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+}
+
+.mentorship-worldview-principles h3 {
+  margin: 16px 0 10px;
+  font-size: 1rem;
+}
+
+.mentorship-worldview-principles p,
+.mentorship-witch-paths p {
+  color: #aa9e9d;
+  font-size: 0.77rem;
+  line-height: 1.82;
+}
+
+.mentorship-witch-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 56px;
+  margin-top: 64px;
+  border-top: 1px solid rgba(238, 229, 222, 0.12);
+}
+
+.mentorship-witch-paths article {
+  padding: 27px 0;
+  border-bottom: 1px solid rgba(238, 229, 222, 0.12);
+}
+
+.mentorship-witch-paths h3 {
+  margin-bottom: 8px;
+  font-size: 0.96rem;
+}
+
+/* CDA methods */
+.mentorship-techniques {
+  background: #08070a;
+}
+
+.mentorship-technique-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--mentor-line);
+  border-left: 1px solid var(--mentor-line);
+}
+
+.mentorship-technique-list article {
+  display: grid;
+  min-height: 250px;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 24px;
+  padding: clamp(28px, 4vw, 44px);
+  border-right: 1px solid var(--mentor-line);
+  border-bottom: 1px solid var(--mentor-line);
+  background: rgba(25, 10, 16, 0.28);
+}
+
+.mentorship-technique-number {
+  color: var(--mentor-gold);
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+}
+
+.mentorship-technique-type {
+  color: #9f929d;
+  font-size: 0.64rem;
+  font-weight: 700;
+}
+
+.mentorship-technique-list h3 {
+  margin: 13px 0 11px;
+  font-size: 1.06rem;
+}
+
+.mentorship-technique-list p {
+  color: #aaa0a0;
+  font-size: 0.8rem;
+  line-height: 1.86;
+}
+
+/* Learning orbit */
+.mentorship-learning-path {
+  background: #111015;
+}
+
+.mentorship-learning-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(185, 160, 107, 0.34);
+}
+
+.mentorship-learning-list li {
+  position: relative;
+  min-height: 230px;
+  padding: 32px 30px 28px 0;
+  border-bottom: 1px solid rgba(185, 160, 107, 0.16);
+}
+
+.mentorship-learning-list li + li {
+  padding-left: 30px;
+  border-left: 1px solid rgba(185, 160, 107, 0.16);
+}
+
+.mentorship-learning-list li::before {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 22px;
+  height: 7px;
+  border: 1px solid var(--mentor-gold);
+  background: #111015;
+  content: '';
+}
+
+.mentorship-learning-list li + li::before {
+  left: 30px;
+}
+
+.mentorship-learning-list span {
+  color: var(--mentor-gold);
+  font-size: 0.64rem;
+  font-weight: 700;
+}
+
+.mentorship-learning-list h3 {
+  margin: 19px 0 11px;
+  font-size: 1.05rem;
+}
+
+.mentorship-learning-list p {
+  color: #a8a0a4;
+  font-size: 0.78rem;
+  line-height: 1.82;
+}
+
+/* Credential */
+.mentorship-certificate {
+  background: #190a10;
+}
+
+.mentorship-certificate-grid,
+.mentorship-students-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(380px, 1.14fr);
+  gap: clamp(58px, 9vw, 124px);
+  align-items: center;
+}
+
+.mentorship-certificate-copy,
+.mentorship-students p {
+  max-width: 520px;
+  margin-top: 22px;
+  color: #b2a5a4;
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
+
+.certificate-panel {
+  position: relative;
+  padding: clamp(30px, 4vw, 48px);
+  border: 1px solid rgba(216, 199, 157, 0.35);
+  background: rgba(8, 7, 10, 0.46);
+}
+
+.certificate-panel::before,
+.certificate-panel::after {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  content: '';
+  pointer-events: none;
+}
+
+.certificate-panel::before {
+  top: 8px;
+  left: 8px;
+  border-top: 1px solid var(--mentor-gold);
+  border-left: 1px solid var(--mentor-gold);
+}
+
+.certificate-panel::after {
+  right: 8px;
+  bottom: 8px;
+  border-right: 1px solid var(--mentor-gold);
+  border-bottom: 1px solid var(--mentor-gold);
+}
+
+.certificate-link {
+  margin-top: 28px;
+}
+
+/* Contribution */
+.mentorship-contribution {
+  background: #08070a;
+}
+
+.mentorship-contribution-list {
+  max-width: 960px;
+  margin: 0 auto;
+  border-top: 1px solid var(--mentor-line);
+}
+
+.mentorship-contribution-list article {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 34px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--mentor-line);
+}
+
+.mentorship-contribution-list article > span {
+  color: var(--mentor-gold);
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+}
+
+.mentorship-contribution-list h3 {
+  margin-bottom: 9px;
+  font-size: 1.04rem;
+}
+
+.mentorship-contribution-list p {
+  color: #a79da0;
+  font-size: 0.8rem;
+  line-height: 1.85;
+}
+
+/* Students */
+.mentorship-students {
+  background: #131017;
+}
+
+.mentorship-students ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(146, 136, 145, 0.28);
+}
+
+.mentorship-students li {
+  position: relative;
+  padding: 18px 0 18px 25px;
+  border-bottom: 1px solid rgba(146, 136, 145, 0.28);
+  color: #beb4b8;
+  font-size: 0.82rem;
+  line-height: 1.78;
+}
+
+.mentorship-students li::before {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--mentor-gold);
+  content: '';
+}
+
+/* Closing scene */
+.mentorship-final-cta {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(185, 160, 107, 0.2);
+  background-color: #08070a;
+  background-image: var(--mentorship-bg-image);
+  background-position: center 38%;
+  background-size: cover;
+}
+
+.mentorship-final-cta::before {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 4, 6, 0.7);
+  content: '';
+}
+
+.mentorship-final-cta .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 88px;
+  padding-bottom: 88px;
+  text-align: center;
+}
+
+.mentorship-final-cta p {
+  margin-bottom: 17px;
+  color: var(--mentor-gold-light);
+  font-size: 0.67rem;
+  font-weight: 700;
+}
+
+.mentorship-final-cta h2 {
+  max-width: 780px;
+  margin: 0;
+  color: #f4eee8;
+  font-size: clamp(2.15rem, 4vw, 3.6rem);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.mentorship-final-cta span {
+  max-width: 650px;
+  margin: 23px auto 31px;
+  color: rgba(238, 229, 222, 0.72);
+  font-size: 0.84rem;
+  line-height: 1.9;
+}
+
+.mentorship-final-cta .mentorship-button.primary {
+  min-width: 190px;
+}
+
+@media (max-width: 1100px) {
+  .page-mentorship > .section::before,
+  .page-mentorship > .section::after {
+    display: none;
+  }
+
+  .mentorship-hero-index {
+    right: 64px;
+    left: 64px;
+  }
+
+  .mentorship-profile-grid,
+  .mentorship-certificate-grid,
+  .mentorship-students-grid {
+    gap: 64px;
+  }
+
+  .mentorship-course-stage {
+    grid-template-columns: 150px minmax(0, 1fr) minmax(220px, 0.54fr);
+    gap: 30px;
+  }
+
+  .mentorship-stage-marker {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .mentorship-stage-number {
+    width: 64px;
+  }
+
+  .mentorship-stage-line {
+    left: 31px;
+  }
+}
+
+@media (max-width: 900px) {
+  .mentorship-profile-grid,
+  .mentorship-curriculum-heading,
+  .mentorship-academic-heading,
+  .mentorship-worldview-lead,
+  .mentorship-certificate-grid,
+  .mentorship-students-grid {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .mentorship-profile-grid {
+    align-items: start;
+  }
+
+  .mentorship-facts {
+    max-width: 660px;
+  }
+
+  .mentorship-academic-grid,
+  .mentorship-worldview-principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mentorship-learning-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mentorship-learning-list li:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .mentorship-learning-list li:nth-child(3)::before {
+    left: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-mentorship > .section {
+    padding: 72px 0;
+  }
+
+  .page-mentorship .mentorship-hero {
+    min-height: 760px;
+  }
+
+  .page-mentorship .mentorship-hero::after {
+    inset: 14px;
+  }
+
+  .mentorship-hero-media img {
+    object-position: 62% center;
+  }
+
+  .page-mentorship .mentorship-hero::before {
+    background: rgba(5, 4, 6, 0.34);
+  }
+
+  .mentorship-hero-content {
+    justify-content: flex-end;
+    padding-top: 390px;
+    padding-right: 30px;
+    padding-bottom: 52px;
+    padding-left: 30px;
+  }
+
+  .page-mentorship .mentorship-hero h1 {
+    margin-bottom: 17px;
+    font-size: 2.62rem;
+    line-height: 1.2;
+  }
+
+  .page-mentorship .mentorship-hero .subtitle {
+    font-size: 0.9rem;
+    line-height: 1.85;
+  }
+
+  .mentorship-hero-copy {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    line-height: 1.75;
+  }
+
+  .mentorship-hero-actions {
+    margin-top: 25px;
+  }
+
+  .mentorship-hero-index {
+    display: none;
+  }
+
+  .page-mentorship .section-title {
+    margin-bottom: 42px;
+  }
+
+  .page-mentorship .section-title h2,
+  .mentorship-curriculum-heading h2,
+  .mentorship-academic-heading h2,
+  .mentorship-worldview-lead h2,
+  .mentorship-certificate h2,
+  .mentorship-students h2 {
+    font-size: 2rem;
+  }
+
+  .mentorship-profile-grid,
+  .mentorship-curriculum-heading,
+  .mentorship-academic-heading,
+  .mentorship-worldview-lead,
+  .mentorship-certificate-grid,
+  .mentorship-students-grid {
+    gap: 38px;
+  }
+
+  .mentorship-monogram {
+    width: 64px;
+    margin-bottom: 28px;
+  }
+
+  .mentorship-profile-identity h2 {
+    font-size: 2.6rem;
+  }
+
+  .mentorship-profile-lead {
+    font-size: 0.92rem;
+    line-height: 1.95;
+  }
+
+  .mentorship-expertise-list,
+  .mentorship-technique-list,
+  .mentorship-academic-grid,
+  .mentorship-worldview-principles,
+  .mentorship-witch-paths,
+  .mentorship-learning-list {
+    grid-template-columns: 1fr;
+  }
+
+  .mentorship-expertise-item {
+    min-height: 0;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 18px;
+    padding: 28px 24px;
+  }
+
+  .mentorship-archive-feature {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    margin-bottom: 50px;
+  }
+
+  .mentorship-archive-image,
+  .mentorship-archive-image img {
+    min-height: 0;
+    aspect-ratio: 1.25;
+  }
+
+  .mentorship-archive-feature figcaption {
+    padding: 34px 28px 38px;
+  }
+
+  .mentorship-course-thesis,
+  .mentorship-course-boundary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .mentorship-course-thesis {
+    padding: 24px;
+  }
+
+  .mentorship-course-stage {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 0;
+    padding: 36px 0;
+  }
+
+  .mentorship-stage-line {
+    left: 27px;
+  }
+
+  .mentorship-course-stage:first-child .mentorship-stage-line {
+    top: 36px;
+  }
+
+  .mentorship-course-stage:last-child .mentorship-stage-line {
+    bottom: calc(100% - 72px);
+  }
+
+  .mentorship-stage-marker {
+    display: block;
+  }
+
+  .mentorship-stage-number {
+    width: 56px;
+    box-shadow: 0 0 0 5px #08070a;
+  }
+
+  .mentorship-stage-marker > div {
+    padding-top: 14px;
+  }
+
+  .mentorship-stage-level,
+  .mentorship-stage-english {
+    max-width: 62px;
+    font-size: 0.58rem;
+    line-height: 1.45;
+  }
+
+  .mentorship-stage-content {
+    min-width: 0;
+  }
+
+  .mentorship-stage-content h3 {
+    font-size: 1.26rem;
+  }
+
+  .mentorship-stage-content ul {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .mentorship-stage-meta {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 22px 0 0;
+    border-top: 1px solid var(--mentor-line);
+    border-left: 0;
+  }
+
+  .mentorship-stage-meta > div + div {
+    margin: 0;
+    padding: 0 0 0 18px;
+    border-top: 0;
+    border-left: 1px solid var(--mentor-line);
+  }
+
+  .mentorship-academic-grid article,
+  .mentorship-worldview-principles article,
+  .mentorship-technique-list article {
+    min-height: 0;
+  }
+
+  .mentorship-academic-grid article {
+    padding: 28px 24px;
+  }
+
+  .mentorship-academic-grid a {
+    margin-top: 4px;
+  }
+
+  .mentorship-worldview blockquote {
+    padding-left: 20px;
+    font-size: 0.93rem;
+  }
+
+  .mentorship-witch-paths {
+    gap: 0;
+    margin-top: 46px;
+  }
+
+  .mentorship-technique-list article {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 18px;
+    padding: 28px 24px;
+  }
+
+  .mentorship-learning-list li,
+  .mentorship-learning-list li + li,
+  .mentorship-learning-list li:nth-child(3) {
+    min-height: 0;
+    padding: 28px 0;
+    border-left: 0;
+  }
+
+  .mentorship-learning-list li + li::before,
+  .mentorship-learning-list li:nth-child(3)::before {
+    left: 0;
+  }
+
+  .mentorship-contribution-list article {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .mentorship-final-cta {
+    min-height: 440px;
+    background-position: 62% center;
+  }
+
+  .mentorship-final-cta .container {
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+
+  .mentorship-final-cta h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .mentorship-hero-content {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .page-mentorship .mentorship-hero h1 {
+    font-size: 2.35rem;
+  }
+
+  .mentorship-hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .mentorship-button {
+    width: 100%;
+  }
+
+  .mentorship-facts > div,
+  .certificate-record > div {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .mentorship-stage-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .mentorship-stage-meta > div + div {
+    padding: 16px 0 0;
+    border-top: 1px solid var(--mentor-line);
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mentorship-hero-media img {
+    animation: none;
+    transform: none;
+  }
+
+  .mentorship-button,
+  .mentorship-archive-image img {
+    transition: none;
+  }
+
+  .mentorship-button.primary:hover,
+  .mentorship-archive-feature:hover .mentorship-archive-image img {
+    transform: none;
+  }
+}

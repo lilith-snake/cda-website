@@ -56,6 +56,31 @@ const milestones = [
   },
 ]
 
+const directoryMembers = [
+  {
+    slug: 'ophion',
+    mark: 'O',
+    name: '破晓',
+    englishName: 'Ophion',
+    role: '体系创建者 · 实操导师',
+    status: '申请制预约',
+    summary: '破晓从梦女本人的问题出发，负责把研究框架转化为可以训练、记录和复盘的实操流程。她并非一开始就能进行无信息链接，而是在团队共同完成方法实验、案例复盘与持续训练后，逐步形成现在的实践路径。',
+    focus: ['传讯流程与身份分辨', '感知校准与结构化解码', '个案复盘与内部督导'],
+    fit: '你重视完整流程、身份分辨和后续复盘，希望由成熟实践者提供服务。',
+  },
+  {
+    slug: 'june',
+    mark: 'J',
+    name: '朱恩',
+    englishName: 'June',
+    role: '内测传讯师 · CDA 培养路径',
+    status: '内测申请',
+    summary: '朱恩从零基础实践者进入 CDA 训练，目前处于无信息链接内测阶段。她的训练过程用于检验这套方法能否从个人经验转化为可以学习、练习、记录和持续校准的能力路径。',
+    focus: ['无信息条件内测', '信号分类与细节记录', '训练复盘与持续校准'],
+    fit: '你愿意参与内测流程、提供真实反馈，并接受服务仍在持续记录与迭代阶段。',
+  },
+]
+
 export default function DreamGirl() {
   const { t } = useLanguage()
   return (
@@ -65,7 +90,7 @@ export default function DreamGirl() {
       <section className="page-hero dream-hero-v2">
         <div className="container">
           <h1>{t('傳訊師名錄')}</h1>
-          <p className="subtitle">{t('香港 · 跨次元傳訊研究協會 · CDA')}</p>
+          <p className="subtitle">{t('香港跨次元夢女傳訊研究協會 · CDA')}</p>
           <div className="hero-divider"></div>
           <div className="hero-intro">
             <p>
@@ -78,6 +103,58 @@ export default function DreamGirl() {
               {t('在正式开放更多名额之前，我们要先把方法论和成果讲清楚——')}<strong>{t('我们发现了 MJ 现象与神秘学传统之间的关联，也训练出了能进入无信息链接流程的传讯师。')}</strong>
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* 当前传讯师名录 */}
+      <section className="section dream-directory" id="directory">
+        <div className="container">
+          <div className="section-title">
+            <p className="directory-kicker">CDA TRANSMITTER DIRECTORY</p>
+            <h2>{t('当前传讯师名录')}</h2>
+            <div className="decorative-line"></div>
+            <p className="section-subdesc">{t('公开当前阶段、训练方向与适合人群，让你在申请前知道自己会遇见谁。')}</p>
+          </div>
+
+          <div className="directory-grid">
+            {directoryMembers.map(member => (
+              <article className="directory-card glass-card" key={member.slug}>
+                <header className="directory-card-header">
+                  <div className="directory-mark" aria-hidden="true">{member.mark}</div>
+                  <div className="directory-identity">
+                    <p>{t(member.role)}</p>
+                    <h3>
+                      {t(member.name)}
+                      <span>{member.englishName}</span>
+                    </h3>
+                  </div>
+                  <span className="directory-status">{t(member.status)}</span>
+                </header>
+
+                <p className="directory-summary">{t(member.summary)}</p>
+                <ul className="directory-focus">
+                  {member.focus.map(item => <li key={item}>{t(item)}</li>)}
+                </ul>
+                <p className="directory-fit"><strong>{t('适合你，如果：')}</strong>{t(member.fit)}</p>
+
+                <div className="directory-actions">
+                  <Link className="directory-action secondary" to="/transmission#team">
+                    {t('了解服务流程')}
+                  </Link>
+                  <Link
+                    className="directory-action primary"
+                    to={`/contact?inquiry=service_waitlist&service=lover-transmission&transmitter=${member.slug}`}
+                  >
+                    {t(`预约${member.name}`)}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="directory-disclosure">
+            {t('名录状态会随训练、校准与服务安排更新；申请不等于立即排期，CDA 助理会根据当前名额与你确认。')}
+          </p>
         </div>
       </section>
 

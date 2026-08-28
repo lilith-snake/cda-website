@@ -12,8 +12,10 @@ export default function Home() {
       {/* Hero */}
       <section className="home-hero">
         <div className="hero-content container">
-          <p className="hero-label">{t('香港 · 跨次元傳訊研究協會')}</p>
+          <p className="hero-label">{t('香港跨次元夢女傳訊研究協會')}</p>
+          <p className="hero-identity">{t('夢女親手組成，專屬於夢女的協會')}</p>
           <h1 className="hero-name">{t('我們想試一試')}</h1>
+          <p className="hero-slogan">{t('CDA｜打破次元壁，觸碰他的心跳。')}</p>
           <p className="hero-title">{t('很難。但總要有人先做。')}</p>
           <p className="hero-desc">{t('沒有人走過這條路。沒有人給過答案。我們從一張塔羅牌開始，從一個深夜睡不著的夢女開始——想驗證那個一直感覺得到、卻從未被承認的存在。不是因為有把握，是因為不想再假裝他不存在。')}</p>
 
@@ -28,6 +30,32 @@ export default function Home() {
             <a href="/cda-website/our-story.html" className="hero-link-item">{t('我們的故事')}</a>
             <Link to="/witness" className="hero-link-item">{t('參與驗證')}</Link>
           </div>
+        </div>
+      </section>
+
+      {/* 品牌宣言 */}
+      <section className="home-brand-manifesto">
+        <div className="brand-manifesto-content container">
+          <h2 className="brand-community-title">{t('夢女終於有了屬於自己的協會。')}</h2>
+          <p className="brand-community-body">
+            {t('CDA 由夢女親手組成。')}<br />
+            {t('我們因同一個願望聚在一起：有一天，真正見到自己的愛人。')}<br />
+            {t('這裡是專屬於夢女的研究共同體與聚集地。讓我們彼此認出、彼此支持；我們不再是被偏見落單的小眾群體，夢女終於也有了自己的家。')}
+          </p>
+          <div className="brand-community-divider" aria-hidden="true" />
+          <p className="brand-manifesto-opening">
+            {t('次元壁曾讓你以為，')}<br />
+            {t('你與所愛注定分隔在兩個世界。')}
+          </p>
+          <h2 className="brand-manifesto-belief">{t('次元有壁，愛無邊界。')}</h2>
+          <p className="brand-manifesto-body">
+            {t('CDA 打破虛實的邊界，')}<br />
+            {t('讓你與夢中的他跨越次元、奔赴彼此，')}<br />
+            {t('在同一個世界相見、相伴、相愛。')}
+          </p>
+          <p className="brand-manifesto-signature">
+            {t('CDA｜打破次元壁，觸碰他的心跳。')}
+          </p>
         </div>
       </section>
 
@@ -154,7 +182,7 @@ export default function Home() {
               {t('整合秘傳學、物理學、比較宗教學——為跨次元情感對象建立第一套可被學術討論的分類體系與驗證框架。提出五軸類型學、「兩種猜想」框架，將 MJ 現象定位為西方秘傳學的新分支。')}
             </p>
             <p style={{fontSize: '0.85rem', color: 'var(--color-text-light)', marginTop: '12px'}}>
-              {t('黎輝 · 破曉 · 香港 · 跨次元傳訊研究協會 · 2026年7月1日')}
+              {t('黎輝 · 破曉 · 香港跨次元夢女傳訊研究協會 · 2026年7月1日')}
             </p>
           </div>
         </div>

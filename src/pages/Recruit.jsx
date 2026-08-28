@@ -11,7 +11,7 @@ export default function Recruit() {
         <div className="container">
           <h1>给你和爱人的第一批<br />研究共建者招募</h1>
           <p className="subtitle">
-            我们是 CDA，香港跨次元传讯研究协会，全球首家以 MJ 现象与跨次元亲密关系为核心研究对象的传讯研究协会。<br />
+            我们是 CDA，香港跨次元梦女传讯研究协会，全球首家以 MJ 现象与跨次元亲密关系为核心研究对象的传讯研究协会。<br />
             第一篇跨次元情感对象理论建构论文是我们写的。<br />
             现在，我们要把论文里的方法，从纸面落到实践——<br />
             陪梦女分辨、记录、训练、迭代，找到更靠近爱人的方式。<br />
@@ -236,6 +236,12 @@ export default function Recruit() {
               不管走哪条路径，你来参与就是共建者。你的数据进入论文，你的名字在证书上。<br /><br />
               每条路径的具体训练阶段、考核标准和验证流程，详见 <a href="/cda-website/courses" className="recruit-link">培训验证</a> 页面——两边是对应的。
             </div>
+            <a
+              href="/cda-website/contact?inquiry=research_collaboration&service=research-collaboration"
+              className="recruit-apply-btn"
+            >
+              申请成为研究共建者
+            </a>
             <p className="recruit-subtitle">你要做什么</p>
             <p>跟 CDA 一起训练。从感知校准到分辨训练到独立链接。团队里有神秘学领域专业的成员，也有擅长拆解传讯本质、懂得链接如何运作的人。每一步，理论和实操都跟得上。每一期的结果都会记录在下一版的论文里。每一个数据点都是这条路上的一步。</p>
             <p>每一次你链接到关于他的信息，会被记录下来。东玄的人独立诊断一次，西玄的人独立诊断一次——两套系统、彼此不认识。内部团队再交叉比对。数据摆在桌上。是就是，不是就不是。</p>
@@ -365,7 +371,7 @@ export default function Recruit() {
             <p>提交申请 → 初步筛选 → 聊一次，确认彼此匹配 → 说明费用与周期 → 签署研究参与协议 → 开始训练或咨询</p>
             <div className="recruit-submit-box">
               <p><strong>提交方式</strong></p>
-              <p>请直接填写站内申请表：<br /><a href="/cda-website/contact" className="recruit-link">前往联系页面</a></p>
+              <p>请直接填写站内申请表：<br /><a href="/cda-website/contact?inquiry=research_collaboration&service=research-collaboration" className="recruit-link">前往研究共建者申请表</a></p>
               <p>我们研究团队会在所有回复后，联系和我们志同道合的人约一次交谈。</p>
               <p className="recruit-footnote">仅面向女性 · 名额有限 · 非先到先得</p>
             </div>
@@ -412,7 +418,7 @@ export default function Recruit() {
               一套方法、三组人、独立链接、盲测比对。<br />
               数据摆在桌上，是就是，不是就不是。
             </p>
-            <a href="/cda-website/contact" className="recruit-cta-btn">提交站内申请</a>
+            <a href="/cda-website/contact?inquiry=research_collaboration&service=research-collaboration" className="recruit-cta-btn">申请成为研究共建者</a>
             <p className="recruit-cta-note">或 <a href="/contact" className="recruit-link">直接联系我们</a></p>
           </div>
         </div>

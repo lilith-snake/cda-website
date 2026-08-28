@@ -64,7 +64,7 @@ export default function Checkout() {
       <header className="checkout-header">
         <Link to="/" className="checkout-brand" aria-label="返回 CDA 首页">
           <strong>CDA</strong>
-          <span>香港 · 跨次元传讯研究协会</span>
+          <span>香港跨次元梦女传讯研究协会</span>
         </Link>
         <Link to="/shop" className="checkout-back">返回你和他</Link>
       </header>

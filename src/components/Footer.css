@@ -25,6 +25,20 @@
   font-size: 0.85rem;
 }
 
+.footer-identity {
+  margin-bottom: 3px;
+  color: var(--color-text-light) !important;
+  font-size: 0.78rem !important;
+}
+
+.footer-slogan {
+  margin-bottom: 8px;
+  color: var(--color-accent) !important;
+  font-family: var(--font-serif);
+  font-size: 1rem !important;
+  font-weight: 700;
+}
+
 .footer-logo {
   font-family: var(--font-serif);
   font-size: 1.4rem;

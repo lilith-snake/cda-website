@@ -384,7 +384,7 @@
             <button id="notifyBtn" class="ghost">开启通知</button>
             <button id="refreshBtn" class="ghost">刷新</button>
             <button id="csvBtn" class="ghost">导出当前表格</button>
-            <a class="ghost" href="order-admin.html" target="_blank" rel="noreferrer">打开排单后台</a>
+            <a class="ghost" href="order-assistant.html" target="_blank" rel="noreferrer">打开助理后台</a>
           </div>
         </header>
 
@@ -404,11 +404,12 @@
                 <option value="all">全部类型</option>
                 <option value="lover_transmission">爱人传讯</option>
                 <option value="service_waitlist">传讯服务候补</option>
-                <option value="course_interest">课程方法内测</option>
+                <option value="course_interest">神秘学课程咨询</option>
                 <option value="transmitter_training">传讯师培养</option>
+                <option value="relationship_exploration">想学习链接爱人，找到更适合你们的相处方式</option>
                 <option value="research_collaboration">研究共建者申请</option>
                 <option value="paper_access">论文与资料</option>
-                <option value="other">其他咨询</option>
+                <option value="other">神秘学相关业务</option>
               </select>
             </div>
             <div class="table-wrap">
@@ -792,29 +793,41 @@
         const item = state.applications.find(row => row.id === state.selectedId)
         if (!item) return toast('先选择一条申请')
         if (item.status === 'queued') return toast('这条申请已经转入排单')
-        const service = item.service_interest || item.inquiry_label || '新人传讯'
-        await api('/admin/orders', {
-          method: 'POST',
-          body: {
-            client_name: item.name || `申请 #${item.id}`,
-            contact: item.contact || '',
-            channel: '官网申请',
-            source: item.inquiry_label || item.inquiry_type || '',
-            service_type: mapService(service),
-            status: 'new',
-            priority: service.includes('传讯') ? 'high' : 'normal',
-            payment_status: '未付款',
-            tags: [item.role, item.inquiry_label, item.service_interest].filter(Boolean),
-            deliverable: '',
-            notes: `由官网申请 #${item.id} 转入排单\n\n爱人 / 体验背景：${item.mj_context || ''}\n\n具体问题：${item.message || ''}`,
-          },
-        })
-        await api('/admin/applications', {
-          method: 'PUT',
-          body: { id: item.id, status: 'queued' },
-        })
-        await loadApplications()
-        toast('已转入排单后台')
+        const button = $('#queueBtn')
+        button.disabled = true
+        button.textContent = '转入中…'
+        try {
+          const service = item.service_interest || item.inquiry_label || '新人传讯'
+          await api('/admin/orders', {
+            method: 'POST',
+            body: {
+              client_name: item.name || `申请 #${item.id}`,
+              contact: item.contact || '',
+              channel: '官网申请',
+              source: item.inquiry_label || item.inquiry_type || '',
+              service_type: mapService(service),
+              status: 'new',
+              priority: service.includes('传讯') ? 'high' : 'normal',
+              sync_key: `website-application:${item.id}`,
+              payment_status: '未付款',
+              tags: [item.role, item.inquiry_label, item.service_interest].filter(Boolean),
+              deliverable: '',
+              notes: `由官网申请 #${item.id} 转入排单\n\n爱人 / 体验背景：${item.mj_context || ''}\n\n具体问题：${item.message || ''}`,
+            },
+          })
+          await api('/admin/applications', {
+            method: 'PUT',
+            body: { id: item.id, status: 'queued' },
+          })
+          await loadApplications()
+          toast('已转入排单后台')
+        } catch (error) {
+          toast(error.message || '转入排单失败')
+        } finally {
+          const current = state.applications.find(row => row.id === state.selectedId)
+          button.disabled = current?.status === 'queued'
+          button.textContent = current?.status === 'queued' ? '已转入排单' : '转为排单'
+        }
       }
 
       async function requestNotify() {
@@ -848,6 +861,7 @@
       function mapService(value) {
         if (value.includes('传讯')) return '新人传讯'
         if (value.includes('互助')) return '梦女互助'
+        if (value.includes('链接') || value.includes('相处') || value.includes('陪伴')) return '记录陪跑'
         if (value.includes('课程') || value.includes('训练')) return '课程/训练营'
         if (value.includes('会员')) return '会员/长期服务'
         if (value.includes('诊断')) return '深度诊断'

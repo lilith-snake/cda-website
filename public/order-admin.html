@@ -162,6 +162,18 @@
       }
       .topbar h2 { font-size: 28px; }
       .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+      .live-state {
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+        border: 1px solid rgba(48,183,166,.35);
+        border-radius: 6px;
+        background: rgba(48,183,166,.08);
+        color: var(--teal);
+        font-size: 12px;
+        white-space: nowrap;
+      }
 
       .stats {
         display: grid;
@@ -342,6 +354,7 @@
             <button id="deleteBtn" class="danger" disabled>选择排单后删除</button>
             <button id="switchAdminBtn" class="ghost">切换管理员</button>
             <button id="newBtn" class="primary">新增排单</button>
+            <span id="liveState" class="live-state">连接中</span>
           </div>
         </header>
 
@@ -428,6 +441,7 @@
             <label>交付物<input name="deliverable" placeholder="语音、文字记录、复盘表、课程名" /></label>
             <label>备注<textarea name="notes" rows="5" placeholder="需求、边界、进度、下一步动作"></textarea></label>
             <div class="form-actions">
+              <button type="button" id="completeBtn" class="ghost">确认交付并完成</button>
               <button type="button" id="clearBtn" class="ghost">清空</button>
               <button type="submit" class="primary">保存排单</button>
             </div>
@@ -443,7 +457,10 @@
         : '/api'
       const urlParams = new URLSearchParams(location.search)
       const forceAdminLogin = urlParams.get('admin') === '1' || urlParams.get('role') === 'admin'
-      if (forceAdminLogin) sessionStorage.removeItem('cdaOrderPassword')
+      const forceAssistantLogin = urlParams.get('assistant') === '1' || urlParams.get('role') === 'assistant' || location.pathname.endsWith('/order-assistant.html')
+      const requiredRole = forceAdminLogin ? 'admin' : (forceAssistantLogin ? 'assistant' : '')
+      const passwordKey = requiredRole ? `cdaOrderPassword:${requiredRole}` : 'cdaOrderPassword'
+      if (forceAdminLogin) sessionStorage.removeItem(passwordKey)
 
       const serviceTypes = ['新人传讯', '梦女互助', '记录陪跑', '深度诊断', '课程/训练营', '会员/长期服务', '其他']
       const statuses = ['new', 'contacted', 'paid', 'scheduled', 'in_progress', 'done', 'hold', 'refund']
@@ -454,9 +471,13 @@
       const infoLabels = { '未确认': '未确认', '已确认': '已确认', '待补充': '待补充', '无需': '无需' }
       const intentLabels = { low: '低', normal: '普通', high: '高' }
       const state = {
-        password: forceAdminLogin ? '' : (sessionStorage.getItem('cdaOrderPassword') || ''),
+        password: forceAdminLogin ? '' : (sessionStorage.getItem(passwordKey) || ''),
         role: '',
         orders: [],
+        fingerprints: new Map(),
+        loadedOnce: false,
+        pollTimer: 0,
+        pollMs: 3000,
         selectedId: 0,
         status: 'all',
         intent: 'all',
@@ -479,6 +500,7 @@
         $('#clearBtn').addEventListener('click', resetForm)
         $('#csvBtn').addEventListener('click', exportCsv)
         $('#deleteBtn').addEventListener('click', deleteSelected)
+        $('#completeBtn').addEventListener('click', completeOrder)
         $('#switchAdminBtn').addEventListener('click', switchAdmin)
         $('#search').addEventListener('input', render)
         $('#serviceFilter').addEventListener('change', render)
@@ -501,6 +523,15 @@
           document.querySelector('.login h1').textContent = '管理员排单后台'
           document.querySelector('.login p').textContent = '请输入管理员密码，管理员可删除排单。'
           document.querySelector('.topbar h2').textContent = '管理员排单与删除'
+          $('#switchAdminBtn').classList.add('hidden')
+        }
+        if (forceAssistantLogin) {
+          document.title = 'CDA 助理排单后台'
+          document.querySelector('.login h1').textContent = '助理排单后台'
+          document.querySelector('.login p').textContent = '请输入助理密码。助理可新增、编辑、确认交付。'
+          document.querySelector('.topbar h2').textContent = '助理排单与服务交付'
+          $('#deleteBtn').classList.add('hidden')
+          $('#switchAdminBtn').classList.add('hidden')
         }
         if (state.password) showApp()
       }
@@ -508,7 +539,7 @@
       async function login(event) {
         event.preventDefault()
         state.password = $('#password').value
-        sessionStorage.setItem('cdaOrderPassword', state.password)
+        sessionStorage.setItem(passwordKey, state.password)
         await showApp()
       }
 
@@ -518,33 +549,131 @@
           $('#login').classList.add('hidden')
           $('#app').classList.remove('hidden')
           resetForm()
-          setInterval(loadOrdersQuietly, 20000)
+          requestNotifyPermission()
+          startLiveRefresh()
         } catch (error) {
-          sessionStorage.removeItem('cdaOrderPassword')
+          sessionStorage.removeItem(passwordKey)
           $('#loginError').textContent = error.message
         }
       }
 
       async function loadOrders() {
         const data = await api('/admin/orders')
-        state.role = data.role || ''
-        state.orders = data.orders || []
-        $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
-        render()
-        updateDeleteButton()
+        applyOrders(data, { silent: false })
         toast('已同步')
       }
 
       async function loadOrdersQuietly() {
         try {
-          const first = state.orders[0]?.id
           const data = await api('/admin/orders')
-          state.role = data.role || state.role
-          state.orders = data.orders || []
-          render()
-          updateDeleteButton()
-          if (first && state.orders[0]?.id && first !== state.orders[0].id) toast('发现新排单')
-        } catch {}
+          applyOrders(data, { silent: true })
+          setLiveState('实时刷新中')
+        } catch {
+          setLiveState('刷新异常')
+        }
+      }
+
+      function startLiveRefresh() {
+        clearInterval(state.pollTimer)
+        state.pollTimer = setInterval(loadOrdersQuietly, state.pollMs)
+        setLiveState('实时刷新中')
+      }
+
+      function applyOrders(data, options = {}) {
+        const role = data.role || ''
+        assertExpectedRole(role)
+        const previousSelectedId = state.selectedId
+        const nextOrders = data.orders || []
+        const nextFingerprints = buildFingerprints(nextOrders)
+        const changes = summarizeChanges(state.fingerprints, nextFingerprints, nextOrders)
+        state.role = role
+        state.orders = nextOrders
+        state.fingerprints = nextFingerprints
+        $('#roleText').textContent = state.role === 'admin' ? '管理员' : '助理'
+        render()
+        updateDeleteButton()
+        updateCompleteButton()
+        if (previousSelectedId) {
+          const stillExists = state.orders.some(order => order.id === previousSelectedId)
+          if (!stillExists) {
+            resetForm()
+          } else if (!options.silent) {
+            selectOrder(previousSelectedId)
+          }
+        }
+        if (options.silent && state.loadedOnce && changes.total > 0) announceChanges(changes)
+        state.loadedOnce = true
+      }
+
+      function assertExpectedRole(role) {
+        if (requiredRole === 'admin' && role !== 'admin') throw new Error('请使用管理员密码登录这个入口')
+        if (requiredRole === 'assistant' && role !== 'assistant') throw new Error('请使用助理密码登录这个入口')
+      }
+
+      function buildFingerprints(orders) {
+        return new Map((orders || []).map(order => [String(order.id), fingerprint(order)]))
+      }
+
+      function fingerprint(order) {
+        return JSON.stringify([
+          order.id,
+          order.queue_no,
+          order.updated_at,
+          order.client_name,
+          order.contact,
+          order.service_type,
+          order.status,
+          order.priority,
+          order.practitioner,
+          order.appointment_at,
+          order.deadline_at,
+          order.follow_up_at,
+          order.info_status,
+          order.intent_level,
+          order.price,
+          order.paid,
+          order.payment_status,
+          order.deliverable,
+          order.notes,
+          order.tags,
+        ])
+      }
+
+      function summarizeChanges(previous, next, orders) {
+        if (!previous.size) return { total: 0, created: 0, updated: 0, deleted: 0 }
+        let created = 0
+        let updated = 0
+        for (const order of orders) {
+          const id = String(order.id)
+          if (!previous.has(id)) created += 1
+          else if (previous.get(id) !== next.get(id)) updated += 1
+        }
+        let deleted = 0
+        for (const id of previous.keys()) {
+          if (!next.has(id)) deleted += 1
+        }
+        return { total: created + updated + deleted, created, updated, deleted }
+      }
+
+      function announceChanges(changes) {
+        if (changes.created) {
+          toast(`收到 ${changes.created} 条新排单`)
+          notify('CDA 排单后台', `收到 ${changes.created} 条新排单`)
+          return
+        }
+        if (changes.updated) {
+          toast(`${changes.updated} 条排单已更新`)
+          notify('CDA 排单后台', `${changes.updated} 条排单已更新`)
+          return
+        }
+        if (changes.deleted) {
+          toast(`${changes.deleted} 条排单已删除`)
+          notify('CDA 排单后台', `${changes.deleted} 条排单已删除`)
+        }
+      }
+
+      function setLiveState(message) {
+        $('#liveState').textContent = `${message} · ${Math.round(state.pollMs / 1000)}秒`
       }
 
       function render() {
@@ -617,6 +746,7 @@
         }
         render()
         updateDeleteButton()
+        updateCompleteButton()
       }
 
       function resetForm() {
@@ -630,32 +760,63 @@
         $('#formTitle').textContent = '新增排单'
         render()
         updateDeleteButton()
+        updateCompleteButton()
       }
 
       async function saveOrder(event) {
         event.preventDefault()
-        const body = Object.fromEntries(new FormData(form).entries())
-        body.id = state.selectedId
-        body.tags = String(body.tags || '').split(/[,\s，、/]+/).map(item => item.trim()).filter(Boolean)
-        const saved = await api('/admin/orders', { method: state.selectedId ? 'PUT' : 'POST', body })
-        state.selectedId = saved.id
-        if (['new', 'contacted'].includes(saved.status)) {
-          state.status = saved.status
-          document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === saved.status))
+        try {
+          const body = Object.fromEntries(new FormData(form).entries())
+          body.id = state.selectedId
+          body.tags = String(body.tags || '').split(/[,\s，、/]+/).map(item => item.trim()).filter(Boolean)
+          const saved = await api('/admin/orders', { method: state.selectedId ? 'PUT' : 'POST', body })
+          state.selectedId = saved.id
+          if (['new', 'contacted', 'done'].includes(saved.status)) {
+            state.status = saved.status
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === saved.status))
+          }
+          await loadOrders()
+          selectOrder(saved.id)
+          toast('已保存并同步')
+        } catch (error) {
+          toast(error.message || '保存失败')
         }
-        await loadOrders()
-        selectOrder(saved.id)
-        toast('已保存并同步')
+      }
+
+      async function completeOrder() {
+        try {
+          if (state.selectedId) {
+            const body = Object.fromEntries(new FormData(form).entries())
+            body.id = state.selectedId
+            body.status = 'done'
+            body.tags = String(body.tags || '').split(/[,\s，、/]+/).map(item => item.trim()).filter(Boolean)
+            const saved = await api('/admin/orders', { method: 'PUT', body })
+            state.selectedId = saved.id
+            state.status = 'done'
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === 'done'))
+            await loadOrders()
+            selectOrder(saved.id)
+            toast('已确认交付并完成')
+            return
+          }
+          toast('先选择一条排单')
+        } catch (error) {
+          toast(error.message || '操作失败')
+        }
       }
 
       async function deleteSelected() {
-        if (state.role !== 'admin') return toast('删除仅管理员可用')
-        if (!state.selectedId) return toast('先选择一条排单')
-        if (!confirm('确定删除这条排单？')) return
-        await api(`/admin/orders?id=${state.selectedId}`, { method: 'DELETE' })
-        resetForm()
-        await loadOrders()
-        toast('已删除')
+        try {
+          if (state.role !== 'admin') return toast('删除仅管理员可用')
+          if (!state.selectedId) return toast('先选择一条排单')
+          if (!confirm('确定删除这条排单？')) return
+          await api(`/admin/orders?id=${state.selectedId}`, { method: 'DELETE' })
+          resetForm()
+          await loadOrders()
+          toast('已删除')
+        } catch (error) {
+          toast(error.message || '删除失败')
+        }
       }
 
       function updateDeleteButton() {
@@ -677,9 +838,22 @@
         button.title = '删除当前选中的排单'
       }
 
+      function updateCompleteButton() {
+        const button = $('#completeBtn')
+        if (!state.selectedId) {
+          button.disabled = true
+          button.textContent = '选中后完成'
+          button.title = '先点击左侧排单，再确认交付'
+          return
+        }
+        button.disabled = false
+        button.textContent = '确认交付并完成'
+        button.title = '直接把当前排单标记为已完成'
+      }
+
       function switchAdmin() {
-        sessionStorage.removeItem('cdaOrderPassword')
-        location.href = `${location.pathname}?admin=1`
+        sessionStorage.removeItem('cdaOrderPassword:admin')
+        location.href = 'order-admin-owner.html'
       }
 
       async function exportCsv() {
@@ -699,7 +873,7 @@
       async function api(path, options = {}) {
         const response = await fetch(`${API_BASE}${path}`, {
           method: options.method || 'GET',
-          headers: { 'content-type': 'application/json', 'x-admin-password': state.password },
+          headers: { 'content-type': 'application/json', 'x-admin-password': state.password, 'cache-control': 'no-cache' },
           body: options.body ? JSON.stringify(options.body) : undefined,
         })
         const data = await response.json().catch(() => ({}))
@@ -732,6 +906,16 @@
         el.classList.add('show')
         clearTimeout(toast.timer)
         toast.timer = setTimeout(() => el.classList.remove('show'), 1800)
+      }
+
+      function requestNotifyPermission() {
+        if (!('Notification' in window)) return
+        if (Notification.permission === 'default') Notification.requestPermission()
+      }
+
+      function notify(title, body) {
+        if (!('Notification' in window)) return
+        if (Notification.permission === 'granted') new Notification(title, { body })
       }
 
       function displayDate(value) { return value ? String(value).replace('T', ' ') : '' }

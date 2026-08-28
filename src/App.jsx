@@ -10,6 +10,7 @@ import Courses from './pages/Courses'
 import Contact from './pages/Contact'
 import Shop from './pages/Shop'
 import TransmissionService from './pages/TransmissionService'
+import Mentorship from './pages/Mentorship'
 
 import Research from './pages/Research'
 import Witness from './pages/Witness'
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/transmission" element={<TransmissionService />} />
+          <Route path="/mentorship" element={<Mentorship />} />
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/witness" element={<Witness />} />
