@@ -933,6 +933,301 @@
   font-size: 0.96rem;
 }
 
+/* Practice atlas */
+.mentorship-practice-atlas {
+  background: #111015;
+}
+
+.mentorship-atlas-heading {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(54px, 8vw, 108px);
+  align-items: start;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.mentorship-atlas-heading h2 {
+  margin: 0;
+  color: var(--mentor-ivory);
+  font-size: clamp(2.1rem, 3.6vw, 3.3rem);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.mentorship-atlas-intro {
+  padding-top: 18px;
+  border-top: 1px solid rgba(185, 160, 107, 0.3);
+}
+
+.mentorship-atlas-intro > p {
+  color: #c0b5b4;
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  line-height: 2;
+}
+
+.mentorship-atlas-intro .mentorship-atlas-note {
+  margin-top: 18px;
+  color: var(--mentor-gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  line-height: 1.8;
+}
+
+.mentorship-element-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(185, 160, 107, 0.3);
+  border-left: 1px solid rgba(185, 160, 107, 0.3);
+}
+
+.mentorship-element-card {
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  padding: clamp(28px, 3.5vw, 46px);
+  border-right: 1px solid rgba(185, 160, 107, 0.3);
+  border-bottom: 1px solid rgba(185, 160, 107, 0.3);
+  background: rgba(8, 7, 10, 0.22);
+}
+
+.mentorship-element-card.water {
+  border-top: 2px solid #6d9ca4;
+}
+
+.mentorship-element-card.earth {
+  border-top: 2px solid #aa9369;
+}
+
+.mentorship-element-card.fire {
+  border-top: 2px solid #b75f49;
+}
+
+.mentorship-element-card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  color: var(--mentor-gold);
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+}
+
+.mentorship-atlas-type {
+  display: block;
+  color: #a39ba6;
+  font-size: 0.64rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.mentorship-element-card h3 {
+  margin: 14px 0 13px;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 600;
+}
+
+.mentorship-element-card > p,
+.mentorship-atlas-grid article > p {
+  color: #b0a5a6;
+  font-size: 0.79rem;
+  line-height: 1.9;
+}
+
+.mentorship-element-card dl,
+.mentorship-atlas-grid dl {
+  margin: auto 0 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(185, 160, 107, 0.2);
+}
+
+.mentorship-element-card dl > div,
+.mentorship-atlas-grid dl > div {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 13px;
+}
+
+.mentorship-element-card dt,
+.mentorship-atlas-grid dt {
+  color: var(--mentor-gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.mentorship-element-card dd,
+.mentorship-atlas-grid dd {
+  color: #938a91;
+  font-size: 0.68rem;
+  line-height: 1.75;
+}
+
+.mentorship-element-card a,
+.mentorship-atlas-grid a {
+  align-self: flex-start;
+  margin-top: 22px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(216, 199, 157, 0.65);
+  color: var(--mentor-gold-light);
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.mentorship-atlas-subheading {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.45fr) minmax(0, 0.95fr) minmax(250px, 1fr);
+  gap: 30px;
+  align-items: start;
+  margin: clamp(66px, 8vw, 100px) 0 34px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(185, 160, 107, 0.32);
+}
+
+.mentorship-atlas-subheading > span {
+  color: var(--mentor-gold);
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.mentorship-atlas-subheading h3 {
+  margin: 0;
+  color: var(--mentor-ivory);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  line-height: 1.5;
+}
+
+.mentorship-atlas-subheading p {
+  margin: 0;
+  color: #9e9599;
+  font-size: 0.75rem;
+  line-height: 1.85;
+}
+
+.mentorship-atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(146, 136, 145, 0.27);
+  border-left: 1px solid rgba(146, 136, 145, 0.27);
+}
+
+.mentorship-atlas-grid article {
+  display: flex;
+  min-height: 355px;
+  flex-direction: column;
+  padding: clamp(25px, 3vw, 35px);
+  border-right: 1px solid rgba(146, 136, 145, 0.27);
+  border-bottom: 1px solid rgba(146, 136, 145, 0.27);
+  background: rgba(8, 7, 10, 0.16);
+  transition: background var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.mentorship-atlas-grid article:hover {
+  border-color: rgba(185, 160, 107, 0.42);
+  background: rgba(80, 21, 34, 0.18);
+}
+
+.mentorship-atlas-grid h3 {
+  margin: 15px 0 11px;
+  color: var(--mentor-ivory);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.mentorship-learning-resources {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(34px, 6vw, 82px);
+  margin-top: clamp(64px, 8vw, 96px);
+  padding-top: 26px;
+  border-top: 1px solid rgba(185, 160, 107, 0.3);
+}
+
+.mentorship-resources-heading > span {
+  color: var(--mentor-gold);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.mentorship-resources-heading h3 {
+  margin: 15px 0 11px;
+  color: var(--mentor-ivory);
+  font-size: 1.35rem;
+  line-height: 1.5;
+}
+
+.mentorship-resources-heading p {
+  color: #958c93;
+  font-size: 0.72rem;
+  line-height: 1.8;
+}
+
+.mentorship-resources-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(146, 136, 145, 0.24);
+  border-left: 1px solid rgba(146, 136, 145, 0.24);
+}
+
+.mentorship-resources-list a {
+  display: flex;
+  min-height: 168px;
+  flex-direction: column;
+  padding: 22px 24px;
+  border-right: 1px solid rgba(146, 136, 145, 0.24);
+  border-bottom: 1px solid rgba(146, 136, 145, 0.24);
+  background: rgba(8, 7, 10, 0.14);
+  text-decoration: none;
+  transition: background var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.mentorship-resources-list a:hover {
+  border-color: rgba(185, 160, 107, 0.42);
+  background: rgba(80, 21, 34, 0.18);
+}
+
+.mentorship-resources-list a > span {
+  color: #9f929d;
+  font-size: 0.59rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.mentorship-resources-list strong {
+  margin-top: 12px;
+  color: var(--mentor-ivory);
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.mentorship-resources-list em {
+  margin-top: 8px;
+  color: #9e9599;
+  font-size: 0.7rem;
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.mentorship-resources-list b {
+  margin-top: auto;
+  padding-top: 13px;
+  color: var(--mentor-gold-light);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.mentorship-atlas-disclaimer {
+  max-width: 930px;
+  margin: 30px auto 0;
+  color: #817b82;
+  font-size: 0.68rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
 /* CDA methods */
 .mentorship-techniques {
   background: #08070a;
@@ -1259,6 +1554,7 @@
   .mentorship-curriculum-heading,
   .mentorship-academic-heading,
   .mentorship-worldview-lead,
+  .mentorship-atlas-heading,
   .mentorship-certificate-grid,
   .mentorship-students-grid {
     grid-template-columns: 1fr;
@@ -1276,6 +1572,23 @@
   .mentorship-academic-grid,
   .mentorship-worldview-principles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mentorship-atlas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mentorship-atlas-subheading {
+    grid-template-columns: minmax(170px, 0.7fr) minmax(0, 1.3fr);
+  }
+
+  .mentorship-atlas-subheading p {
+    grid-column: 2;
+  }
+
+  .mentorship-learning-resources {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .mentorship-learning-list {
@@ -1387,6 +1700,8 @@
   .mentorship-academic-grid,
   .mentorship-worldview-principles,
   .mentorship-witch-paths,
+  .mentorship-element-grid,
+  .mentorship-atlas-grid,
   .mentorship-learning-list {
     grid-template-columns: 1fr;
   }
@@ -1515,6 +1830,42 @@
   .mentorship-witch-paths {
     gap: 0;
     margin-top: 46px;
+  }
+
+  .mentorship-element-card {
+    min-height: 0;
+    padding: 30px 24px;
+  }
+
+  .mentorship-element-card dl,
+  .mentorship-atlas-grid dl {
+    margin-top: 26px;
+  }
+
+  .mentorship-atlas-subheading {
+    display: block;
+    margin-top: 58px;
+  }
+
+  .mentorship-atlas-subheading h3 {
+    margin-top: 13px;
+  }
+
+  .mentorship-atlas-subheading p {
+    margin-top: 12px;
+  }
+
+  .mentorship-learning-resources {
+    margin-top: 58px;
+  }
+
+  .mentorship-resources-list {
+    grid-template-columns: 1fr;
+  }
+
+  .mentorship-atlas-grid article {
+    min-height: 0;
+    padding: 28px 24px;
   }
 
   .mentorship-technique-list article {

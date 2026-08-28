@@ -63,9 +63,9 @@ const coursePath = [
     level: '基础主修',
     english: 'SCRYING',
     tone: 'core',
-    title: '水占与凝视艺术：先描述，后解释',
-    text: '以水面、反光和光影训练非语言观察，采用「原始图像 / 后续解释」双栏日志。镜面凝视只作为高级选修，理解视觉错觉后再决定是否进入。',
-    topics: ['水镜的历史与物质文化', '反光、波纹与意象记录', '联想、投射与信息拆分', '塔罗交叉复盘与退出机制'],
+    title: '水、地、火占与凝视艺术：先描述，后解释',
+    text: '以水面、地面图式、火焰与反光训练非语言观察，采用「原始变化 / 后续解释」双栏日志。三种媒介只作为历史与象征路径研究，镜面凝视和明火练习另做安全评估。',
+    topics: ['水占与水镜的历史、物质文化', '地占图式与地域谱系辨析', '火焰、烟灰与无焰观察', '联想、投射与退出机制'],
     prerequisite: '建议完成 01 与 02；镜面练习另做评估',
     outcome: '个人视觉信号词典与双栏记录样本',
   },
@@ -175,6 +175,142 @@ const witchPaths = [
   {
     title: '独修与墓地实践',
     text: '有些实践者不属于固定教团，而围绕死亡象征、祖灵、场地与灵体边界建立个人路径。「墓地女巫」是个人实践身份，不是全球统一流派。',
+  },
+]
+
+const divinationModes = [
+  {
+    code: 'WATER',
+    type: '占卜媒介 · HYDROMANCY / SCRYING',
+    title: '水占与水镜',
+    text: '水占术属于占卜与凝视传统：水面、流动、波纹、颜色或反射被当作观察媒介。不同历史语境会采用不同的取象方式；现代水镜更强调持续注视与意象记录。',
+    boundary: '先记可见变化，再谈象征；历史记录不等于预测证明。',
+    source: '密歇根大学数字馆藏 · Hydromancy',
+    href: 'https://quod.lib.umich.edu/d/did/did2222.0004.024/--hydromancy?rgn=main%3Bview%3Dfulltext',
+  },
+  {
+    code: 'EARTH',
+    type: '占卜媒介 · GEOMANCY',
+    title: '地占与地景',
+    text: '地占不是风水的同义词。中世纪伊斯兰与拉丁传统的「沙之学」以随机点列生成图式，再按格局解释；东亚地理术有自己的谱系。课程先标注地域、文本与对象，再比较相似问题。',
+    boundary: '不把占卜图式与地质、建筑或环境安全判断混称。',
+    source: '美国国立医学图书馆 · Arabic geomancy',
+    href: 'https://www.nlm.nih.gov/hmd/arabic/astrology1.html',
+  },
+  {
+    code: 'FIRE',
+    type: '占卜媒介 · PYROMANCY',
+    title: '火占与火焰凝视',
+    text: '火占以火焰、烟、灰或燃烧过程作为征兆媒介，在不同文化中又与祭火、灯火和净化仪式交叠。CDA 将火的物理变化与后来解释分栏记录，不把烛魔法直接等同于火占。',
+    boundary: '公开课只做文化史与无焰观察；任何明火都须成人看护、通风并远离可燃物。',
+    source: '密歇根大学数字馆藏 · Pyromancy',
+    href: 'https://quod.lib.umich.edu/d/did/did2222.0004.055/--pyromancy',
+  },
+]
+
+const witchPracticeModules = [
+  {
+    type: '实践取向 · GREEN / KITCHEN',
+    title: '草药与绿色、厨房女巫',
+    text: '从植物识别、产地、季节、民俗与家庭仪式进入。绿色女巫偏向植物与生态，厨房女巫把烹饪、家务和照护变成有意图的日常实践；两者都是可重叠的当代社群标签，不是统一教派。',
+    boundary: '自然不等于安全或有效；不把民俗配方当处方，不自行摄入未知植物。',
+    source: 'NCCIH · 草药与膳食补充剂',
+    href: 'https://www.nccih.nih.gov/health/dietary-and-herbal-supplements',
+  },
+  {
+    type: '材料文化 · MINERAL / AMULET',
+    title: '水晶与矿物实践',
+    text: '水晶可被放进矿物学、护符史、审美和冥想符号的交叉位置。我们比较颜色、形状、材质、铭文与使用语境，不把今天流行的水晶寓意倒投成古代共识。',
+    boundary: '不宣称晶体治病或存在可测能量；不饮用晶石浸泡水，也不把未知矿物放入口中。',
+    source: 'Versus Arthritis · 辅助疗法证据报告',
+    href: 'https://www.versusarthritis.org/media/12780/complementary-and-alternative-therapies-report-2013.pdf',
+  },
+  {
+    type: '仪式工具 · WAND / ROD',
+    title: '魔杖与仪式器物',
+    text: '法杖把方向、手势、节奏与边界变得可见；它不是自带力量的道具。古埃及护符棒、近代仪式团体的莲花杖和现代木杖属于不同历史系统，必须分开讲。',
+    boundary: '工具服务于意图与注意力，不替代文本训练、同意和结束流程。',
+    source: '大都会艺术博物馆 · Egyptian magic wand',
+    href: 'https://www.metmuseum.org/art/collection/search/544149',
+  },
+  {
+    type: '意识训练 · IMAGERY',
+    title: '视觉化与观想',
+    text: '以多感官意象练习注意力、情绪调节和仪式想象；可以用于目标排练与自我反思。CDA 以身体定向开始、以五感回到当下，不把脑内图像当作外部讯息。',
+    boundary: '若出现持续不适、失眠或现实感下降，立即停止并寻求专业帮助。',
+    source: 'NCCIH · 放松与可视化技术',
+    href: 'https://www.nccih.nih.gov/health/relaxation-techniques-what-you-need-to-know',
+  },
+  {
+    type: '仪式过程 · EMPOWER / CONSECRATE',
+    title: '赋能、充能与祝圣',
+    text: '在不同传统里，口述、符号、祷文、动作和时间会把对象设为「有意义、可使用」。CDA 把它写成可描述的仪式过程：记录来源、意图、动作与前后感受，而不是声称有可测的物理能量转移。',
+    boundary: '把社群内部语言与科学结论分开，不保证结果，也不替代现实决策。',
+    source: 'OpenStax · 人类学中的宗教与超自然概念',
+    href: 'https://openstax.org/books/introduction-anthropology/pages/13-1-what-is-religion',
+  },
+  {
+    type: '嗅觉材料 · AROMA',
+    title: '魔法精油与香氛制作',
+    text: '把气味作为记忆、氛围与象征媒介，学习原料标签、载体、保存、批次和警示；公开示范先从香薰纸或合规扩香开始，不把配方包装成治疗方案。',
+    boundary: '纯精油不口服、不直接涂抹；需按标签稀释，避开眼睛与光敏风险，儿童、宠物、孕哺或用药先咨询专业人士。',
+    source: 'NCCIH · Aromatherapy 安全信息',
+    href: 'https://www.nccih.nih.gov/health/aromatherapy',
+  },
+  {
+    type: '对应系统 · SYMBOL / FIRELIGHT',
+    title: '颜色、烛火与符号',
+    text: '颜色、火、水、金属与符号在各传统中有不同对应。课程把对应表当作历史材料与创作语言，比较版本和语境，不把它们写成跨文化通用的「魔法公式」。',
+    boundary: '明火只在稳定、通风、可控的环境中使用；无焰灯是更低风险的练习替代。',
+    source: '美国消防局 · Candle safety',
+    href: 'https://www.usfa.fema.gov/prevention/home-fires/prevent-fires/candle/',
+  },
+  {
+    type: '传统与身份 · FOLK / WICCA / MEDIUMSHIP',
+    title: '民间魔法、威卡与灵媒',
+    text: '民间魔法、现代威卡、仪式魔法与灵媒是不同历史和社群路径；它们可以互相影响，却不能被压成一张「女巫等级表」。当代的 hedge、sea、cosmic 或 eclectic witch 更多是流动的自我描述。',
+    boundary: '先说明来源、社群与文化边界，不挪用受保护传统，也不把身份当作能力证明。',
+    source: 'OpenLearn · Wicca 与宗教变迁',
+    href: 'https://www.open.edu/openlearn/course/view.php?id=6411',
+  },
+]
+
+const learningResources = [
+  {
+    platform: 'OPENLEARN · FREE COURSE',
+    title: 'Wicca 与 1960 年代宗教变迁',
+    text: '从新宗教史角度理解 Wicca 的形成，不把现代宗教包装成未经中断的古代遗存。',
+    href: 'https://www.open.edu/openlearn/course/view.php?id=6411',
+  },
+  {
+    platform: 'COURSERA · UNIVERSITY OF BARCELONA',
+    title: 'Magic in the Middle Ages',
+    text: '以历史与科学史区分 popular magic、learned magic、占星与地占等概念。',
+    href: 'https://www.coursera.org/learn/magic-middle-ages',
+  },
+  {
+    platform: 'UNIVERSITY OF ARIZONA · RELI 377',
+    title: 'History of Witchcraft, Magic and the Occult',
+    text: '从古代到二十世纪，讨论巫术、审判、神秘学与 Wicca 的历史语境。',
+    href: 'https://religion.arizona.edu/course-description/reli-377-history-witchcraft-magic-and-occult',
+  },
+  {
+    platform: 'UNIVERSITY OF SYDNEY · RLST3607',
+    title: 'Witchcraft, Paganism and Western Esotericism',
+    text: '观察女巫、异教与西方秘传学之间的交叉与差异；开课状态以学校页面为准。',
+    href: 'https://www.sydney.edu.au/units/RLST3607',
+  },
+  {
+    platform: 'NCCIH · HEALTH LITERACY',
+    title: '放松、可视化与草药资料',
+    text: '了解引导想象、草药补充剂的证据边界、相互作用与安全信息。',
+    href: 'https://www.nccih.nih.gov/health/relaxation-techniques-what-you-need-to-know',
+  },
+  {
+    platform: 'FDA / POISON CONTROL · SAFETY',
+    title: '精油与香氛安全',
+    text: '查看精油的稀释、误食、皮肤、儿童与宠物风险；不把天然等同于无害。',
+    href: 'https://www.poison.org/articles/essential-oils',
   },
 ]
 
@@ -345,7 +481,7 @@ export default function Mentorship() {
           <p className="mentorship-kicker">CDA OCCULT MENTORSHIP</p>
           <h1>跟随黎辉学习神秘学</h1>
           <p className="subtitle">
-            从西方秘传学通史、零基础女巫、塔罗与星盘、水占，到灵媒训练、所罗门魔法、72 天使、左手路径与 CDA 研究实践。
+            从西方秘传学通史、零基础女巫、塔罗与星盘、水占、地占与火占，到灵媒训练、所罗门魔法、72 天使、左手路径与 CDA 研究实践。
           </p>
           <p className="mentorship-hero-copy">
             这不是神秘学速成目录。每一级都有先修、记录、关闭和复盘，高阶训练只在基础稳定后开启。
@@ -579,6 +715,91 @@ export default function Mentorship() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section mentorship-practice-atlas" id="practice-atlas">
+        <div className="container">
+          <div className="mentorship-atlas-heading">
+            <div>
+              <p className="mentorship-section-kicker">THE PRACTICE ATLAS</p>
+              <h2>工具不是流派</h2>
+            </div>
+            <div className="mentorship-atlas-intro">
+              <p>
+                水占、地占、火占属于占卜的媒介层；草药、水晶与魔杖属于材料和仪式工具层；视觉化、赋能与香氛属于技法层。女巫则是身份、传统或社群位置。把层级分开，才能既尊重历史，也不被社交媒体标签牵着走。
+              </p>
+              <p className="mentorship-atlas-note">
+                以下整理是 CDA 的学习地图，不是全球统一的女巫分类。标签可以重叠、改变，也可以不使用。
+              </p>
+            </div>
+          </div>
+
+          <div className="mentorship-element-grid" aria-label="三种媒介占卜">
+            {divinationModes.map((item, index) => (
+              <article className={`mentorship-element-card ${item.code.toLowerCase()}`} key={item.code}>
+                <div className="mentorship-element-card-top">
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <span>{item.code}</span>
+                </div>
+                <span className="mentorship-atlas-type">{item.type}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <dl>
+                  <div>
+                    <dt>练习边界</dt>
+                    <dd>{item.boundary}</dd>
+                  </div>
+                </dl>
+                <a href={item.href} target="_blank" rel="noreferrer">{item.source}</a>
+              </article>
+            ))}
+          </div>
+
+          <div className="mentorship-atlas-subheading">
+            <span>WITCHCRAFT IN PRACTICE</span>
+            <h3>从社群自称，到可以复盘的学习模块</h3>
+            <p>绿色、厨房、晶石、灵媒或 eclectic 等词，是实践焦点或当代自我描述，不是能力等级。每一项都要回到来源、材料、意图、风险和记录。</p>
+          </div>
+
+          <div className="mentorship-atlas-grid">
+            {witchPracticeModules.map(item => (
+              <article key={item.title}>
+                <span className="mentorship-atlas-type">{item.type}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <dl>
+                  <div>
+                    <dt>边界提醒</dt>
+                    <dd>{item.boundary}</dd>
+                  </div>
+                </dl>
+                <a href={item.href} target="_blank" rel="noreferrer">{item.source}</a>
+              </article>
+            ))}
+          </div>
+
+          <div className="mentorship-learning-resources">
+            <div className="mentorship-resources-heading">
+              <span>OPEN STUDY ROUTE</span>
+              <h3>公开资料与课程入口</h3>
+              <p>按历史、宗教研究与健康安全三个方向继续阅读。课程状态、语言和访问条件以原站为准；这些资源不代表 CDA 认证或背书。</p>
+            </div>
+            <div className="mentorship-resources-list">
+              {learningResources.map(item => (
+                <a href={item.href} target="_blank" rel="noreferrer" key={item.title}>
+                  <span>{item.platform}</span>
+                  <strong>{item.title}</strong>
+                  <em>{item.text}</em>
+                  <b>打开公开资源 ↗</b>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <p className="mentorship-atlas-disclaimer">
+            本地图以宗教史、民俗学、人类学、博物馆资料和当代社群自述为对象。象征意义与个人体验值得被尊重，但不等同于科学疗效；草药、矿物、精油与火焰均有现实风险，涉及摄入、皮肤、孕期、儿童、宠物、疾病或用药时请先咨询合资格专业人士。
+          </p>
         </div>
       </section>
 
