@@ -67,6 +67,8 @@ function createInitialForm(searchParams) {
       ? '爱人传讯与关系梳理'
       : service === 'occult-mentorship'
         ? '神秘学入门与系统学习'
+      : service === 'transmitter-training'
+        ? '传讯师训练与验证'
       : service === 'research-collaboration'
         ? '研究共建与论文贡献'
       : initialForm.serviceInterest,

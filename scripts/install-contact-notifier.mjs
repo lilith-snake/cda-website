@@ -246,12 +246,16 @@ function dashboardHtml() {
           <span>查看官网申请、更新对接状态、转入排单。</span>
         </a>
         <a href="${orderAssistantUrl}">
-          <strong>助理排单后台</strong>
-          <span>助理可新增、编辑、确认交付。</span>
+          <strong>线上助理排单后台</strong>
+          <span>发给助理使用，登录后自动刷新最新排单。</span>
+        </a>
+        <a href="http://127.0.0.1:5178/">
+          <strong>本机排单预约后台</strong>
+          <span>打开本机可编辑的排单后台，使用管理员密码登录。</span>
         </a>
         <a href="${orderAdminUrl}">
-          <strong>管理员排单后台</strong>
-          <span>管理员专用，可删除排单。</span>
+          <strong>线上管理员排单后台</strong>
+          <span>打开线上同步后台，管理员专用，可删除排单。</span>
         </a>
         <a href="file://${path.join(desktopDir, 'CDA本机后台.html')}">
           <strong>本机汇总后台</strong>

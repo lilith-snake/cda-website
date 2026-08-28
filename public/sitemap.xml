@@ -43,13 +43,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- 星界智慧 -->
-  <url>
-    <loc>https://lilith-snake.github.io/cda-website/mysticism</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
   <!-- 参与验证 -->
   <url>
     <loc>https://lilith-snake.github.io/cda-website/witness</loc>

@@ -472,6 +472,250 @@
   font-weight: 500;
 }
 
+/* Historical lineage atlas */
+.mentorship-lineage-atlas {
+  margin-bottom: clamp(64px, 8vw, 96px);
+  padding: clamp(34px, 5vw, 58px);
+  border: 1px solid rgba(185, 160, 107, 0.27);
+  background:
+    linear-gradient(rgba(185, 160, 107, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 160, 107, 0.045) 1px, transparent 1px),
+    #0e090c;
+  background-size: 46px 46px;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.3);
+}
+
+.mentorship-lineage-heading {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(42px, 7vw, 88px);
+  align-items: end;
+  margin-bottom: 58px;
+}
+
+.mentorship-lineage-heading span,
+.mentorship-comparison-heading > span {
+  color: var(--mentor-gold);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.mentorship-lineage-heading h3,
+.mentorship-comparison-heading h3 {
+  margin-top: 14px;
+  color: var(--mentor-ivory);
+  font-size: clamp(1.65rem, 2.8vw, 2.45rem);
+  font-weight: 600;
+  line-height: 1.38;
+  text-wrap: balance;
+}
+
+.mentorship-lineage-heading > p {
+  padding-top: 18px;
+  border-top: 1px solid rgba(185, 160, 107, 0.3);
+  color: #b9adab;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  line-height: 1.95;
+}
+
+.mentorship-lineage-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mentorship-lineage-track::before {
+  position: absolute;
+  top: 17px;
+  right: 12.5%;
+  left: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, #7e3445, var(--mentor-gold), #8b8290);
+  content: '';
+}
+
+.mentorship-lineage-track > li {
+  position: relative;
+  min-width: 0;
+  padding: 0 clamp(14px, 2vw, 24px);
+}
+
+.mentorship-lineage-track > li:first-child {
+  padding-left: 0;
+}
+
+.mentorship-lineage-track > li:last-child {
+  padding-right: 0;
+}
+
+.mentorship-lineage-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 27px;
+  place-items: center;
+  border: 1px solid var(--mentor-gold);
+  border-radius: 50%;
+  background: #0e090c;
+  box-shadow: 0 0 0 7px #0e090c;
+}
+
+.mentorship-lineage-marker span {
+  color: var(--mentor-gold-light);
+  font-family: var(--font-serif);
+  font-size: 0.62rem;
+}
+
+.mentorship-lineage-track article {
+  border-top: 1px solid rgba(185, 160, 107, 0.24);
+  padding-top: 22px;
+}
+
+.mentorship-lineage-meta {
+  min-height: 50px;
+}
+
+.mentorship-lineage-meta span {
+  display: block;
+}
+
+.mentorship-lineage-meta span:first-child {
+  color: var(--mentor-ivory);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.mentorship-lineage-meta span:last-child {
+  margin-top: 4px;
+  color: var(--mentor-violet-gray);
+  font-size: 0.56rem;
+  font-weight: 600;
+}
+
+.mentorship-lineage-track h4 {
+  min-height: 58px;
+  margin: 14px 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.mentorship-lineage-track article > p {
+  min-height: 148px;
+  color: #aa9e9d;
+  font-size: 0.74rem;
+  line-height: 1.85;
+}
+
+.mentorship-lineage-track ul {
+  min-height: 136px;
+  margin: 22px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(238, 229, 222, 0.1);
+  list-style: none;
+}
+
+.mentorship-lineage-track ul li {
+  position: relative;
+  padding-left: 12px;
+  color: #d2c6c3;
+  font-size: 0.68rem;
+  line-height: 1.75;
+}
+
+.mentorship-lineage-track ul li::before {
+  position: absolute;
+  top: 0.76em;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: var(--mentor-gold);
+  content: '';
+}
+
+.mentorship-lineage-reading {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(185, 160, 107, 0.2);
+}
+
+.mentorship-lineage-reading > span {
+  color: var(--mentor-gold);
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.mentorship-lineage-reading p {
+  margin-top: 7px;
+  color: #9d9293;
+  font-size: 0.68rem;
+  line-height: 1.75;
+}
+
+.mentorship-comparison {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(40px, 6vw, 74px);
+  margin-top: clamp(62px, 8vw, 92px);
+  padding-top: 44px;
+  border-top: 1px solid rgba(185, 160, 107, 0.38);
+}
+
+.mentorship-comparison-heading h3 {
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+}
+
+.mentorship-comparison-heading p {
+  margin-top: 16px;
+  color: #9f9494;
+  font-size: 0.73rem;
+  line-height: 1.8;
+}
+
+.mentorship-comparison-table {
+  border-top: 1px solid rgba(238, 229, 222, 0.17);
+}
+
+.mentorship-comparison-row {
+  display: grid;
+  grid-template-columns: 108px repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid rgba(238, 229, 222, 0.13);
+}
+
+.mentorship-comparison-row > * {
+  min-width: 0;
+  padding: 18px 20px;
+  border-right: 1px solid rgba(238, 229, 222, 0.1);
+}
+
+.mentorship-comparison-row > *:last-child {
+  border-right: 0;
+}
+
+.mentorship-comparison-row.header {
+  color: var(--mentor-gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.mentorship-comparison-row strong {
+  color: var(--mentor-ivory);
+  font-size: 0.69rem;
+  font-weight: 700;
+}
+
+.mentorship-comparison-row p {
+  color: #aaa0a0;
+  font-size: 0.69rem;
+  line-height: 1.75;
+}
+
 .mentorship-archive-feature {
   display: grid;
   grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
@@ -1565,6 +1809,28 @@
     align-items: start;
   }
 
+  .mentorship-lineage-heading,
+  .mentorship-comparison {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .mentorship-lineage-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 0;
+  }
+
+  .mentorship-lineage-track::before {
+    display: none;
+  }
+
+  .mentorship-lineage-track article > p,
+  .mentorship-lineage-track ul,
+  .mentorship-lineage-track h4,
+  .mentorship-lineage-meta {
+    min-height: 0;
+  }
+
   .mentorship-facts {
     max-width: 660px;
   }
@@ -1704,6 +1970,92 @@
   .mentorship-atlas-grid,
   .mentorship-learning-list {
     grid-template-columns: 1fr;
+  }
+
+  .mentorship-lineage-atlas {
+    margin-right: -6px;
+    margin-left: -6px;
+    padding: 30px 24px;
+    background-size: 36px 36px;
+  }
+
+  .mentorship-lineage-heading {
+    margin-bottom: 44px;
+  }
+
+  .mentorship-lineage-track {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .mentorship-lineage-track > li,
+  .mentorship-lineage-track > li:first-child,
+  .mentorship-lineage-track > li:last-child {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 16px;
+    padding: 0 0 38px;
+  }
+
+  .mentorship-lineage-track > li:not(:last-child)::before {
+    position: absolute;
+    top: 34px;
+    bottom: 0;
+    left: 17px;
+    width: 1px;
+    background: rgba(185, 160, 107, 0.32);
+    content: '';
+  }
+
+  .mentorship-lineage-marker {
+    width: 35px;
+    margin: 0;
+    box-shadow: 0 0 0 5px #0e090c;
+  }
+
+  .mentorship-lineage-track article {
+    padding-top: 7px;
+  }
+
+  .mentorship-lineage-track h4 {
+    margin-top: 11px;
+  }
+
+  .mentorship-lineage-track article > p {
+    font-size: 0.72rem;
+  }
+
+  .mentorship-lineage-track ul {
+    min-height: 0;
+  }
+
+  .mentorship-comparison {
+    margin-top: 22px;
+  }
+
+  .mentorship-comparison-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mentorship-comparison-row > * {
+    padding: 15px 13px;
+  }
+
+  .mentorship-comparison-row.header > span:first-child {
+    display: none;
+  }
+
+  .mentorship-comparison-row strong {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom: 1px solid rgba(238, 229, 222, 0.1);
+    background: rgba(185, 160, 107, 0.055);
+  }
+
+  .mentorship-comparison-row p {
+    font-size: 0.7rem;
+    line-height: 1.72;
+    overflow-wrap: anywhere;
   }
 
   .mentorship-expertise-item {

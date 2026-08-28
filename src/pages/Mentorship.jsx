@@ -24,6 +24,64 @@ const expertise = [
   },
 ]
 
+const lineagePeriods = [
+  {
+    era: '公元前 6 世纪 — 公元 6 世纪',
+    english: 'ANCIENT & LATE ANTIQUE',
+    title: '古代思想与仪式语境',
+    text: '这里不是一条单一传承，而是后来西方秘传学反复取用的多个思想与实践环境。哲学、宗教、占星和仪式在当时并没有今天这样清楚的学科边界。',
+    currents: ['毕达哥拉斯与柏拉图传统', '新柏拉图主义与神术', '赫尔墨斯主义与诺斯替思潮', '希腊魔法莎草纸与古代占星'],
+    reading: '先确认文本、地域与年代，不把「古老」直接当作真实性证明。',
+  },
+  {
+    era: '7 — 17 世纪',
+    english: 'MEDIEVAL & EARLY MODERN',
+    title: '手稿、翻译与仪式技术',
+    text: '阿拉伯语、希伯来语、希腊语与拉丁语材料在翻译和抄写中交汇。卡巴拉、炼金术、星象知识与仪式文本形成多个版本，差异本身就是研究对象。',
+    currents: ['梅尔卡巴与犹太卡巴拉', '自然、天体与图像魔法', '炼金术与占星术', '所罗门文本群与以诺材料'],
+    reading: '追踪馆藏号、语言、伪托作者与版本改写，拒绝把后世编辑本说成唯一原典。',
+  },
+  {
+    era: '17 — 19 世纪',
+    english: 'OCCULT REVIVAL',
+    title: '社团化与知识重组',
+    text: '玫瑰十字宣言、灵性主义、神智学与仪式团体把旧材料放入新的世界观、通信网络和训练制度。现代意义上的 occultism 逐步成形。',
+    currents: ['玫瑰十字主义', '灵性主义运动', '神智学与现代通神论', '黄金黎明与仪式对应体系'],
+    reading: '区分历史材料与组织自述，观察古典来源如何被选择、标准化与重新命名。',
+  },
+  {
+    era: '20 世纪 — 当代',
+    english: 'MODERN & CONTEMPORARY',
+    title: '现代魔法与个人实践',
+    text: '泰勒玛、人智学、第四道、威卡与后来的混融式实践继续改写传统。心理学、流行文化和互联网也成为新的解释媒介。',
+    currents: ['泰勒玛与人智学', '第四道与现代内在训练', '威卡、现代异教与混融实践', '心理化、个体化与网络神秘文化'],
+    reading: '现代体系可以有价值，但必须标明来源、改写与适用边界，不伪装成未经中断的古代传统。',
+  },
+]
+
+const classicalModernComparison = [
+  {
+    dimension: '材料形态',
+    classical: '手稿、祷文、星表、护符、炼金配方与地方仪式记录；常有残缺和多个异本。',
+    modern: '印刷书、函授材料、社团等级、统一对应表、课程与个人实践手册。',
+  },
+  {
+    dimension: '组织方式',
+    classical: '嵌在宗教、宫廷、医学、哲学或民间生活中，未必自称「神秘学」。',
+    modern: '以组织、导师、入门等级或自我训练体系呈现，身份与课程结构更明确。',
+  },
+  {
+    dimension: '核心变化',
+    classical: '重视宇宙秩序、神名、择时、材料和仪式效力，各传统语境差异很大。',
+    modern: '更常加入心理转化、个人意志、灵性进化和跨传统整合。',
+  },
+  {
+    dimension: 'CDA 的读法',
+    classical: '先做文本谱系、版本与物质文化判读，再讨论可练习的仪式结构。',
+    modern: '拆出继承、改写与新创部分，再用记录、反馈和边界评估实践。',
+  },
+]
+
 const coursePath = [
   {
     number: '01',
@@ -573,6 +631,66 @@ export default function Mentorship() {
               <p className="mentorship-curriculum-note">
                 标注为高阶的课程不接受零基础直入。黎辉会根据基础访谈、练习记录与学习方向安排组合。
               </p>
+            </div>
+          </div>
+
+          <div className="mentorship-lineage-atlas" aria-labelledby="lineage-atlas-title">
+            <div className="mentorship-lineage-heading">
+              <div>
+                <span>HISTORICAL LINEAGE ATLAS</span>
+                <h3 id="lineage-atlas-title">古典魔法如何走向现代神秘学</h3>
+              </div>
+              <p>
+                不是把三十个流派背成一张表，而是看清思想、文本、组织与技法如何跨越时代被翻译和重组。
+                下面是 CDA 的课程导航，不是「唯一正统传承图」。
+              </p>
+            </div>
+
+            <ol className="mentorship-lineage-track">
+              {lineagePeriods.map((item, index) => (
+                <li key={item.english}>
+                  <div className="mentorship-lineage-marker" aria-hidden="true">
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                  <article>
+                    <div className="mentorship-lineage-meta">
+                      <span>{item.era}</span>
+                      <span>{item.english}</span>
+                    </div>
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                    <ul aria-label={`${item.title}所涵盖的传统`}>
+                      {item.currents.map(current => <li key={current}>{current}</li>)}
+                    </ul>
+                    <div className="mentorship-lineage-reading">
+                      <span>CDA 判读</span>
+                      <p>{item.reading}</p>
+                    </div>
+                  </article>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mentorship-comparison" aria-labelledby="comparison-title">
+              <div className="mentorship-comparison-heading">
+                <span>CONTEXT, NOT A BINARY</span>
+                <h3 id="comparison-title">古典与现代，差别在哪里</h3>
+                <p>「古典」和「现代」是理解材料的入口，不是高低等级，也不是判断真伪的捷径。</p>
+              </div>
+              <div className="mentorship-comparison-table" role="table" aria-label="古典魔法与现代魔法对照">
+                <div className="mentorship-comparison-row header" role="row">
+                  <span role="columnheader">判读维度</span>
+                  <span role="columnheader">古典材料</span>
+                  <span role="columnheader">现代体系</span>
+                </div>
+                {classicalModernComparison.map(item => (
+                  <div className="mentorship-comparison-row" role="row" key={item.dimension}>
+                    <strong role="rowheader">{item.dimension}</strong>
+                    <p role="cell">{item.classical}</p>
+                    <p role="cell">{item.modern}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

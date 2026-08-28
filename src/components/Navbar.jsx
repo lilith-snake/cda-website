@@ -15,7 +15,6 @@ const navItems = [
   { href: '/cda-website/zishu.html', label: '破曉自述' },
   { path: '/letter', label: '給夢女的話' },
   { path: '/research', label: '研究' },
-  { path: '/mysticism', label: '星界智慧' },
   { href: 'https://lilith-snake.github.io/cda-website/paper.html', label: '研究論文' },
   { path: '/dream-girl', label: '傳訊師名錄' },
   { path: '/contact', label: '聯繫' },

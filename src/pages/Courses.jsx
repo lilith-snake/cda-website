@@ -1,463 +1,340 @@
 import { Link } from 'react-router-dom'
-import DialogueBox from '../components/DialogueBox'
-import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
 import './Courses.css'
 
-const researchStages = [
+const frictionMap = [
   {
-    stage: '第一階段',
-    subtitle: '理論入門',
-    duration: '自學 · 即時開始',
-    topics: [
-      '了解跨次元親密關係研究的學術背景與現狀',
-      '叙事实体假说入门——理解跨次元链接现象的理论基础',
-      '感知自測：了解自己當前的感知通道傾向',
-      '爱人类型学入门——理解你感知到的对方属于哪一种信号形态',
-    ],
-    pathNote: '路徑A / 路徑B 共用',
-    color: 'mystic',
+    code: '01 / GATE',
+    problem: '能力门槛说不清',
+    solution: '入训先做感知通道与服务伦理评估',
+    detail: '许多从业者靠零散视频自学，往往不知道自己的盲点在哪里。先知道自己擅长什么、容易把什么误认为信息，再决定练习路径。',
   },
   {
-    stage: '第二階段',
-    subtitle: '感知訓練',
-    duration: '4 週 · 雙路徑共用核心',
-    topics: [
-      '靈媒（靈五感開發）——找到你的主導感知通道',
-      '鏈接安全守則——辨別與防護體系',
-      '結構化直覺訓練——從感知校準到信號分離',
-      '防護體系——做完不累、不被消耗、邊界清晰',
-    ],
-    pathNote: '路徑A / 路徑B 共用',
-    color: 'dream',
+    code: '02 / LOAD',
+    problem: '传讯后很累，防护靠感觉',
+    solution: '把保护、关闭与恢复写进 SOP',
+    detail: '独学缺少状态筛查和关闭方法，容易把疲劳、焦虑或强烈体验解释成灵扰。建立开始前检查、链接中止、结束关闭、负荷记录与同伴督导。若持续失眠、焦虑、现实感模糊或出现强迫性链接冲动，应停止练习并寻求持牌心理或医疗专业支持。',
   },
   {
-    stage: '第三階段',
-    subtitle: '實操研究',
-    duration: '6 週 · 雙選修模塊 + 月度校準',
-    topics: [
-      '完整链接流程——从调频到关闭通道，每一步都有 SOP',
-      '三重驗證法实操——信息一致性 + 獨立印證 + 盲測',
-      '路徑A 選修：參與驗證研究、協作校準、邊界設置',
-      '路徑B 選修：獨立校準技能，建立個人驗證體系',
-      '月度校準會——持續校準，保持感知精度',
-    ],
-    pathNote: 'L2 選修分流',
-    color: 'dream',
+    code: '03 / TOOL',
+    problem: '没有工具，难以复盘',
+    solution: 'CDA 专业工具包 + 同一套记录界面',
+    detail: '护服、黑手套、环境稳定检查、信息隔离表、盲测记录、关闭与售后 SOP 都被纳入流程；分开记录原始信号、个人转译、已知信息、盲测反馈和不确定项，让经验可以被比较，而不是只剩一句结论。',
   },
   {
-    stage: '第四階段',
-    subtitle: '認證考核',
-    duration: '申請制 · 四步通關',
-    topics: [
-      '完成前三階段全部訓練',
-      '通過線上筆試（基礎知識 + 案例分析）',
-      '完成 3 次模擬傳訊——由督導評審團盲審打分',
-      '提交「我的傳訊倫理聲明」——非模板，個人化承諾',
-    ],
-    pathNote: '路徑A：職業傳訊師（列入名錄·參與驗證） | 路徑B：認證實踐者（獨立鏈接·社群歸屬）',
-    color: 'gold',
+    code: '04 / BLIND',
+    problem: '常常要靠来访者给资料才对得上',
+    solution: '从少信息练习，逐级走向盲测',
+    detail: '不是要求每次都无信息成功，而是把“已知什么、何时知道、如何对照”记录清楚，逐步减少暗示与冷读空间。',
+  },
+  {
+    code: '05 / MJ',
+    problem: '很多传讯师也感受不到 MJ',
+    solution: '专门训练 MJ 现象的分辨框架',
+    detail: '用位面、维度、来源、互动、可验证性五轴整理个案，先识别信号类型，再讨论“像不像他”。',
+  },
+  {
+    code: '06 / CARE',
+    problem: '售后与质疑自己扛',
+    solution: '边界说明、复盘与第三方复核',
+    detail: '提前说清服务范围、暂停条件与反馈方式；遇到争议时按记录复核，不让传讯师独自承担全部信任成本。',
+  },
+  {
+    code: '07 / WORK',
+    problem: '客源与收入长期不稳定',
+    solution: 'CDA 提供客源，底薪与提成并行',
+    detail: '完成训练与考核并加入 CDA 合作体系后，由 CDA 提供客源；按具体岗位与书面合作方案享有底薪和提成，同时持续校准、积累案例并参与研究。',
+  },
+  {
+    code: '08 / SIGNAL',
+    problem: '状态忽高忽低，真假与防护都靠猜',
+    solution: '用校准、分辨与防护流程稳定每一次链接',
+    detail: '有时传得好、有时却很差，无法保存稳定水平；不知道链接到的是真是假，也不清楚如何保护自己和客妹，只能凭感觉判断信息。CDA 将状态记录、来源分级、身份验证、异常中止与收尾清理放进同一套工作流程。',
   },
 ]
 
-const marketProblems = [
+const dossierRows = [
+  ['主导通道', '听觉意象 · 身体感 · 象征图像'],
+  ['原始信号', '先记录，不解释；保留时间戳'],
+  ['信息条件', '少信息练习 / 延迟反馈'],
+  ['当前状态', '已完成记录 · 待独立比对'],
+]
+
+const trainingLoop = [
+  ['01', '感知', '识别你的主导通道与噪音来源'],
+  ['02', '记录', '把原始信号和解释层分开保存'],
+  ['03', '分辨', '处理投射、暗示与身份特异性'],
+  ['04', '盲测', '在信息隔离下提交可比对描述'],
+  ['05', '督导', '由同伴和导师指出盲点与风险'],
+  ['06', '复盘', '更新个人校准档案与下一轮练习'],
+]
+
+const stages = [
   {
-    stat: '80.3%',
-    title: '用过传讯服务',
-    text: 'CDA 社群调研显示，大多数梦女不是没有消费过，而是已经反复找过传讯师，却依然没有获得稳定、可信、可复盘的答案。',
+    stage: 'L1',
+    title: '感知基础与伦理',
+    time: '4 周 · 核心必修',
+    items: ['主导感知通道画像', '链接安全、边界与中止条件', '原始信号 / 转译 / 结论三层记录', '服务伦理与来访者知情确认'],
   },
   {
-    stat: '46.0%',
-    title: '中性或不满意',
-    text: '传讯结束后仍然困惑的人很多：信息像不像他、来源是否稳定、该不该继续，都没有统一标准承接。',
+    stage: 'L2',
+    title: '信息隔离与分辨',
+    time: '6 周 · 核心必修',
+    items: ['少信息到延迟反馈练习', 'MJ 五轴类型学入门', '四层身份特异性分辨', '交叉通道与独立印证设计'],
   },
   {
-    stat: '91.0%',
-    title: '愿意参与盲测',
-    text: '梦女不是不想验证。她们真正缺少的，是一个愿意认真验证、记录并持续迭代的方法体系。',
+    stage: 'L3',
+    title: '个案实操与督导',
+    time: '申请制 · 监督实践',
+    items: ['完整传讯 SOP 演练', '三次模拟个案盲审', '耗竭记录、关闭与售后演练', '月度校准与同伴反馈'],
   },
   {
-    stat: '低门槛',
-    title: '市场鱼龙混杂',
-    text: '很多人看几个视频、拿起工具就能接单，价格混乱、流程不明、防护缺席，客户很难判断对方是否真的受过训练。',
+    stage: 'CERT',
+    title: '认证与名录申请（试点批次）',
+    time: '完成考核后申请 · 以当前批次通知为准',
+    items: ['笔试：基础知识与案例分析', '提交结构化个案记录', '伦理声明与边界承诺', '通过后进入 CDA 合作、认证与名录流程'],
   },
 ]
 
-const trainingPromises = [
-  {
-    title: '先保护梦女',
-    text: '培训的第一目的，是让更多梦女不用在混乱市场里孤独试错。传讯师要先学会边界、防护、记录、关闭和售后，再谈链接与结果。',
-  },
-  {
-    title: '再建立标准',
-    text: 'CDA 要做的是把零散经验变成可训练、可考核、可复盘的流程，让传讯师不再只靠“我很准”的自我宣传建立信任。',
-  },
-  {
-    title: '也形成职业路径',
-    text: '当训练、案例、校准和认证都能被展示，传讯师才有机会摆脱朋友圈零散接单和收入不稳定，进入更长期的服务体系。',
-  },
+const deliverables = [
+  ['个人校准档案', '知道自己的通道、盲点、负荷上限与下一步练习。'],
+  ['CDA 记录工具包', '申请筛查、信息隔离、原始信号、盲测与售后模板。'],
+  ['督导与验证机会', '在有边界的练习中获得同行反馈，逐步积累可复盘案例。'],
+  ['职业身份资产', '训练记录、伦理声明与认证/名录申请材料；通过后进入 CDA 合作岗位评估。'],
 ]
 
-const cdaSopItems = [
-  '事前：申请筛查、来访者边界确认、问题范围确认、敏感内容预警',
-  '传讯中：CDA 护服、黑手套、环境稳定、链接记录、异常信号暂停机制',
-  '验证中：信息一致性、独立印证、盲测记录、先提交后对比',
-  '事后：关闭通道、清理复盘、来访者情绪承接、售后申诉与补偿流程',
+const researchClaims = [
+  ['ORIGINAL RESEARCH', 'CDA 原创研究声明：首个公开的 MJ 方法框架', 'CDA 已公开发表原创研究声明，围绕 MJ 定义、五轴类型学、三重验证法与精微体三层感知框架，建立一个可被讨论、记录和继续检验的工作框架。“首个”是 CDA 基于公开资料作出的首发定位，不等于学术共同体认证。'],
+  ['METHOD ITERATION', '方法不断研究更新迭代，持续留下记录', '信息隔离、跨传讯师独立链接、盲测对照和案例复盘会持续进入 CDA 的研究记录。每一轮训练都留下过程、误判、限制与修订，不把一次命中包装成终局答案。'],
+  ['RESEARCH CERTIFICATE', 'CDA 研究证书（首发批次）', '完成核心训练、结构化个案记录与考核后，可按当前批次申请 CDA 研究证书。证书代表你完成 CDA 方法训练与研究档案，不是学位，也不替代政府或行业监管资质。'],
 ]
 
-const practitionerPainPoints = [
-  '很多传讯师有感知，但没有受过系统训练，客户一问 SOP 就答不上来。',
-  '很多传讯师收入不稳定，靠熟人、朋友圈和临时流量接单，很难长期经营。',
-  '很多传讯师独自承担风险：客户害怕、质疑、失望、不适时，没有督导和售后体系接住。',
-  '很多传讯师没有背书，做得再认真，也很难向客户证明自己不是市场里的又一个“随便接单的人”。',
+const professionalTools = [
+  ['PROTECTIVE GEAR', 'CDA 护服与黑手套', '以固定着装、环境稳定和开始前检查建立工作边界，帮助传讯师在进入与退出之间保持清醒的操作节奏。'],
+  ['LINKING LOG', '链接记录与关闭工具', '记录原始信号、转译、来源分级、置信度与结束状态；按 SOP 关闭通道、清理现场并留下复盘入口。'],
+  ['BLIND PROTOCOL', '信息隔离与盲测表', '从少信息练习到延迟反馈、目标与诱饵对照，减少暗示和冷读空间，让不同传讯师的结果可以被并置比较。'],
+  ['AFTERCARE KIT', '售后与争议承接模板', '把知情确认、暂停条件、异常中止、反馈、复核和证据整理放进同一套工具，传讯师不再独自扛下全部售后压力。'],
 ]
 
-const trainingExamples = [
-  {
-    name: '破晓 Ophion',
-    role: '灵媒兼现代黑魔法女巫 · CDA 实操体系负责人',
-    text: '破晓不是一开始做传讯师时就能做到无信息链接。早期她也曾需要依靠照片和背景信息辅助传讯；后来在 CDA 团队内其他三位成员共同参与下，她们一起做理论整理、方法实验、案例复盘和持续训练，才把这条路径慢慢跑出来。',
-    result: '进入 CDA 方法迭代后，破晓曾多次在无照片、无姓名、无背景信息的条件下，直接说出对方爱人的名字。CDA 第一个肉眼看到 MJ 的案例，也是破晓培养体系跑出来的结果。',
-  },
-  {
-    name: '朱恩',
-    role: 'CDA 最新训练传讯师 · 零基础实践者样本',
-    text: '朱恩代表的是另一条路径：从零基础小白和实践者进入 CDA 训练，而不是一开始就拥有成熟经验。她目前已经进入无信息链接内测，不需要来访者提供信息或照片，也能尝试靠近对方爱人。',
-    result: '这说明 CDA 的能力不是只停留在破晓个人身上，而是正在被拆成可以学习、可以练习、可以复盘的培养路径。传讯师在这里得到的不只是技术，还有平台、标准、背书和保护。',
-  },
+const supportClaims = [
+  ['AFTERCARE', 'CDA 售后承接与争议整理', 'CDA 提供边界确认、异常中止、结束关闭、反馈、复盘与争议记录模板；具体承接范围按服务约定和个案情况执行。'],
+  ['PRIVACY', 'CDA 隐私保护机制', '公开信息只呈现经过同意的职业内容；个案资料按实际隐私政策与书面约定处理，并通过匿名化、分层访问和最小化留存降低暴露风险。'],
+  ['LEGAL', 'CDA 法务协助与律师转介', '遇到骚扰、恶意曝光、隐私泄露或方法盗用时，CDA 可协助整理时间线与证据并转介合资格律师；具体法律行动由当事人与持牌律师决定。'],
 ]
 
 export default function Courses() {
   const { t } = useLanguage()
+
   return (
     <div className="page-courses">
-      {/* Hero */}
-      <section className="page-hero courses-hero">
-        <div className="container">
-          <h1>{t('CDA 传讯师培训')}</h1>
-          <p className="subtitle">{t('培训传讯师，是为了让更多梦女更安全地和爱人相处。')}</p>
-          <p className="hero-sub-desc">{t('香港跨次元梦女传讯研究协会 · 全球首家以 MJ 现象与跨次元亲密关系为核心研究对象的传讯研究协会')}</p>
+      <section className="courses-hero">
+        <div
+          className="courses-hero-image"
+          style={{ '--courses-hero-image': `url(${import.meta.env.BASE_URL}images/lihui-cosmic-atlas-hero.png)` }}
+          aria-hidden="true"
+        />
+        <div className="courses-hero-grid" aria-hidden="true" />
+        <div className="container courses-hero-content">
+          <p className="courses-kicker">CDA / TRANSMISSION PRACTITIONER PATH</p>
+          <h1>{t('让你的感知，成为一套可复盘的专业能力')}</h1>
+          <p className="courses-hero-lead">
+            {t('面向已有神秘学基础、正在接个案，或想把感知训练成稳定方法的传讯师。CDA 不承诺超自然结果，而是把训练、记录、盲测、督导和边界做成一套可以共同检验的工作系统。')}
+          </p>
+          <p className="courses-hero-definition">MJ 是 CDA 用于描述“跨次元情感对象”的内部术语与工作假设，不代表已被科学证明的实体。</p>
+          <div className="courses-hero-actions">
+            <a className="courses-button courses-button-primary" href="#barrier">查看 CDA 的专业壁垒</a>
+            <Link className="courses-button courses-button-ghost" to="/contact?inquiry=transmitter_training&service=transmitter-training">申请适配评估</Link>
+          </div>
+          <p className="courses-hero-footnote">申请制 · 训练与研究并行 · 客源、底薪与提成按合作方案执行</p>
+        </div>
+        <div className="courses-hero-index" aria-hidden="true">CDA–TP / 2026 / 01</div>
+      </section>
+
+      <section className="courses-signal-rail" aria-label="CDA training principles">
+        <div className="container courses-signal-rail-inner">
+          <span>专业传讯师的工作顺序</span>
+          <strong>先保护，再感知；先记录，再解释；先验证，再表达。</strong>
+          <span className="rail-mark">FIELD NOTE 01</span>
         </div>
       </section>
 
-      {/* 体系介绍 */}
-      <section className="section">
+      <section className="section courses-barrier" id="barrier">
         <div className="container">
-          <div className="courses-intro">
-            <DialogueBox speaker="破晓" variant="gold">
-              {t('这套体系不是为了在现有传讯市场里分一杯羹。我们自己培养传讯师，是因为市面上没有一套现成的、可以被公开检验的标准。')}
-              <br /><br />
-              {t('路径 A 给想成为专业传讯师、帮助更多梦女的人。路径 B 给想自己学会稳定链接、不再四处寻找权威确认的实践者。同一套方法，不同的出口——核心阶段共用，实操阶段分流。')}
-            </DialogueBox>
-          </div>
-        </div>
-      </section>
-
-      <section className="section courses-market">
-        <div className="container">
-          <div className="section-title">
-            <h2>{t('为什么市场需要 CDA 培训')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('论文和调研指出：问题不是梦女不愿意付费，而是现有传讯市场缺少标准、验证和售后。')}</p>
+          <div className="courses-section-heading courses-section-heading-left">
+            <p className="courses-eyebrow">CDA PROFESSIONAL MOAT</p>
+            <h2>{t('不是再上一门课，而是补上一个人很难独立建立的系统')}</h2>
+            <p>{t('市面课程常把重点放在“如何接收”。CDA 关注的是传讯师真正会卡住的地方：门槛、工具、防护、信息依赖、MJ 分辨，以及个案之后谁来承接。')}</p>
           </div>
 
-          <div className="market-proof-grid">
-            {marketProblems.map(problem => (
-              <div className="market-proof-card" key={problem.title}>
-                <strong>{problem.stat}</strong>
-                <h3>{t(problem.title)}</h3>
-                <p>{t(problem.text)}</p>
-              </div>
+          <div className="friction-grid">
+            {frictionMap.map(item => (
+              <article className="friction-item" key={item.code}>
+                <span className="friction-code">{item.code}</span>
+                <h3>{t(item.problem)}</h3>
+                <strong>{t(item.solution)}</strong>
+                <p>{t(item.detail)}</p>
+              </article>
             ))}
           </div>
+          <aside className="courses-safety-note" aria-label="心理安全边界">
+            <strong>心理安全边界</strong>
+            <p>持续失眠、焦虑、现实感模糊或强迫性链接冲动时，请停止练习，先通过五感定向、休息和现实生活恢复状态；必要时联系持牌心理或医疗专业人员。传讯结果不用于重大医疗、法律或财务决策。</p>
+          </aside>
         </div>
       </section>
 
-      <section className="section courses-purpose section-alt">
-        <div className="container">
-          <div className="purpose-panel">
-            <div>
-              <span>{t('TRAINING PURPOSE')}</span>
-              <h2>{t('我们培养传讯师，是为了让更多梦女和爱人更幸福地在一起')}</h2>
-              <p>{t('CDA 要培养的是能被方法托住的人：她知道什么时候可以继续、什么时候需要暂停；知道如何判断回应是否清晰稳定；也知道客户害怕、失望或困惑时该如何售后承接。')}</p>
-            </div>
-            <div className="purpose-grid">
-              {trainingPromises.map(item => (
-                <div className="purpose-item" key={item.title}>
-                  <h3>{t(item.title)}</h3>
-                  <p>{t(item.text)}</p>
-                </div>
+      <section className="section courses-dossier section-alt">
+        <div className="container dossier-layout">
+          <div className="dossier-visual">
+            <img src={`${import.meta.env.BASE_URL}images/key-of-solomon-plate-v.jpg`} alt="1889 年《所罗门之钥》公版图版，作为 CDA 传讯档案的历史视觉锚点" />
+            <span className="dossier-stamp">CDA / ARCHIVE<br />PRACTICE SAMPLE</span>
+            <span className="dossier-caption">视觉锚点不是结论 · 记录才是工作起点</span>
+          </div>
+          <div className="dossier-copy">
+            <p className="courses-eyebrow">THE PRACTITIONER DOSSIER</p>
+            <h2>{t('你的能力，不再只存在于“我感觉到了”')}</h2>
+            <p className="dossier-lead">{t('CDA 把一次传讯拆成可以被看见的工作单元。你会逐渐拥有自己的校准档案：哪些是原始信号，哪些是转译，哪些仍然不能确认。')}</p>
+            <div className="dossier-card">
+              <div className="dossier-card-head"><span>CASE / BLIND-017</span><span>STATUS / REVIEW</span></div>
+              {dossierRows.map(([label, value]) => (
+                <div className="dossier-row" key={label}><span>{label}</span><strong>{value}</strong></div>
               ))}
+              <div className="dossier-card-foot">记录完整度 <span className="dossier-progress" role="progressbar" aria-label="记录完整度 4 / 5" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><i /><i /><i /><i /><i /></span> 04 / 05</div>
             </div>
+            <p className="dossier-note">示例界面仅展示记录逻辑，不代表对任何个案或超自然现象的证明。</p>
           </div>
         </div>
       </section>
 
-      {/* 雙路徑說明 */}
-      <section className="section courses-dual-path">
+      <section className="section courses-toolkit">
         <div className="container">
-          <div className="section-title">
-            <h2>{t('研究路徑')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
+          <div className="courses-section-heading courses-section-heading-left">
+            <p className="courses-eyebrow">CDA PRACTITIONER TOOLKIT</p>
+            <h2>{t('你加入的不是一套口号，而是一套能拿来工作的专业工具')}</h2>
+            <p>{t('市面上很多课程把工具当成周边。CDA 把护服、记录、盲测、关闭和售后看成传讯师的基础设施：每一件工具都有使用时机、记录位置和退出条件。')}</p>
           </div>
-
-          <div className="grid-2">
-            <div className="path-card card">
-              <h3>{t('路徑 A：職業傳訊師研究路徑')}</h3>
-              <p className="path-target">{t('面向塔羅師、占星師、靈氣師等已有感知基礎的從業者')}</p>
-              <ul>
-                <li>{t('你的底層技能完全可以用在跨次元鏈接上——技能平移，不是從零開始')}</li>
-                <li>{t('完成認證後列入官方傳訊師名錄，參與跨傳訊師驗證項目')}</li>
-                <li>{t('协会为你提供验证机会，也会为你提供来访者——你不再需要东拼西凑找人；你的每一次链接，都会成为 CDA 持续迭代方法的数据贡献')}</li>
-                <li>{t('你的實操數據納入研究——共同驗證和迭代這套方法論')}</li>
-              </ul>
-            </div>
-
-            <div className="path-card card">
-              <h3>{t('路徑 B：個人實踐者研究路徑')}</h3>
-              <p className="path-target">{t('面向想自己學會穩定鏈接的實踐者')}</p>
-              <ul>
-                <li>{t('零基础没关系——感知是可以被训练的')}</li>
-                <li>{t('不再每次都花钱找人、不再做完两天又怀疑')}</li>
-                <li>{t('学会独立验证——建立你和爱人的链接判断体系')}</li>
-                <li>{t('社群归属——你不需要一个人面对这些')}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section courses-sop">
-        <div className="container">
-          <div className="section-title">
-            <h2>{t('CDA 完整 SOP')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('传讯不是“感应到了就说”。CDA 要把安全、防护、记录、验证和售后做成每位传讯师必须掌握的基础流程。')}</p>
-          </div>
-
-          <div className="sop-list">
-            {cdaSopItems.map((item, index) => (
-              <div className="sop-row" key={item}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <p>{t(item)}</p>
-              </div>
+          <div className="toolkit-grid">
+            {professionalTools.map(([code, title, text]) => (
+              <article className="toolkit-card" key={code}>
+                <span>{code}</span>
+                <h3>{t(title)}</h3>
+                <p>{t(text)}</p>
+              </article>
             ))}
           </div>
+          <p className="toolkit-note">工具用于稳定流程、保护边界和留下记录，不是超自然效果的保证；具体发放、使用和合作范围以当前训练批次及书面方案为准。</p>
         </div>
       </section>
 
-      <section className="section courses-practitioner section-alt">
+      <section className="section courses-research">
         <div className="container">
-          <div className="section-title">
-            <h2>{t('传讯师也需要被体系托住')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('很多传讯师不是没有能力，而是没有训练、没有标准、没有收入结构，也没有能替她承担信任成本的机构。')}</p>
+          <div className="courses-section-heading courses-section-heading-left">
+            <p className="courses-eyebrow">PHASE 01 / ORIGINAL RESEARCH / FIELD PRACTICE</p>
+            <h2>{t('CDA 的研究定位，来自公开框架与可复盘实践')}</h2>
+            <p>{t('CDA 正在建立以 MJ 与跨次元亲密关系为对象的研究与训练体系。论文提出工作假设，训练把问题变成方法，试点案例用于后续检验与迭代。')}</p>
+            <p className="mj-definition-note">MJ 是 CDA 对“跨次元情感对象”的内部简称；相关存在论与类型学仍属于工作假设，尚待经验检验。</p>
+            <p className="research-phase-note">{t('目前公开的论文、训练与实践案例，只是 CDA 第一阶段的结果，不是终点。后续会继续扩大样本、完善盲测、更新防护与售后标准。')}</p>
+            <a className="courses-inline-link" href="/cda-website/paper.html">{t('阅读 CDA 公开理论建构稿')} <span aria-hidden="true">↗</span></a>
           </div>
-
-          <div className="practitioner-grid">
-            {practitionerPainPoints.map(point => (
-              <div className="practitioner-card" key={point}>
-                <p>{t(point)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 四阶段 */}
-      <section className="section courses-list">
-        <div className="container">
-          <div className="section-title">
-            <h2>{t('研究階段')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('理论入门 → 感知训练 → 实操研究 → 认证考核 —— 四个阶段，陪你从“我不知道他在不在”走向“我知道如何靠近他”')}</p>
-          </div>
-
-          <div className="courses-grid">
-            {researchStages.map((stage, i) => (
-              <div key={i} className={`course-card card course-${stage.color}`}>
-                <div className="course-stage-badge">{t(stage.stage)}</div>
-                <h3>{t(stage.subtitle)}</h3>
-                <p className="course-duration">{t(stage.duration)}</p>
-
-                <ul className="course-modules">
-                  {stage.topics.map((topic, j) => (
-                    <li key={j}>{t(topic)}</li>
-                  ))}
-                </ul>
-
-                <p className="course-path-note">{t(stage.pathNote)}</p>
-
-                <Link to="/contact">
-                  <ChoiceButton variant={stage.color === 'gold' ? 'gold' : stage.color === 'dream' ? 'route' : 'primary'}>
-                    {t(stage.color === 'gold' ? '了解認證詳情' : '加入培訓')}
-                  </ChoiceButton>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section courses-paper-conversion">
-        <div className="container">
-          <div className="section-title">
-            <h2>{t('CDA 如何让传讯师真正专业化')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('无论你本来就是梦女传讯师，还是神秘学、塔罗、占星、东玄相关从业者，CDA 都会给你一套围绕 MJ 现象展开的专业训练方向。')}</p>
-          </div>
-
-          <div className="acquisition-card card paper-link-card">
-            <p>{t('很多传讯师既是梦女，也是传讯师；也有人来自神秘学、塔罗、占星、东玄等行业。她们的背景不同，但共同困境很像：长期单打独斗，不知道 MJ 到底该如何理解，没有清晰的方法方向，也缺少能稳定拓展服务的技能组合。')}</p>
-            <p>{t('简单来说，CDA 会让你的能力变得更强：从只会凭感觉接收到信息，变成能够在无信息条件下尝试链接、分辨信号、记录过程、复盘结果，并且知道如何保护自己和来访者。')}</p>
-            <p>{t('CDA 的专业性，来自团队持续研究和原创方法。第一版论文只是开始：我们已经围绕 MJ 现象提出类型学、验证思路和训练方向，并会继续通过案例记录、传讯反馈和新论文更新方法体系。')}</p>
-            <p>{t('CDA 的老师不是只会讲概念的人。她们来自不同神秘学与研究路径，负责把理论、训练、感知校准、信号分辨和实操流程拆成传讯师真的能学、能练、能复盘的步骤。')}</p>
-            <p>{t('CDA 培训不是只教你“怎么接收到信息”。我们会把 MJ 现象、梦女需求、信号分辨、链接记录、防护关闭、售后承接和案例复盘放在同一套体系里，让你知道自己在做什么、为什么这样做、遇到问题时怎么处理。')}</p>
-            <p>{t('对已有神秘学基础的人来说，CDA 提供的是技能平移与专业升级：把你原本的塔罗、占星、灵摆、东玄判断或直觉能力，放进跨次元亲密关系的服务场景里，变成更清楚、更有边界、更能被客户信任的传讯能力。')}</p>
-            <p>{t('完成训练并通过认证后，你不再只是一个独自接单的人。CDA 会为传讯师提供平台、背书、标准和保护：你的训练记录、校准数据、案例复盘和伦理声明，会成为你对外建立信任的依据；遇到复杂个案、售后争议或安全问题时，也不再只能一个人承担。')}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section courses-training-proof section-alt">
-        <div className="container">
-          <div className="section-title">
-            <h2>{t('CDA 的能力，已经有人跑出来')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('破晓代表 CDA 方法的源头与实操能力，朱恩代表这套体系正在被训练、培养和验证。')}</p>
-          </div>
-
-          <div className="training-proof-grid">
-            {trainingExamples.map(item => (
-              <article className="training-proof-card" key={item.name}>
-                <strong>{t(item.name)}</strong>
-                <span>{t(item.role)}</span>
-                <p>{t(item.text)}</p>
-                <p>{t(item.result)}</p>
+          <div className="research-grid">
+            {researchClaims.map(([code, title, text]) => (
+              <article className="research-card" key={code}>
+                <span>{code}</span>
+                <h3>{t(title)}</h3>
+                <p>{t(text)}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section courses-faq">
+      <section className="section courses-loop">
         <div className="container">
-          <div className="section-title">
-            <h2>{t('常見問題')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
+          <div className="courses-section-heading">
+            <p className="courses-eyebrow">A REPEATABLE LOOP</p>
+            <h2>{t('六步循环，把天赋感变成工作方法')}</h2>
+            <p>{t('真正的专业不是永远不出错，而是能知道错误发生在哪里，并有下一轮校准的方法。')}</p>
           </div>
-
-          <div className="faq-grid">
-            <div className="faq-item card">
-              <h4>{t('零基礎可以參加嗎？')}</h4>
-              <p>{t('可以。感知是可以被训练的——不是天赋问题。很多人不是没有爱，也不是没有连接，只是还没有找到适合自己的通道和练习方法。')}</p>
-            </div>
-            <div className="faq-item card">
-              <h4>{t('路徑A和路徑B怎麼選？')}</h4>
-              <p>{t('想成为职业传讯师、列入名录、参与验证 → 路径A。想自己学会稳定感受爱人、不想永远依赖他人 → 路径B。两个路径前两个阶段共用核心内容，第三阶段分流。')}</p>
-            </div>
-            <div className="faq-item card">
-              <h4>{t('認證考核的通過率是多少？')}</h4>
-              <p>{t('約 70-80%。有門檻才有含金量——不是交錢就拿證。')}</p>
-            </div>
-            <div className="faq-item card">
-              <h4>{t('認證後有什麼持續要求？')}</h4>
-              <p>{t('認證後需參加月度校準會，進修記錄公開——不是拿證就結束。持續進修，持續背書。')}</p>
-            </div>
+          <div className="training-loop">
+            {trainingLoop.map(([number, title, text]) => (
+              <div className="loop-step" key={number}>
+                <span>{number}</span><div><h3>{t(title)}</h3><p>{t(text)}</p></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 傳訊師職業體系 */}
-      <section className="section courses-career">
+      <section className="section courses-stages section-alt">
         <div className="container">
-          <div className="section-title">
-            <h2>{t('傳訊師成長路徑')}</h2>
-            <div className="decorative-line">
-              <span /><span className="star"> </span><span />
-            </div>
-            <p className="section-subdesc">{t('路徑A認證通過後，可申請列入官方傳訊師名錄，成為驗證共同體的一員')}</p>
+          <div className="courses-section-heading">
+            <p className="courses-eyebrow">TRAINING ARCHITECTURE</p>
+            <h2>{t('从能感知，到能负责')}</h2>
+            <p>{t('四个阶段共用核心训练；想成为职业传讯师的人，在 L3 进入监督实践，并可按当前批次申请名录与合作岗位。')}</p>
           </div>
-
-          <div className="career-tiers">
-            <div className="career-tier card">
-              <div className="tier-badge tier-beginner">{t('初階')}</div>
-              <h3>{t('初階傳訊師')}</h3>
-              <p className="tier-desc">{t('完成四階段認證，列入名錄')}</p>
-              <ul className="tier-benefits">
-                <li>{t('參與跨傳訊師獨立鏈接驗證')}</li>
-                <li>{t('为爱人存在性假设贡献数据')}</li>
-                <li>{t('累計案例經驗，逐步建立個人校準檔案')}</li>
-              </ul>
-            </div>
-
-            <div className="career-tier card">
-              <div className="tier-badge tier-mid">{t('中階')}</div>
-              <h3>{t('中階傳訊師')}</h3>
-              <p className="tier-desc">{t('累計一定案例量且校準數據穩定後晉升')}</p>
-              <ul className="tier-benefits">
-                <li>{t('參與對照實驗設計與盲測評審')}</li>
-                <li>{t('協助新入傳訊師的感知校準')}</li>
-                <li>{t('解鎖進階研究方法，持續提升專業度')}</li>
-              </ul>
-            </div>
-
-            <div className="career-tier card">
-              <div className="tier-badge tier-advanced">{t('高階')}</div>
-              <h3>{t('高階傳訊師')}</h3>
-              <p className="tier-desc">{t('長期案例積累，校準數據持續穩定')}</p>
-              <ul className="tier-benefits">
-                <li>{t('主導專項研究課題，設計驗證方案')}</li>
-                <li>{t('列入精選推薦，為更多夢女提供可靠鏈接')}</li>
-                <li>{t('貢獻實操數據至論文，成為共同作者')}</li>
-              </ul>
-            </div>
-
-            <div className="career-tier card">
-              <div className="tier-badge tier-supervisor">{t('督導')}</div>
-              <h3>{t('督導級傳訊師')}</h3>
-              <p className="tier-desc">{t('經協會審核邀請，全平台限額 · 每批僅擇優錄取極少數')}</p>
-              <ul className="tier-benefits">
-                <li>{t('主導方法論迭代與培訓體系優化')}</li>
-                <li>{t('擔任盲測實驗的首席評審')}</li>
-                <li>{t('引領下一代傳訊師的成長，守護這個平台的標準')}</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="career-note">
-            <p>{t('每一位认证传讯师都是 CDA 验证共同体的一员。你的每一次链接、每一份数据，都在帮助更多梦女减少误判，更安全地靠近自己的爱人。')}</p>
+          <div className="stage-grid">
+            {stages.map(stage => (
+              <article className="stage-card" key={stage.stage}>
+                <div className="stage-card-top"><span>{stage.stage}</span><small>{t(stage.time)}</small></div>
+                <h3>{t(stage.title)}</h3>
+                <ul>{stage.items.map(item => <li key={item}>{t(item)}</li>)}</ul>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section">
-        <div className="container text-center">
-          <div className="glass-card cta-inner">
-            <h2>{t('和我们一起探寻，他到底如何靠近你')}</h2>
-            <p>{t('四个阶段，两条路径——选择适合你的方向，加入人类历史上第一次对跨次元亲密关系的体系化验证。')}</p>
-            <Link to="/contact">
-              <ChoiceButton variant="gold">{t('加入我們')}</ChoiceButton>
-            </Link>
+      <section className="section courses-track">
+        <div className="container track-layout">
+          <div className="courses-section-heading courses-section-heading-left">
+            <p className="courses-eyebrow">TWO OUTPUTS / ONE STANDARD</p>
+            <h2>{t('同一套标准，给你两种出口')}</h2>
+            <p>{t('你可以把它发展为职业实践，也可以先为自己建立稳定的链接判断力。共同核心不变：安全、记录、验证和责任。')}</p>
           </div>
+          <div className="track-list">
+            <article><span>A</span><div><h3>{t('职业传讯师')}</h3><p>{t('面向已有塔罗、占星、灵气、东玄或直觉实践基础的人。完成训练与考核并加入 CDA 合作体系后，由 CDA 承接并分配客源，按合作方案享有底薪与提成，也可参与交叉验证与研究。')}</p><small>{t('客源分配、底薪、提成与排期按考核结果和书面合作方案执行；以案例质量、持续校准和伦理记录建立长期信任。')}</small></div></article>
+            <article><span>B</span><div><h3>{t('个人实践者')}</h3><p>{t('面向想先练习感知、理解 MJ 现象、减少对单一权威依赖的人。学习同一套记录与分辨方法，但不进入职业名录。')}</p><small>{t('你的目标可以是自我探索，不必把它变成对外服务。')}</small></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section courses-support section-alt">
+        <div className="container">
+          <div className="courses-section-heading courses-section-heading-left">
+            <p className="courses-eyebrow">PRACTITIONER PROTECTION / BOUNDARIES</p>
+            <h2>{t('你不是一个人承担每一次传讯的风险')}</h2>
+            <p>{t('专业不只发生在链接的几十分钟里。CDA 把传讯师、客妹与个案资料一起纳入保护范围，让你知道出了问题该停在哪里、找谁承接、如何留下证据。')}</p>
+          </div>
+          <div className="support-grid">
+            {supportClaims.map(([code, title, text]) => (
+              <article className="support-card" key={code}>
+                <span>{code}</span>
+                <h3>{t(title)}</h3>
+                <p>{t(text)}</p>
+              </article>
+            ))}
+          </div>
+          <p className="support-note">CDA 的保护措施以双方书面约定、适用法律与个案实际情况为准；法律支持不等同于对任何结果的保证。</p>
+        </div>
+      </section>
+
+      <section className="section courses-deliverables section-alt">
+        <div className="container">
+          <div className="courses-section-heading courses-section-heading-left">
+            <p className="courses-eyebrow">WHAT YOU LEAVE WITH</p>
+            <h2>{t('结课后，你带走的不只是笔记')}</h2>
+          </div>
+          <div className="deliverable-grid">
+            {deliverables.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{t(title)}</h3><p>{t(text)}</p></article>)}
+          </div>
+          <p className="courses-disclaimer">CDA 培训属于文化研究与个人实践教育。相关概念未被现代科学证实，不替代医疗、心理、法律或其他持牌专业服务。</p>
+        </div>
+      </section>
+
+      <section className="section courses-cta">
+        <div className="container courses-cta-inner">
+          <div><p className="courses-eyebrow">START WITH FIT, NOT FANTASY</p><h2>{t('如果你想把传讯做得更稳，我们先谈你的起点')}</h2><p>{t('告诉我们你的实践背景、目前最难处理的环节，以及你希望承担的角色。CDA 会先做适配评估，再建议训练路径。')}</p></div>
+          <Link className="courses-button courses-button-primary" to="/contact?inquiry=transmitter_training&service=transmitter-training">{t('申请传讯师培养')}</Link>
         </div>
       </section>
     </div>

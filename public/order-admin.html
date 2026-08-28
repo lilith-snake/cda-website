@@ -43,6 +43,15 @@
         justify-content: center;
       }
       button:hover, .ghost:hover { border-color: var(--pink); }
+      .row-complete {
+        min-height: 30px;
+        padding: 0 10px;
+        border-color: var(--teal);
+        color: var(--teal);
+        background: rgba(48,183,166,.08);
+        white-space: nowrap;
+      }
+      .row-complete:hover { border-color: var(--gold); color: var(--gold); }
       .primary, button[type="submit"] {
         border: 0;
         background: linear-gradient(135deg, #8f5cff, #e76aae 58%, #d4b066);
@@ -399,6 +408,7 @@
                     <th>意向</th>
                     <th>负责人</th>
                     <th>金额</th>
+                    <th>操作</th>
                   </tr>
                 </thead>
                 <tbody id="orderRows"></tbody>
@@ -694,11 +704,31 @@
             <td><span class="chip intent-${esc(normalizeIntent(order.intent_level))}">${intentLabels[normalizeIntent(order.intent_level)]}</span></td>
             <td>${esc(order.practitioner || '-')}</td>
             <td>${money(order.paid)} / ${money(order.price)}</td>
+            <td>${order.status === 'paid' ? '<button type="button" class="row-complete" title="标记为已完成">已完成</button>' : '-'}</td>
           `
           tr.addEventListener('click', () => selectOrder(order.id))
+          const completeButton = tr.querySelector('.row-complete')
+          if (completeButton) completeButton.addEventListener('click', event => markOrderDone(order, event))
           rows.append(tr)
         }
         renderStats()
+      }
+
+      async function markOrderDone(order, event) {
+        event.stopPropagation()
+        try {
+          const saved = await api('/admin/orders', {
+            method: 'PUT',
+            body: { ...order, id: order.id, status: 'done' },
+          })
+          state.status = 'done'
+          document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.status === 'done'))
+          await loadOrders()
+          selectOrder(saved.id)
+          toast('已完成，已转到已完成')
+        } catch (error) {
+          toast(error.message || '操作失败')
+        }
       }
 
       function filteredOrders() {

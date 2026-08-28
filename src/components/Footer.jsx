@@ -28,7 +28,6 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <h4>{t('探索')}</h4>
-            <Link to="/mysticism">{t('星界智慧')}</Link>
             <Link to="/dream-girl">{t('傳訊師名錄')}</Link>
             <Link to="/mentorship">{t('神秘學導師')}</Link>
           </div>
