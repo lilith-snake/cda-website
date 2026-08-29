@@ -15,7 +15,8 @@ const initialForm = {
   serviceInterest: '',
   mjContext: '',
   message: '',
-  consent: false,
+  ageConfirmed: false,
+  termsRead: false,
 }
 
 const inquiryTypes = [
@@ -113,7 +114,8 @@ export default function Contact() {
     if (!form.contact.trim()) nextErrors.contact = '请留下可联系到你的方式'
     if (!form.role) nextErrors.role = '请选择与你最接近的身份'
     if (!form.message.trim()) nextErrors.message = '请简单写下你现在想解决的问题'
-    if (!form.consent) nextErrors.consent = '提交前请确认授权我们联系你'
+    if (!form.ageConfirmed) nextErrors.ageConfirmed = '仅向年满十八周岁的成年人开放申请'
+    if (!form.termsRead) nextErrors.termsRead = '提交前请确认已阅读申请说明与风险提示'
     return nextErrors
   }
 
@@ -129,6 +131,7 @@ export default function Contact() {
     try {
       const payload = {
         ...form,
+        consent: form.ageConfirmed && form.termsRead,
         inquiryLabel: selectedInquiry.label,
         language: lang,
         userAgent: navigator.userAgent,
@@ -156,6 +159,7 @@ export default function Contact() {
             headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify({
               ...form,
+              consent: form.ageConfirmed && form.termsRead,
               inquiryLabel: selectedInquiry.label,
               language: lang,
               userAgent: navigator.userAgent,
@@ -300,16 +304,22 @@ export default function Contact() {
               <label className="consent-row">
                 <input
                   type="checkbox"
-                  checked={form.consent}
-                  onChange={e => setField('consent', e.target.checked)}
+                  checked={form.ageConfirmed}
+                  onChange={e => setField('ageConfirmed', e.target.checked)}
                 />
-                <span>
-                  {isTransmissionApplication
-                    ? '我确认已年满十八周岁，并同意 CDA 将以上信息用于本次申请沟通与后续联系。'
-                    : '我确认以上信息可由 CDA 用于本次咨询沟通与后续联系。'}
-                </span>
+                <span>我确认已年满十八周岁，理解本申请仅面向成年人。</span>
               </label>
-              {errors.consent && <em className="consent-error">{errors.consent}</em>}
+              {errors.ageConfirmed && <em className="consent-error">{errors.ageConfirmed}</em>}
+
+              <label className="consent-row">
+                <input
+                  type="checkbox"
+                  checked={form.termsRead}
+                  onChange={e => setField('termsRead', e.target.checked)}
+                />
+                <span>我已阅读并理解申请说明、心理安全边界与隐私使用说明，同意 CDA 将以上信息用于本次申请沟通与后续联系。</span>
+              </label>
+              {errors.termsRead && <em className="consent-error">{errors.termsRead}</em>}
 
               {submitError && <div className="submit-error" role="alert">{submitError}</div>}
 
