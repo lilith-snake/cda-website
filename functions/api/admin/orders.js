@@ -41,13 +41,13 @@ export async function onRequest(context) {
             client_name, contact, channel, source, service_type, status, priority,
             practitioner, appointment_at, deadline_at, follow_up_at,
             info_status, intent_level, sync_key,
-            price, paid, payment_status, tags, deliverable, notes
+            price, paid, payment_status, payment_method, tags, deliverable, notes
           ) VALUES (
             ?, datetime('now'), datetime('now'),
             ?, ?, ?, ?, ?, ?, ?,
             ?, ?, ?, ?,
             ?, ?, ?,
-            ?, ?, ?, ?, ?, ?
+            ?, ?, ?, ?, ?, ?, ?
           )
         `).bind(
           queueNo,
@@ -68,6 +68,7 @@ export async function onRequest(context) {
           order.price,
           order.paid,
           order.payment_status,
+          order.payment_method,
           order.tags,
           order.deliverable,
           order.notes,
@@ -167,6 +168,7 @@ async function ensureOrderColumns(db) {
     ['info_status', "TEXT DEFAULT '未确认'"],
     ['intent_level', "TEXT DEFAULT 'normal'"],
     ['sync_key', 'TEXT'],
+    ['payment_method', 'TEXT'],
   ]
   for (const [name, definition] of additions) {
     if (!existing.has(name)) {
@@ -205,7 +207,7 @@ async function updateOrder(db, id, order) {
       service_type = ?, status = ?, priority = ?, practitioner = ?,
       appointment_at = ?, deadline_at = ?, follow_up_at = ?,
       info_status = ?, intent_level = ?, sync_key = COALESCE(?, sync_key),
-      price = ?, paid = ?, payment_status = ?, tags = ?,
+      price = ?, paid = ?, payment_status = ?, payment_method = ?, tags = ?,
       deliverable = ?, notes = ?
     WHERE id = ?
   `).bind(
@@ -227,6 +229,7 @@ async function updateOrder(db, id, order) {
     order.price,
     order.paid,
     order.payment_status,
+    order.payment_method,
     order.tags,
     order.deliverable,
     order.notes,
@@ -275,6 +278,7 @@ function cleanOrder(body = {}) {
     price: Number(body.price || 0),
     paid: Number(body.paid || 0),
     payment_status: clean(body.payment_status || body.paymentStatus || '未付款', 80),
+    payment_method: ['微信', '支付宝'].includes(body.payment_method || body.paymentMethod) ? (body.payment_method || body.paymentMethod) : '',
     tags: JSON.stringify(parseTags(body.tags)),
     deliverable: clean(body.deliverable, 500),
     notes: clean(body.notes, 4000),
@@ -334,7 +338,7 @@ function csvResponse(csv) {
 }
 
 function toCsv(orders) {
-  const headers = ['排单号', '客户', '联系方式', '渠道', '来源', '服务', '状态', '优先级', '负责人', '排单时间', '截止', '跟进', '对接信息', '意向等级', '价格', '已付', '付款状态', '标签', '交付物', '备注', '创建时间', '更新时间']
+  const headers = ['排单号', '客户', '联系方式', '渠道', '来源', '服务', '状态', '优先级', '负责人', '排单时间', '截止', '跟进', '对接信息', '意向等级', '价格', '已付', '付款状态', '付款方式', '标签', '交付物', '备注', '创建时间', '更新时间']
   const rows = orders.map(order => [
     order.queue_no,
     order.client_name,
@@ -353,6 +357,7 @@ function toCsv(orders) {
     order.price,
     order.paid,
     order.payment_status,
+    order.payment_method,
     (order.tags || []).join(' / '),
     order.deliverable,
     order.notes,

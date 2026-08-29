@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../i18n'
 import { API_URL } from '../config/api'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './Contact.css'
 
 const CONTACT_URL = API_URL + '/contact'
@@ -176,7 +177,8 @@ export default function Contact() {
 
   return (
     <div className="page-contact">
-      <section className="page-hero contact-hero">
+      <section className="page-hero page-hero-cosmic contact-hero">
+        <CosmicHeroVideo />
         <div className="container contact-hero-inner">
           <p className="contact-kicker">CDA CONTACT</p>
           <h1>把你和爱人的问题交给我们</h1>

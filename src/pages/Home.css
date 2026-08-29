@@ -4,20 +4,60 @@
 
 /* --- Hero --- */
 .home-hero {
+  position: relative;
+  min-height: min(780px, calc(100svh - var(--nav-height)));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
   padding: 96px 0 80px;
-  text-align: center;
-  background: var(--color-bg);
+  text-align: left;
+  background: #080a0f;
+}
+
+.home-hero-media,
+.home-hero-shade,
+.home-hero-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero-media {
+  z-index: -3;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.82) contrast(1.06) brightness(0.9);
+  transform: scale(1.03);
+  animation: home-hero-camera 22s ease-in-out infinite alternate;
+}
+
+.home-hero-shade {
+  z-index: -2;
+  background: linear-gradient(90deg, rgba(8, 10, 15, 0.92) 0%, rgba(8, 10, 15, 0.68) 43%, rgba(8, 10, 15, 0.12) 100%);
+}
+
+.home-hero-grid {
+  z-index: -1;
+  opacity: 0.16;
+  background-image: linear-gradient(rgba(214, 184, 120, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(214, 184, 120, 0.18) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: linear-gradient(90deg, black, transparent 76%);
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  max-width: 760px;
 }
 
 .hero-label {
   margin-bottom: 10px;
-  color: var(--color-text);
+  color: #f4efe5;
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 700;
@@ -26,7 +66,7 @@
 
 .hero-identity {
   margin-bottom: 28px;
-  color: var(--color-accent);
+  color: #d6b878;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -36,7 +76,7 @@
   font-family: var(--font-serif);
   font-size: clamp(3rem, 7vw, 4.5rem);
   font-weight: 900;
-  color: var(--color-text);
+  color: #fffaf1;
   letter-spacing: 0.08em;
   margin-bottom: 12px;
   line-height: 1.1;
@@ -44,14 +84,14 @@
 
 .hero-title {
   font-size: 1rem;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.76);
   letter-spacing: 0.06em;
   margin-bottom: 8px;
 }
 
 .hero-slogan {
   margin-bottom: 10px;
-  color: var(--color-accent);
+  color: #d6b878;
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 700;
@@ -60,7 +100,7 @@
 
 .hero-desc {
   font-size: 0.9rem;
-  color: var(--color-text-light);
+  color: rgba(255, 255, 255, 0.68);
   max-width: 480px;
   line-height: 1.6;
   margin-bottom: 32px;
@@ -68,7 +108,7 @@
 
 .hero-dialogue {
   max-width: 520px;
-  width: 100%;
+  width: min(100%, 520px);
   margin-bottom: 32px;
 }
 
@@ -76,6 +116,15 @@
   display: flex;
   gap: 32px;
   justify-content: center;
+}
+
+@keyframes home-hero-camera {
+  from { transform: scale(1.03) translate3d(0, 0, 0); }
+  to { transform: scale(1.08) translate3d(-1.2%, 0.8%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-media { animation: none; }
 }
 
 .hero-link-item {
@@ -498,5 +547,106 @@
 
   .lineage-node p {
     font-size: 0.62rem;
+  }
+}
+
+/* --- 全页宇宙档案层：让滚动中的每个章节都有明确的视觉身份 --- */
+[data-theme="dark"] .home-brand-manifesto,
+[data-theme="dark"] .home-hypothesis,
+[data-theme="dark"] .home-pillars,
+[data-theme="dark"] .home-lineage,
+[data-theme="dark"] .home-cta,
+[data-theme="dark"] .home-recruit-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .home-brand-manifesto::before,
+[data-theme="dark"] .home-hypothesis::before,
+[data-theme="dark"] .home-pillars::before,
+[data-theme="dark"] .home-lineage::before,
+[data-theme="dark"] .home-cta::before,
+[data-theme="dark"] .home-recruit-banner::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(214, 184, 120, 0.14) 0.7px, transparent 0.9px),
+    linear-gradient(90deg, transparent 0 49.95%, rgba(214, 184, 120, 0.045) 50%, transparent 50.05%);
+  background-size: 84px 84px, 100% 100%;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .home-brand-manifesto::after,
+[data-theme="dark"] .home-lineage::after,
+[data-theme="dark"] .home-cta::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(62vw, 760px);
+  height: min(18vw, 190px);
+  right: -18vw;
+  top: 18%;
+  border: 1px solid rgba(214, 184, 120, 0.14);
+  border-radius: 50%;
+  transform: rotate(-9deg);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .home-trust {
+  border-top: 1px solid rgba(214, 184, 120, 0.18);
+  border-bottom: 1px solid rgba(214, 184, 120, 0.18);
+  background: rgba(13, 18, 26, 0.96);
+}
+
+[data-theme="dark"] .hypothesis-block,
+[data-theme="dark"] .cta-block {
+  background: linear-gradient(145deg, rgba(214, 184, 120, 0.11), rgba(17, 24, 35, 0.94) 48%);
+  border-color: rgba(214, 184, 120, 0.34);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.26), inset 0 1px rgba(255, 244, 213, 0.08);
+}
+
+[data-theme="dark"] .pillar-item,
+[data-theme="dark"] .lineage-node {
+  background: rgba(17, 24, 35, 0.88);
+  border-color: rgba(124, 145, 177, 0.2);
+}
+
+[data-theme="dark"] .pillar-item:hover,
+[data-theme="dark"] .lineage-node:hover {
+  border-color: rgba(214, 184, 120, 0.44);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+}
+
+.pillar-item,
+.lineage-node {
+  transition: transform var(--transition-smooth) var(--ease-out), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.section-title {
+  position: relative;
+}
+
+[data-theme="dark"] .section-title::before {
+  content: 'CDA / FIELD NOTE';
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-accent);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  opacity: 0.62;
+}
+
+@media (max-width: 640px) {
+  [data-theme="dark"] .home-brand-manifesto::after,
+  [data-theme="dark"] .home-lineage::after,
+  [data-theme="dark"] .home-cta::after {
+    width: 420px;
+    height: 140px;
+    right: -250px;
   }
 }

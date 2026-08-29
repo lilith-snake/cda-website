@@ -75,6 +75,21 @@
   margin-top: 48px;
 }
 
+.letter-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-content::before {
+  content: 'PRIVATE TRANSMISSION / ARCHIVED';
+  display: block;
+  margin-bottom: 24px;
+  color: var(--color-accent);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  opacity: 0.76;
+}
+
 @media (max-width: 640px) {
   .letter-content {
     padding: 32px 20px;

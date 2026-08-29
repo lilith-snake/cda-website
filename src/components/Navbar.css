@@ -10,6 +10,14 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+[data-theme="dark"] .navbar {
+  background: rgba(7, 9, 13, 0.88);
+  border-bottom-color: rgba(214, 184, 120, 0.22);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
 .navbar-inner {
   display: flex;
   align-items: center;
@@ -115,6 +123,17 @@
   border-color: var(--color-accent-border);
 }
 
+[data-theme="dark"] .theme-toggle {
+  color: #b3b3b0;
+  border-color: rgba(214, 184, 120, 0.26);
+  background: rgba(17, 24, 35, 0.68);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  color: #efe0b5;
+  border-color: rgba(214, 184, 120, 0.55);
+}
+
 /* --- 手機菜單按鈕 --- */
 .menu-toggle {
   display: none;
@@ -175,6 +194,10 @@
     overflow: visible;
   }
 
+  [data-theme="dark"] .navbar-links {
+    background: rgba(7, 9, 13, 0.98);
+  }
+
   .nav-link {
     padding: 8px 10px;
     font-size: 0.8rem;
@@ -191,7 +214,11 @@
     top: var(--nav-height);
     left: 0;
     right: 0;
-    bottom: 0;
+    /* The menu lives inside the fixed navbar. Give it an explicit viewport
+       height so Chromium does not resolve bottom: 0 against the navbar box. */
+    bottom: auto;
+    height: calc(100dvh - var(--nav-height));
+    min-height: calc(100vh - var(--nav-height));
     background: var(--color-bg);
     z-index: 9999;
     flex-direction: column;

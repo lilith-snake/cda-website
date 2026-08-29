@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import DialogueBox from '../components/DialogueBox'
 import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './About.css'
 
 const creditPillars = [
@@ -66,7 +67,8 @@ export default function About() {
   return (
     <div className="page-about">
       {/* Hero */}
-      <section className="page-hero about-hero">
+      <section className="page-hero page-hero-cosmic about-hero">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>{t('關於我們')}</h1>
           <p className="subtitle">{t('黎輝 · 破曉 — 體系聯合創建者')}</p>

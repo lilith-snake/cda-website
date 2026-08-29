@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -18,7 +18,11 @@ import Recruit from './pages/Recruit'
 
 export default function App() {
   const navigate = useNavigate()
+  const location = useLocation()
   const [searchParams] = useSearchParams()
+
+  const cosmicExcluded = ['/courses', '/mentorship', '/transmission']
+  const showCosmicBackground = !cosmicExcluded.includes(location.pathname)
 
   useEffect(() => {
     const redirect = searchParams.get('redirect')
@@ -28,23 +32,31 @@ export default function App() {
   }, [])
 
   return (
-    <div className="app">
+    <div className={`app${showCosmicBackground ? ' cosmic-surface' : ''}`}>
+      {showCosmicBackground && (
+        <>
+          <video className="site-cosmic-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+            <source src={`${import.meta.env.BASE_URL}videos/home-cosmic-hero.mp4`} type="video/mp4" />
+          </video>
+          <div className="site-cosmic-vignette" aria-hidden="true" />
+        </>
+      )}
       <Navbar />
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/dream-girl" element={<DreamGirl />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/transmission" element={<TransmissionService />} />
-          <Route path="/mentorship" element={<Mentorship />} />
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/dream-girl" element={<DreamGirl />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/transmission" element={<TransmissionService />} />
+            <Route path="/mentorship" element={<Mentorship />} />
+            <Route path="/contact" element={<Contact />} />
 
-          <Route path="/witness" element={<Witness />} />
-          <Route path="/letter" element={<Letter />} />
-          <Route path="/recruit" element={<Recruit />} />
+            <Route path="/witness" element={<Witness />} />
+            <Route path="/letter" element={<Letter />} />
+            <Route path="/recruit" element={<Recruit />} />
         </Routes>
       </main>
       <Footer />

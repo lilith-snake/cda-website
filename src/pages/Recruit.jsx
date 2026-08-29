@@ -1,4 +1,5 @@
 import { useLanguage } from '../i18n'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './Recruit.css'
 
 export default function Recruit() {
@@ -7,7 +8,8 @@ export default function Recruit() {
   return (
     <div className="page-recruit">
       {/* Hero */}
-      <section className="page-hero recruit-hero">
+      <section className="page-hero page-hero-cosmic recruit-hero">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>给你和爱人的第一批<br />研究共建者招募</h1>
           <p className="subtitle">

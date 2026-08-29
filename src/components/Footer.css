@@ -5,6 +5,11 @@
   padding-top: 0;
 }
 
+[data-theme="dark"] .footer {
+  background: #040509;
+  border-top-color: rgba(214, 184, 120, 0.18);
+}
+
 .footer-content {
   display: grid;
   grid-template-columns: 1.5fr 2fr;

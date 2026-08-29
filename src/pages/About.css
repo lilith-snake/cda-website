@@ -612,3 +612,79 @@
     padding: 24px;
   }
 }
+
+/* --- 谱系卷宗视觉 --- */
+.about-hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(42vw, 520px);
+  height: min(42vw, 520px);
+  right: -12vw;
+  top: -28%;
+  border: 1px solid rgba(214, 184, 120, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(214, 184, 120, 0.025), 0 0 0 52px rgba(214, 184, 120, 0.016);
+  pointer-events: none;
+}
+
+.about-hero .container::before {
+  content: 'CDA / LINEAGE FILE 02';
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-accent);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  opacity: 0.78;
+}
+
+.origin-card,
+.about-founder-card,
+.paper-card,
+.team-card,
+.credit-card,
+.path-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.origin-card::before,
+.about-founder-card::before,
+.paper-card::before,
+.team-card::before,
+.credit-card::before,
+.path-card::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(214, 184, 120, 0.12);
+  pointer-events: none;
+}
+
+.founder-avatar {
+  background: radial-gradient(circle at 38% 32%, rgba(214, 184, 120, 0.3), var(--color-accent-bg) 48%, transparent 72%);
+  box-shadow: 0 0 0 7px rgba(214, 184, 120, 0.035);
+}
+
+.lineage-row {
+  position: relative;
+  transition: background var(--transition-fast) var(--ease-out), padding-left var(--transition-fast) var(--ease-out);
+}
+
+.lineage-row:hover {
+  padding-left: 10px;
+  background: rgba(214, 184, 120, 0.035);
+}
+
+@media (max-width: 640px) {
+  .about-hero::after {
+    width: 360px;
+    height: 360px;
+    right: -210px;
+    top: -22%;
+  }
+
+  .about-hero .container::before {
+    margin-bottom: 10px;
+  }
+}

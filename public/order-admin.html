@@ -374,6 +374,8 @@
           <div class="stat"><span>今日预约</span><strong id="statToday">0</strong></div>
           <div class="stat"><span>高意向</span><strong id="statHigh">0</strong></div>
           <div class="stat"><span>已收款</span><strong id="statPaid">¥0</strong></div>
+          <div class="stat"><span>微信收款</span><strong id="statWechat">¥0</strong></div>
+          <div class="stat"><span>支付宝收款</span><strong id="statAlipay">¥0</strong></div>
         </section>
 
         <section class="board">
@@ -405,6 +407,7 @@
                     <th>对接信息</th>
                     <th>排单时间</th>
                     <th>付款</th>
+                    <th>付款方式</th>
                     <th>意向</th>
                     <th>负责人</th>
                     <th>金额</th>
@@ -444,6 +447,11 @@
               <label>截止时间<input name="deadline_at" type="datetime-local" /></label>
               <label>跟进时间<input name="follow_up_at" type="datetime-local" /></label>
               <label>付款状态<input name="payment_status" placeholder="未付款 / 已付定金 / 已付全款" /></label>
+              <label>付款方式<select name="payment_method">
+                <option value="">未设置</option>
+                <option value="微信">微信</option>
+                <option value="支付宝">支付宝</option>
+              </select></label>
               <label>价格<input name="price" type="number" min="0" step="0.01" /></label>
               <label>已付<input name="paid" type="number" min="0" step="0.01" /></label>
             </div>
@@ -701,6 +709,7 @@
             <td><span class="chip info-${esc(normalizeInfo(order.info_status))}">${esc(order.info_status || '未确认')}</span></td>
             <td>${esc(displayDate(order.appointment_at) || '-')}</td>
             <td>${esc(order.payment_status || '未填写')}</td>
+            <td>${esc(order.payment_method || '未设置')}</td>
             <td><span class="chip intent-${esc(normalizeIntent(order.intent_level))}">${intentLabels[normalizeIntent(order.intent_level)]}</span></td>
             <td>${esc(order.practitioner || '-')}</td>
             <td>${money(order.paid)} / ${money(order.price)}</td>
@@ -746,7 +755,7 @@
           return [
             order.queue_no, order.client_name, order.contact, order.channel, order.source,
             order.service_type, order.status, order.priority, order.practitioner,
-            order.payment_status, order.info_status, order.intent_level, order.deliverable, order.notes, ...(order.tags || []),
+            order.payment_status, order.payment_method, order.info_status, order.intent_level, order.deliverable, order.notes, ...(order.tags || []),
           ].join(' ').toLowerCase().includes(query)
         }).sort((a, b) => {
           const rankA = statusRank[a.status || 'new'] ?? 99
@@ -763,6 +772,8 @@
         $('#statToday').textContent = state.orders.filter(order => String(order.appointment_at || '').startsWith(today)).length
         $('#statHigh').textContent = state.orders.filter(order => normalizeIntent(order.intent_level) === 'high').length
         $('#statPaid').textContent = money(state.orders.reduce((sum, order) => sum + Number(order.paid || 0), 0))
+        $('#statWechat').textContent = money(state.orders.filter(order => order.payment_method === '微信').reduce((sum, order) => sum + Number(order.paid || 0), 0))
+        $('#statAlipay').textContent = money(state.orders.filter(order => order.payment_method === '支付宝').reduce((sum, order) => sum + Number(order.paid || 0), 0))
       }
 
       function selectOrder(id) {
@@ -787,6 +798,7 @@
         form.elements.info_status.value = '未确认'
         form.elements.intent_level.value = 'normal'
         form.elements.payment_status.value = '未付款'
+        form.elements.payment_method.value = ''
         $('#formTitle').textContent = '新增排单'
         render()
         updateDeleteButton()

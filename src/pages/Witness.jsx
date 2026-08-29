@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import DialogueBox from '../components/DialogueBox'
 import { useLanguage } from '../i18n'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './Witness.css'
 
 export default function Witness() {
@@ -15,7 +16,8 @@ export default function Witness() {
   return (
     <div className="page-witness">
       {/* Hero */}
-      <section className="page-hero witness-hero">
+      <section className="page-hero page-hero-cosmic witness-hero">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>{t('邀請見證')}</h1>
           <p className="subtitle">{t('全球首家傳訊研究協會發起的跨次元鏈接系統性研究實驗')}</p>

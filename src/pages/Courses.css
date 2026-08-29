@@ -386,7 +386,8 @@
   pointer-events: none;
 }
 
-.dossier-visual img {
+.dossier-visual img,
+.dossier-visual video {
   display: block;
   width: 100%;
   height: 100%;
@@ -394,6 +395,11 @@
   object-fit: cover;
   object-position: center;
   filter: saturate(0.7) sepia(0.12) contrast(1.08) brightness(0.75);
+}
+
+.dossier-visual video {
+  object-position: 68% center;
+  filter: saturate(0.82) contrast(1.06) brightness(0.82);
 }
 
 .dossier-stamp {

@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS service_orders (
   price REAL DEFAULT 0,
   paid REAL DEFAULT 0,
   payment_status TEXT,
+  payment_method TEXT,
   tags TEXT,
   deliverable TEXT,
   notes TEXT

@@ -90,17 +90,19 @@
 }
 
 [data-theme="dark"] {
-  --color-bg: #1A1A1E;
-  --color-bg-alt: #222228;
-  --color-bg-card: #28282E;
-  --color-bg-dark: #141418;
+  --color-bg: #07090d;
+  --color-bg-alt: #0d121a;
+  --color-bg-card: #111823;
+  --color-bg-dark: #040509;
 
-  --color-text: #F0EDF5;
-  --color-text-secondary: #A0A0A8;
-  --color-text-light: #787880;
+  --color-text: #f1ede3;
+  --color-text-secondary: #b3b3b0;
+  --color-text-light: #7a808a;
 
-  --color-accent-bg: rgba(201, 169, 110, 0.08);
-  --color-accent-border: rgba(201, 169, 110, 0.3);
+  --color-accent: #d6b878;
+  --color-accent-light: #efe0b5;
+  --color-accent-bg: rgba(214, 184, 120, 0.08);
+  --color-accent-border: rgba(214, 184, 120, 0.30);
 
   --gray-alpha-100: rgba(255, 255, 255, 0.05);
   --gray-alpha-200: rgba(255, 255, 255, 0.08);
@@ -115,8 +117,8 @@
   --shadow-popover: 0 1px 1px rgba(0, 0, 0, 0.06), 0 4px 8px -4px rgba(0, 0, 0, 0.12), 0 16px 24px -8px rgba(0, 0, 0, 0.16);
   --shadow-modal: 0 1px 1px rgba(0, 0, 0, 0.06), 0 8px 16px -4px rgba(0, 0, 0, 0.12), 0 24px 32px -8px rgba(0, 0, 0, 0.16);
 
-  --color-bg-card-solid: #1A1A1A;
-  --color-bg-elevated: #1A1A1A;
+  --color-bg-card-solid: #0f141c;
+  --color-bg-elevated: #151d29;
   --color-dialogue-bg: var(--color-bg-alt);
 }
 
@@ -149,6 +151,120 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.cosmic-surface {
+  /* Cosmic pages keep a dark, high-contrast canvas even when the
+     preference toggle is set to light. The video is inherently dark,
+     so inheriting the light palette would make most copy disappear. */
+  --color-bg: #07090d;
+  --color-bg-alt: #0d121a;
+  --color-bg-card: #111823;
+  --color-bg-dark: #040509;
+  --color-bg-card-solid: #0f141c;
+  --color-bg-elevated: #151d29;
+  --color-text: #f1ede3;
+  --color-text-secondary: #b3b3b0;
+  --color-text-light: #9aa0a9;
+  --color-accent: #d6b878;
+  --color-accent-light: #efe0b5;
+  --color-accent-dark: #d6b878;
+  --color-accent-bg: rgba(214, 184, 120, 0.1);
+  --color-accent-border: rgba(214, 184, 120, 0.34);
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-border-light: rgba(255, 255, 255, 0.09);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.cosmic-surface .navbar {
+  background: rgba(7, 9, 13, 0.94);
+  border-bottom-color: rgba(214, 184, 120, 0.22);
+}
+
+.cosmic-surface .footer {
+  background: rgba(4, 5, 9, 0.97);
+  border-top-color: rgba(214, 184, 120, 0.18);
+}
+
+.site-cosmic-video,
+.site-cosmic-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.site-cosmic-video {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  filter: saturate(0.85) contrast(1.06) brightness(0.9);
+}
+
+.site-cosmic-vignette {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(7, 9, 13, 0.72) 0%, rgba(7, 9, 13, 0.44) 48%, rgba(7, 9, 13, 0.24) 100%);
+}
+
+.cosmic-surface .main-content {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+.cosmic-surface .main-content > .page-home,
+.cosmic-surface .main-content > .page-about,
+.cosmic-surface .main-content > .page-dream-girl,
+.cosmic-surface .main-content > .page-research,
+.cosmic-surface .main-content > .page-shop,
+.cosmic-surface .main-content > .page-contact,
+.cosmic-surface .main-content > .page-witness,
+.cosmic-surface .main-content > .page-letter,
+.cosmic-surface .main-content > .page-recruit {
+  position: relative;
+  z-index: 3;
+}
+
+.cosmic-surface .page-hero,
+.cosmic-surface .section {
+  background-color: rgba(7, 9, 13, 0.94);
+}
+
+.cosmic-surface .section:not(.section-alt) {
+  background-color: rgba(7, 9, 13, 0.94);
+}
+
+.cosmic-surface .section-alt {
+  background-color: rgba(13, 18, 26, 0.96);
+}
+
+.cosmic-surface .glass-card {
+  background: rgba(17, 24, 35, 0.96);
+}
+
+.cosmic-surface .section p,
+.cosmic-surface .section li {
+  color: #c7c7c2;
+}
+
+.cosmic-surface .section h2,
+.cosmic-surface .section h3,
+.cosmic-surface .section h4 {
+  color: #f1ede3;
+}
+
+.cosmic-surface .brand-manifesto-belief {
+  color: #e6a8bf;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-cosmic-video {
+    display: none;
+  }
 }
 
 .main-content {
@@ -200,8 +316,39 @@ button {
 /* --- 頁面通用標題區 --- */
 .page-hero {
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding: 96px 0 64px;
   text-align: center;
+  border-bottom: 1px solid var(--color-accent-border);
+  background-color: var(--color-bg);
+}
+
+.page-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(214, 184, 120, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 184, 120, 0.11) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: linear-gradient(90deg, black, transparent 82%);
+  opacity: 0.5;
+  content: '';
+}
+
+.page-hero::after {
+  position: absolute;
+  z-index: -1;
+  inset: 22px 24px;
+  border: 1px solid rgba(214, 184, 120, 0.16);
+  content: '';
+  pointer-events: none;
+}
+
+.page-hero > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .page-hero h1 {
@@ -220,6 +367,22 @@ button {
   margin: 0 auto;
 }
 
+[data-theme="dark"] .page-hero h1 {
+  color: #f1ede3;
+}
+
+[data-theme="dark"] .page-hero .subtitle {
+  color: #b3b3b0;
+}
+
+[data-theme="dark"] .glass-card {
+  border-color: rgba(214, 184, 120, 0.24);
+  background: rgba(17, 24, 35, 0.86);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 /* --- 區塊通用 --- */
 .section {
   padding: 96px 0;
@@ -227,6 +390,14 @@ button {
 
 .section-alt {
   background: var(--color-bg-alt);
+}
+
+[data-theme="dark"] .section-alt {
+  background-color: rgba(13, 18, 26, 0.92);
+  background-image:
+    linear-gradient(rgba(214, 184, 120, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 184, 120, 0.035) 1px, transparent 1px);
+  background-size: 96px 96px;
 }
 
 .section-title {

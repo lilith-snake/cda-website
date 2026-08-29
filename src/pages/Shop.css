@@ -496,3 +496,84 @@
     margin-top: 10px;
   }
 }
+
+/* --- 方法产品台 --- */
+.shop-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.shop-hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(48vw, 560px);
+  height: min(23vw, 250px);
+  right: -10vw;
+  top: 20%;
+  border: 1px solid rgba(214, 184, 120, 0.2);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.shop-hero .container::before {
+  content: 'CDA / PRACTICE CATALOG 04';
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-accent);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  opacity: 0.78;
+}
+
+.shop-notice,
+.shop-value-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-notice::after,
+.shop-value-panel::after {
+  content: '';
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -44px;
+  bottom: -46px;
+  border: 1px solid var(--color-accent-border);
+  border-radius: 50%;
+}
+
+.shop-card,
+.conversion-card,
+.proof-card,
+.paper-angle-card,
+.sop-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth) var(--ease-out), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.shop-card:hover,
+.conversion-card:hover,
+.proof-card:hover,
+.paper-angle-card:hover,
+.sop-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent-border);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+.shop-badge {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .shop-hero::after {
+    width: 420px;
+    height: 170px;
+    right: -240px;
+  }
+}

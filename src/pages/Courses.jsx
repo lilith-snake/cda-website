@@ -186,9 +186,19 @@ export default function Courses() {
       <section className="section courses-dossier section-alt">
         <div className="container dossier-layout">
           <div className="dossier-visual">
-            <img src={`${import.meta.env.BASE_URL}images/key-of-solomon-plate-v.jpg`} alt="1889 年《所罗门之钥》公版图版，作为 CDA 传讯档案的历史视觉锚点" />
-            <span className="dossier-stamp">CDA / ARCHIVE<br />PRACTICE SAMPLE</span>
-            <span className="dossier-caption">视觉锚点不是结论 · 记录才是工作起点</span>
+            <video
+              className="dossier-media"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="CDA 传讯训练中的信号校准与记录视觉"
+            >
+              <source src={`${import.meta.env.BASE_URL}videos/home-cosmic-hero.mp4`} type="video/mp4" />
+            </video>
+            <span className="dossier-stamp">CDA / SIGNAL LAB<br />PRACTICE SAMPLE</span>
+            <span className="dossier-caption">信号先被记录 · 再进入复盘与验证</span>
           </div>
           <div className="dossier-copy">
             <p className="courses-eyebrow">THE PRACTITIONER DOSSIER</p>

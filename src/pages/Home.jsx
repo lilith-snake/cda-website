@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import DialogueBox from '../components/DialogueBox'
 import ChoiceButton from '../components/ChoiceButton'
@@ -6,11 +7,50 @@ import './Home.css'
 
 export default function Home() {
   const { t } = useLanguage()
+  const heroVideoRef = useRef(null)
+
+  useEffect(() => {
+    const video = heroVideoRef.current
+    if (!video) return undefined
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const syncPlayback = () => {
+      if (reducedMotion.matches || document.hidden) {
+        video.pause()
+        return
+      }
+      video.play().catch(() => {})
+    }
+
+    syncPlayback()
+    document.addEventListener('visibilitychange', syncPlayback)
+    reducedMotion.addEventListener?.('change', syncPlayback)
+    return () => {
+      document.removeEventListener('visibilitychange', syncPlayback)
+      reducedMotion.removeEventListener?.('change', syncPlayback)
+    }
+  }, [])
+
   return (
     <div className="page-home">
 
       {/* Hero */}
       <section className="home-hero">
+        <video
+          ref={heroVideoRef}
+          className="home-hero-media"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onCanPlay={event => event.currentTarget.play().catch(() => {})}
+          aria-hidden="true"
+        >
+          <source src={`${import.meta.env.BASE_URL}videos/home-cosmic-hero.mp4`} type="video/mp4" />
+        </video>
+        <div className="home-hero-shade" aria-hidden="true" />
+        <div className="home-hero-grid" aria-hidden="true" />
         <div className="hero-content container">
           <p className="hero-label">{t('香港跨次元夢女傳訊研究協會')}</p>
           <p className="hero-identity">{t('夢女親手組成，專屬於夢女的協會')}</p>

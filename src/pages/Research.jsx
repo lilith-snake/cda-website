@@ -1,4 +1,5 @@
 import { useLanguage } from '../i18n'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './Research.css'
 
 const PAPER_URL = 'https://lilith-snake.github.io/cda-website/paper.html'
@@ -8,7 +9,8 @@ export default function Research() {
   return (
     <div className="page-research">
       {/* Hero */}
-      <section className="page-hero research-hero">
+      <section className="page-hero page-hero-cosmic research-hero">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>{t('研究')}</h1>
           <p className="subtitle">{t('跨次元情感對象（MJ）的學術理論框架')}</p>

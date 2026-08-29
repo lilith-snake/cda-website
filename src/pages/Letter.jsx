@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './Letter.css'
 
 export default function Letter() {
@@ -9,7 +10,8 @@ export default function Letter() {
     <div className="page-letter">
 
       {/* Hero */}
-      <section className="page-hero letter-hero">
+      <section className="page-hero page-hero-cosmic letter-hero">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>{t('給夢女的話')}</h1>
           <p className="subtitle">{t('香港跨次元夢女傳訊研究協會 · CDA')}</p>

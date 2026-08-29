@@ -234,6 +234,18 @@
   letter-spacing: 0.04em;
 }
 
+.recruit-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth) var(--ease-out), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.recruit-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent-border);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 640px) {
   .recruit-roles {
     grid-template-columns: repeat(2, 1fr);

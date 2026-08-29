@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import DialogueBox from '../components/DialogueBox'
 import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './DreamGirl.css'
 
 // 培训方法论——展示我们如何训练和验证传讯师
@@ -87,7 +88,8 @@ export default function DreamGirl() {
     <div className="page-dream-girl">
 
       {/* Hero —— 为爱发电 */}
-      <section className="page-hero dream-hero-v2">
+      <section className="page-hero page-hero-cosmic dream-hero-v2">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>{t('傳訊師名錄')}</h1>
           <p className="subtitle">{t('香港跨次元夢女傳訊研究協會 · CDA')}</p>

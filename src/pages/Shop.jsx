@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { shopProducts } from '../data/shopProducts'
+import CosmicHeroVideo from '../components/CosmicHeroVideo'
 import './Shop.css'
 
 const conversionSteps = [
@@ -65,7 +66,8 @@ const safetySteps = [
 export default function Shop() {
   return (
     <div className="page-shop">
-      <section className="page-hero shop-hero">
+      <section className="page-hero page-hero-cosmic shop-hero">
+        <CosmicHeroVideo />
         <div className="container">
           <h1>你和他</h1>
           <p className="subtitle">
