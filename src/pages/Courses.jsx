@@ -128,11 +128,17 @@ export default function Courses() {
   return (
     <div className="page-courses">
       <section className="courses-hero">
-        <div
-          className="courses-hero-image"
-          style={{ '--courses-hero-image': `url(${import.meta.env.BASE_URL}images/lihui-cosmic-atlas-hero.png)` }}
+        <video
+          className="courses-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
           aria-hidden="true"
-        />
+        >
+          <source src={`${import.meta.env.BASE_URL}videos/home-cosmic-hero.mp4`} type="video/mp4" />
+        </video>
         <div className="courses-hero-grid" aria-hidden="true" />
         <div className="container courses-hero-content">
           <p className="courses-kicker">CDA / TRANSMISSION PRACTITIONER PATH</p>
