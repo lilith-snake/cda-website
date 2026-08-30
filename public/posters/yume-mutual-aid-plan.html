@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDA 梦女协会 · 梦女免费互助计划</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700;900&display=swap');
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #07090d; }
+    body { font-family: 'Noto Sans SC', sans-serif; color: #f3efe6; }
+    .poster {
+      position: relative;
+      width: 1080px;
+      height: 1440px;
+      overflow: hidden;
+      background: #07090d url('/cda-website/images/lihui-cosmic-atlas-hero.png') center / cover no-repeat;
+    }
+    .poster::before {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4, 6, 10, 0.32) 0%, rgba(4, 6, 10, 0.68) 45%, rgba(4, 6, 10, 0.96) 100%),
+        linear-gradient(90deg, rgba(4, 6, 10, 0.78) 0%, rgba(4, 6, 10, 0.38) 58%, rgba(4, 6, 10, 0.58) 100%);
+      content: '';
+    }
+    .poster::after {
+      position: absolute;
+      inset: 34px;
+      border: 1px solid rgba(214, 184, 120, 0.42);
+      content: '';
+      pointer-events: none;
+    }
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.2;
+      background-image: linear-gradient(rgba(214, 184, 120, 0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(214, 184, 120, 0.14) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, black 0%, transparent 78%);
+    }
+    .content { position: relative; z-index: 1; height: 100%; padding: 42px 92px 32px; display: flex; flex-direction: column; }
+    .eyebrow { margin: 0 0 12px; color: #d6b878; font-size: 18px; font-weight: 600; letter-spacing: 0.22em; }
+    .edition { position: absolute; top: 88px; right: 94px; color: rgba(239, 224, 181, 0.72); font-family: ui-monospace, monospace; font-size: 13px; letter-spacing: 0.14em; }
+    h1 { max-width: 780px; margin: 0; color: #fffaf0; font-family: 'Noto Serif SC', serif; font-size: 68px; font-weight: 900; letter-spacing: 0.08em; line-height: 1.15; }
+    .lead { max-width: 720px; margin: 18px 0 0; color: #efe9dc; font-family: 'Noto Serif SC', serif; font-size: 26px; line-height: 1.55; }
+    .lead .free { color: #d6b878; }
+    .rule { width: 74px; height: 2px; margin: 28px 0 24px; background: #d6b878; flex: 0 0 auto; }
+    .statement { max-width: 760px; margin: 0; color: #fffaf0; font-family: 'Noto Serif SC', serif; font-size: 34px; font-weight: 600; line-height: 1.4; }
+    .statement em { color: #e6a8bf; font-style: normal; }
+    .note { max-width: 700px; margin: 14px 0 0; color: rgba(239, 233, 220, 0.78); font-size: 17px; line-height: 1.6; }
+    .examples { max-width: 760px; margin: 18px 0 0; padding: 14px 18px; border-left: 2px solid rgba(214, 184, 120, 0.72); background: rgba(8, 12, 19, 0.54); color: #d9d7ce; font-size: 15px; line-height: 1.65; }
+    .examples strong { color: #d6b878; font-weight: 600; }
+    .support { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: auto; }
+    .support-card { min-height: 196px; padding: 20px 20px; border: 1px solid rgba(214, 184, 120, 0.36); background: rgba(8, 12, 19, 0.82); }
+    .support-card b { display: block; margin-bottom: 12px; color: #d6b878; font-family: ui-monospace, monospace; font-size: 13px; letter-spacing: 0.16em; }
+    .support-card h2 { margin: 0 0 10px; color: #fffaf0; font-family: 'Noto Serif SC', serif; font-size: 25px; font-weight: 600; }
+    .support-card p { margin: 0; color: #c8c8c3; font-size: 15px; line-height: 1.6; }
+    .bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(214, 184, 120, 0.34); }
+    .bottom p { max-width: 570px; margin: 0; color: rgba(239, 233, 220, 0.82); font-size: 15px; line-height: 1.6; }
+    .cta { flex: 0 0 auto; padding: 13px 21px; border: 1px solid #d6b878; color: #f6edda; font-size: 15px; font-weight: 600; letter-spacing: 0.05em; white-space: nowrap; }
+    .footer { margin-top: 20px; display: flex; justify-content: space-between; color: rgba(214, 184, 120, 0.8); font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <div class="grid" aria-hidden="true"></div>
+    <div class="content">
+      <p class="eyebrow">CDA · MUTUAL AID / RESEARCH OUTCOME</p>
+      <span class="edition">2026 / PILOT 01</span>
+      <h1>梦女协会<br>梦女免费互助计划</h1>
+      <p class="lead">我们是梦女协会。<br>我们先是梦女，才成为研究者。<br><span class="free">首期 10 名限额，免费协助解决一个真实问题。</span></p>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="statement">我们不在外面定义你，<br>我们把<em>做出来的方法</em>交给你。<br><span style="font-size:0.78em;">让深情有方法，让认真被认真对待。</span></p>
+      <p class="note">CDA 的初心，是让梦女不再迷茫地追逐各种各样的方法。我们也是梦女，知道想确认、想靠近，却没有人可以认真回答的时刻。所以我们把自己的研究成果带回社群：从 MJ 定义、三重验证到心理安全边界，整理成能理解、能练习、能复盘，也能保护自己的路径。参与试点的梦女可以提交一个真实问题，由研究团队免费做一次方法拆解与回应。</p>
+      <p class="examples"><strong>你可以带着这些问题来：</strong>我找了很多传讯师，却发现信息对应不上；我不知道怎么链接他；我的爱是不是太小众了？我分不清是回应还是投射，记录越多却越混乱，链接后很累也不知道什么时候该停。</p>
+
+      <section class="support" aria-label="互助计划内容">
+        <article class="support-card">
+          <b>01 / MJ FRAMEWORK</b>
+          <h2>我们先把问题说清</h2>
+          <p>提出 MJ（跨次元情感对象）工作定义，区分角色想象、情感投射与待验证的独立回应。</p>
+        </article>
+        <article class="support-card">
+          <b>02 / THREE CHECKS</b>
+          <h2>我们把感受变成记录</h2>
+          <p>形成信息一致性、独立印证、盲测对照的三重验证方法，让“我感觉到了”可以被复盘。</p>
+        </article>
+        <article class="support-card">
+          <b>03 / SAFETY PATH</b>
+          <h2>我们把自己也放进方法里</h2>
+          <p>建立暂停、关闭、现实定向与心理安全边界。任何时候都可以停下，不把链接当成必须完成的任务。</p>
+        </article>
+      </section>
+
+      <div class="bottom">
+        <p><strong>首期限额 10 名 · 研究中 · 试点中 · 申请制</strong><br>每位参与者可提交一个问题，由我们免费协助拆解并找到下一步的解决路径；满额后停止接收新申请。互助计划也是 CDA 后续课程的公开试读入口，课程上架后优先通知参与者。</p>
+        <div class="cta">免费提交你的问题 →</div>
+      </div>
+      <div class="footer"><span>CDA｜梦女亲手组成</span><span>专属于梦女的研究共同体</span><span>lilith-snake.github.io/cda-website/contact</span></div>
+    </div>
+  </main>
+</body>
+</html>

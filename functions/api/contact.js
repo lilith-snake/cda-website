@@ -1,4 +1,6 @@
 // POST /api/contact — 站内联系/申请表提交
+import { getMutualAidStatus } from './_mutualAid.js'
+
 export async function onRequest(context) {
   if (context.request.method === 'OPTIONS') {
     return corsResponse({ ok: true }, 204)
@@ -25,6 +27,16 @@ export async function onRequest(context) {
 
     if (!name || !contact || !role || !message || !consent) {
       return corsResponse({ error: 'missing required fields' }, 400)
+    }
+
+    if (inquiryType === 'mutual_aid') {
+      const status = await getMutualAidStatus(context.env.DB)
+      if (status.full) {
+        return corsResponse({
+          error: 'mutual aid plan is full',
+          code: 'mutual_aid_full',
+        }, 409)
+      }
     }
 
     const result = await context.env.DB.prepare(`

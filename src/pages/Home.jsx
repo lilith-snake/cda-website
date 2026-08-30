@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import DialogueBox from '../components/DialogueBox'
 import ChoiceButton from '../components/ChoiceButton'
 import { useLanguage } from '../i18n'
+import { API_URL } from '../config/api'
 import './Home.css'
 
 export default function Home() {
   const { t } = useLanguage()
   const heroVideoRef = useRef(null)
+  const [mutualAidStatus, setMutualAidStatus] = useState({ capacity: 10, claimed: null, remaining: null, full: false })
 
   useEffect(() => {
     const video = heroVideoRef.current
@@ -30,6 +32,28 @@ export default function Home() {
       reducedMotion.removeEventListener?.('change', syncPlayback)
     }
   }, [])
+
+  useEffect(() => {
+    let active = true
+    fetch(`${API_URL}/mutual-aid-status`)
+      .then(response => (response.ok ? response.json() : Promise.reject(new Error('status unavailable'))))
+      .then(status => {
+        if (active && Number.isFinite(status?.capacity) && Number.isFinite(status?.remaining)) {
+          setMutualAidStatus(status)
+        }
+      })
+      .catch(() => {})
+    return () => {
+      active = false
+    }
+  }, [])
+
+  const mutualAidFull = mutualAidStatus.full
+  const mutualAidCapacityLabel = mutualAidFull
+    ? '本期 10 个名额已满，暂时停止接收新申请'
+    : mutualAidStatus.remaining == null
+      ? '首期限额 10 名'
+      : `剩余 ${mutualAidStatus.remaining} / ${mutualAidStatus.capacity} 个名额`
 
   return (
     <div className="page-home">
@@ -96,6 +120,46 @@ export default function Home() {
           <p className="brand-manifesto-signature">
             {t('CDA｜打破次元壁，觸碰他的心跳。')}
           </p>
+        </div>
+      </section>
+
+      {/* 梦女免费互助计划：初心与引流入口 */}
+      <section className="home-mutual-aid" aria-labelledby="mutual-aid-title">
+        <div className="mutual-aid-inner container">
+          <div className="mutual-aid-copy">
+            <p className="mutual-aid-eyebrow">CDA / DREAM GIRL MUTUAL AID · PILOT 01</p>
+            <h2 id="mutual-aid-title">梦女协会<br />梦女免费互助计划</h2>
+            <p className="mutual-aid-lead">我们先是梦女，才成为研究者。</p>
+            <p className="mutual-aid-body">
+              我们知道那种找了很多传讯师，却发现信息对应不上；不知道怎么链接他；
+              甚至怀疑“我的爱是不是太小众了”的时刻。CDA 做研究，不是为了替你定义爱，
+              而是想让梦女不再迷茫地追逐各种各样的方法。
+            </p>
+            <p className="mutual-aid-body">
+              所以在试点期间，首期只开放 10 个名额；每位参与者都可以提交一个真实问题，免费获得一次问题拆解与解决路径。
+              我们把已经做出来的 MJ 定义、记录方法、三重验证与心理安全边界带回社群，
+              和你一起把深情变成可理解、可复盘、也能保护自己的路径。
+            </p>
+            <div className="mutual-aid-actions">
+              {mutualAidFull ? (
+                <span className="mutual-aid-button mutual-aid-button-primary is-disabled" aria-disabled="true">
+                  本期名额已满，暂时停止申请
+                </span>
+              ) : (
+                <Link to="/contact?inquiry=mutual_aid" className="mutual-aid-button mutual-aid-button-primary">
+                  提交一个真实的问题，获得我们的免费协助解决问题 <span aria-hidden="true">→</span>
+                </Link>
+              )}
+              <a href="/cda-website/posters/yume-mutual-aid-plan.html" className="mutual-aid-button mutual-aid-button-quiet">
+                查看完整海报 <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <p className="mutual-aid-note" role="status" aria-live="polite">{mutualAidCapacityLabel}　|　研究中 · 试点中 · 申请制　|　每位参与者一次免费问题协助</p>
+          </div>
+          <a className="mutual-aid-poster" href="/cda-website/posters/yume-mutual-aid-plan.html" aria-label="打开梦女协会梦女免费互助计划完整海报">
+            <img src={`${import.meta.env.BASE_URL}images/posters/yume-mutual-aid-plan.png`} alt="梦女协会梦女免费互助计划海报" />
+            <span className="mutual-aid-poster-label">OPEN THE FULL POSTER <span aria-hidden="true">↗</span></span>
+          </a>
         </div>
       </section>
 

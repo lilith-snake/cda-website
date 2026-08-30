@@ -20,6 +20,7 @@ const initialForm = {
 }
 
 const inquiryTypes = [
+  { value: 'mutual_aid', label: '梦女免费互助计划（首期 10 名）' },
   { value: 'service_waitlist', label: '传讯服务候补' },
   { value: 'course_interest', label: '神秘学课程咨询' },
   { value: 'transmitter_training', label: '传讯师培养' },
@@ -86,6 +87,7 @@ export default function Contact() {
   const { lang } = useLanguage()
   const [searchParams] = useSearchParams()
   const isTransmissionApplication = searchParams.get('service') === 'lover-transmission'
+  const isMutualAidApplication = form.inquiryType === 'mutual_aid'
   const [form, setForm] = useState(() => createInitialForm(searchParams))
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
@@ -145,7 +147,9 @@ export default function Contact() {
 
       if (!response.ok) {
         const result = await response.json().catch(() => ({}))
-        throw new Error(result.error || 'submit failed')
+        const error = new Error(result.error || 'submit failed')
+        error.code = result.code
+        throw error
       }
 
       setStatus('success')
@@ -175,7 +179,9 @@ export default function Contact() {
 
       console.error('Contact submit failed:', err)
       setStatus('error')
-      setSubmitError('暂时没有提交成功，请稍后再试。')
+      setSubmitError(err.code === 'mutual_aid_full'
+        ? '本期 10 个互助名额已满，暂时停止接收新申请。'
+        : '暂时没有提交成功，请稍后再试。')
     }
   }
 
@@ -208,6 +214,13 @@ export default function Contact() {
                 <div className="contact-service-context" role="note">
                   <strong>已选择：爱人传讯服务申请</strong>
                   <span>本服务仅向年满十八周岁的成年人开放申请与提供。</span>
+                </div>
+              )}
+
+              {isMutualAidApplication && (
+                <div className="contact-service-context mutual-aid-context" role="note">
+                  <strong>已选择：梦女免费互助计划</strong>
+                  <span>首期限额 10 名，每位参与者提交一个真实问题，由我们免费协助拆解并找到下一步的解决路径；满额后停止接收新申请。</span>
                 </div>
               )}
 
