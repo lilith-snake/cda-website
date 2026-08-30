@@ -87,11 +87,11 @@ export default function Contact() {
   const { lang } = useLanguage()
   const [searchParams] = useSearchParams()
   const isTransmissionApplication = searchParams.get('service') === 'lover-transmission'
-  const isMutualAidApplication = form.inquiryType === 'mutual_aid'
   const [form, setForm] = useState(() => createInitialForm(searchParams))
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
   const [submitError, setSubmitError] = useState('')
+  const isMutualAidApplication = form.inquiryType === 'mutual_aid'
 
   const selectedInquiry = useMemo(
     () => inquiryTypes.find(item => item.value === form.inquiryType) || inquiryTypes[0],
